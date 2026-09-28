@@ -110,16 +110,7 @@ home_body = "".join((
     section(band("Injured? Call Frost first.", "Before you give a statement, sign a release or accept a check, talk to us. The first conversation with an insurer shapes everything after it."), wrap=True),
 ))
 
-page("home", kind="home", layout="raw", hero_style="photo",
-     title="Summerville Car Accident & Personal Injury Lawyers | Frost Law Group",
-     description="Injured in Summerville, SC? Frost Law Group's accident attorneys handle car, truck, motorcycle, dog bite, slip and fall and wrongful death claims. Free consultation. No fee unless we win. (843) 419-6653.",
-     h1='Summerville Car Accident &amp; Personal Injury Lawyers <span class="sub">Frost Law Group · Summerville, South Carolina</span>',
-     eyebrow="Free consultation · No fee unless we win · Available 24/7",
-     cta=[("contact", "Get a free case review", "btn light"), ("tel:" + firm.PHONE_E164, firm.PHONE, "btn ghost")],
-     lead="A former magistrate judge and a former detective, taking on the insurance companies for injured people in Dorchester, Berkeley and Charleston counties. You pay nothing unless we win.",
-     quote="“Don't mistake our kindness for weakness.” — Tara L. Frost",
-     hero_image="couple.jpg", hero_image_wide="couple-wide.jpg", hero_caption="Tara and Jack Frost, Frost Law Group",
-     body=home_body, priority=1.0, changefreq="weekly", nav_label="Home")
+# page("home") is now an LLG page in content/pages (Manifest v7)
 
 # ----------------------------------------------------------------------------- PRACTICE AREAS INDEX
 pa_body = (
@@ -136,12 +127,7 @@ pa_body = (
     ])
     + band("Not sure what kind of case you have?", "Tell us what happened. We will tell you which page applies to you, and whether you have a claim.")
 )
-page("practice-areas", kind="page", layout="one", section_label="Practice areas",
-     title="Personal Injury Practice Areas | Summerville, SC | Frost Law Group",
-     description="Car, truck, motorcycle, pedestrian and rideshare accidents, drunk-driving crash victims, dog bites, slip and fall, workers' compensation, catastrophic injuries and wrongful death claims in Summerville, SC.",
-     h1="Personal Injury Practice Areas", eyebrow="Summerville, South Carolina", nav_label="All practice areas",
-     lead="We focus on helping injured people and grieving families across Summerville and the Lowcountry. Whatever caused your injury, pick the page that fits and read what South Carolina law says before you talk to an adjuster.",
-     summary="Every kind of injury case we handle, on one page.", body=pa_body, priority=0.9)
+# page("practice-areas") is now an LLG page in content/pages (Manifest v7)
 
 # ----------------------------------------------------------------------------- AREAS INDEX
 areas_body = (
@@ -154,32 +140,26 @@ areas_body = (
     f'<p>After a serious injury, getting to Summerville may be the last thing you can do. We meet clients at home, at the hospital or rehabilitation facility, and by phone or video. Call {TEL} and tell us where you are.</p>'
     + band("Hurt anywhere in the Lowcountry?", "One call tells you whether you have a claim and what to do next.")
 )
-page("areas", kind="page", layout="one",
-     title="Areas We Serve | Summerville, Goose Creek, Charleston & the Lowcountry",
-     description="Frost Law Group's injury practice serves Summerville, Goose Creek, Ladson, North Charleston, Charleston, Mount Pleasant, Moncks Corner, Walterboro and West Ashley. Find your community.",
-     h1="Areas We Serve", eyebrow="Injury lawyers for the Lowcountry", nav_label="Areas we serve",
-     lead="Summerville is home. These are the communities whose crash reports, hospitals and courthouses we know.", body=areas_body, priority=0.7)
+# page("areas") is now an LLG page in content/pages (Manifest v7)
 
 # ----------------------------------------------------------------------------- ABOUT / TEAM
 about_body = (
-    '<h2>A husband-and-wife firm built on faith, family and a genuine commitment to the Lowcountry</h2>'
-    '<p>Frost Law Group opened in 2019 with a simple idea: people in a crisis should be able to talk to the lawyer, not a call center. Jack and Tara Frost are married, live in Summerville, and share a house-turned-office on Linwood Lane with their paralegal, Cassie, and two Golden Retrievers who take their greeting duties seriously.</p>'
-    '<p>This site is the firm\'s personal injury practice. Tara leads every injury case. Jack, a former Summerville police officer and Charleston County Sheriff\'s Office detective, handles the investigation: the collision report, the video, the vehicle data, the witnesses. Between them they have seen an injury case from the bench, from the crash scene and from the courtroom.</p>'
+    '<h2>A husband-and-wife law firm in Summerville</h2>'
+    '<p>Frost Law Group is built on a simple idea: people in a crisis should be able to talk to the lawyer, not a call center. Jack and Tara Frost are married, were Summerville High School sweethearts, and share an office on Linwood Lane with their paralegal, Cassie, and two Golden Retrievers who greet clients at the door.</p>'
+    '<p>This site is the firm\'s personal injury practice. Tara L. Frost focuses on personal injury, car accident and truck accident claims, and she is a former Dorchester County Magistrate Judge and Associate Probate Judge. Jack C. Frost spent fourteen years with the Summerville Police Department and the Charleston County Sheriff\'s Office before he practiced law, so he knows how a collision report is put together.</p>'
     '[[team]]'
     '<h2>How we work</h2>'
     + checks([
         "Your consultation is free, and injury cases are handled on a contingency fee: no fee unless we win.",
-        "You meet with an attorney at the first appointment, not an intake specialist, and you get the attorney's direct email.",
-        "We answer injury calls around the clock. Accidents do not keep business hours.",
-        "We say when you do not need a lawyer. A minor property-damage claim with no injury is usually something you can handle yourself, and we will tell you how.",
-        "If you cannot travel, we come to you: home, hospital or rehab facility, or by phone and video.",
-        "Two Golden Retrievers may greet you at the door. Tell us when you book if you would rather they stay in the back.",
-    ]) +
+        "You meet with an attorney, not an intake service.",
+                "We say when you do not need a lawyer. A minor property-damage claim with no injury is usually something you can handle yourself, and we will tell you how.",
+        "If you cannot travel after an injury, call and tell us. We will talk through how to meet.",
+            ]) +
     '<h2>One firm, two websites</h2>'
     f'<p>Frost Law Group, LLC is one South Carolina firm at 128 Linwood Lane in Summerville. This site covers personal injury. {firm.CROSS_LINK_TEXT}, {ext(firm.MAIN_SITE + "/", firm.MAIN_SITE_LABEL)}. Same office, same attorneys, same phone number. We are not affiliated with other firms that use the Frost name in other states.</p>'
     f'<p>{img("office-exterior.jpg", "Frost Law Group’s office on Linwood Lane in Summerville")}</p>'
     '<h2>Our comfort dogs</h2>'
-    '<p>Mistoc (Themistocles) and Palmer are Golden Retrievers with a talent for finding the most nervous person in the room. We still miss our girl Elli (Elliana), who greeted clients for years and still appears in a few of our photos.</p>'
+    '<p>Mistoc and Palmer are Golden Retrievers with a talent for finding the most nervous person in the room. Tell us when you book if you would rather they stay in the back.</p>'
     + band("Ready to talk to an attorney?", "Your consultation is free, confidential, and carries no obligation.")
 )
 page("about", kind="page", hub=None,
@@ -192,23 +172,22 @@ page("about", kind="page", hub=None,
 # ----------------------------------------------------------------------------- ATTORNEYS
 tara_body = (
     '<h2>From the bench to your side of the table</h2>'
-    '<p>Tara L. Frost is a Summerville personal injury attorney who represents injured clients and families across Dorchester, Berkeley, Charleston and Colleton counties. She leads every injury case at Frost Law Group: car, truck and motorcycle collisions, pedestrian and rideshare crashes, dog bites, premises injuries, workers\' compensation claims and wrongful death.</p>'
-    '<p>Tara believes that effective representation starts with listening. Her personal motto, “Don\'t mistake my kindness for weakness,” describes how she approaches every case. She treats clients with compassion, respect and honesty, and she stands firm when an insurance company or opposing party refuses to do what is right. After a serious accident, clients are often overwhelmed, in pain and unsure what to do next; her job is to make the process clear and manageable while fighting for the compensation and accountability they deserve.</p>'
+    '<p>Tara L. Frost is a Summerville personal injury attorney who represents injured clients and families across Summerville and the surrounding counties. She focuses on personal injury, car accident and truck accident claims, and she handles motorcycle, rideshare and pedestrian crashes, dog bites, falls and wrongful death cases.</p>'
+    '<p>Tara believes that effective representation starts with listening. Her personal motto, “Don\'t mistake my kindness for weakness,” describes how she approaches every case. She treats clients with compassion, respect and honesty, and she stands firm when an insurance company or opposing party refuses to do what is right. After a serious accident, clients are often overwhelmed, in pain and unsure what to do next; her job is to make the process clear and manageable and to pursue a fair result on the evidence.</p>'
     '<h2>Judicial service</h2>'
-    '<p>Tara served as a Dorchester County Magistrate Judge from July 2022 through August 2025, and then as a Dorchester County Associate Probate Judge from August 2025 through June 2026. Magistrate court is where South Carolina\'s smaller civil claims are tried, and where evidence, credibility and preparation decide cases every week. That experience gives her an unusual perspective on how an injury claim is evaluated, what a fact-finder needs to see, and why the details in a medical record or a collision report matter so much.</p>'
+    '<p>Tara served as a Dorchester County Magistrate Judge from July 2022 through August 2025, and then as a Dorchester County Associate Probate Judge from August 2025 through June 2026. Magistrate court is where South Carolina\'s smaller civil claims are tried, and where evidence, credibility and preparation decide cases every week. That service gave her a courtroom perspective on how evidence, preparation and credibility are weighed, and on why the details in a medical record or a collision report matter.</p>'
     '<p>Tara no longer serves on the bench and does not appear in matters she handled as a judge.</p>'
     '<h2>Before the law</h2>'
     '<p>Before becoming an attorney, Tara spent roughly sixteen years in the hospitality industry and later owned a window-covering company with her father. Those years taught her customer service, communication, and how to understand what people need during difficult and stressful times. She brings that same client-centered mindset to every injury claim.</p>'
     '<h2>Education and credentials</h2>'
     + ul([
-        "Juris Doctor, Charleston School of Law (2012); Vice President of the Student Trial Lawyers Association",
-        "Admitted to the South Carolina Bar November 13, 2012; South Carolina Bar No. 100610, regular member in good standing (" + ext(firm.BAR_DIRECTORY_URL, "SC Judicial Branch attorney directory") + ")",
+        "Juris Doctor, Charleston School of Law; Vice President of the Student Trial Lawyers Association; helped institute the Trial Advocacy Board",
         "Dorchester County Associate Probate Judge, August 2025 – June 2026",
         "Dorchester County Magistrate Judge, July 2022 – August 2025",
     ]) +
     '<h2>Rooted here</h2>'
-    '<p>A lifelong resident of the tri-county area, Tara was born and raised locally. She is married to her Summerville High School sweetheart, Jack, and together they live and work in Summerville. She enjoys church and Bible study, reading, movies, swimming and fair-weather golf, and time with family and the firm\'s Golden Retrievers.</p>'
-    '<h2>Articles by Tara</h2><p>Tara writes the articles in [[blog]]: what to do in the first days after a crash, what South Carolina\'s dog-bite and helmet laws mean for a claim, and what to say (and not say) to an insurance adjuster.</p>'
+    '<p>A lifelong resident of the tri-county area, Tara is married to her Summerville High School sweetheart, Jack, and the two practice together in Summerville.</p>'
+    '<h2>Articles</h2><p>The firm\'s articles on [[blog]] cover what to do in the first days after a crash, what South Carolina\'s dog bite and helmet laws mean for a claim, and what to know before you talk to an insurance adjuster.</p>'
     '<h2>Reach Tara</h2>'
     f'<p>Email <a href="mailto:{firm.ATTORNEYS["tara"]["email"]}">{firm.ATTORNEYS["tara"]["email"]}</a>, call {TEL}, or connect on {ext(firm.ATTORNEYS["tara"]["linkedin"], "LinkedIn")}. Tara\'s work on the firm\'s other matters is described on {ext(firm.ATTORNEYS["tara"]["main_site_bio"], "her profile on the main firm site")}.</p>'
     + band("Injured? Talk to Tara first.", "A free, honest conversation about whether you have a claim and what it may be worth.")
@@ -217,58 +196,55 @@ page("attorneys/tara-frost", kind="attorney", author="tara", hub="about",
      title="Tara L. Frost | Summerville Personal Injury Attorney | Former Magistrate Judge",
      description="Tara L. Frost leads Frost Law Group's personal injury practice in Summerville, SC. She served as a Dorchester County Magistrate Judge (2022–2025) and Associate Probate Judge (2025–2026).",
      h1="Tara L. Frost", eyebrow="Attorney at Law · Personal injury", nav_label="Tara L. Frost",
-     lead="Former Dorchester County Magistrate Judge, now leading every injury case at Frost Law Group with a judge's eye for what a case needs to win.",
+     lead="A former Dorchester County Magistrate Judge and Associate Probate Judge who focuses on personal injury, car accident and truck accident claims at Frost Law Group.",
      hero_image="tara-bio.jpg", hero_caption="Tara L. Frost, Attorney at Law", body=tara_body, priority=0.8)
 
 jack_body = (
-    '<h2>Fourteen years of crash scenes, warrants and witnesses</h2>'
+    '<h2>Fourteen years in Lowcountry law enforcement</h2>'
     '<p>Jack Frost was born in Virginia and moved to Summerville with his family at the age of eight. He graduated from Summerville High School and studied political science at the College of Charleston. Following in his grandfather\'s footsteps, he began a career in law enforcement with the Summerville Police Department and went on to serve as a deputy, master deputy and detective with the Charleston County Sheriff\'s Office, retiring after fourteen years.</p>'
-    '<p>As a patrol officer and corporal in Summerville he worked the collisions on Main Street, Bacons Bridge Road, Dorchester Road and Highway 17-A: securing scenes, interviewing drivers and witnesses, measuring skid marks and writing the reports that insurers later rely on. As a detective he ran complex investigations, prepared and served search and arrest warrants, conducted surveillance and testified in the courts of Dorchester and Charleston counties. He was also an entry-team member of the Sheriff\'s Office SWAT team.</p>'
+    '<p>He served as a police officer and corporal with the Summerville Police Department and as a deputy, master deputy and detective with the Charleston County Sheriff\'s Office, where he also served on the SWAT team.</p>'
     '<h2>What that means for your injury case</h2>'
     + checks([
-        "He reads a collision report the way the officer who wrote it intended, and sees what is missing: the witness who was never interviewed, the camera that was never pulled, the measurement that was never taken.",
-        "He knows where the evidence is and how quickly it disappears: business surveillance systems overwrite in days, vehicle event-data recorders get crushed at the salvage yard, 911 audio is purged on a schedule.",
-        "He knows the officers, the agencies and the procedures in Dorchester, Berkeley and Charleston counties, which makes obtaining reports, video and supplemental statements faster.",
-        "He has testified in the same courtrooms where the firm now tries injury cases, before many of the same judges.",
+        "He knows how a collision report is put together, so he can read one for what it leaves out: a witness who was not interviewed, a camera that was not checked, a measurement that was not taken.",
+        "He knows that some evidence does not last. Store cameras can record over old footage, and a damaged car can leave the lot before anyone downloads its data.",
     ]) +
     '<h2>Education and credentials</h2>'
     + ul([
-        "Juris Doctor, Charleston School of Law (2016)",
-        "Admitted to the South Carolina Bar November 27, 2018; South Carolina Bar No. 103633, regular member in good standing (" + ext(firm.BAR_DIRECTORY_URL, "SC Judicial Branch attorney directory") + ")",
+        "Juris Doctor, Charleston School of Law",
         "Bachelor of Science in Criminal Justice and Police Administration, Strayer University",
         "Associate of Science in Criminal Justice, Trident Technical College",
         "Political science studies, College of Charleston",
         "Type 1 SWAT Operator designation, U.S. Department of Homeland Security",
     ]) +
     '<h2>Role at the firm</h2>'
-    f'<p>On this site\'s cases, Jack handles the investigation and evidence and works alongside Tara, who leads every injury claim. The rest of Jack\'s practice is described on {ext(firm.ATTORNEYS["jack"]["main_site_bio"], "his profile on the main firm site")}.</p>'
+    f'<p>On injury cases, Jack works alongside Tara, and his years writing and reviewing reports give the firm a practical read of the facts. The rest of Jack\'s practice is described on {ext(firm.ATTORNEYS["jack"]["main_site_bio"], "his profile on the main firm site")}.</p>'
     '<h2>Off the clock</h2>'
-    '<p>An avid golfer, Jack credits his attention to client service to his years as a caddy at the Ocean Course on Kiawah Island, where he also served as personal security for Tiger Woods and Vijay Singh during the 2012 PGA Championship. He and Tara, his Summerville High School sweetheart, live in Summerville with their Golden Retrievers.</p>'
+    '<p>Jack once caddied at the Ocean Course on Kiawah Island. He and Tara, his Summerville High School sweetheart, practice together in Summerville.</p>'
     '<h2>Reach Jack</h2>'
     f'<p>Email <a href="mailto:{firm.ATTORNEYS["jack"]["email"]}">{firm.ATTORNEYS["jack"]["email"]}</a>, call {TEL}, or connect on {ext(firm.ATTORNEYS["jack"]["linkedin"], "LinkedIn")}.</p>'
-    + band("Was the crash investigated properly?", "If the report blames you, or leaves out what you saw, tell Jack what happened.")
+    + band("Questions about a crash report?", "If the report blames you, or leaves out what you saw, call and talk it through with an attorney.")
 )
 page("attorneys/jack-frost", kind="attorney", author="jack", hub="about",
      title="Jack C. Frost | Former Detective | Summerville Accident Attorneys",
      description="Jack C. Frost spent 14 years as a Summerville police officer and Charleston County Sheriff's Office detective. He now investigates crash and injury cases for Frost Law Group.",
-     h1="Jack C. Frost", eyebrow="Attorney at Law · Investigation", nav_label="Jack C. Frost",
-     lead="Former Summerville police officer and Charleston County Sheriff's Office detective. He has worked the crash scenes; now he finds the evidence the insurer hopes nobody looks for.",
+     h1="Jack C. Frost", eyebrow="Attorney at Law", nav_label="Jack C. Frost",
+     lead="A former Summerville police officer and Charleston County Sheriff's Office detective, now an attorney at Frost Law Group.",
      hero_image="jack-bio.jpg", hero_caption="Jack C. Frost, Attorney at Law", body=jack_body, priority=0.7)
 
 # ----------------------------------------------------------------------------- CONTACT
 contact_body = (
     section(
         twocol(
-            '<h3 style="margin-top:0">Tell us about your case</h3><p class="small" style="margin:0 0 .8rem">Free, confidential, no obligation. We reply the same day, and injury calls are answered around the clock.</p>[[form]]',
+            '<h3 style="margin-top:0">Tell us about your case</h3><p class="small" style="margin:0 0 .8rem">Free, confidential, no obligation. An attorney will get back to you.</p>[[form]]',
             '<h3 style="margin-top:0">What to expect</h3>' + checks([
                 "You talk to Tara or Jack, not an intake service.",
                 "We tell you honestly whether you have a claim, what it may be worth, and what to do next, whether or not you hire us.",
                 "If you hire us, you pay nothing up front and no fee unless we win.",
                 "Bring or send what you have: the collision report or FR-10, photos, the other driver's insurance card, your own policy, medical paperwork and any letters from an insurer. Photos on your phone are fine.",
-                "If you cannot travel, we come to your home, the hospital or the rehab facility, or meet by phone and video.",
-            ]) + '<div class="alert"><p><b>Before you talk to the insurance company:</b> you are not required to give the other driver\'s insurer a recorded statement, and you should not sign a medical release or accept a check until you know what your claim is worth. Call us first.</p></div>'),
+                "If you cannot travel after an injury, tell us, and we will talk through how to meet.",
+            ]) + '<div class="alert"><p><b>Before you talk to the insurance company:</b> you are not required to give the other driver\'s insurer a recorded statement. Talk with a lawyer before you sign a medical release or accept a check.</p></div>'),
         label="Free consultation", title="Get your free case review"),
-    section('[[nap]]' + f'<div class="nap"><div><h3>Email</h3><p><a href="mailto:{firm.EMAIL}">{firm.EMAIL}</a></p><p class="small">For a new matter, a call gets a faster answer.</p></div><div><h3>Mail</h3><p>{firm.NAME}<br>{firm.PO_BOX}</p><p class="small">Please send documents to the P.O. Box, and come to Linwood Lane in person.</p></div><div><h3>Attorneys</h3><p><a href="[[attorneys/tara-frost]]">Tara L. Frost</a>, SC Bar No. 100610<br><a href="[[attorneys/jack-frost]]">Jack C. Frost</a>, SC Bar No. 103633</p></div></div>' + '[[map]]', cls="tint", label="Our office", title="128 Linwood Lane, Summerville, SC 29483"),
+    section('[[nap]]' + f'<div class="nap"><div><h3>Email</h3><p><a href="mailto:{firm.EMAIL}">{firm.EMAIL}</a></p><p class="small">For a new matter, a call gets a faster answer.</p></div><div><h3>Mail</h3><p>{firm.NAME}<br>{firm.PO_BOX}</p><p class="small">Please send documents to the P.O. Box, and come to Linwood Lane in person.</p></div><div><h3>Attorneys</h3><p><a href="[[attorneys/tara-frost]]">Tara L. Frost</a><br><a href="[[attorneys/jack-frost]]">Jack C. Frost</a></p></div></div>' + '[[map]]', cls="tint", label="Our office", title="128 Linwood Lane, Summerville, SC 29483"),
     section(
         f'<p class="lead">{local.office_roads_sentence() or "Linwood Lane is a short residential street in Summerville; the office is the house with our sign out front."}</p>'
         + local.directions_cards(["i26-199", "goose-creek", "ladson", "north-charleston", "charleston", "mount-pleasant", "moncks-corner", "walterboro", "west-ashley", "nexton", "cane-bay", "knightsville"])
@@ -408,9 +384,9 @@ page("accessibility", kind="page", layout="one", cta=False, priority=0.1,
 
 # ----------------------------------------------------------------------------- THANK YOU
 thanks_body = (
-    '<p class="lead">Your message is on its way to Tara, Jack and Cassie. We read every one and reply by phone or email the same day, often within the hour.</p>'
+    '<p class="lead">Your message is on its way to Tara, Jack and Cassie. We read every one, and an attorney will reply by phone or email.</p>'
     '<h2>If it cannot wait</h2>'
-    f'<p>Call {TEL}. Injury calls are answered around the clock.</p>'
+    f'<p>Call {TEL}. An attorney will get back to you.</p>'
     '<h2>While you wait</h2>'
     + checks([
         f'{A(CAR + "/what-to-do-after-a-car-accident-in-south-carolina", "What to do in the first 48 hours after a crash")}.',
@@ -422,5 +398,5 @@ thanks_body = (
 )
 page("thank-you", kind="page", layout="one", cta=False, noindex=True, priority=0.1,
      title="Thank You | Summerville Accident Attorneys",
-     description="We received your message and will reply the same day. For anything urgent, call (843) 419-6653; injury calls are answered around the clock.",
+     description="We received your message, and an attorney will get back to you. For anything urgent, call the office in Summerville, South Carolina.",
      h1="Thank you. We have your message.", eyebrow="Message received", nav_label="Thank you", lead="", body=thanks_body)

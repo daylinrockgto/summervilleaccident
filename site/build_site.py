@@ -28,13 +28,15 @@ sys.path.insert(0, SITE)
 
 from content.base import PAGES, BY_SLUG, esc  # noqa: E402
 from content import firm  # noqa: E402
-import content.core  # noqa: E402,F401  (registers pages)
-import content.car  # noqa: E402,F401
-import content.practice  # noqa: E402,F401
-import content.cities  # noqa: E402,F401
+import content.llg  # noqa: E402,F401  (registers the LLG long-form pages first: home, menus, parents, children, counties)
+import content.core  # noqa: E402,F401  (team, contact, reviews, blog index, legal pages)
 import content.posts  # noqa: E402,F401
-import content.spanish  # noqa: E402,F401
-import content.questions  # noqa: E402,F401
+import content.legacy  # noqa: E402,F401  (old workers' compensation copy at its old address, unlinked)
+from content.base import PAGES as _P  # noqa: E402
+if not any(p["slug"].startswith("es/") for p in _P):
+    import content.spanish  # noqa: E402,F401  (first-build Spanish page, until the LLG version replaces it)
+import content.questions_index  # noqa: E402,F401  (link index of answer pages)
+import checks  # noqa: E402  (hard compliance checks; the build fails on any of them)
 
 BUILD_DATE = firm.BUILD_DATE
 ORIGIN = firm.ORIGIN
@@ -61,6 +63,28 @@ def url(slug):
 
 def abs_url(slug):
     return ORIGIN + ("/" if slug == "home" else f"/{slug}/")
+
+
+REMAP = {old.strip("/"): (new.strip("/") or "home") for old, new in firm.REDIRECTS}
+
+
+def resolve(slug):
+    """A live slug, or where an old slug now lives (the redirect map), or its nearest live ancestor. None if nothing fits."""
+    seen = set()
+    while slug not in BY_SLUG and slug in REMAP and slug not in seen:
+        seen.add(slug)
+        slug = REMAP[slug]
+    if slug in BY_SLUG:
+        return slug
+    parts = slug.split("/")
+    while len(parts) > 1:
+        parts = parts[:-1]
+        cand = "/".join(parts)
+        if cand in BY_SLUG:
+            return cand
+        if cand in REMAP and resolve(cand):
+            return resolve(cand)
+    return None
 
 
 _IMG_CACHE = {}
@@ -325,9 +349,9 @@ def expand_tokens(html):
     html = fix_images(html)
     # remaining [[slug]] tokens are internal links
     def link(m):
-        slug = m.group(1)
-        if slug not in BY_SLUG:
-            warn(f"unknown link target [[{slug}]]")
+        slug = resolve(m.group(1))
+        if slug is None:
+            warn(f"unknown link target [[{m.group(1)}]]")
             return "#"
         return url(slug)
     html = re.sub(r"\[\[([a-z0-9/-]+)\]\]", link, html)
@@ -342,6 +366,9 @@ def nav_html():
         return f'<div class="sub">{lis}</div>'
     items = []
     for label, hub_slug, spokes, all_label in firm.NAV:
+        if hub_slug not in BY_SLUG:
+            continue
+        spokes = [s for s in spokes if s in BY_SLUG]
         if spokes:
             items.append(f'<li class="has-sub"><a href="{url(hub_slug)}" aria-haspopup="true">{label}</a>{sub(hub_slug, spokes, all_label)}</li>')
         else:
@@ -368,8 +395,8 @@ def header_html():
 
 def footer_html():
     logo_src, lw, lh = image_info(firm.LOGO)
-    pa = "".join(f'<li><a href="{url(s)}">{esc(l)}</a></li>' for l, s in firm.FOOTER_PRACTICE)
-    explore = "".join(f'<li><a href="{url(s)}">{esc(l)}</a></li>' for l, s in firm.FOOTER_EXPLORE)
+    pa = "".join(f'<li><a href="{url(s)}">{esc(l)}</a></li>' for l, s in firm.FOOTER_PRACTICE if s in BY_SLUG)
+    explore = "".join(f'<li><a href="{url(s)}">{esc(l)}</a></li>' for l, s in firm.FOOTER_EXPLORE if s in BY_SLUG)
     areas = "".join(f'<li><a href="{url(s)}">{esc(BY_SLUG[s]["nav_label"])}</a></li>' for s in firm.FOOTER_AREAS if s in BY_SLUG)
     soc = "".join(f'<a href="{esc(h)}" rel="noopener" target="_blank" aria-label="{esc(l)}">{ICONS[i]}</a>' for l, h, i in firm.SOCIAL if h)
     find = (f'<li><a href="{esc(firm.GBP_URL)}" rel="noopener" target="_blank">Google Business Profile</a></li>'
@@ -385,17 +412,20 @@ def footer_html():
         f'<div class="xsite-box"><b>Our main firm site</b><p>{firm.CROSS_LINK_TEXT}, <a href="{esc(firm.MAIN_SITE)}/" rel="noopener">{esc(firm.MAIN_SITE_LABEL)}</a>. Same office, same attorneys, same phone number.</p></div></div>'
         f'<div><h3>Injury cases we handle</h3><ul>{pa}</ul></div>'
         f'<div><h3>Explore</h3><ul>{explore}</ul><h3 style="margin-top:1.4rem">Find us</h3><ul>{find}</ul></div>'
-        f'<div><h3>Communities we serve</h3><ul>{areas}<li><a href="{url("areas")}">All communities →</a></li></ul></div>'
-        f'</div><div class="legal"><p>© 2019–{BUILD_DATE[:4]} {esc(firm.NAME)}. {firm.DISCLAIMER}</p>'
-        f'<p><a href="{url("privacy-policy")}">Privacy policy</a> · <a href="{url("terms-of-use")}">Terms of use &amp; legal disclaimer</a> · <a href="{url("accessibility")}">Accessibility</a> · <a href="{url("areas")}">Areas we serve</a> · <a href="{url("es/abogado-de-accidentes")}" lang="es">Español</a></p></div></div></footer>')
+        f'<div><h3>Locations we serve</h3><ul>{areas}<li><a href="{url("locations")}">All locations →</a></li></ul></div>'
+        f'</div><div class="legal"><p>© {BUILD_DATE[:4]} {esc(firm.NAME)}. {firm.DISCLAIMER}</p>'
+        f'<p><a href="{url("privacy-policy")}">Privacy policy</a> · <a href="{url("terms-of-use")}">Terms of use &amp; legal disclaimer</a> · <a href="{url("accessibility")}">Accessibility</a> · <a href="{url("locations")}">Locations we serve</a>' + ''.join(f' · <a href="{url(p["slug"])}" lang="es">Español</a>' for p in PAGES if p.get("lang") == "es") + '</p></div></div></footer>')
 
 
 def breadcrumb_trail(p):
     trail = [("home", "Home")]
+    top = p["hub"] if p["kind"] == "spoke" and p["hub"] else p["slug"]
+    if top in getattr(firm, "COUNTY_HUBS", []) and "locations" in BY_SLUG and p["slug"] != "locations":
+        trail.append(("locations", "Locations"))
+    elif top in firm.HUBS and "practice-areas" in BY_SLUG and p["slug"] != "practice-areas":
+        trail.append(("practice-areas", "Practice areas"))
     if p["kind"] == "spoke" and p["hub"]:
         trail.append((p["hub"], BY_SLUG[p["hub"]]["nav_label"]))
-    elif p["kind"] == "city":
-        trail.append(("areas", "Areas we serve"))
     elif p["kind"] == "post":
         trail.append(("blog", "Blog"))
     elif p["kind"] == "attorney":
@@ -462,7 +492,11 @@ def faq_html(faqs):
 
 
 def related_html(p):
-    rel = [s for s in p["related"] if s in BY_SLUG]
+    rel = []
+    for s in p["related"]:
+        r = resolve(s)
+        if r and r != p["slug"] and r not in rel:
+            rel.append(r)
     if not rel:
         return ""
     return '<h2>Related pages</h2><ul class="cards">' + "".join(card(BY_SLUG[s], new=False) for s in rel) + "</ul>"
@@ -475,7 +509,7 @@ def aside_html(p):
                   f'<p class="hours" style="color:#b9c9db">{esc(" · ".join(firm.PROMISES))}</p></div>')
     if p["kind"] in ("hub", "spoke"):
         hub = p["slug"] if p["kind"] == "hub" else p["hub"]
-        spokes = [s for s in firm.HUB_SPOKES.get(hub, []) if s in BY_SLUG]
+        spokes = [s for s in firm.HUB_SPOKES.get(hub, []) if s in BY_SLUG][:14]
         lis = f'<li class="{"here" if p["slug"] == hub else ""}"><a href="{url(hub)}">{esc(BY_SLUG[hub]["nav_label"])} overview</a></li>'
         lis += "".join(f'<li class="{"here" if s == p["slug"] else ""}"><a href="{url(s)}">{esc(BY_SLUG[s]["nav_label"])}</a></li>' for s in spokes)
         cards_.append(f'<div class="acard"><h3>{esc(BY_SLUG[hub]["section_label"] or BY_SLUG[hub]["nav_label"])}</h3><ul>{lis}</ul></div>')
@@ -501,7 +535,7 @@ def aside_html(p):
         o = firm.ATTORNEYS[other]
         cards_.append(f'<div class="acard"><h3>Also on the team</h3><div class="person">{img_tag(o["headshot"], o["name"])}<div><b><a href="{url(o["slug"])}" style="text-decoration:none">{esc(o["name"])}</a></b><small>{esc(o["byline"])}</small></div></div></div>')
     else:
-        lis = "".join(f'<li><a href="{url(s)}">{esc(BY_SLUG[s]["nav_label"])}</a></li>' for s in ("practice-areas/car-accidents", "practice-areas/truck-accidents", "practice-areas/motorcycle-accidents", "practice-areas/dog-bites", "practice-areas/wrongful-death", "about", "reviews", "areas"))
+        lis = "".join(f'<li><a href="{url(s)}">{esc(BY_SLUG[s]["nav_label"])}</a></li>' for s in (firm.HUBS[:6] + ["about", "reviews", "locations"]) if s in BY_SLUG)
         cards_.append(f'<div class="acard"><h3>Explore</h3><ul>{lis}</ul></div>')
     return '<aside class="aside">' + "".join(cards_) + "</aside>"
 
@@ -533,9 +567,9 @@ def firm_ld():
         "logo": ORIGIN + "/assets/img/" + firm.LOGO, "priceRange": "$$",
         "address": {"@type": "PostalAddress", "streetAddress": firm.STREET, "addressLocality": firm.CITY, "addressRegion": firm.STATE, "postalCode": firm.ZIP, "addressCountry": "US"},
         "openingHoursSpecification": hours, "sameAs": [s for s in firm.SAME_AS if s],
-        "areaServed": [{"@type": "City", "name": n} for n in firm.AREA_SERVED],
+        "areaServed": [{"@type": t, "name": n} for t, n in firm.AREA_SERVED],
         "founder": [{"@id": abs_url(firm.ATTORNEYS[k]["slug"]) + "#person"} for k in ("tara", "jack")],
-        "knowsAbout": ["Personal injury", "Car accidents", "Truck accidents", "Motorcycle accidents", "Pedestrian accidents", "Rideshare accidents", "Dog bites", "Premises liability", "Workers' compensation", "Catastrophic injuries", "Wrongful death"],
+        "knowsAbout": ["Personal injury", "Car accidents", "Truck accidents", "Motorcycle accidents", "Pedestrian accidents", "Rideshare accidents", "Dog bites", "Premises liability", "Catastrophic injuries", "Wrongful death"],
         "hasMap": firm.GBP_URL, "description": firm.LLMS_SUMMARY, "email": firm.EMAIL,
     }
     if firm.GEO:
@@ -552,9 +586,9 @@ def person_ld(key):
             "worksFor": {"@id": ORIGIN + "/#firm"}, "alumniOf": [{"@type": "CollegeOrUniversity", "name": s} for s in a["alumni"]],
             "knowsAbout": a["knows"], "sameAs": [s for s in a["same_as"] if s], "description": a["ld_description"],
             "email": a.get("email"), "telephone": firm.PHONE_E164,
-            "identifier": {"@type": "PropertyValue", "propertyID": "South Carolina Bar Number", "value": a.get("bar_number")},
-            "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Admitted to the South Carolina Bar", "dateCreated": a.get("admitted_iso"),
-                              "recognizedBy": {"@type": "Organization", "name": "Supreme Court of South Carolina"}}}
+            **({"identifier": {"@type": "PropertyValue", "propertyID": "South Carolina Bar Number", "value": a["bar_number"]},
+                "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Admitted to the South Carolina Bar", "dateCreated": a.get("admitted_iso"),
+                                  "recognizedBy": {"@type": "Organization", "name": "Supreme Court of South Carolina"}}} if a.get("bar_number") else {})}
 
 
 def page_ld(p):
@@ -565,15 +599,15 @@ def page_ld(p):
           "isPartOf": {"@type": "WebSite", "@id": ORIGIN + "/#website", "url": ORIGIN + "/", "name": firm.NAME, "publisher": {"@id": ORIGIN + "/#firm"}},
           "about": {"@id": ORIGIN + "/#firm"}, "inLanguage": "es" if p.get("lang") == "es" else "en-US", "dateModified": p["modified"] or BUILD_DATE}
     graph.append(wp)
-    if p["kind"] == "home" or p["slug"] == "contact":
+    if p["kind"] == "home" or p["slug"] in ("contact", "about"):
         graph.append(firm_ld())
         graph.append(person_ld("tara"))
         graph.append(person_ld("jack"))
     if p["kind"] in ("hub", "spoke"):
-        graph.append({"@type": "Service", "name": p["h1"], "serviceType": p["nav_label"], "provider": {"@id": ORIGIN + "/#firm"},
-                      "areaServed": [{"@type": "City", "name": n} for n in firm.AREA_SERVED[:8]], "url": abs_url(p["slug"]), "description": p["description"]})
-    if p["kind"] == "city":
-        graph.append({"@type": "Service", "name": p["h1"], "provider": {"@id": ORIGIN + "/#firm"}, "areaServed": {"@type": "City", "name": p["nav_label"], "containedInPlace": {"@type": "AdministrativeArea", "name": p["county"]}}, "url": abs_url(p["slug"])})
+        area = ({"@type": "AdministrativeArea", "name": p["county"] + ", South Carolina"} if p.get("county")
+                else [{"@type": t, "name": n} for t, n in firm.AREA_SERVED])
+        graph.append({"@type": "Service", "name": re.sub(r"<[^>]+>", "", p["h1"]), "serviceType": p["nav_label"], "provider": {"@id": ORIGIN + "/#firm"},
+                      "areaServed": area, "url": abs_url(p["slug"]), "description": p["description"]})
     faqs = p["faqs"] or p.get("_faq_schema") or []
     if faqs:
         graph.append({"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in faqs]})
@@ -687,9 +721,32 @@ def write_prod():
     write_vercel_json()
     p404 = dict(BY_SLUG["home"], slug="404", title="Page not found | Summerville Accident Attorney", description="That page has moved.", h1="We couldn't find that page", kind="page", layout="one", noindex=True,
                 eyebrow="Page not found", lead="The address may have changed when we rebuilt the site. The links below will get you where you were headed.", kicker="", quote="", hero_image=None, hero_style=None, hero_image_wide=None, cta=None, faqs=[], related=[], sources=[], lang="en", alternate=None,
-                body='<p>Try one of these: <a href="[[practice-areas/car-accidents]]">Car accidents</a>, <a href="[[practice-areas]]">All practice areas</a>, <a href="[[areas]]">Areas we serve</a>, <a href="[[contact]]">Free case review</a>, or call <a href="tel:' + firm.PHONE_E164 + '">' + firm.PHONE + "</a>.</p>")
+                body='<p>Try one of these: <a href="[[car-accident-attorneys-in-summerville]]">Car accidents</a>, <a href="[[practice-areas]]">All practice areas</a>, <a href="[[locations]]">Locations we serve</a>, <a href="[[contact]]">Free case review</a>, or call <a href="tel:' + firm.PHONE_E164 + '">' + firm.PHONE + "</a>.</p>")
     html = expand_tokens(head_html(p404).replace(f'<link rel="canonical" href="{abs_url("404")}">', "") + header_html() + hero_html(p404) + body_html(p404) + footer_html() + f"<script>{INLINE_JS}</script></body></html>")
     open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(html)
+
+
+_REDIRECT_CACHE = []
+
+
+def redirect_pairs():
+    """(old path, new path) for every redirect whose target is live. Never redirects a live page."""
+    if _REDIRECT_CACHE:
+        return _REDIRECT_CACHE
+    out = _REDIRECT_CACHE
+    for old, new in firm.REDIRECTS:
+        src = old.strip("/")
+        if src in BY_SLUG:
+            warn(f"redirect source {old} is a live page, skipped")
+            continue
+        dst = resolve(new.strip("/") or "home")
+        if dst is None:
+            warn(f"redirect {old} -> {new}: target missing, skipped")
+            continue
+        if dst != (new.strip("/") or "home"):
+            warn(f"redirect {old} -> {new}: target not built yet, sent to /{'' if dst == 'home' else dst + '/'} for now")
+        out.append(("/" + src, "/" if dst == "home" else f"/{dst}/"))
+    return out
 
 
 def htaccess():
@@ -700,8 +757,8 @@ def htaccess():
              "RewriteCond %{HTTPS} off [OR]", "RewriteCond %{HTTP_HOST} !^" + host.replace(".", "\\.") + "$ [NC]",
              "RewriteRule ^ https://" + host + "%{REQUEST_URI} [R=301,L,NE]",
              "# old addresses -> new pages"]
-    for old, new in firm.REDIRECTS:
-        lines.append(f"RewriteRule ^{old}$ {new} [R=301,L]")
+    for old, new in redirect_pairs():
+        lines.append(f"RewriteRule ^{re.escape(old.lstrip('/'))}/?$ {new} [R=301,L]")
     lines += ["# add a trailing slash to directory-style URLs", "RewriteCond %{REQUEST_FILENAME} !-f", "RewriteCond %{REQUEST_URI} !/$", "RewriteCond %{REQUEST_URI} !\\.[a-zA-Z0-9]{2,5}$",
               "RewriteRule ^(.*)$ /$1/ [R=301,L]", "</IfModule>", "",
               "<IfModule mod_headers.c>", 'Header set X-Content-Type-Options "nosniff"', 'Header set Referrer-Policy "strict-origin-when-cross-origin"',
@@ -713,14 +770,9 @@ def htaccess():
 def write_vercel_json():
     """Vercel equivalent of the .htaccess rules: serve website/, keep trailing slashes, redirect old addresses, cache assets."""
     redirects = []
-    for old, new in firm.REDIRECTS:
-        base = old.rstrip("/?").rstrip("?")
-        if base.endswith(".*"):
-            src = "/" + base[:-2].rstrip("/") + "/:path*"
-            redirects.append({"source": src, "destination": new, "permanent": True})
-        else:
-            redirects.append({"source": "/" + base, "destination": new, "permanent": True})
-            redirects.append({"source": "/" + base + "/", "destination": new, "permanent": True})
+    for old, new in redirect_pairs():
+        redirects.append({"source": old, "destination": new, "permanent": True})
+        redirects.append({"source": old + "/", "destination": new, "permanent": True})
     host = ORIGIN.split("//", 1)[1]
     redirects.insert(0, {"source": "/:path*", "has": [{"type": "host", "value": host.replace("www.", "")}], "destination": f"{ORIGIN}/:path*", "permanent": True})
     cfg = {
@@ -742,12 +794,12 @@ def write_vercel_json():
 
 def llms_txt():
     lines = [f"# {firm.SITE_NAME} ({firm.NAME})", "", f"> {firm.LLMS_SUMMARY}", "", f"- Address: {firm.STREET}, {firm.CITY}, {firm.STATE} {firm.ZIP}", f"- Phone: {firm.PHONE}", f"- Hours: {firm.HOURS_SHORT}",
-             f"- Attorneys: {firm.ATTORNEYS['tara']['name']} (leads the injury practice; former Dorchester County magistrate and associate probate judge) and {firm.ATTORNEYS['jack']['name']} (investigation; former Summerville police officer and Charleston County Sheriff's Office detective)",
+             f"- Attorneys: {firm.ATTORNEYS['tara']['name']} (personal injury; former Dorchester County Magistrate Judge and Associate Probate Judge) and {firm.ATTORNEYS['jack']['name']} (former Summerville Police Department officer and Charleston County Sheriff's Office detective)",
              "- Fees: contingency fee on injury cases; free consultation; no fee unless we win",
              f"- Main firm site (other practice areas): {firm.MAIN_SITE}/", f"- Google Business Profile: {firm.GBP_URL}", f"- Yelp: {firm.YELP_URL}", "", "## Pages", ""]
     for p in PAGES:
-        if not p["noindex"]:
-            lines.append(f"- [{p['h1']}]({abs_url(p['slug'])}): {p['description']}")
+        if not p["noindex"] and not p.get("_legacy"):
+            lines.append(f"- [{re.sub(r'<[^>]+>', '', p['h1'])}]({abs_url(p['slug'])}): {p['description']}")
     return "\n".join(lines) + "\n"
 
 
@@ -838,11 +890,13 @@ window.__PREVIEW__=true;
 
 # This site is personal injury only. The main site owns estate planning, probate and criminal defense, so no page here
 # may name those services (or offer to defend a drunk driver) except in the one cross-link sentence defined in firm.py.
-CANNIBAL_RE = re.compile(r"estate plan|probate|criminal defen[cs]e|expungement|guardianship|conservatorship|power of attorney|living will|revocable trust|last will|"
-                         r"DUI (lawyer|attorney|defense)|defend(ing)? (a |the )?DUI|drug charge|bond hearing|traffic ticket", re.I)
+CANNIBAL_RE = re.compile(r"estate plan|probate (attorney|lawyer|law firm|practice|services)|criminal defen[cs]e|expungement|guardianship attorney|power of attorney|living will|revocable trust|last will|"
+                         r"DUI (lawyer|attorney|defense)|defend(ing)? (a |the )?DUI|drug charge (lawyer|attorney|defense)|we (can )?(defend|fight) (your|the) (ticket|charge)", re.I)
 
 
 def check_page(p, html):
+    for msg in checks.check(p, html, PAGES):
+        warn(("HARD FAIL " if msg.startswith("!") else "") + f"{p['slug'] or 'home'}: {msg.lstrip('!')}")
     if len(p["title"]) > (90 if p["kind"] == "home" else 70):
         warn(f"{p['slug']}: title {len(p['title'])} chars")
     if not (60 <= len(p["description"]) <= 160):
@@ -874,7 +928,7 @@ def check_global():
             warn(f"duplicate description: {s}")
     for p in PAGES:
         for s in p["related"]:
-            if s not in BY_SLUG:
+            if resolve(s) is None:
                 warn(f"{p['slug']}: related target {s} missing")
         if p["hub"] and p["hub"] not in BY_SLUG:
             warn(f"{p['slug']}: hub {p['hub']} missing")
@@ -905,7 +959,7 @@ def main():
     print("shortest pages (words in main):", short)
     for w in WARNINGS:
         print("WARN:", w)
-    if any("CANNIBALIZATION" in w for w in WARNINGS):
+    if any("CANNIBALIZATION" in w or "HARD FAIL" in w for w in WARNINGS):
         sys.exit(1)
 
 

@@ -20,7 +20,6 @@ body = (
         f'<b>{A("practice-areas/rideshare-accidents", "Accidentes de Uber y Lyft")}</b>, como pasajero o como otro conductor.',
         f'<b>{A("practice-areas/dog-bites", "Mordeduras de perro")}</b>: en Carolina del Sur el dueño es responsable desde la primera mordedura.',
         f'<b>{A("practice-areas/slip-and-fall", "Caídas")}</b> en tiendas, restaurantes y apartamentos.',
-        f'<b>{A("practice-areas/workers-compensation", "Lesiones en el trabajo")}</b> (compensación laboral) y reclamos contra terceros.',
         f'<b>{A("practice-areas/wrongful-death", "Muerte injusta")}</b> de un familiar.',
     ])
     + '<h2>Lo que dice la ley de Carolina del Sur</h2>'
