@@ -379,5 +379,7 @@ code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;background
 .topbar a{white-space:nowrap}
 @media (max-width:720px){.topbar .tag .line{display:inline}.topbar .xsite{display:none}}
 @media (max-width:640px){.hdr .wrap{gap:.6rem}.brand{gap:.5rem;min-width:0}.brand img{height:38px}.brand .word{font-size:1rem;white-space:normal;line-height:1.05}.brand .word small{font-size:.56rem;letter-spacing:.08em}}
-/* Mid-width screens: seven menu items plus the long wordmark need a little less room each. */
-@media (max-width:1400px) and (min-width:1061px){.brand .word{font-size:1.05rem}.brand img{height:40px}.nav a{padding:.7rem .45rem;font-size:.88rem}.nav .cta{margin-left:.25rem}.hdr .wrap{gap:.6rem}}
+/* Desktop header: the wordmark and seven menu items share one row inside the 1140px container, which is too narrow for both at their base sizes.
+   The wordmark never shrinks under its own text, and both run a size down so the row fits at every width until the menu button takes over. */
+@media (min-width:1061px){.hdr .wrap{gap:.6rem}.brand{flex-shrink:0}.brand .word{font-size:1.12rem}.brand img{height:42px}.nav a{padding:.7rem .5rem;font-size:.9rem}.nav .cta{margin-left:.4rem}}
+@media (min-width:1061px) and (max-width:1140px){.brand .word{font-size:1.05rem}.brand img{height:40px}.nav a{padding:.7rem .38rem;font-size:.88rem}.nav .cta{margin-left:.25rem}}

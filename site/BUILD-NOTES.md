@@ -38,7 +38,7 @@ Same system as the main site (Fraunces and Public Sans, the navy palette, one ~2
 4. **The 2025 hands-free law.** The car-accident-laws and distracted-driving pages state that South Carolina passed a hands-free law in 2025 in addition to the 2014 texting ban. Confirm the effective date and citation and add it to `statutes` in `local_data.json`.
 5. **Spanish-language service.** The Spanish page says the firm meets Spanish-speaking clients with a professional interpreter. Confirm, or edit `spanish.py`.
 6. **Contact form.** Wired to the Formspree form `xdekonez` shared with the main site. Submissions carry the subject "Injury site inquiry: <case type>" and a hidden `site` field, so the two sites' leads are distinguishable in the inbox. Successful submissions land on `/thank-you/` (not indexed).
-7. **Google review link.** `REVIEW_URL` in `firm.py` should be replaced with the "Ask for reviews" short link from the Business Profile dashboard.
+7. **Google review link.** Done: `REVIEW_URL` in `firm.py` is the Business Profile "write a review" link (place ID ChIJ4Vm83lNj_ogRDnS6XmVptVc), so the "Leave a Google review" buttons open the review box directly.
 8. **Tara's judicial dates and Jack's retirement year** are as on the live site and the main site; Jack's law-enforcement timeline should be confirmed (the main site's notes flag the same question).
 9. **Legal pages.** The privacy policy, terms and accessibility statement were drafted to match what the site does and the South Carolina advertising rules as we understand them; the attorneys should review all three.
 10. **Videos.** The audit's page template calls for a short video on each hub and answer page. None exist yet; add a `VideoObject` block and an embed when they do.

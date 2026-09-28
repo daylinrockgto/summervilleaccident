@@ -35,7 +35,7 @@ DIRECTIONS_URL = "https://www.google.com/maps/dir/?api=1&destination=" + MAP_QUE
 # One Business Profile and one Yelp listing for the firm; both point at the main site. This site links to them
 # and lists them in sameAs so search engines connect the two sites to the same firm.
 GBP_URL = "https://maps.google.com/maps?cid=6320073536186250254"
-REVIEW_URL = "https://maps.google.com/maps?cid=6320073536186250254"  # TODO: replace with the "Ask for reviews" link from the Business Profile dashboard
+REVIEW_URL = "https://search.google.com/local/writereview?placeid=ChIJ4Vm83lNj_ogRDnS6XmVptVc"  # the Business Profile "write a review" link, opens the review box directly
 YELP_URL = "https://www.yelp.com/biz/frost-law-group-summerville"
 PREFERRED_SOURCE_URL = "https://www.google.com/preferences/source?q=https://www.summervilleaccidentattorney.com"
 FACEBOOK = "https://www.facebook.com/frostlawgroupsc/"
