@@ -7,7 +7,7 @@ Items marked TODO need the firm's confirmation.
 import json
 import os
 
-BUILD_DATE = "2026-09-16"
+BUILD_DATE = "2026-09-29"
 ORIGIN = "https://www.summervilleaccidentattorney.com"  # www is the canonical host (Google already chose it)
 MAIN_SITE = "https://frostlawgroupsc.com"
 MAIN_SITE_LABEL = "frostlawgroupsc.com"
@@ -52,7 +52,9 @@ HOURS_SHORT = "Office Mon–Thu 9–5 · Fri 9–12, afternoons by appointment"
 HOURS_LD = [("Monday", "09:00", "17:00"), ("Tuesday", "09:00", "17:00"), ("Wednesday", "09:00", "17:00"), ("Thursday", "09:00", "17:00"), ("Friday", "09:00", "12:00")]
 
 DISCLAIMER = ("This website is attorney advertising and is for informational purposes only; it is not legal advice and does not create an attorney-client relationship. "
-              "Prior results do not guarantee a similar outcome. Talk to a licensed South Carolina attorney about your own situation.")
+              "Prior results do not guarantee a similar outcome. Talk to a licensed South Carolina attorney about your own situation. "
+              "“No fee unless we win” refers to attorney's fees on personal injury cases handled on a contingency fee. A client may be responsible for case costs and expenses "
+              "as set out in the written fee agreement, whether or not there is a recovery.")
 ASIDE_BLURB = "Tell us what happened. An attorney will explain your options and what to do before you talk to the insurance company."
 LLMS_SUMMARY = ("summervilleaccidentattorney.com is the personal injury practice of Frost Law Group, LLC, a husband-and-wife law firm at 128 Linwood Lane in Summerville, South Carolina. "
                 "Attorneys Tara L. Frost, a former Dorchester County Magistrate Judge and former Dorchester County Associate Probate Judge, and Jack C. Frost, who spent fourteen years with the Summerville Police Department and the Charleston County Sheriff's Office, "
@@ -145,7 +147,7 @@ NAV = [
     ("About", "about", ["attorneys/tara-frost", "attorneys/jack-frost", "reviews"], "Our team"),
     ("Questions", "questions", [], ""),
     ("Blog", "blog", [], ""),
-    ("Español", "es/abogado-de-accidentes", [], ""),
+    ("Español", "es/abogado-de-accidentes-de-carro-en-summerville", [], ""),
 ]
 
 FOOTER_PRACTICE = [("Car accidents", "practice-areas/car-accidents"), ("Truck accidents", "practice-areas/truck-accidents"), ("Motorcycle accidents", "practice-areas/motorcycle-accidents"),

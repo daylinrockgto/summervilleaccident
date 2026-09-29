@@ -383,3 +383,5 @@ code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;background
    The wordmark never shrinks under its own text, and both run a size down so the row fits at every width until the menu button takes over. */
 @media (min-width:1061px){.hdr .wrap{gap:.6rem}.brand{flex-shrink:0}.brand .word{font-size:1.12rem}.brand img{height:42px}.nav a{padding:.7rem .5rem;font-size:.9rem}.nav .cta{margin-left:.4rem}}
 @media (min-width:1061px) and (max-width:1140px){.brand .word{font-size:1.05rem}.brand img{height:40px}.nav a{padding:.7rem .38rem;font-size:.88rem}.nav .cta{margin-left:.25rem}}
+/* Footer wordmark: let it wrap inside its column so it never runs into the next column heading. */
+.foot .brand{min-width:0;flex-shrink:1}.foot .brand .word{white-space:normal}

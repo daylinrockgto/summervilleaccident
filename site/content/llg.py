@@ -43,6 +43,8 @@ LABELS = {
     "city-charleston": "Charleston", "city-north-charleston": "North Charleston", "city-mount-pleasant": "Mount Pleasant", "city-west-ashley": "West Ashley",
     "city-goose-creek": "Goose Creek", "city-moncks-corner": "Moncks Corner", "city-ladson": "Ladson", "city-walterboro": "Walterboro",
     "es": "Español", "questions": "Questions",
+    "co-dorchester": "Dorchester County", "co-charleston": "Charleston County", "co-berkeley": "Berkeley County", "co-colleton": "Colleton County",
+    "co-orangeburg": "Orangeburg County", "co-beaufort": "Beaufort County", "co-georgetown": "Georgetown County", "co-williamsburg": "Williamsburg County",
 }
 SECTION = {"car": "Car accident help", "truck": "Truck accident help", "moto": "Motorcycle accident help", "ride": "Rideshare accident help",
            "slip": "Slip and fall help", "dog": "Dog bite help", "wd": "Wrongful death help", "cat": "Catastrophic injury help", "ped": "Pedestrian accident help"}

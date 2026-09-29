@@ -32,9 +32,6 @@ import content.llg  # noqa: E402,F401  (registers the LLG long-form pages first:
 import content.core  # noqa: E402,F401  (team, contact, reviews, blog index, legal pages)
 import content.posts  # noqa: E402,F401
 import content.legacy  # noqa: E402,F401  (old workers' compensation copy at its old address, unlinked)
-from content.base import PAGES as _P  # noqa: E402
-if not any(p["slug"].startswith("es/") for p in _P):
-    import content.spanish  # noqa: E402,F401  (first-build Spanish page, until the LLG version replaces it)
 import content.questions_index  # noqa: E402,F401  (link index of answer pages)
 import checks  # noqa: E402  (hard compliance checks; the build fails on any of them)
 
@@ -238,7 +235,7 @@ def findus_html():
 def allfaqs_html():
     """Every question answered on the site, grouped by the page that owns it, each linking to that page. Used by /questions/."""
     groups = []
-    order = [p for p in PAGES if p["faqs"] and not p["noindex"] and p["kind"] in ("home", "hub", "spoke", "city", "post", "page") and p["slug"] not in ("questions", "es/abogado-de-accidentes")]
+    order = [p for p in PAGES if p["faqs"] and not p["noindex"] and p["kind"] in ("home", "hub", "spoke", "city", "post", "page") and p["slug"] != "questions" and p.get("lang") != "es"]
     kinds = [("Car accidents", lambda p: p["slug"] == firm.CAR or p.get("hub") == firm.CAR),
              ("Trucks, motorcycles, pedestrians and rideshare", lambda p: any(p["slug"].startswith(h) for h in ("practice-areas/truck", "practice-areas/motorcycle", "practice-areas/pedestrian"))),
              ("Dog bites", lambda p: p["slug"].startswith("practice-areas/dog-bites")),
