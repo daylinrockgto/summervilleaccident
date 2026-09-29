@@ -7,7 +7,7 @@ Items marked TODO need the firm's confirmation.
 import json
 import os
 
-BUILD_DATE = "2026-09-16"
+BUILD_DATE = "2026-09-29"
 ORIGIN = "https://www.summervilleaccidentattorney.com"  # www is the canonical host (Google already chose it)
 MAIN_SITE = "https://frostlawgroupsc.com"
 MAIN_SITE_LABEL = "frostlawgroupsc.com"
@@ -47,17 +47,19 @@ SAME_AS = [MAIN_SITE + "/", GBP_URL, YELP_URL, FACEBOOK, INSTAGRAM, LINKEDIN, TW
 KGMID = "/g/11b5pl8mj4"
 RATING = (4.8, 30)  # Google Business Profile, September 2026
 
-HOURS_DISPLAY = [("Monday – Thursday", "9:00 AM – 5:00 PM"), ("Friday", "9:00 AM – 12:00 PM"), ("Phone", "Answered 24/7 for injury calls")]
-HOURS_SHORT = "Office Mon–Thu 9–5 · Fri 9–12 · Injury calls answered 24/7"
+HOURS_DISPLAY = [("Monday – Thursday", "9:00 AM – 5:00 PM"), ("Friday", "9:00 AM – 12:00 PM, afternoons by appointment"), ("Saturday – Sunday", "Closed")]
+HOURS_SHORT = "Office Mon–Thu 9–5 · Fri 9–12, afternoons by appointment"
 HOURS_LD = [("Monday", "09:00", "17:00"), ("Tuesday", "09:00", "17:00"), ("Wednesday", "09:00", "17:00"), ("Thursday", "09:00", "17:00"), ("Friday", "09:00", "12:00")]
 
 DISCLAIMER = ("This website is attorney advertising and is for informational purposes only; it is not legal advice and does not create an attorney-client relationship. "
-              "Prior results do not guarantee a similar outcome. Talk to a licensed South Carolina attorney about your own situation.")
-ASIDE_BLURB = "Tell us what happened. We will tell you whether you have a claim, what it may be worth, and what to do before you talk to the insurance company."
+              "Prior results do not guarantee a similar outcome. Talk to a licensed South Carolina attorney about your own situation. "
+              "“No fee unless we win” refers to attorney's fees on personal injury cases handled on a contingency fee. A client may be responsible for case costs and expenses "
+              "as set out in the written fee agreement, whether or not there is a recovery.")
+ASIDE_BLURB = "Tell us what happened. An attorney will explain your options and what to do before you talk to the insurance company."
 LLMS_SUMMARY = ("summervilleaccidentattorney.com is the personal injury practice of Frost Law Group, LLC, a husband-and-wife law firm at 128 Linwood Lane in Summerville, South Carolina. "
-                "Attorney Tara L. Frost, a former Dorchester County magistrate judge, handles car, truck, motorcycle, rideshare and pedestrian accidents, drunk-driving crash victims, dog bites, "
-                "slip and fall, workers' compensation, catastrophic injury and wrongful death claims for Dorchester, Berkeley, Charleston and Colleton County residents on a contingency fee: "
-                "free consultation, no fee unless we win. The firm's estate planning, probate and criminal defense practice is at frostlawgroupsc.com.")
+                "Attorneys Tara L. Frost, a former Dorchester County Magistrate Judge and former Dorchester County Associate Probate Judge, and Jack C. Frost, who spent fourteen years with the Summerville Police Department and the Charleston County Sheriff's Office, "
+                "represent people hurt in car, truck, motorcycle, rideshare and pedestrian crashes, dog bites, falls, catastrophic injuries and wrongful death cases in Dorchester, Charleston, Berkeley, Colleton, Orangeburg, Beaufort, Georgetown and Williamsburg counties. "
+                "Free consultation, no fee unless we win. The firm's estate planning, probate and criminal defense practice is at frostlawgroupsc.com.")
 
 LOGO = "logo.png"
 OG_SOURCE = "client-meeting.jpg"
@@ -74,34 +76,34 @@ CROSS_LINK_PHRASES = ["Estate planning, probate and criminal defense", "Estate p
 ATTORNEYS = {
     "tara": dict(
         key="tara", slug="attorneys/tara-frost", name="Tara L. Frost", short="Tara Frost", first="Tara", headshot="headshot-tara.jpg", bio_photo="tara-bio.jpg",
-        full_name="Tara Leigh Frost", email="tara@frostlawgroupsc.com", bar_number="100610", admitted="November 13, 2012", admitted_iso="2012-11-27", jd_year="2012",
+        full_name="Tara Leigh Frost", email="tara@frostlawgroupsc.com", bar_number=None, admitted=None, admitted_iso=None, jd_year="2012",
         linkedin="https://www.linkedin.com/in/tara-frost-7b394551/", main_site_bio=MAIN_SITE + "/attorneys/tara-frost/",
-        byline="Personal injury attorney · former Dorchester County Magistrate Judge",
-        aside="Tara leads the firm's injury practice. As a Dorchester County Magistrate Judge she heard civil cases and weighed evidence every week; she knows what an adjuster's file looks like and what a jury needs to see.",
+        byline="Attorney at Law · Personal injury",
+        aside="Tara L. Frost focuses on personal injury, car accident and truck accident claims. A lifelong resident of the tri-county area, she meets clients at the Linwood Lane office in Summerville.",
         alumni=["Charleston School of Law"],
-        knows=["Personal injury", "Car accidents", "Truck accidents", "Motorcycle accidents", "Dog bites", "Wrongful death", "Premises liability", "Workers' compensation"],
+        knows=["Personal injury", "Car accidents", "Truck accidents", "Motorcycle accidents", "Dog bites", "Wrongful death", "Premises liability"],
         same_as=["https://www.linkedin.com/in/tara-frost-7b394551/", MAIN_SITE + "/attorneys/tara-frost/"],
-        ld_description="Summerville, SC personal injury attorney; former Dorchester County Magistrate Judge (2022–2025) and Associate Probate Judge (2025–2026); South Carolina Bar No. 100610.",
+        ld_description="Summerville, SC personal injury attorney; former Dorchester County Magistrate Judge (July 2022 to August 2025) and former Dorchester County Associate Probate Judge (August 2025 to June 2026).",
     ),
     "jack": dict(
         key="jack", slug="attorneys/jack-frost", name="Jack C. Frost", short="Jack Frost", first="Jack", headshot="headshot-jack.jpg", bio_photo="jack-bio.jpg",
-        full_name="Jack Christian Frost", email="jack@frostlawgroupsc.com", bar_number="103633", admitted="November 27, 2018", admitted_iso="2018-11-27", jd_year="2016",
+        full_name="Jack Christian Frost", email="jack@frostlawgroupsc.com", bar_number=None, admitted=None, admitted_iso=None, jd_year="2016",
         linkedin="https://www.linkedin.com/in/jack-c-frost-9a951253/", main_site_bio=MAIN_SITE + "/attorneys/jack-frost/",
-        byline="Attorney at Law · 14 years in Lowcountry law enforcement",
-        aside="Jack spent fourteen years as a Summerville police officer and a Charleston County Sheriff's Office detective. He has worked hundreds of crash scenes and knows how a collision report gets written, and what it leaves out.",
+        byline="Attorney at Law · Former Summerville police officer and Charleston County Sheriff's Office detective",
+        aside="Jack C. Frost spent fourteen years in law enforcement with the Summerville Police Department and the Charleston County Sheriff's Office before he practiced law.",
         alumni=["Charleston School of Law", "Strayer University", "Trident Technical College", "College of Charleston"],
-        knows=["Accident investigation", "Crash reconstruction evidence", "Personal injury", "Law enforcement procedure"],
+        knows=["Personal injury", "Accident investigation"],
         same_as=["https://www.linkedin.com/in/jack-c-frost-9a951253/", MAIN_SITE + "/attorneys/jack-frost/"],
-        ld_description="Summerville, SC attorney and former Summerville Police Department officer and Charleston County Sheriff's Office detective; investigates crash cases for the firm's injury practice; South Carolina Bar No. 103633.",
+        ld_description="Summerville, SC attorney; former Summerville Police Department officer and corporal, and former Charleston County Sheriff's Office deputy, master deputy and detective.",
     ),
 }
-ATTORNEYS["tara"]["admitted_iso"] = "2012-11-13"
+# Bar numbers and admission dates (100610 / 2012 and 103633 / 2018 in the first build) are unverified. Add them back only when the client confirms them.
 
 TEAM = {
-    "tara": dict(name="Tara L. Frost", role="Attorney · leads the injury practice", photo="headshot-tara.jpg", alt="Tara L. Frost, personal injury attorney", slug="attorneys/tara-frost"),
-    "jack": dict(name="Jack C. Frost", role="Attorney · investigation", photo="headshot-jack.jpg", alt="Jack C. Frost, attorney and former detective", slug="attorneys/jack-frost"),
+    "tara": dict(name="Tara L. Frost", role="Attorney at Law · personal injury", photo="headshot-tara.jpg", alt="Tara L. Frost, personal injury attorney", slug="attorneys/tara-frost"),
+    "jack": dict(name="Jack C. Frost", role="Attorney at Law", photo="headshot-jack.jpg", alt="Jack C. Frost, attorney and former detective", slug="attorneys/jack-frost"),
     "cassie": dict(name="Cassandra “Cassie” Snyder", role="Paralegal", photo="headshot-cassie.jpg", alt="Cassie Snyder, paralegal", slug=None),
-    "dogs": dict(name="The Frost Pups", role="Comfort specialists", photo="dogs.jpg", alt="The firm's Golden Retrievers", slug=None),
+    "dogs": dict(name="The Frost Pups", role="Office greeters", photo="dogs.jpg", alt="The firm's Golden Retrievers", slug=None),
 }
 
 # Google reviews of the firm (public listing), injury-related first, quoted as written; reviewers shown as first name and last initial.
@@ -145,7 +147,7 @@ NAV = [
     ("About", "about", ["attorneys/tara-frost", "attorneys/jack-frost", "reviews"], "Our team"),
     ("Questions", "questions", [], ""),
     ("Blog", "blog", [], ""),
-    ("Español", "es/abogado-de-accidentes", [], ""),
+    ("Español", "es/abogado-de-accidentes-de-carro-en-summerville", [], ""),
 ]
 
 FOOTER_PRACTICE = [("Car accidents", "practice-areas/car-accidents"), ("Truck accidents", "practice-areas/truck-accidents"), ("Motorcycle accidents", "practice-areas/motorcycle-accidents"),
@@ -153,43 +155,16 @@ FOOTER_PRACTICE = [("Car accidents", "practice-areas/car-accidents"), ("Truck ac
                    ("Dog bites", "practice-areas/dog-bites"), ("Slip and fall", "practice-areas/slip-and-fall"), ("Workers' compensation", "practice-areas/workers-compensation"),
                    ("Catastrophic injuries", "practice-areas/catastrophic-injuries"), ("Wrongful death", "practice-areas/wrongful-death")]
 FOOTER_EXPLORE = [("Our team", "about"), ("Tara L. Frost", "attorneys/tara-frost"), ("Jack C. Frost", "attorneys/jack-frost"), ("Client reviews", "reviews"),
-                  ("Questions people ask", "questions"), ("Blog", "blog"), ("Abogado de accidentes (español)", "es/abogado-de-accidentes"), ("Free consultation & directions", "contact")]
-FOOTER_AREAS = ["areas/summerville", "areas/goose-creek", "areas/ladson", "areas/north-charleston", "areas/charleston", "areas/mount-pleasant", "areas/moncks-corner", "areas/walterboro", "areas/west-ashley"]
+                  ("Questions people ask", "questions"), ("Blog", "blog"), ("Locations we serve", "locations"), ("Free consultation & directions", "contact")]
 
-COUNTY_ORDER = ["Dorchester County", "Berkeley County", "Charleston County", "Colleton County"]
-AREA_SERVED = ["Summerville", "Goose Creek", "Ladson", "North Charleston", "Charleston", "Mount Pleasant", "Moncks Corner", "Walterboro", "West Ashley",
-               "Hanahan", "Knightsville", "Sangaree", "Nexton", "Cane Bay", "Ridgeville", "St. George", "Harleyville", "Daniel Island", "James Island", "Johns Island"]
+COUNTY_ORDER = ["Dorchester County", "Charleston County", "Berkeley County", "Colleton County", "Orangeburg County", "Beaufort County", "Georgetown County", "Williamsburg County"]
+# Places the firm serves, typed correctly for structured data: incorporated municipalities are cities or towns, the rest are places.
+AREA_SERVED = [("City", "North Charleston"), ("City", "Charleston"), ("City", "Goose Creek"), ("City", "Hanahan"), ("Town", "Summerville"), ("Town", "Mount Pleasant"),
+               ("Town", "Moncks Corner"), ("City", "Walterboro"), ("Place", "Ladson"), ("Place", "Knightsville"), ("Place", "West Ashley")] + [("AdministrativeArea", c) for c in COUNTY_ORDER]
 
-# Old address (regex, no leading slash) -> new address. From the search audit's redirect map (Appendix D):
-# every removed page that Google is still showing gets a permanent redirect to the closest new page.
-REDIRECTS = [
-    ("goose-creek/?", "/areas/goose-creek/"),
-    ("attorneys/?", "/about/"),
-    ("truck-accident-3/?", "/practice-areas/truck-accidents/"),
-    ("summerville/?", "/areas/summerville/"),
-    ("mt-pleasant/?", "/areas/mount-pleasant/"),
-    ("mount-pleasant/?", "/areas/mount-pleasant/"),
-    ("motorcycle-accident/?", "/practice-areas/motorcycle-accidents/"),
-    ("wrongful-death-2/?", "/practice-areas/wrongful-death/"),
-    ("wrongful-death/?", "/practice-areas/wrongful-death/"),
-    ("north-charleston/?", "/areas/north-charleston/"),
-    ("car-accident/?", "/practice-areas/car-accidents/"),
-    ("walterboro/?", "/areas/walterboro/"),
-    ("moncks-corner/?", "/areas/moncks-corner/"),
-    ("charleston/?", "/areas/charleston/"),
-    ("ladson/?", "/areas/ladson/"),
-    ("results/?", "/about/"),
-    ("serving/?", "/areas/"),
-    ("other-areas/?", "/areas/"),
-    ("west-ashley/?", "/areas/west-ashley/"),
-    ("pedestrian-accident/?", "/practice-areas/pedestrian-accidents/"),
-    ("dog-bite/?", "/practice-areas/dog-bites/"),
-    ("slip-and-fall/?", "/practice-areas/slip-and-fall/"),
-    ("workers-compensation/?", "/practice-areas/workers-compensation/"),
-    ("catastrophic-injuries/?", "/practice-areas/catastrophic-injuries/"),
-    ("contact-us/?", "/contact/"),
-    ("about-us/?", "/about/"),
-]
+# Old address -> new address, all 301. The list lives in content/redirects.json (Page Manifest v7, section 8) so the
+# manifest, vercel.json and .htaccess never disagree. Sources are paths without a trailing slash.
+REDIRECTS = json.load(open(os.path.join(os.path.dirname(__file__), "redirects.json"), encoding="utf-8"))
 
 COURTS = {}
 _ld = os.path.join(os.path.dirname(__file__), "local_data.json")
