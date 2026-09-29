@@ -78,6 +78,16 @@
       "permanent": true
     },
     {
+      "source": "/practice-areas/catastrophic-injuries",
+      "destination": "/catastrophic-injury-attorneys-in-summerville/",
+      "permanent": true
+    },
+    {
+      "source": "/practice-areas/catastrophic-injuries/",
+      "destination": "/catastrophic-injury-attorneys-in-summerville/",
+      "permanent": true
+    },
+    {
       "source": "/practice-areas/car-accidents/hit-and-run-accidents",
       "destination": "/car-accident-attorneys-in-summerville/hit-and-run-accident-lawyers-in-summerville/",
       "permanent": true
@@ -89,12 +99,12 @@
     },
     {
       "source": "/practice-areas/car-accidents/distracted-driving-accidents",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/distracted-driving-accident-lawyers-in-summerville/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/distracted-driving-accidents/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/distracted-driving-accident-lawyers-in-summerville/",
       "permanent": true
     },
     {
@@ -109,192 +119,192 @@
     },
     {
       "source": "/practice-areas/car-accidents/what-to-do-after-a-car-accident-in-south-carolina",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/what-to-do-after-a-car-accident-in-south-carolina/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/what-to-do-after-a-car-accident-in-south-carolina/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/what-to-do-after-a-car-accident-in-south-carolina/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/is-south-carolina-an-at-fault-state",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/is-south-carolina-an-at-fault-state/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/is-south-carolina-an-at-fault-state/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/is-south-carolina-an-at-fault-state/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/south-carolina-comparative-negligence",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-comparative-negligence-works-in-south-carolina/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/south-carolina-comparative-negligence/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-comparative-negligence-works-in-south-carolina/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/south-carolina-car-accident-statute-of-limitations",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/south-carolina-car-accident-statute-of-limitations/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/south-carolina-car-accident-statute-of-limitations/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/south-carolina-car-accident-statute-of-limitations/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/south-carolina-car-accident-laws",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/south-carolina-car-accident-laws/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/south-carolina-car-accident-laws/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/south-carolina-car-accident-laws/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/should-i-talk-to-the-other-drivers-insurance-company",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/should-i-talk-to-the-other-drivers-insurance-company/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/should-i-talk-to-the-other-drivers-insurance-company/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/should-i-talk-to-the-other-drivers-insurance-company/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/uninsured-motorist-accidents",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/uninsured-motorist-coverage-in-south-carolina/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/uninsured-motorist-accidents/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/uninsured-motorist-coverage-in-south-carolina/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/auto-injury-assessment-after-a-crash",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/auto-injury-assessment-in-summerville/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/auto-injury-assessment-after-a-crash/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/auto-injury-assessment-in-summerville/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/where-crashes-happen-in-summerville",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/where-car-accidents-happen-in-summerville/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/where-crashes-happen-in-summerville/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/where-car-accidents-happen-in-summerville/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/how-to-get-your-south-carolina-accident-report",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-to-get-a-south-carolina-accident-report/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/how-to-get-your-south-carolina-accident-report/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-to-get-a-south-carolina-accident-report/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/car-accident-without-a-police-report",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/can-you-claim-a-car-accident-without-a-police-report/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/car-accident-without-a-police-report/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/can-you-claim-a-car-accident-without-a-police-report/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/how-long-after-a-car-accident-can-you-claim-injury",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-long-after-a-car-accident-can-you-claim-injury/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/how-long-after-a-car-accident-can-you-claim-injury/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-long-after-a-car-accident-can-you-claim-injury/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/car-accident-that-was-not-your-fault",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/what-to-do-after-a-car-accident-that-was-not-your-fault/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/car-accident-that-was-not-your-fault/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/what-to-do-after-a-car-accident-that-was-not-your-fault/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/minor-car-accident-what-to-do",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/what-to-do-after-a-minor-car-accident/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/minor-car-accident-what-to-do/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/what-to-do-after-a-minor-car-accident/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/what-happens-if-the-accident-was-my-fault",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/what-happens-if-a-car-accident-was-your-fault/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/what-happens-if-the-accident-was-my-fault/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/what-happens-if-a-car-accident-was-your-fault/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/rear-end-collisions",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/who-is-at-fault-in-a-rear-end-collision/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/rear-end-collisions/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/who-is-at-fault-in-a-rear-end-collision/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/how-much-is-my-car-accident-case-worth",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-much-is-my-car-accident-case-worth/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/how-much-is-my-car-accident-case-worth/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-much-is-my-car-accident-case-worth/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/how-long-does-a-car-accident-case-take",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-long-does-a-car-accident-case-take/",
       "permanent": true
     },
     {
       "source": "/practice-areas/car-accidents/how-long-does-a-car-accident-case-take/",
-      "destination": "/car-accident-attorneys-in-summerville/",
+      "destination": "/car-accident-attorneys-in-summerville/how-long-does-a-car-accident-case-take/",
       "permanent": true
     },
     {
       "source": "/practice-areas/truck-accidents/who-is-liable-in-a-truck-accident",
-      "destination": "/truck-accident-attorneys-in-summerville/",
+      "destination": "/truck-accident-attorneys-in-summerville/who-is-liable-in-a-truck-accident/",
       "permanent": true
     },
     {
       "source": "/practice-areas/truck-accidents/who-is-liable-in-a-truck-accident/",
-      "destination": "/truck-accident-attorneys-in-summerville/",
+      "destination": "/truck-accident-attorneys-in-summerville/who-is-liable-in-a-truck-accident/",
       "permanent": true
     },
     {
@@ -348,6 +358,16 @@
       "permanent": true
     },
     {
+      "source": "/practice-areas/pedestrian-accidents",
+      "destination": "/pedestrian-accident-attorneys-in-summerville/",
+      "permanent": true
+    },
+    {
+      "source": "/practice-areas/pedestrian-accidents/",
+      "destination": "/pedestrian-accident-attorneys-in-summerville/",
+      "permanent": true
+    },
+    {
       "source": "/practice-areas/rideshare-accidents",
       "destination": "/rideshare-accident-attorneys-in-summerville/",
       "permanent": true
@@ -389,92 +409,102 @@
     },
     {
       "source": "/areas/goose-creek",
-      "destination": "/personal-injury-attorneys-in-berkeley-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/goose-creek-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/goose-creek/",
-      "destination": "/personal-injury-attorneys-in-berkeley-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/goose-creek-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/ladson",
-      "destination": "/personal-injury-attorneys-in-dorchester-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/ladson-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/ladson/",
-      "destination": "/personal-injury-attorneys-in-dorchester-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/ladson-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/north-charleston",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/north-charleston-personal-injury-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/north-charleston/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/north-charleston-personal-injury-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/charleston",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/charleston-personal-injury-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/charleston/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/charleston-personal-injury-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/mount-pleasant",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/mount-pleasant-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/mount-pleasant/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/mount-pleasant-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/moncks-corner",
-      "destination": "/personal-injury-attorneys-in-berkeley-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/moncks-corner-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/moncks-corner/",
-      "destination": "/personal-injury-attorneys-in-berkeley-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/moncks-corner-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/walterboro",
-      "destination": "/personal-injury-attorneys-in-colleton-county/",
+      "destination": "/personal-injury-attorneys-in-colleton-county/walterboro-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/walterboro/",
-      "destination": "/personal-injury-attorneys-in-colleton-county/",
+      "destination": "/personal-injury-attorneys-in-colleton-county/walterboro-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/west-ashley",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/west-ashley-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/areas/west-ashley/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/west-ashley-car-accident-lawyers/",
+      "permanent": true
+    },
+    {
+      "source": "/es/abogado-de-accidentes",
+      "destination": "/es/abogado-de-accidentes-de-carro-en-summerville/",
+      "permanent": true
+    },
+    {
+      "source": "/es/abogado-de-accidentes/",
+      "destination": "/es/abogado-de-accidentes-de-carro-en-summerville/",
       "permanent": true
     },
     {
       "source": "/goose-creek",
-      "destination": "/personal-injury-attorneys-in-berkeley-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/goose-creek-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/goose-creek/",
-      "destination": "/personal-injury-attorneys-in-berkeley-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/goose-creek-car-accident-lawyers/",
       "permanent": true
     },
     {
@@ -509,22 +539,22 @@
     },
     {
       "source": "/mt-pleasant",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/mount-pleasant-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/mt-pleasant/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/mount-pleasant-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/mount-pleasant",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/mount-pleasant-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/mount-pleasant/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/mount-pleasant-car-accident-lawyers/",
       "permanent": true
     },
     {
@@ -559,12 +589,12 @@
     },
     {
       "source": "/north-charleston",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/north-charleston-personal-injury-lawyers/",
       "permanent": true
     },
     {
       "source": "/north-charleston/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/north-charleston-personal-injury-lawyers/",
       "permanent": true
     },
     {
@@ -579,42 +609,42 @@
     },
     {
       "source": "/walterboro",
-      "destination": "/personal-injury-attorneys-in-colleton-county/",
+      "destination": "/personal-injury-attorneys-in-colleton-county/walterboro-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/walterboro/",
-      "destination": "/personal-injury-attorneys-in-colleton-county/",
+      "destination": "/personal-injury-attorneys-in-colleton-county/walterboro-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/moncks-corner",
-      "destination": "/personal-injury-attorneys-in-berkeley-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/moncks-corner-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/moncks-corner/",
-      "destination": "/personal-injury-attorneys-in-berkeley-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/moncks-corner-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/charleston",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/charleston-personal-injury-lawyers/",
       "permanent": true
     },
     {
       "source": "/charleston/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/charleston-personal-injury-lawyers/",
       "permanent": true
     },
     {
       "source": "/ladson",
-      "destination": "/personal-injury-attorneys-in-dorchester-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/ladson-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/ladson/",
-      "destination": "/personal-injury-attorneys-in-dorchester-county/",
+      "destination": "/personal-injury-attorneys-in-berkeley-county/ladson-car-accident-lawyers/",
       "permanent": true
     },
     {
@@ -649,12 +679,22 @@
     },
     {
       "source": "/west-ashley",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/west-ashley-car-accident-lawyers/",
       "permanent": true
     },
     {
       "source": "/west-ashley/",
-      "destination": "/personal-injury-attorneys-in-charleston-county/",
+      "destination": "/personal-injury-attorneys-in-charleston-county/west-ashley-car-accident-lawyers/",
+      "permanent": true
+    },
+    {
+      "source": "/pedestrian-accident",
+      "destination": "/pedestrian-accident-attorneys-in-summerville/",
+      "permanent": true
+    },
+    {
+      "source": "/pedestrian-accident/",
+      "destination": "/pedestrian-accident-attorneys-in-summerville/",
       "permanent": true
     },
     {
@@ -675,6 +715,16 @@
     {
       "source": "/slip-and-fall/",
       "destination": "/slip-and-fall-attorneys-in-summerville/",
+      "permanent": true
+    },
+    {
+      "source": "/catastrophic-injuries",
+      "destination": "/catastrophic-injury-attorneys-in-summerville/",
+      "permanent": true
+    },
+    {
+      "source": "/catastrophic-injuries/",
+      "destination": "/catastrophic-injury-attorneys-in-summerville/",
       "permanent": true
     },
     {

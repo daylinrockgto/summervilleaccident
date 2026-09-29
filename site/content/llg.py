@@ -96,7 +96,11 @@ for row in ROWS:
         kw.update(layout="one", hero_style="photo", hero_image="couple.jpg", hero_image_wide="couple-wide.jpg",
                   hero_caption="Tara and Jack Frost, Frost Law Group", changefreq="weekly",
                   cta=[("contact", "Get a free case review", "btn light"), ("tel:" + firm.PHONE_E164, firm.PHONE, "btn ghost")])
-    elif row["id"] in ("pa", "loc", "questions", "es"):
+    elif row["id"] == "es":
+        # Spanish page: single column so no English sidebar, and Spanish labels on the hero buttons.
+        kw.update(layout="one", kind="page", eyebrow="Frost Law Group · Summerville, Carolina del Sur",
+                  cta=[("contact", "Consulta gratis", "btn"), ("tel:" + firm.PHONE_E164, firm.PHONE, "btn ghost")])
+    elif row["id"] in ("pa", "loc", "questions"):
         kw.update(layout="two", kind="page")
     slug = row["slug"]
     p = page(slug, **kw)
