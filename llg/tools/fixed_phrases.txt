@@ -1,0 +1,23 @@
+# Shared 8-grams that are fixed elements (statute names, addresses, firm facts). One per line, lowercase, words only.
+5200 east jim bilton boulevard st george
+jim bilton boulevard st george sc 29477
+charleston county sheriff's office
+summerville police department
+dorchester county magistrate judge
+associate probate judge
+charleston school of law
+summerville high school
+student trial lawyers association
+south carolina department of motor vehicles
+traffic collision fact book
+highway patrol troop six
+tara l frost and jack c frost
+jack c frost and tara l frost
+beaufort berkeley charleston colleton dorchester and jasper
+300 000 per person and 600 000 per occurrence
+25 000 for bodily injury to one person
+2070 northbrook
+108 north cedar
+212 deming way
+295 midland
+100 callen

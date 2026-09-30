@@ -1,3 +1,17 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# The repository is public. These parts of the llg/ kit hold internal notes and
+# stay local. They travel in the kit zip. See llg/README.md.
+llg/briefs/
+llg/context/
+llg/research/
+llg/review/
+llg/repo-review/
+llg/scan/
+llg/pages/*.json
+llg/v2/retired/*.json
+llg/HANDOFF-*.md
+llg/LAUNCH-RUNBOOK.md
+llg/**/.lock
