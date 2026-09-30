@@ -34,113 +34,7 @@ def practice_cards():
     return "".join(out)
 
 
-# ----------------------------------------------------------------------------- HOME
-home_faqs = [
-    ("How much does it cost to hire a personal injury lawyer in Summerville?",
-     "Nothing up front. Injury cases are handled on a contingency fee: we are paid a percentage of what we recover for you, and if we recover nothing you owe us no attorney's fee. The consultation is free and there is no obligation."),
-    ("What should I do right after a car accident in Summerville, SC?",
-     f"Call 911 and get checked by a doctor even if you feel fine, photograph the vehicles and the scene, get the other driver's insurance information and the officer's name and report number, and do not give a recorded statement to any insurance company before you talk to a lawyer. Our page on {A(CAR + '/what-to-do-after-a-car-accident-in-south-carolina', 'the first 48 hours after a crash')} walks through each step."),
-    ("How long do I have to file an injury claim in South Carolina?",
-     f"Three years from the date of the injury for most claims ({cite('sol_injury')}). Claims against a city, county or state agency have a two-year deadline and special notice rules, and evidence disappears long before any deadline, so call early. See {A(CAR + '/south-carolina-car-accident-statute-of-limitations', 'the statute of limitations')}."),
-    ("What is my case worth?",
-     "It depends on your medical bills and future care, lost income, how the injury changes your daily life, the available insurance, and whether fault is disputed. Anyone who quotes a number before seeing your records is guessing. We give you an honest range once we have the report, the bills and the policy limits."),
-    ("Is South Carolina an at-fault state?",
-     f"Yes. The driver who caused the crash, and that driver's insurer, pay for the harm. You can recover as long as you were not more than 50 percent at fault, reduced by your share. Details on {A(CAR + '/is-south-carolina-an-at-fault-state', 'at-fault rules')} and {A(CAR + '/south-carolina-comparative-negligence', 'comparative negligence')}."),
-    ("Do I really need a lawyer, or can I deal with the insurance company myself?",
-     "For a fender-bender with no injuries, you may not need one, and we will tell you so. Once there is an injury, the adjuster's job is to close your claim for as little as possible, and the first offer usually arrives before anyone knows what your treatment will cost. A free call tells you which situation you are in."),
-    ("How do I choose a personal injury lawyer in Summerville?",
-     f"Ask who will actually handle your case (an attorney, or a case manager), whether the firm tries cases or only settles, what the fee and costs are in writing, and how fast calls are returned. Read the Google reviews for mentions of the attorney by name. Then call two firms and compare the conversations. Our answers are on {A('about', 'the team page')}, and every other question we get is answered on {A('questions', 'the questions page')}."),
-    ("Where are you, and what areas do you serve?",
-     f"Our office is at 128 Linwood Lane in Summerville. We represent injured people across Dorchester, Berkeley, Charleston and Colleton counties, including {A('areas/goose-creek', 'Goose Creek')}, {A('areas/ladson', 'Ladson')}, {A('areas/north-charleston', 'North Charleston')}, {A('areas/charleston', 'Charleston')}, {A('areas/mount-pleasant', 'Mount Pleasant')}, {A('areas/moncks-corner', 'Moncks Corner')} and {A('areas/walterboro', 'Walterboro')}. If you cannot travel, we come to you or meet by phone and video."),
-]
-
-home_why = (
-    '<ul class="cards three">'
-    '<li class="card"><h3>A former judge on your side</h3><p>Tara Frost served as a Dorchester County Magistrate Judge, where civil claims are tried and evidence is weighed every week. Insurance companies know which firms prepare a case for trial; that reputation is what moves a settlement number.</p></li>'
-    '<li class="card"><h3>A former detective on the investigation</h3><p>Jack Frost worked hundreds of crash scenes in fourteen years with the Summerville Police Department and the Charleston County Sheriff\'s Office. He knows what a collision report captures, what it misses, and where the video, the data and the witnesses are.</p></li>'
-    '<li class="card"><h3>No fee unless we win</h3><p>Injury cases are handled on a contingency fee. You pay nothing up front and nothing at all unless we recover money for you. The consultation is free, day or night.</p></li>'
-    '<li class="card"><h3>You talk to the attorney</h3><p>When you call, you reach Tara, Jack or Cassie, our paralegal. Not a call center, not an intake script. You will know who is working on your case and how to reach them.</p></li>'
-    '<li class="card"><h3>We know these roads and these courts</h3><p>I-26, Highway 17-A, Dorchester Road, Bacons Bridge Road, the College Park interchange. We live here, and we file in the Dorchester, Berkeley and Charleston County courts where these cases are decided.</p></li>'
-    '<li class="card"><h3>Honest about your case</h3><p>If a claim is not worth pursuing, or you can handle it without paying a lawyer, we say so at the first call. Don\'t mistake our kindness for weakness: when an insurer will not be fair, we take the case to a jury.</p></li>'
-    '</ul>')
-
-home_process = steps([
-    ("Free consultation.", " Tell us what happened. We listen, answer your questions, and tell you honestly whether you have a claim and what it may be worth. No cost, no obligation."),
-    ("We investigate.", " We obtain the collision report, the 911 audio, body-camera and dash-camera video, business surveillance footage, vehicle data and witness statements, and we photograph the scene before it changes."),
-    ("We handle the insurers.", " Every call, letter and recorded-statement request goes through us. We assemble your medical records and bills, document lost income and future care, and send a demand that reflects the full value of the claim."),
-    ("We negotiate, or we try the case.", " Most claims settle once the insurer sees a case prepared for trial. When they will not pay what the claim is worth, we file suit in the county where the crash happened and take it to a jury."),
-])
-
-home_body = "".join((
-    section(
-        '<div class="stats">'
-        '<div class="stat"><b>$0</b><span>up front, and no fee unless we win</span></div>'
-        '<div class="stat"><b>24/7</b><span>injury calls answered, day or night</span></div>'
-        '<div class="stat"><b>3 years</b><span>South Carolina deadline for most injury claims, shorter for some</span></div>'
-        f'<div class="stat"><b>{firm.RATING[0]}★</b><span>Google rating from {firm.RATING[1]} reviews</span></div>'
-        '</div>', cls="tint"),
-    section(
-        twocol(
-            '<div class="eyebrow">Who we are</div><h2 style="margin-top:0">A husband-and-wife firm that takes on the insurance companies</h2>'
-            '<p>Summerville Accident Attorney is the personal injury practice of Frost Law Group, a two-attorney firm on Linwood Lane in Summerville. Tara Frost, a former Dorchester County magistrate judge, leads every injury case. Jack Frost, a former Summerville police officer and Charleston County detective, runs the investigation.</p>'
-            '<p>We are not a billboard firm. We take a limited number of cases so that the attorney who meets you is the attorney who handles your claim, returns your calls, and stands next to you if the case goes to trial.</p>'
-            f'<p><a href="[[about]]">Meet the team →</a></p>',
-            f'{img("couple-formal.jpg", "Tara and Jack Frost, attorneys at Frost Law Group in Summerville", "")}'
-        )),
-    section("[[practice-cards]]", cls="tint", label="How we help", title="Injury cases we handle", lead="Personal injury is all this site is about. Each page below explains the South Carolina law that applies to your kind of case before it explains what we do."),
-    section(home_process, label="Our process", title="Straightforward from day one"),
-    section(home_why, cls="tint", label="Why Frost Law Group", title="A firm the insurance companies take seriously"),
-    section(
-        f'<p class="lead">Rated {firm.RATING[0]} out of 5 on Google from {firm.RATING[1]} reviews. Here is some of what injured clients and their families have said.</p>{"[[reviews:3]]"}'
-        f'<div class="links"><a href="{esc(firm.GBP_URL)}" rel="noopener" target="_blank">Read our Google reviews</a><a href="[[reviews]]">All client reviews</a></div>'
-        '<p class="small">Testimonials reflect individual experiences. Prior results do not guarantee a similar outcome.</p>',
-        label="Client voices", title="What our clients say"),
-    section('<div class="faq">' + "".join(f'<details><summary>{esc(q)}</summary><div class="a"><p>{a}</p></div></details>' for q, a in home_faqs) + '</div>',
-            cls="tint", label="Questions people ask", title="Straight answers to the questions Summerville searches for", lead=f'Every question answered on this site is collected on {A("questions", "one page")}, with links to where people ask them.'),
-    section(
-        '<p>We know these roads and this community. From Main Street and Bacons Bridge Road in Summerville to I-26, Highway 17-A, Dorchester Road and the busy corridors of Dorchester, Berkeley and Charleston counties, we represent the injured throughout the Lowcountry. Each community page explains which police agency writes the crash report there, which hospital you were likely taken to, which court hears the case, and how to reach us.</p>'
-        '<ul class="areas">' + "".join(f'<li><a href="[[{s}]]">{esc(n)}</a></li>' for s, n in [("areas/summerville", "Summerville"), ("areas/goose-creek", "Goose Creek"), ("areas/ladson", "Ladson"), ("areas/north-charleston", "North Charleston"), ("areas/charleston", "Charleston"), ("areas/mount-pleasant", "Mount Pleasant"), ("areas/moncks-corner", "Moncks Corner"), ("areas/walterboro", "Walterboro"), ("areas/west-ashley", "West Ashley")]) + '</ul>'
-        '<p><a href="[[areas]]">All communities we serve →</a> · <a href="[[es/abogado-de-accidentes]]" lang="es">Abogado de accidentes en Summerville (español) →</a></p>',
-        label="Local representation", title="Serving Summerville and the entire Lowcountry"),
-    section('[[latestposts:3]]' + '<p><a href="[[blog]]">All articles →</a></p>', cls="tint", label="From the blog", title="What the news means for your claim"),
-    section(
-        '[[nap]]' + '[[map]]' + f'<p style="margin-top:1rem">{local.office_roads_sentence()}</p>' + '[[findus]]',
-        label="Find us", title="128 Linwood Lane, Summerville", lead="Free parking in front, a ground-level entrance, and two Golden Retrievers who take their greeting duties seriously. If you cannot travel because of your injuries, we come to you."),
-    section('<h2 style="margin-top:0">Get your free case review</h2><p class="lead">Tell us what happened. We review your case at no cost and with no obligation, and we tell you plainly what we think.</p>[[form]]', cls="tint"),
-    section(band("Injured? Call Frost first.", "Before you give a statement, sign a release or accept a check, talk to us. The first conversation with an insurer shapes everything after it."), wrap=True),
-))
-
-# page("home") is now an LLG page in content/pages (Manifest v7)
-
-# ----------------------------------------------------------------------------- PRACTICE AREAS INDEX
-pa_body = (
-    '<p class="lead">Every case on this site is a personal injury case: someone else\'s carelessness hurt you or took a family member, and an insurance company now decides whether to pay. We handle the claim from the first phone call to settlement or verdict, on a contingency fee.</p>'
-    '[[practice-cards]]'
-    '<h2>Do not see your situation?</h2>'
-    f'<p>We also handle bicycle and golf-cart collisions, boating injuries, injuries from defective products, negligent security claims, and burn injuries. If another person or company caused your injury, call {TEL} and we will tell you whether it is a case we can take.</p>'
-    '<h2>How every injury claim works in South Carolina</h2>'
-    + steps([
-        ("Fault.", f" South Carolina is an at-fault state. The person who caused the injury is responsible, and you can recover as long as you were not more than half at fault ({A(CAR + '/south-carolina-comparative-negligence', 'the comparative negligence rule')})."),
-        ("Insurance.", f" The at-fault party's liability policy pays first. If it is too small or there is none, your own uninsured and underinsured motorist coverage may pay ({A(CAR + '/uninsured-motorist-accidents', 'UM and UIM claims')})."),
-        ("Damages.", " Medical bills, future care, lost wages and earning capacity, property damage, and pain, suffering and loss of enjoyment of life. Punitive damages are available for reckless conduct such as drunk driving."),
-        ("Deadline.", f" Three years for most claims, two years against government entities ({A(CAR + '/south-carolina-car-accident-statute-of-limitations', 'the statute of limitations')})."),
-    ])
-    + band("Not sure what kind of case you have?", "Tell us what happened. We will tell you which page applies to you, and whether you have a claim.")
-)
-# page("practice-areas") is now an LLG page in content/pages (Manifest v7)
-
-# ----------------------------------------------------------------------------- AREAS INDEX
-areas_body = (
-    '<p class="lead">Our office is in Summerville and we represent injured people across the tri-county area and into Colleton County. Each community page below is written for that town: which police agency writes the crash report, which hospital handles trauma there, which courthouse hears the case, the roads where crashes happen, and how to reach our office.</p>'
-    '[[citylist]]'
-    '<h2>Counties and courts</h2>'
-    '<p>An injury lawsuit is filed in the Court of Common Pleas of the county where the crash happened or where the defendant lives. Claims for $7,500 or less can be heard by a magistrate. Most injury cases are settled with the insurer before suit, but we prepare every case as if it will be tried, because that is what makes insurers pay.</p>'
-    '[[courts:dorchester_courthouse,berkeley_courthouse,charleston_judicial,colleton_courthouse]]'
-    '<h2>If you cannot come to us</h2>'
-    f'<p>After a serious injury, getting to Summerville may be the last thing you can do. We meet clients at home, at the hospital or rehabilitation facility, and by phone or video. Call {TEL} and tell us where you are.</p>'
-    + band("Hurt anywhere in the Lowcountry?", "One call tells you whether you have a claim and what to do next.")
-)
-# page("areas") is now an LLG page in content/pages (Manifest v7)
+# Home, /practice-areas/ and /locations/ are LLG pages in content/pages (Manifest v7).
 
 # ----------------------------------------------------------------------------- ABOUT / TEAM
 about_body = (
@@ -261,7 +155,7 @@ page("contact", kind="page", layout="raw", cta=[("tel:" + firm.PHONE_E164, firm.
 
 # ----------------------------------------------------------------------------- REVIEWS
 reviews_body = (
-    f'<p class="lead">Frost Law Group is rated {firm.RATING[0]} out of 5 on Google from {firm.RATING[1]} reviews. We are a two-attorney firm, so every review below is about work Tara or Jack did personally.</p>'
+    f'<p class="lead">Frost Law Group is rated {firm.RATING} stars on Google. We are a two-attorney firm, so every review below is about work Tara or Jack did personally.</p>'
     '[[reviews:8]]'
     f'<div class="links"><a href="{esc(firm.GBP_URL)}" rel="noopener" target="_blank">Read every Google review</a><a href="{esc(firm.YELP_URL)}" rel="noopener" target="_blank">Reviews on Yelp</a></div>'
     '<p class="small">Testimonials reflect individual experiences. Prior results do not guarantee a similar outcome.</p>'

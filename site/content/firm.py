@@ -45,7 +45,10 @@ LINKEDIN = "https://www.linkedin.com/company/frost-law-groupsc"
 SOCIAL = [("Facebook", FACEBOOK, "fb"), ("Instagram", INSTAGRAM, "ig"), ("LinkedIn", LINKEDIN, "in"), ("X (Twitter)", TWITTER, "x")]
 SAME_AS = [MAIN_SITE + "/", GBP_URL, YELP_URL, FACEBOOK, INSTAGRAM, LINKEDIN, TWITTER]
 KGMID = "/g/11b5pl8mj4"
-RATING = (4.8, 30)  # Google Business Profile, September 2026
+RATING = 4.8  # Google Business Profile, September 2026. The approved proof point is "rated 4.8 stars on Google", never with a review count.
+# CallRail Dynamic Number Insertion. The tag goes in the head of every page. Leave it empty for no script.
+# The swap matches the phone exactly as PHONE displays it, so never change that format.
+CALLRAIL_SCRIPT = '<script type="text/javascript" src="//cdn.calltrk.com/companies/897987596/cc6b83e20b3e42332487/12/swap.js"></script>'
 
 HOURS_DISPLAY = [("Monday – Thursday", "9:00 AM – 5:00 PM"), ("Friday", "9:00 AM – 12:00 PM, afternoons by appointment"), ("Saturday – Sunday", "Closed")]
 HOURS_SHORT = "Office Mon–Thu 9–5 · Fri 9–12, afternoons by appointment"
