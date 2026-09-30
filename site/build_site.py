@@ -571,8 +571,6 @@ def firm_ld():
     }
     if firm.GEO:
         d["geo"] = {"@type": "GeoCoordinates", "latitude": firm.GEO[0], "longitude": firm.GEO[1]}
-    if firm.RATING:
-        d["aggregateRating"] = {"@type": "AggregateRating", "ratingValue": firm.RATING[0], "reviewCount": firm.RATING[1]}
     return d
 
 
@@ -659,7 +657,7 @@ def head_html(p):
         '<link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>'
         '<link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>'
         f'<link rel="stylesheet" href="{CSS_HREF}">'
-        f'<script type="application/ld+json">{ld}</script>'
+        f'<script type="application/ld+json">{ld}</script>{firm.CALLRAIL_SCRIPT}'
         '</head><body>')
 
 
