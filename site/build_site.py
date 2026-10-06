@@ -556,6 +556,13 @@ def body_html(p):
 
 # ---------------------------------------------------------------- structured data
 
+def share_image(p):
+    """A post's featured image for its social card and BlogPosting markup. Every other page uses the site card."""
+    if p["kind"] == "post" and p.get("hero_image") and os.path.exists(os.path.join(IMG_DIR, p["hero_image"])):
+        return f"{ORIGIN}/assets/img/{p['hero_image']}"
+    return ORIGIN + "/assets/img/og.jpg"
+
+
 def firm_ld():
     hours = [{"@type": "OpeningHoursSpecification", "dayOfWeek": d, "opens": o, "closes": c} for d, o, c in firm.HOURS_LD]
     d = {
@@ -610,7 +617,7 @@ def page_ld(p):
         a = firm.ATTORNEYS[p["author"]]
         graph.append({"@type": "BlogPosting", "headline": p["h1"], "description": p["description"], "url": abs_url(p["slug"]), "mainEntityOfPage": abs_url(p["slug"]),
                       "datePublished": p["date"], "dateModified": p["modified"], "author": {"@id": abs_url(a["slug"]) + "#person"},
-                      "publisher": {"@id": ORIGIN + "/#firm"}, "articleSection": p["category"], "inLanguage": "en-US", "image": ORIGIN + "/assets/img/og.jpg",
+                      "publisher": {"@id": ORIGIN + "/#firm"}, "articleSection": p["category"], "inLanguage": "en-US", "image": share_image(p),
                       **({"reviewedBy": {"@id": abs_url(firm.ATTORNEYS[p["reviewer"]]["slug"]) + "#person"}} if p.get("reviewer") else {})})
     if p["kind"] == "attorney":
         graph.append(person_ld(p["author"]))
@@ -650,7 +657,7 @@ def head_html(p):
         f'<title>{esc(p["title"])}</title><meta name="description" content="{esc(p["description"])}">{robots}'
         f'<link rel="canonical" href="{abs_url(p["slug"])}">{alt}'
         f'<meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(firm.SITE_NAME)} · {esc(firm.NAME)}"><meta property="og:title" content="{esc(p["title"])}">'
-        f'<meta property="og:description" content="{esc(p["description"])}"><meta property="og:url" content="{abs_url(p["slug"])}"><meta property="og:image" content="{ORIGIN}/assets/img/og.jpg">'
+        f'<meta property="og:description" content="{esc(p["description"])}"><meta property="og:url" content="{abs_url(p["slug"])}"><meta property="og:image" content="{share_image(p)}">'
         '<meta name="twitter:card" content="summary_large_image">'
         f'<meta name="geo.region" content="US-SC"><meta name="geo.placename" content="{firm.CITY}">'
         '<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">'

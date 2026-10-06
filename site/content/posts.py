@@ -228,7 +228,8 @@ post("hit-by-an-uninsured-driver-goose-creek-your-own-policy", hero_image="cover
 # words were reworded, and the Goose Creek post now says the under-50% rule dates to 2005 and minor tolling extends the
 # deadline. Each post keeps its FAQ section in the copy, and faq_ld() gives it FAQPage markup. The H1 and the slug are
 # the same string. Titles and descriptions are in meta.py. Legal and local facts were checked against the sources
-# listed with each post and the page kit research.
+# listed with each post and the page kit research. Featured images are licensed Canva stock photos (see BUILD-NOTES.md),
+# each file named for the post's final CTA heading, with a caption that describes what the photo shows.
 TRUCKP = "truck-accident-attorneys-in-summerville"
 SLIPP = "slip-and-fall-attorneys-in-summerville"
 DORCH = "personal-injury-attorneys-in-dorchester-county"
@@ -264,7 +265,9 @@ def faq_ld(p, heading):
 
 
 # ----------------------------------------------------------------------------- 5. Summerville car accident medical bills
-p5 = post('how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid', category='Car accidents', date='2026-09-16', modified='2026-09-16',
+p5 = post('how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid', hero_image='talk-with-a-summerville-car-accident-lawyer-at-frost-law-group-today.jpg',
+     hero_caption="A man wearing a cervical collar holds the back of his neck during a visit to a doctor's office.",
+     category='Car accidents', date='2026-09-16', modified='2026-09-16',
      title='Summerville Car Accident Lawyer for Medical Bills | Call Now',
      description='South Carolina has no required PIP. Learn how a Summerville car accident lawyer lines up Med Pay, health insurance, and UM coverage. Get a free review.',
      h1='How Does a Summerville Car Accident Lawyer Get Your Medical Bills Paid?',
@@ -367,7 +370,9 @@ p5 = post('how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-pai
 faq_ld(p5, 'Frequently Asked Questions About Medical Bills After a Summerville Car Accident')
 
 # ----------------------------------------------------------------------------- 6. Goose Creek motorcycle shared fault
-p6 = post('what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault', category='Motorcycle accidents', date='2026-09-21', modified='2026-09-21',
+p6 = post('what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault', hero_image='call-a-goose-creek-motorcycle-accident-lawyer-before-you-accept-a-reduced-offer.jpg',
+     hero_caption='A crashed motorcycle lies on its side in the grass beside a paved road.',
+     category='Motorcycle accidents', date='2026-09-21', modified='2026-09-21',
      title='Goose Creek Motorcycle Accident Lawyer | Call Today',
      description='South Carolina requires a helmet only under 21. A Goose Creek motorcycle accident lawyer answers the helmet argument insurers use. Call for a free review.',
      h1='What Can a Goose Creek Motorcycle Accident Lawyer Do If You Were Partly at Fault?',
@@ -477,7 +482,9 @@ p6 = post('what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-part
 faq_ld(p6, 'Questions Goose Creek Riders Ask About Shared Fault')
 
 # ----------------------------------------------------------------------------- 7. Moncks Corner slip and fall liability
-p7 = post('who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall', category='Slip and fall', date='2026-09-28', modified='2026-09-28',
+p7 = post('who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall', hero_image='talk-to-a-moncks-corner-slip-and-fall-lawyer-before-the-video-is-gone.jpg',
+     hero_caption="A shopper's feet rest beside an overturned coffee cup and a puddle of spilled coffee on a store floor.",
+     category='Slip and fall', date='2026-09-28', modified='2026-09-28',
      title='Ask a Moncks Corner Slip and Fall Lawyer Who Is Liable',
      description='A Moncks Corner slip and fall lawyer explains who is liable for your fall, whether a store, a landlord, or a town. Call Frost Law Group for a free review.',
      h1='Who Can a Moncks Corner Slip and Fall Lawyer Hold Liable for Your Fall?',
@@ -584,7 +591,9 @@ p7 = post('who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fal
 faq_ld(p7, 'Questions Moncks Corner Fall Victims Ask About Liability')
 
 # ----------------------------------------------------------------------------- 8. North Charleston truck claim value
-p8 = post('how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth', category='Truck accidents', date='2026-10-06', modified='2026-10-06',
+p8 = post('how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth', hero_image='talk-to-a-north-charleston-truck-accident-lawyer-about-your-claims-value.jpg',
+     hero_caption='An overturned tractor-trailer lies on its side across a curving highway ramp.',
+     category='Truck accidents', date='2026-10-06', modified='2026-10-06',
      title='Hire a North Charleston Truck Accident Lawyer for Your Claim',
      description="A North Charleston truck accident lawyer values your claim by adding up your losses and checking each company's insurance and fault. Get a free review.",
      h1='How Does a North Charleston Truck Accident Lawyer Figure Out What Your Claim Is Worth?',
