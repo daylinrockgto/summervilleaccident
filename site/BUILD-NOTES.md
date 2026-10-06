@@ -73,4 +73,13 @@ The fix logs sit outside the repository with the page drafts.
 
 ## Blog cover images
 
-The four blog covers (`site/assets/img/cover-*.jpg`) are generated illustrations with no text, logos, plates or people, and the captions say so. Replace the files and rebuild to swap in real photos.
+The four September blog covers (`site/assets/img/cover-*.jpg`) are generated illustrations with no text, logos, plates or people, and the captions say so. Replace the files and rebuild to swap in real photos.
+
+The four October 2026 posts use licensed Canva stock photos, placed in copies of Canva template DAHS3fxddsA and exported as 1920x1080 JPGs with no text, logos, plates or AI provenance data. Each file is named for the post's final CTA heading, and the caption, which is also the alt text, describes what the photo shows. A post's hero image is also its social card and BlogPosting image. Do not reuse these stock photos on another post.
+
+| Post | File | Canva stock ID | Canva design |
+| --- | --- | --- | --- |
+| Summerville car accident medical bills | `talk-with-a-summerville-car-accident-lawyer-at-frost-law-group-today.jpg` | MAEWePdFnOY | DAHXR5r9A4c |
+| Goose Creek motorcycle shared fault | `call-a-goose-creek-motorcycle-accident-lawyer-before-you-accept-a-reduced-offer.jpg` | MADAaSpIXVg | DAHXR69-77Q |
+| Moncks Corner slip and fall liability | `talk-to-a-moncks-corner-slip-and-fall-lawyer-before-the-video-is-gone.jpg` | MAED4fviN6M | DAHXR_yiA7g |
+| North Charleston truck claim value | `talk-to-a-north-charleston-truck-accident-lawyer-about-your-claims-value.jpg` | MAEEgDcNdaY | DAHXRzie3Po |
