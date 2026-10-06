@@ -1,7 +1,7 @@
 """Title tags and meta descriptions for the site pages that are not LLG long-form pages.
 
 LLG pages carry their own title and description in content/pages/pages.json (Page Manifest v7). This file covers the
-team, contact, review, blog and legal pages, and the four blog posts. Titles stay at or under 60 characters and
+team, contact, review, blog and legal pages, and the blog posts. Titles stay at or under 60 characters and
 descriptions between 150 and 156, each with a call to action and no phone number (LLG Part 4).
 Applied by base.page(), which lets these override the values typed in the content modules.
 """
@@ -35,4 +35,14 @@ META = {
         "Riders 21 and over may ride without a helmet in South Carolina. Learn what that can mean for an injury claim after a crash near Summerville. Read the article."),
     "blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy": ("Hit by an Uninsured Driver in Goose Creek? Read This",
         "Hit by a driver with no insurance in Goose Creek? Learn how South Carolina uninsured motorist coverage on your own policy can pay. Read the article and call us."),
+    # blog posts, October 2026 batch (metadata from the end of each Legal Leads Group draft; the Moncks Corner draft offered
+    # ten options and this uses option 1 of each list)
+    "blog/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid": ("Summerville Car Accident Lawyer for Medical Bills | Call Now",
+        "South Carolina has no required PIP. Learn how a Summerville car accident lawyer lines up Med Pay, health insurance, and UM coverage. Get a free review."),
+    "blog/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault": ("Goose Creek Motorcycle Accident Lawyer | Call Today",
+        "South Carolina requires a helmet only under 21. A Goose Creek motorcycle accident lawyer answers the helmet argument insurers use. Call for a free review."),
+    "blog/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall": ("Ask a Moncks Corner Slip and Fall Lawyer Who Is Liable",
+        "A Moncks Corner slip and fall lawyer explains who is liable for your fall, whether a store, a landlord, or a town. Call Frost Law Group for a free review."),
+    "blog/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth": ("Hire a North Charleston Truck Accident Lawyer for Your Claim",
+        "A North Charleston truck accident lawyer values your claim by adding up your losses and checking each company's insurance and fault. Get a free review."),
 }

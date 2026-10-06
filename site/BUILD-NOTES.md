@@ -63,7 +63,7 @@ The fix logs sit outside the repository with the page drafts.
 
 - **Rule 7.2 and the fee line.** "No fee unless we win" appears site-wide by decision. South Carolina's advertising rule expects a contingent-fee statement to say whether the client owes costs and expenses, on the same page as the statement. The footer on every page now repeats the terms page's cost sentence. The attorneys should confirm it matches their fee agreement.
 - **Review quotes and the rating.** Resolved September 30. The reviews page says "rated 4.8 stars on Google" with no review count, and the structured data carries no `aggregateRating`, because Google treats a business's own rating markup as self-serving. The review quotes stay by decision.
-- **Blog bylines.** The four blog posts carry Tara's and Jack's names. The attorneys should read and approve each post.
+- **Blog bylines.** The eight blog posts carry Tara's and Jack's names, including the four October 2026 posts drafted by Legal Leads Group. The attorneys should read and approve each post.
 - **Bar numbers and admission years.** Both are blank, so the attorney markup carries none. Add them to `firm.py` when the client supplies them.
 - **Available 24/7.** The top bar and footer repeat this approved live-site claim. Confirm the phone is answered after hours, or edit `PROMISES` in `firm.py`.
 - **Spanish page.** It tells callers to ask what language help is available. It does not promise an interpreter or a Spanish-speaking staff member.
