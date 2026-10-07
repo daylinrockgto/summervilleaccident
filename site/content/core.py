@@ -81,7 +81,7 @@ tara_body = (
     ]) +
     '<h2>Rooted here</h2>'
     '<p>A lifelong resident of the tri-county area, Tara is married to her Summerville High School sweetheart, Jack, and the two practice together in Summerville.</p>'
-    '<h2>Articles</h2><p>The firm\'s articles on [[blog]] cover what to do in the first days after a crash, what South Carolina\'s dog bite and helmet laws mean for a claim, and what to know before you talk to an insurance adjuster.</p>'
+    '<h2>Articles</h2><p>The firm\'s articles on <a href="[[blog]]">the blog</a> cover what to do in the first days after a crash, what South Carolina\'s dog bite and helmet laws mean for a claim, and what to know before you talk to an insurance adjuster.</p>'
     '<h2>Reach Tara</h2>'
     f'<p>Email <a href="mailto:{firm.ATTORNEYS["tara"]["email"]}">{firm.ATTORNEYS["tara"]["email"]}</a>, call {TEL}, or connect on {ext(firm.ATTORNEYS["tara"]["linkedin"], "LinkedIn")}. Tara\'s work on the firm\'s other matters is described on {ext(firm.ATTORNEYS["tara"]["main_site_bio"], "her profile on the main firm site")}.</p>'
     + band("Injured? Talk to Tara first.", "A free, honest conversation about whether you have a claim and what it may be worth.")

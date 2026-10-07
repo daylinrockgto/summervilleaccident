@@ -34,6 +34,7 @@ import content.posts  # noqa: E402,F401
 import content.legacy  # noqa: E402,F401  (old workers' compensation copy at its old address, unlinked)
 import content.questions_index  # noqa: E402,F401  (link index of answer pages)
 import checks  # noqa: E402  (hard compliance checks; the build fails on any of them)
+import design  # noqa: E402  (sections, accordions, table of contents, photos and cards for the long-form pages)
 
 BUILD_DATE = firm.BUILD_DATE
 ORIGIN = firm.ORIGIN
@@ -150,6 +151,35 @@ def fix_images(html):
 def img_tag(name, alt, extra='loading="lazy" decoding="async"'):
     return fix_images('<img src="[[img:%s]]" alt="%s" %s>' % (name, esc(alt), extra))
 
+
+VARIANT_W = 800  # every JPG wider than this also ships as a 800px copy for phones (see write_prod)
+
+
+def image_exists(name):
+    return os.path.exists(os.path.join(IMG_DIR, name))
+
+
+def variant_name(name):
+    return os.path.splitext(name)[0] + f"-{VARIANT_W}w.jpg"
+
+
+def resp_img(name, alt, sizes="100vw", cls="", lazy=True):
+    """An <img> with width, height and, in production, a srcset that offers the 800px copy to small screens."""
+    src, w, h = image_info(name)
+    shown_w = min(w, 1600)
+    shown_h = round(h * shown_w / w) if w else h
+    srcset = ""
+    if MODE == "prod" and name.lower().endswith((".jpg", ".jpeg")) and w > VARIANT_W + 100 and image_exists(name):
+        small = src.replace(f"/assets/img/{name}", f"/assets/img/{variant_name(name)}")
+        srcset = f' srcset="{small} {VARIANT_W}w, {src} {shown_w}w" sizes="{sizes}"'
+    c = f' class="{cls}"' if cls else ""
+    load = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high" decoding="async"'
+    return f'<img src="{src}"{srcset} alt="{esc(alt)}" width="{shown_w}" height="{shown_h}"{c}{load}>'
+
+
+def init_design():
+    design.url, design.resp_img, design.image_exists, design.warn = url, resp_img, image_exists, warn
+
 # ---------------------------------------------------------------- token expansion
 
 def card(pg, new=None):
@@ -164,7 +194,10 @@ def cards(slugs):
 
 def post_card(pg):
     a = firm.ATTORNEYS[pg["author"]]
-    return (f'<li class="post-card"><div class="cat">{esc(pg["category"])}</div><h3><a href="{url(pg["slug"])}">{esc(pg["h1"])}</a></h3>'
+    cover = ""
+    if pg.get("hero_image") and image_exists(pg["hero_image"]):
+        cover = f'<a class="cover" href="{url(pg["slug"])}" tabindex="-1" aria-hidden="true">{resp_img(pg["hero_image"], "", sizes="(max-width: 700px) 100vw, 360px")}</a>'
+    return (f'<li class="post-card">{cover}<div class="cat">{esc(pg["category"])}</div><h3><a href="{url(pg["slug"])}">{esc(pg["h1"])}</a></h3>'
             f'<p>{pg["summary"]}</p><div class="meta">{fmt_date(pg["date"])} · {esc(a["short"])}</div></li>')
 
 
@@ -360,14 +393,16 @@ def expand_tokens(html):
 def nav_html():
     def sub(hub_slug, spokes, all_label):
         lis = f'<a class="all" href="{url(hub_slug)}">{all_label}</a>' + "".join(f'<a href="{url(s)}">{esc(BY_SLUG[s]["nav_label"])}</a>' for s in spokes)
-        return f'<div class="sub">{lis}</div>'
+        return f'<div class="sub{" wide" if len(spokes) > 5 else ""}">{lis}</div>'
     items = []
     for label, hub_slug, spokes, all_label in firm.NAV:
         if hub_slug not in BY_SLUG:
             continue
         spokes = [s for s in spokes if s in BY_SLUG]
         if spokes:
-            items.append(f'<li class="has-sub"><a href="{url(hub_slug)}" aria-haspopup="true">{label}</a>{sub(hub_slug, spokes, all_label)}</li>')
+            items.append(f'<li class="has-sub"><a href="{url(hub_slug)}" aria-haspopup="true">{label}</a>'
+                         f'<button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show the {esc(label.lower())} menu" data-subtoggle><span aria-hidden="true"></span></button>'
+                         f'{sub(hub_slug, spokes, all_label)}</li>')
         else:
             href = url(hub_slug) if hub_slug in BY_SLUG else hub_slug
             items.append(f'<li><a href="{esc(href)}">{label}</a></li>')
@@ -387,7 +422,7 @@ def header_html():
         f'<a class="brand" href="{url("home")}" aria-label="{esc(firm.SITE_NAME)} home"><img src="{logo_src}" alt="" width="{lw}" height="{lh}"><span class="word">{esc(firm.SITE_NAME)}<small>{esc(firm.SITE_SUB)}</small></span></a>'
         f'<a class="phone-hdr" href="tel:{firm.PHONE_E164}">{firm.PHONE}</a>'
         f'<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" data-navtoggle>Menu</button>'
-        f'{nav_html()}</div></header>')
+        f'{nav_html()}</div><div class="progress" aria-hidden="true"><span></span></div></header>')
 
 
 def footer_html():
@@ -411,7 +446,16 @@ def footer_html():
         f'<div><h3>Explore</h3><ul>{explore}</ul><h3 style="margin-top:1.4rem">Find us</h3><ul>{find}</ul></div>'
         f'<div><h3>Locations we serve</h3><ul>{areas}<li><a href="{url("locations")}">All locations →</a></li></ul></div>'
         f'</div><div class="legal"><p>© {BUILD_DATE[:4]} {esc(firm.NAME)}. {firm.DISCLAIMER}</p>'
-        f'<p><a href="{url("privacy-policy")}">Privacy policy</a> · <a href="{url("terms-of-use")}">Terms of use &amp; legal disclaimer</a> · <a href="{url("accessibility")}">Accessibility</a> · <a href="{url("locations")}">Locations we serve</a>' + ''.join(f' · <a href="{url(p["slug"])}" lang="es">Español</a>' for p in PAGES if p.get("lang") == "es") + '</p></div></div></footer>')
+        f'<p><a href="{url("privacy-policy")}">Privacy policy</a> · <a href="{url("terms-of-use")}">Terms of use &amp; legal disclaimer</a> · <a href="{url("accessibility")}">Accessibility</a> · <a href="{url("locations")}">Locations we serve</a>' + ''.join(f' · <a href="{url(p["slug"])}" lang="es">Español</a>' for p in PAGES if p.get("lang") == "es") + '</p></div></div></footer>'
+        + action_bar())
+
+
+def action_bar(lang="en"):
+    """Phone and free review buttons fixed to the bottom of small screens, and a back-to-top button."""
+    label = "Consulta gratis" if lang == "es" else "Free case review"
+    return (f'<div class="mbar" role="region" aria-label="Contact Frost Law Group"><a class="mbar-call" href="tel:{firm.PHONE_E164}">{design.PHONE_SVG}{firm.PHONE}</a>'
+            f'<a class="mbar-cta" href="{url("contact")}">{label}</a></div>'
+            '<a class="totop" href="#main" aria-label="Back to top" data-totop><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></a>')
 
 
 def breadcrumb_trail(p):
@@ -474,7 +518,14 @@ def hero_html(p):
             img_html = f'<picture><source media="(min-width:1101px)" srcset="{wsrc}">{img_html}</picture>'
         return (f'<section class="hero photo"><div class="media">{img_html}<div class="shade"></div></div>'
                 f'<div class="wrap">{text}</div></section>{band_}')
-    text = f'<div>{crumbs_html(p)}{kicker}{eyebrow}<h1>{p["h1"]}</h1>{meta}{lead}{actions}{quote}</div>'
+    promises = ""
+    if p.get("_llg") and p.get("lang") != "es":
+        promises = '<ul class="promises">' + "".join(f"<li>{esc(x)}</li>" for x in firm.PROMISES) + "</ul>"
+    text = f'<div class="hero-text">{crumbs_html(p)}{kicker}{eyebrow}<h1>{p["h1"]}</h1>{meta}{lead}{actions}{promises}{quote}</div>'
+    feat = design.featured(p) if p.get("_llg") else None
+    if feat:
+        fig = f'<figure class="hero-fig">{resp_img(feat[0], feat[1], sizes="(max-width: 820px) 100vw, 500px", lazy=False)}</figure>'
+        return f'<section class="hero has-photo"><div class="wrap">{text}{fig}</div></section>'
     if p["hero_image"]:
         src, w, h = image_info(p["hero_image"])
         cap = f'<figcaption>{esc(p["hero_caption"])}</figcaption>' if p["hero_caption"] else ""
@@ -537,10 +588,82 @@ def aside_html(p):
     return '<aside class="aside">' + "".join(cards_) + "</aside>"
 
 
+def reviews_band():
+    """Three Google review quotes for the home page (settled 2026-09-28: the quotes stay on home and reviews)."""
+    picks = [r for r in firm.REVIEWS if r["name"] in ("Shannon D.", "Kevin O.", "Michelle F.")]
+    cards = "".join(f'<blockquote class="review"><div class="stars" aria-label="{r["stars"]} out of 5 stars">{"★" * r["stars"]}</div><p>“{esc(r["text"])}”</p><footer><b>{esc(r["name"])}</b> · {esc(r["source"])}</footer></blockquote>' for r in picks)
+    return (f'<section class="hsec reviews-band"><div class="wrap"><p class="ex-title center">Frost Law Group is rated {firm.RATING} stars on Google</p>'
+            f'<div class="rev-grid">{cards}</div><p class="small center">Testimonials reflect individual experiences. Prior results do not guarantee a similar outcome. '
+            f'<a href="{url("reviews")}">Read more client reviews</a></p></div></section>')
+
+
+def home_body(p):
+    """The home page: full-width bands, cards for the practice areas and counties, and the attorneys beside the copy."""
+    p["_toc"] = False
+    inserts = {
+        1: design.photo_cards(firm.HUBS, "pcards three"),
+        2: design.attorney_panel(),
+        3: design.photo_cards(firm.COUNTY_HUBS, "pcards four"),
+        "after:2": reviews_band(),
+    }
+    n = [0]
+
+    def shell(cls, sid, inner):
+        n[0] += 1
+        if "sec-cta" in cls:
+            return f'<section class="hsec cta-band" id="{sid}"><div class="wrap"><div class="{cls}">{inner}</div></div></section>'
+        band = " tint" if n[0] == 2 else ""
+        return f'<section class="hsec {cls}{band}" id="{sid}"><div class="wrap">{inner}</div></section>'
+
+    intro_img = design.IMAGES.get("home", {}).get("intro")
+
+    def intro_shell(h):
+        fig = f'<figure class="intro-fig">{resp_img(intro_img["file"], intro_img["alt"], sizes="(max-width: 900px) 100vw, 380px")}</figure>' if intro_img and image_exists(intro_img["file"]) else ""
+        return f'<section class="hsec intro-band"><div class="wrap{" intro-grid" if fig else ""}"><div>{h}</div>{fig}</div></section>'
+
+    inner, _ = design.enhance(p, p["body"], inserts, shell=shell, intro_shell=intro_shell)
+    return f'<main id="main" class="home">{inner}</main>'
+
+
+def after_content(p):
+    if p["kind"] not in ("hub", "spoke", "city"):
+        return ""
+    return f'<div class="atty-block"><p class="ex-title">The attorneys at Frost Law Group</p>{design.attorney_panel(compact=False)}</div>' + design.explore(p)
+
+
+def menu_inserts(p):
+    if p["slug"] == "practice-areas":
+        return {"intro": design.photo_cards(firm.HUBS, "pcards three")}
+    if p["slug"] == "locations":
+        cities = "".join(f'<a href="{url(s)}">{esc(BY_SLUG[s]["nav_label"])}</a>' for s in getattr(firm, "CITY_PAGES", []) if s in BY_SLUG)
+        return {"intro": design.photo_cards(firm.COUNTY_HUBS, "pcards four") + (f'<div class="chips">{cities}</div>' if cities else "")}
+    return {}
+
+
 def body_html(p):
-    inner = p["body"]
+    if p.get("_llg") and p["kind"] == "home":
+        return home_body(p)
+    if p.get("_llg"):
+        inner, secs = design.enhance(p, p["body"], menu_inserts(p))
+        inner += after_content(p)
+        if p["sources"]:
+            from content.base import sources as _sources
+            inner += _sources(p["sources"])
+        if p["layout"] == "two":
+            return f'<main id="main"><div class="wrap layout long"><div class="main prose long">{inner}</div>{design.aside_long(p, secs)}</div></main>'
+        return f'<main id="main"><div class="wrap layout single long"><div class="main prose long">{inner}</div></div></main>'
     if p["kind"] == "post":
+        inner, secs = design.enhance(p, p["body"])
         inner += f"[[author:{p['author']}{':' + p['reviewer'] if p['reviewer'] else ''}]]"
+        if p["faqs"]:
+            inner += faq_html(p["faqs"])
+        if p["sources"]:
+            from content.base import sources as _sources
+            inner += _sources(p["sources"])
+        others = [q["slug"] for q in posts_sorted() if q["slug"] != p["slug"]][:3]
+        inner += '<nav class="explore" aria-label="More from the blog"><p class="ex-title">More from the blog</p><ul class="posts">' + "".join(post_card(BY_SLUG[s]) for s in others) + "</ul></nav>"
+        return f'<main id="main"><div class="wrap layout long"><div class="main prose long">{inner}</div>{design.aside_long(p, secs)}</div></main>'
+    inner = p["body"]
     if p["faqs"]:
         inner += faq_html(p["faqs"])
     if p["sources"]:
@@ -640,6 +763,26 @@ INLINE_JS = r"""
     e.preventDefault();var btn=f.querySelector('button[type=submit]'),msg=f.querySelector('[data-formmsg]');if(btn){btn.disabled=true;btn.textContent='Sending…';}
     fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){return r.ok?r.json().catch(function(){return {ok:true};}):Promise.reject(r);}).then(function(){window.location.href=f.getAttribute('data-thanks')||'/thank-you/';}).catch(function(){
       if(btn){btn.disabled=false;btn.textContent='Request my free case review';}if(msg){msg.hidden=false;}});});}
+  /* submenus open and close on small screens */
+  document.querySelectorAll('[data-subtoggle]').forEach(function(b){b.addEventListener('click',function(){var li=b.parentNode,o=li.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});});
+  /* open the accordion that holds a linked heading */
+  function openTo(id){if(!id)return;var el=document.getElementById(id);if(!el)return;var d=el.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}}
+  openTo(decodeURIComponent(location.hash.slice(1)));
+  window.addEventListener('hashchange',function(){openTo(decodeURIComponent(location.hash.slice(1)));});
+  /* open or close every accordion on the page */
+  document.querySelectorAll('[data-accall]').forEach(function(b){b.addEventListener('click',function(){var all=document.querySelectorAll('details.acc'),open=b.getAttribute('aria-pressed')!=='true';
+    all.forEach(function(d){d.open=open;});b.setAttribute('aria-pressed',open?'true':'false');b.textContent=open?b.getAttribute('data-close'):b.getAttribute('data-open');});});
+  /* the mobile table of contents closes after a pick */
+  document.querySelectorAll('.toc-m a').forEach(function(a){a.addEventListener('click',function(){var d=a.closest('details');if(d)d.open=false;});});
+  /* highlight the section in view, fill the reading bar, show the back-to-top button */
+  var secs=[].slice.call(document.querySelectorAll('main section.sec[id]')),links={},bar=document.querySelector('.progress span'),top=document.querySelector('[data-totop]');
+  document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var ticking=false;function onScroll(){ticking=false;var y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+    if(bar&&secs.length){bar.style.width=(h>0?Math.min(100,y/h*100):0)+'%';}
+    if(top){top.classList.toggle('show',y>900);}
+    var cur=null;for(var i=0;i<secs.length;i++){if(secs[i].getBoundingClientRect().top<140)cur=secs[i].id;}
+    for(var k in links){links[k].classList.toggle('active',k===cur);}}
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});onScroll();
 })();
 """
 
@@ -669,7 +812,10 @@ def head_html(p):
 
 
 def render_prod(p):
-    doc = head_html(p) + header_html() + hero_html(p) + body_html(p) + footer_html() + f"<script>{INLINE_JS}</script></body></html>"
+    foot = footer_html()
+    if p.get("lang") == "es":
+        foot = foot.replace(f'<a class="mbar-cta" href="{url("contact")}">Free case review</a>', f'<a class="mbar-cta" href="{url("contact")}">Consulta gratis</a>')
+    doc = head_html(p) + header_html() + hero_html(p) + body_html(p) + foot + f"<script>{INLINE_JS}</script></body></html>"
     return expand_tokens(doc)
 
 
@@ -704,6 +850,9 @@ def write_prod():
                     im.save(dst, "PNG", optimize=True)
                 else:
                     im.convert("RGB").save(dst, "JPEG", quality=82, optimize=True, progressive=True)
+                    if im.width > VARIANT_W + 100:  # the phone-sized copy that resp_img() offers in srcset
+                        sm = im.convert("RGB").resize((VARIANT_W, round(im.height * VARIANT_W / im.width)), Image.LANCZOS)
+                        sm.save(os.path.join(OUT, "assets", "img", variant_name(name)), "JPEG", quality=78, optimize=True, progressive=True)
             else:
                 shutil.copy(src, dst)
     for name, svg in _PLACEHOLDERS.items():
@@ -941,6 +1090,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--preview", help="write a single-file preview to this path instead of website/")
     args = ap.parse_args()
+    init_design()
     check_global()
     if args.preview:
         MODE = "preview"

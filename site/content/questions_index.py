@@ -14,7 +14,7 @@ if GROUPS:
     for hub, rows in GROUPS.items():
         h = BY_SLUG.get(hub)
         label = h["nav_label"] if h else hub
-        parts.append(f'<h2>{esc(label)} questions</h2><ul>' + "".join(f'<li><a href="[[{r["slug"]}]]">{esc(r["h1"])}</a></li>' for r in rows) + "</ul>")
+        parts.append(f'<h2>{esc(label)} questions</h2><ul class="qlist">' + "".join(f'<li><a href="[[{r["slug"]}]]">{esc(r["h1"])}</a></li>' for r in rows) + "</ul>")
     page("questions", kind="page", layout="two",
          title="Questions After an Accident in Summerville | Ask Us",
          description="Questions after an accident in Summerville, answered one page at a time by Frost Law Group, from fault and deadlines to insurance. Find yours or call us.",

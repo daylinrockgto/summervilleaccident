@@ -99,8 +99,8 @@ for row in ROWS:
                   hero_caption="Tara and Jack Frost, Frost Law Group", changefreq="weekly",
                   cta=[("contact", "Get a free case review", "btn light"), ("tel:" + firm.PHONE_E164, firm.PHONE, "btn ghost")])
     elif row["id"] == "es":
-        # Spanish page: single column so no English sidebar, and Spanish labels on the hero buttons.
-        kw.update(layout="one", kind="page", eyebrow="Frost Law Group · Summerville, Carolina del Sur",
+        # Spanish page: a Spanish sidebar (design.aside_long) and Spanish labels on the hero buttons.
+        kw.update(layout="two", kind="page", eyebrow="Frost Law Group · Summerville, Carolina del Sur",
                   cta=[("contact", "Consulta gratis", "btn"), ("tel:" + firm.PHONE_E164, firm.PHONE, "btn ghost")])
     elif row["id"] in ("pa", "loc", "questions"):
         kw.update(layout="two", kind="page")
@@ -109,6 +109,7 @@ for row in ROWS:
     p["_faq_schema"] = _faqs(body)
     p["_llg"] = row["id"]
     p["_kp"] = row.get("kp")
+    p["_type"] = row["type"]
 
 
 # Menus and sidebars follow the manifest: each hub lists its children first, then its answer pages.
@@ -133,6 +134,7 @@ firm.HUB_ATTORNEY = {h: "tara" for h in PRACTICE_HUBS + COUNTY_HUBS}
 firm.CAR = "car-accident-attorneys-in-summerville"
 firm.FOOTER_PRACTICE = [(LABELS[r["id"]], r["slug"]) for r in ROWS if r["type"] == "Practice parent"]
 firm.FOOTER_AREAS = COUNTY_HUBS + CITY_PAGES
+firm.CITY_PAGES = CITY_PAGES
 firm.NAV = [
     ("Practice areas", "practice-areas", PRACTICE_HUBS, "All practice areas"),
     ("Locations", "locations", COUNTY_HUBS, "All locations"),
