@@ -12,6 +12,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - **Branches.** Work on a branch and open a pull request. Never push to `main` directly. Claude merges its own pull request into `main` once `python3 site/build_site.py` exits 0 and every check passes. Merging publishes to staging, so never merge a failing build.
 - **Long-form pages.** The 74 long-form pages come from `llg/pages/*.html`, synced into `site/content/pages/`. See `llg/README.md` for the edit, check, sync and build workflow. Never edit `site/content/pages/*.html` by hand.
 - **Other pages.** Team, bios, contact, reviews, the blog index and the legal pages are in `site/content/core.py`. Blog posts are in `site/content/posts.py`. Their titles and descriptions are in `site/content/meta.py`. Firm facts, navigation defaults and the form endpoint are in `site/content/firm.py`. The redirect map is `site/content/redirects.json`.
+- **Page design.** `site/design.py` turns the long-form copy into sections, H3 accordions, a table of contents, photos and navigation cards at build time. Page photos and their alt text are listed in `site/content/images.json`. The CSS is in `site/assets/site.css`. Never change copy to change the design.
 - **Legacy page.** `site/content/legacy.py` is the old workers' compensation page, kept at its old address with its old copy and linked from nowhere. Never edit it and never link to it.
 - **Build notes.** `site/BUILD-NOTES.md` has the launch checklist and the open items.
 
