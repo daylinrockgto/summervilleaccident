@@ -712,7 +712,8 @@ def person_ld(key):
             "knowsAbout": a["knows"], "sameAs": [s for s in a["same_as"] if s], "description": a["ld_description"],
             "email": a.get("email"), "telephone": firm.PHONE_E164,
             **({"identifier": {"@type": "PropertyValue", "propertyID": "South Carolina Bar Number", "value": a["bar_number"]},
-                "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Admitted to the South Carolina Bar", "dateCreated": a.get("admitted_iso"),
+                "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Admitted to the South Carolina Bar",
+                                  **({"dateCreated": a["admitted_iso"]} if a.get("admitted_iso") else {}),
                                   "recognizedBy": {"@type": "Organization", "name": "Supreme Court of South Carolina"}}} if a.get("bar_number") else {})}
 
 

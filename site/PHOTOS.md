@@ -290,4 +290,6 @@ Every photo is a licensed Canva stock photo. Each was placed in a copy of Canva 
 | Abogado de Accidentes de Carro en Summerville | Featured | `abogado-de-accidentes-de-carro-en-summerville-choque-lateral-carro-blanco-y-azul.jpg` | MAC9YWtp-II |
 | Abogado de Accidentes de Carro en Summerville | Under H2 7 | `abogado-de-accidentes-de-carro-en-summerville-mujer-hablando-por-telefono-en-sofa.jpg` | MADQy-DgdyE |
 
-The home page keeps two firm photos, `couple-formal.jpg` beside the opening copy and `client-meeting.jpg` in the closing call to action. They are not stock photos.
+The home page keeps two firm photos, `couple-formal.jpg` beside the opening copy and `client-meeting.jpg` in the closing call to action. They are not stock photos. Daylin confirmed them on October 7, 2026.
+
+Many child, city and answer pages close with a person on the phone. Daylin approved that on October 7, 2026, as long as no exact photo repeats. Before adding a photo, check that its stock ID is not already in this list and run the near-duplicate scan.

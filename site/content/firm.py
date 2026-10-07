@@ -54,10 +54,15 @@ HOURS_DISPLAY = [("Monday – Thursday", "9:00 AM – 5:00 PM"), ("Friday", "9:0
 HOURS_SHORT = "Office Mon–Thu 9–5 · Fri 9–12, afternoons by appointment"
 HOURS_LD = [("Monday", "09:00", "17:00"), ("Tuesday", "09:00", "17:00"), ("Wednesday", "09:00", "17:00"), ("Thursday", "09:00", "17:00"), ("Friday", "09:00", "12:00")]
 
+# The client's approved fee wording, confirmed 2026-10-07. The client's em dash became a comma, per the house punctuation rules.
+FEE_HEADLINE = "No Fee Unless We Win"
+FEE_TEXT = "You never pay out of pocket. We only collect a fee if we recover compensation for you, so there's no risk in reaching out."
+FEE_WORDING = f"<strong>{FEE_HEADLINE}.</strong> {FEE_TEXT}"
+
 DISCLAIMER = ("This website is attorney advertising and is for informational purposes only; it is not legal advice and does not create an attorney-client relationship. "
               "Prior results do not guarantee a similar outcome. Talk to a licensed South Carolina attorney about your own situation. "
-              "“No fee unless we win” refers to attorney's fees on personal injury cases handled on a contingency fee. A client may be responsible for case costs and expenses "
-              "as set out in the written fee agreement, whether or not there is a recovery.")
+              # The fee wording below is the client's, confirmed by Daylin on 2026-10-07. It replaced a costs sentence that contradicted it.
+              + FEE_WORDING)
 ASIDE_BLURB = "Tell us what happened. An attorney will explain your options and what to do before you talk to the insurance company."
 LLMS_SUMMARY = ("summervilleaccidentattorney.com is the personal injury practice of Frost Law Group, LLC, a husband-and-wife law firm at 128 Linwood Lane in Summerville, South Carolina. "
                 "Attorneys Tara L. Frost, a former Dorchester County Magistrate Judge and former Dorchester County Associate Probate Judge, and Jack C. Frost, who spent fourteen years with the Summerville Police Department and the Charleston County Sheriff's Office, "
@@ -79,7 +84,7 @@ CROSS_LINK_PHRASES = ["Estate planning, probate and criminal defense", "Estate p
 ATTORNEYS = {
     "tara": dict(
         key="tara", slug="attorneys/tara-frost", name="Tara L. Frost", short="Tara Frost", first="Tara", headshot="headshot-tara.jpg", bio_photo="tara-bio.jpg",
-        full_name="Tara Leigh Frost", email="tara@frostlawgroupsc.com", bar_number=None, admitted=None, admitted_iso=None, jd_year="2012",
+        full_name="Tara Leigh Frost", email="tara@frostlawgroupsc.com", bar_number="100610", admitted="November 13, 2012", admitted_iso="2012-11-13", jd_year="2012",
         linkedin="https://www.linkedin.com/in/tara-frost-7b394551/", main_site_bio=MAIN_SITE + "/attorneys/tara-frost/",
         byline="Attorney at Law · Personal injury",
         aside="Tara L. Frost focuses on personal injury, car accident and truck accident claims. A lifelong resident of the tri-county area, she meets clients at the Linwood Lane office in Summerville.",
@@ -90,7 +95,7 @@ ATTORNEYS = {
     ),
     "jack": dict(
         key="jack", slug="attorneys/jack-frost", name="Jack C. Frost", short="Jack Frost", first="Jack", headshot="headshot-jack.jpg", bio_photo="jack-bio.jpg",
-        full_name="Jack Christian Frost", email="jack@frostlawgroupsc.com", bar_number=None, admitted=None, admitted_iso=None, jd_year="2016",
+        full_name="Jack Christian Frost", email="jack@frostlawgroupsc.com", bar_number="103633", admitted="November 27, 2018", admitted_iso="2018-11-27", jd_year="2016",
         linkedin="https://www.linkedin.com/in/jack-c-frost-9a951253/", main_site_bio=MAIN_SITE + "/attorneys/jack-frost/",
         byline="Attorney at Law · Former Summerville police officer and Charleston County Sheriff's Office detective",
         aside="Jack C. Frost spent fourteen years in law enforcement with the Summerville Police Department and the Charleston County Sheriff's Office before he practiced law.",
@@ -100,7 +105,8 @@ ATTORNEYS = {
         ld_description="Summerville, SC attorney; former Summerville Police Department officer and corporal, and former Charleston County Sheriff's Office deputy, master deputy and detective.",
     ),
 }
-# Bar numbers and admission dates (100610 / 2012 and 103633 / 2018 in the first build) are unverified. Add them back only when the client confirms them.
+# Bar numbers and admission dates come from each attorney's South Carolina Judicial Branch attorney directory record
+# (sccourts.org/attorneys), both in Good Standing, confirmed by Daylin on 2026-10-07.
 
 TEAM = {
     "tara": dict(name="Tara L. Frost", role="Attorney at Law · personal injury", photo="headshot-tara.jpg", alt="Tara L. Frost, personal injury attorney", slug="attorneys/tara-frost"),
