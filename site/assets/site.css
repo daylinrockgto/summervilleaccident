@@ -110,7 +110,6 @@ code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;background
 .hero .kicker b{color:var(--navy);font-weight:600}
 .hero figure{margin:0;position:relative}
 .hero figure img{border-radius:var(--r-lg);box-shadow:var(--shadow);aspect-ratio:4/3;object-fit:cover;width:100%}
-.hero figcaption{position:absolute;left:1rem;bottom:1rem;background:rgba(255,255,255,.94);padding:.55rem .85rem;border-radius:8px;font-size:.82rem;color:var(--navy);font-weight:600;box-shadow:var(--shadow)}
 .hero .quote{margin:1.4rem 0 0;font-family:var(--display);font-weight:500;color:var(--muted);font-size:1rem;font-style:normal}
 @media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero figure{order:-1}.hero figure img{aspect-ratio:16/10}}
 .hero.photo{position:relative;background:var(--navy-3);border:0;overflow:hidden;color:#fff}
@@ -546,9 +545,17 @@ main.home .intro>p,main.home .intro .intro-cta,main.home .sec-intro,main.home .a
 main.home .hsec .pcards,main.home .hsec .attys{margin:1.8rem 0 .4rem}
 main.home .cta-band{padding:1rem 0 clamp(2.6rem,5vw,4.4rem)}
 main.home .cta-band .sec-cta{margin-top:0}
-main.home .cta-band .sec-cta .sec-fig img{aspect-ratio:4/3;height:auto;min-height:0}
-main.home .cta-band .sec-cta.has-fig{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-@media (max-width:1100px){main.home .cta-band .sec-cta.has-fig{grid-template-columns:1fr}}
+/* Home closing panel: the firm photo runs edge to edge across the top, anchored high so every face stays in frame,
+   and the four paragraphs sit in two columns under the heading, each paragraph whole. One column below 900px. */
+main.home .cta-band .sec-cta{--pad:clamp(1.6rem,4vw,2.6rem);padding:var(--pad)}
+main.home .cta-band .sec-cta.has-fig{grid-template-columns:1fr;row-gap:0}
+main.home .cta-band .sec-cta .sec-fig{order:-1;align-self:auto;margin:calc(-1*var(--pad)) calc(-1*var(--pad)) clamp(1.6rem,3vw,2.2rem)}
+main.home .cta-band .sec-cta .sec-fig img{aspect-ratio:5/2;height:auto;min-height:0;object-position:center 6%;border-radius:0;box-shadow:none}
+main.home .cta-band .sec-cta .cta-text>h2{max-width:none}
+main.home .cta-band .sec-cta .sec-intro{max-width:none;columns:2;column-gap:clamp(2rem,4vw,3.2rem)}
+main.home .cta-band .sec-cta .sec-intro p{break-inside:avoid}
+@media (max-width:900px){main.home .cta-band .sec-cta .sec-intro{columns:1;max-width:62ch}}
+@media (max-width:760px){main.home .cta-band .sec-cta .sec-fig img{aspect-ratio:16/9;object-position:center 10%}}
 .reviews-band{background:var(--frost);border-top:1px solid var(--ice-2);border-bottom:1px solid var(--ice-2);padding:clamp(2.4rem,5vw,3.8rem) 0}
 .reviews-band .ex-title{margin-top:0}
 .rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:1.1rem;margin:1.2rem 0}
@@ -611,7 +618,6 @@ main.home .intro-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,
   main.home .hsec.sec>.wrap>h2{grid-column:1;grid-row:1/span 8;position:sticky;top:110px;align-self:start}
 }
 @media (max-width:900px){main.home .intro-grid{grid-template-columns:1fr}.intro-fig{max-width:420px}}
-main.home .cta-band .sec-cta .sec-fig{align-self:center}
 /* Blog posts: the H3 to H5 subheads inside an open section */
 .prose.long .sec-intro h3{margin-top:1.6em}
 .prose.long .sec-intro h4{margin-top:1.4em}
