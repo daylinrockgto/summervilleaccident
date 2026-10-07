@@ -80,7 +80,7 @@ The long-form pages were one long block of text. `site/design.py` now turns thei
 - **Intro.** The first paragraph is set larger. On answer pages it sits in a "The short answer" box, since it answers the H1 in 40 to 60 words. The phone paragraph sits in a call box.
 - **Sections.** Each H2 opens a section with an id. The H2's photo sits directly under it.
 - **Accordions.** Each H3, with its H4s and H5s, folds into an accordion. The `<summary>` keeps the real H3 element, so the heading outline search engines and screen readers see is unchanged. The Gold Law theme did the same, and Daylin kept it. A link to an H3 opens its accordion, and "Open all sections" opens every one. Printing opens them all. Blog posts read top to bottom, so their H3s stay open.
-- **Call to action.** The last H2 renders as a navy panel with its photo and two buttons.
+- **Call to action.** The last H2 renders as a navy panel with its photo and two buttons. Beside the sidebar the panel is narrow, so the photo sits above the text as a wide banner.
 - **Sidebar.** The call box and an "On this page" list stay in view while you scroll, and the list marks the section on screen. On phones the list becomes a dropdown at the top of the page.
 - **After the copy.** Hubs and children close with cards for both attorneys and photo cards for the parent's other pages, plus a list of the parent's answer pages.
 - **Home.** Full-width bands, with each H2 beside its paragraphs, the practice area and county photo cards, both attorneys, three Google review quotes, and the firm's own photos (couple-formal.jpg in the intro, client-meeting.jpg in the call to action). The hero is unchanged.
@@ -91,7 +91,9 @@ The long-form pages were one long block of text. `site/design.py` now turns thei
 
 The placement follows the plan in `llg/plan/plan.json` and LLG Part 8. Parent pages, meaning the practice and county parents and the two menu pages, get a featured photo plus one under every H2, the call to action included. About half of their alt texts carry the exact keyphrase. Child, city and answer pages get a featured photo plus one under the final H2, and every alt carries the keyphrase. Answer page keyphrases are full questions, so their alts carry the page's topic phrase instead, such as "statute of limitations".
 
-Every photo is a licensed Canva stock photo, placed in a copy of template DAHS3fxddsA and exported at 1200x675 with no text, logos, plates or AI provenance data. No photo repeats anywhere on the site, and none shows a person who could be taken for the attorneys or staff. Each file name starts with the page's keyphrase and then describes the photo. `images.json` keeps the Canva stock ID for every file.
+Every photo is a licensed Canva stock photo, placed in a copy of template DAHS3fxddsA and exported at 1200x675 with no added text or logos, no readable plates and no AI provenance data. A few show ordinary road signs, such as a crosswalk button. No photo repeats anywhere on the site, and none shows a person who could be taken for the attorneys or staff. Each file name starts with the page's keyphrase and then describes the photo. `site/PHOTOS.md` lists every photo by page with its Canva stock ID and export design.
+
+A visual review swapped three photos before launch. A New York taxi on the pedestrian page became a boy at a crosswalk button. A roadside memorial cross on the fatal car accident page became an empty country road at sunset. A scooter crash on a street outside the United States on the uninsured motorist motorcycle page became a wrecked motorcycle in roadside grass.
 
 ## Blog cover images
 

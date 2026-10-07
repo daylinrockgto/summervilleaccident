@@ -209,7 +209,7 @@ def photo_cards(slugs, cls="pcards"):
         if not pg:
             continue
         lis.append(f'<li><a href="{url(s)}">{card_img(s)}<span class="t">{esc(pg["nav_label"])}</span></a></li>')
-    return f'<ul class="{cls}">' + "".join(lis) + "</ul>" if lis else ""
+    return f'<ul class="{cls} n{len(lis)}">' + "".join(lis) + "</ul>" if lis else ""
 
 
 def link_list(slugs):
