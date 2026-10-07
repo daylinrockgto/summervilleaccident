@@ -170,7 +170,13 @@ def enhance(p, body, inserts=None, shell=_shell, intro_shell=None):
         sections.append((sid, title))
         idx = k + 1
         last = idx == n_h2 and p["kind"] != "post"
-        fig = _figure(imgs["h2"][idx], sizes="(max-width: 760px) 100vw, 440px" if last else "(max-width: 920px) 100vw, 760px") if idx in imgs["h2"] else ""
+        if last and p["kind"] == "home":  # the home closing photo runs across the full panel
+            sizes = "(max-width: 1140px) 100vw, 1080px"
+        elif last:
+            sizes = "(max-width: 760px) 100vw, 440px"
+        else:
+            sizes = "(max-width: 920px) 100vw, 760px"
+        fig = _figure(imgs["h2"][idx], sizes=sizes) if idx in imgs["h2"] else ""
         cut = rest.find("<h3")
         head, tail = (rest, "") if cut == -1 else (rest[:cut], rest[cut:])
         extra = inserts.get(idx, "")

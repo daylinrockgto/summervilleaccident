@@ -528,8 +528,8 @@ def hero_html(p):
         return f'<section class="hero has-photo"><div class="wrap">{text}{fig}</div></section>'
     if p["hero_image"]:
         src, w, h = image_info(p["hero_image"])
-        cap = f'<figcaption>{esc(p["hero_caption"])}</figcaption>' if p["hero_caption"] else ""
-        fig = f'<figure><img src="{src}" alt="{esc(p["hero_caption"] or p["h1"])}" width="{w}" height="{h}" fetchpriority="high">{cap}</figure>'
+        # The caption is the photo's alt text, so it stays hidden in the alt attribute rather than printed over the photo.
+        fig = f'<figure><img src="{src}" alt="{esc(p["hero_caption"] or p["h1"])}" width="{w}" height="{h}" fetchpriority="high"></figure>'
         return f'<section class="hero"><div class="wrap">{text}{fig}</div></section>'
     return f'<section class="hero plain"><div class="wrap">{text}</div></section>'
 
