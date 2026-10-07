@@ -76,6 +76,7 @@ tara_body = (
     '<h2>Education and credentials</h2>'
     + ul([
         "Juris Doctor, Charleston School of Law; Vice President of the Student Trial Lawyers Association; helped institute the Trial Advocacy Board",
+        f'South Carolina Bar No. {firm.ATTORNEYS["tara"]["bar_number"]}, admitted {firm.ATTORNEYS["tara"]["admitted"]}',
         "Dorchester County Associate Probate Judge, August 2025 – June 2026",
         "Dorchester County Magistrate Judge, July 2022 – August 2025",
     ]) +
@@ -105,6 +106,7 @@ jack_body = (
     '<h2>Education and credentials</h2>'
     + ul([
         "Juris Doctor, Charleston School of Law",
+        f'South Carolina Bar No. {firm.ATTORNEYS["jack"]["bar_number"]}, admitted {firm.ATTORNEYS["jack"]["admitted"]}',
         "Bachelor of Science in Criminal Justice and Police Administration, Strayer University",
         "Associate of Science in Criminal Justice, Trident Technical College",
         "Political science studies, College of Charleston",
@@ -229,7 +231,7 @@ terms_body = (
     '<h2>Results and testimonials</h2>'
     '<p>Any results described on this site depended on the facts of that case. Prior results do not guarantee or predict a similar outcome in your case. Client reviews are quoted as written by the reviewer and reflect that person\'s experience.</p>'
     '<h2>Fees</h2>'
-    '<p>“No fee unless we win” refers to attorney\'s fees on personal injury cases handled on a contingency fee. Under South Carolina rules, a client may be responsible for case costs and expenses as set out in the engagement agreement, whether or not there is a recovery. We explain costs in writing before you sign.</p>'
+    f'<p>{firm.FEE_WORDING} We explain costs in writing before you sign.</p>'
     '<h2>Accuracy and changes</h2>'
     '<p>We work to keep the site accurate, and we cite the statute or official source for the legal statements we make. Laws, court addresses and procedures change, and we may not update every page immediately. We may change or remove any content, and these terms, at any time without notice.</p>'
     '<h2>Links</h2>'

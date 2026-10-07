@@ -50,6 +50,22 @@ The fix logs sit outside the repository with the page drafts.
 - **Home hero photo.** The home hero keeps the photo of Tara and Jack with the comfort dogs.
 - **CallRail.** The swap.js tag Daylin supplied runs in the head of every page.
 
+## Decisions settled on October 7, 2026
+
+Daylin confirmed these with the client on October 7.
+
+- **Home page photos.** The home page keeps the firm's own photos, `couple-formal.jpg` in the intro and `client-meeting.jpg` in the call to action.
+- **Closing photos.** Child, city and answer pages may keep closing with a person on the phone, as long as no exact photo repeats. No stock ID or file repeats anywhere on the site, and the near-duplicate scan finds no repeated photo.
+- **Unused generated images.** `county-berkeley.jpg`, `county-charleston.jpg`, `county-colleton.jpg`, `county-dorchester.jpg` and `summerville-downtown.jpg` looked AI-generated and were used nowhere. They are deleted.
+- **Fee wording.** The client's approved wording is "No Fee Unless We Win. You never pay out of pocket. We only collect a fee if we recover compensation for you, so there's no risk in reaching out." The client wrote it with an em dash, which became a comma under the house punctuation rules. It lives in `FEE_HEADLINE` and `FEE_TEXT` in `firm.py`, and it closes the footer disclaimer on every page and the Fees section of the terms page. It replaced the old cost sentence, which said a client may owe costs whether or not there is a recovery and so contradicted the client's wording. The promises row keeps "No fee unless we win" in sentence case to match "Free consultation" and "Available 24/7".
+- **Blog bylines.** The attorneys approve the bylines on all eight posts.
+- **Available 24/7.** Confirmed true. It stays in the promises row, the top bar and the footer.
+- **Bar numbers and admission dates.** These come from each attorney's South Carolina Judicial Branch attorney directory record. Both attorneys are in Good Standing.
+  - Tara Leigh Frost, Bar No. 100610, admitted November 13, 2012.
+  - Jack Christian Frost, Bar No. 103633, admitted November 27, 2018.
+
+  Both appear in `firm.py`, in the Education and credentials list on each bio, and in each attorney's Person structured data as the bar number and the admission date.
+
 ## Launch checklist
 
 1. **Vercel.** Done. Production deploys from `main`, confirmed September 29, and PR 5 merged the Manifest v7 build into `main` that day. The project serves `website/` from this repository with no build step.
@@ -61,14 +77,14 @@ The fix logs sit outside the repository with the page drafts.
 
 ## Open items for Daylin
 
-- **Rule 7.2 and the fee line.** "No fee unless we win" appears site-wide by decision. South Carolina's advertising rule expects a contingent-fee statement to say whether the client owes costs and expenses, on the same page as the statement. The footer on every page now repeats the terms page's cost sentence. The attorneys should confirm it matches their fee agreement.
+- **Rule 7.2 and the fee line.** Resolved October 7, apart from one question. The footer and terms page now carry the client's approved fee wording. South Carolina Rule 7.2(f) says an ad with fee information must disclose whether the client owes any expenses in addition to the fee. The client's wording settles the case with no recovery, since the client never pays out of pocket. It does not say whether case costs come out of a recovery. One more sentence from the client, matching the fee agreement, would close that gap. This reading of 7.2(f) comes from a secondary copy of the rule, so check it against the official Rule 407 text.
 - **Review quotes and the rating.** Resolved September 30. The reviews page says "rated 4.8 stars on Google" with no review count, and the structured data carries no `aggregateRating`, because Google treats a business's own rating markup as self-serving. The review quotes stay by decision.
-- **Blog bylines.** The eight blog posts carry Tara's and Jack's names, including the four October 2026 posts drafted by Legal Leads Group. The attorneys should read and approve each post.
-- **Bar numbers and admission years.** Both are blank, so the attorney markup carries none. Add them to `firm.py` when the client supplies them.
-- **Available 24/7.** The top bar and footer repeat this approved live-site claim. Confirm the phone is answered after hours, or edit `PROMISES` in `firm.py`.
+- **Blog bylines.** Resolved October 7. The attorneys approve the bylines on all eight posts.
+- **Bar numbers and admission years.** Resolved October 7. Both are in `firm.py`, on the bios and in the attorney markup.
+- **Available 24/7.** Resolved October 7. The client confirms it is true.
 - **Spanish page.** It tells callers to ask what language help is available. It does not promise an interpreter or a Spanish-speaking staff member.
 - **Capability statements.** Firm routines the client has not approved were rewritten as what a lawyer can do. The fix logs list the ones worth a quick client read.
-- **Images.** Done October 7, 2026. Every long-form page carries Canva stock photos with alt text, listed in `site/content/images.json`. The home page uses the firm's own photos. Its plan row said its images belonged to the site design, so Daylin should confirm the choice.
+- **Images.** Done October 7, 2026. Every long-form page carries Canva stock photos with alt text, listed in `site/content/images.json`. The home page keeps the firm's own photos, which Daylin confirmed on October 7.
 - **Home review quotes.** The home page shows three Google review quotes (Shannon D., Michelle F. and Kevin O.), per the September 28 decision, with the same disclaimer as the reviews page. None names an outcome or a dollar figure.
 - **Cross-site links.** The header and footer link to frostlawgroupsc.com for estate planning, probate and criminal defense, per the audit.
 

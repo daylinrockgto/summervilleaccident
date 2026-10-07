@@ -34,7 +34,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 
 **Fees and the consultation**
 
-- Page copy carries no fee language. The site template carries "No fee unless we win", and the footer carries the cost and expense disclosure.
+- Page copy carries no fee language. The site template carries "No fee unless we win". The footer on every page and the terms page carry the client's approved fee wording from `FEE_HEADLINE` and `FEE_TEXT` in `site/content/firm.py`. Never reword it, and never add a cost sentence that contradicts it.
 - Never write "first consultation", "initial consultation" or "first meeting". The consultation is free and confidential, with no obligation.
 
 **Tara Frost**
@@ -42,12 +42,14 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - Tara L. Frost is a former Dorchester County Magistrate Judge and a former Dorchester County Associate Probate Judge. Write it in the past tense, as courtroom perspective only.
 - Never write "Judge Frost". Never imply influence or a better outcome.
 - Never put her probate judgeship next to any probate court procedure or settlement approval.
+- Her South Carolina Bar number is 100610, and she was admitted November 13, 2012.
 
 **Jack Frost**
 
 - Jack C. Frost spent fourteen years with the Summerville Police Department and the Charleston County Sheriff's Office.
 - Never write a retirement year for him.
 - Never claim inside access or police relationships.
+- His South Carolina Bar number is 103633, and he was admitted November 27, 2018.
 
 **Geography and content**
 
@@ -75,6 +77,16 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - **2026-09-28. Fee line and reviews.** "No fee unless we win" and the Google review quotes stay.
 - **2026-09-28. Workers' compensation.** The old page keeps its old copy at its old address, unlinked.
 - **2026-09-29. Launch.** PR 5 merged the Manifest v7 build into `main`.
+- **2026-10-07. Client confirmations.**
+  - The home page keeps the firm's own photos.
+  - Repeated closing photos are fine as long as no exact photo repeats.
+  - The unused generated images are deleted.
+  - The client's fee wording replaces the old cost sentence.
+  - The attorneys approve the blog bylines.
+  - "Available 24/7" is true.
+  - Both bar numbers and admission dates are confirmed from the SC Judicial Branch directory.
+
+  `site/BUILD-NOTES.md` has the details.
 
 ## Voice
 
