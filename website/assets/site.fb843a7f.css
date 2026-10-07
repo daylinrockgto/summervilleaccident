@@ -631,3 +631,101 @@ main.home .intro-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,
 .post-card .cover{display:block;margin:-1.3rem -1.3rem .5rem;aspect-ratio:16/9;overflow:hidden;background:var(--frost)}
 .post-card .cover img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
 .post-card:hover .cover img{transform:scale(1.04)}
+
+/* ===================================================================== Visual polish, October 2026
+   Fixes from the site-wide visual sweep. Design only, no copy changes. */
+
+/* Promise check marks sit on the text baseline instead of hanging below it */
+.promises li::before{top:.28em;width:.42em;height:.8em}
+.checks li::before{top:.42em;height:.85em;width:.48em}
+
+/* Breadcrumbs wrap as text, so a long last crumb never starts a line with its separator */
+.crumbs ol{display:block}
+.crumbs li{display:inline;margin:0}
+.crumbs li+li::before{margin:0 .4rem 0 .35rem}
+
+/* Wordmarks and short centered titles wrap in balanced lines */
+.brand .word,.ex-title,.foot .tagline{text-wrap:balance}
+.nw{white-space:nowrap}
+
+/* Top bar: show only what fits, never a cut-off line. Tablets keep the cross-link and the phone,
+   phones keep the promises and the phone, and the narrowest phones center the promises alone
+   (the phone stays in the bar fixed to the bottom of the screen). */
+@media (min-width:721px) and (max-width:860px){.topbar .tag .line{display:none}}
+@media (max-width:720px){.topbar .tag .line .sep{display:none}}
+@media (max-width:520px){
+  .topbar .wrap{justify-content:center;min-height:34px;padding-top:.35rem;padding-bottom:.35rem}
+  .topbar .wrap>a[href^="tel:"]{display:none}
+  .topbar .tag{white-space:normal;overflow:visible;text-align:center;font-size:.8rem;line-height:1.35;text-wrap:balance}
+}
+
+/* Home bands: the band heading lines up with the first paragraph beside it and carries the section rule */
+main.home .hsec.sec>.wrap>h2{margin-top:0}
+main.home .hsec.sec>.wrap>h2::before{content:"";display:block;width:44px;height:3px;border-radius:3px;background:var(--gold);margin:0 0 .9rem}
+/* review names line up across a row of quotes */
+.review footer{margin-top:auto}
+
+/* Posts that open straight into a section: no rule and gap above the first heading beside the sidebar */
+@media (min-width:921px){.prose.long>.toc-m:first-child+.sec{margin-top:0;padding-top:0;border-top:0}}
+
+/* Navigation cards after the copy: two columns under 700px, three above (four for a set of four),
+   and a card left alone on the last row runs as a wide banner instead of sitting beside empty space */
+.explore .pcards{grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+@media (min-width:700px){
+  .explore .pcards{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+  .explore .pcards.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .explore .pcards.n4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .explore .pcards:not(.n4) li:last-child:nth-child(3n+1){grid-column:1/-1}
+  .explore .pcards:not(.n4) li:last-child:nth-child(3n+1) a{aspect-ratio:3/1}
+  .explore .pcards:not(.n4) li:last-child:nth-child(3n+1) .t{font-size:1.1rem;padding:1rem 1.2rem}
+}
+@media (max-width:699px){
+  .explore .pcards .t{font-size:.88rem;padding:.6rem .65rem}
+  .explore .pcards li:last-child:nth-child(odd){grid-column:1/-1}
+  .explore .pcards li:last-child:nth-child(odd) a{aspect-ratio:16/7}
+}
+
+/* Blog index: three columns on wide screens, two on tablets, one on phones. When the count would leave a
+   short last row, the newest post runs wide with its photo beside the text. */
+.posts.idx{grid-template-columns:1fr}
+@media (min-width:600px){.posts.idx{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.posts.idx{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:600px) and (max-width:999px){.posts.idx.f2>li:first-child{grid-column:1/-1}}
+@media (min-width:1000px){.posts.idx.f3-2>li:first-child{grid-column:span 2}.posts.idx.f3-3>li:first-child{grid-column:1/-1}}
+@media (min-width:600px) and (max-width:999px){
+  .posts.idx.f2>li:first-child{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:1fr repeat(4,auto) 1fr;column-gap:1.6rem;padding:1.6rem 1.6rem 1.4rem 0}
+  .posts.idx.f2>li:first-child .cover{grid-column:1;grid-row:1/-1;margin:-1.6rem 0 -1.4rem;aspect-ratio:auto;min-height:100%}
+  .posts.idx.f2>li:first-child>:not(.cover){grid-column:2}
+  .posts.idx.f2>li:first-child h3{font-size:1.5rem;margin:.1rem 0 .3rem}
+}
+@media (min-width:1000px){
+  .posts.idx.f3-2>li:first-child,.posts.idx.f3-3>li:first-child{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:1fr repeat(4,auto) 1fr;column-gap:1.6rem;padding:1.6rem 1.6rem 1.4rem 0}
+  .posts.idx.f3-2>li:first-child .cover,.posts.idx.f3-3>li:first-child .cover{grid-column:1;grid-row:1/-1;margin:-1.6rem 0 -1.4rem;aspect-ratio:auto;min-height:100%}
+  .posts.idx.f3-2>li:first-child>:not(.cover),.posts.idx.f3-3>li:first-child>:not(.cover){grid-column:2}
+  .posts.idx.f3-2>li:first-child h3,.posts.idx.f3-3>li:first-child h3{font-size:1.75rem;margin:.1rem 0 .3rem}
+  .posts.idx.f3-2>li:first-child p,.posts.idx.f3-3>li:first-child p{font-size:1.04rem;line-height:1.6}
+}
+/* the wide card's text sits as one block, centered beside the photo */
+@media (min-width:600px) and (max-width:999px){
+  .posts.idx.f2>li:first-child>.cat{grid-row:2}.posts.idx.f2>li:first-child>h3{grid-row:3}.posts.idx.f2>li:first-child>p{grid-row:4}
+  .posts.idx.f2>li:first-child>.meta{grid-row:5;margin-top:0;padding-top:.7rem}
+}
+@media (min-width:1000px){
+  .posts.idx:is(.f3-2,.f3-3)>li:first-child>.cat{grid-row:2}.posts.idx:is(.f3-2,.f3-3)>li:first-child>h3{grid-row:3}
+  .posts.idx:is(.f3-2,.f3-3)>li:first-child>p{grid-row:4}.posts.idx:is(.f3-2,.f3-3)>li:first-child>.meta{grid-row:5;margin-top:0;padding-top:.7rem}
+}
+
+/* A photo set on its own line in page copy (the office on Our Team) matches the other photos */
+.prose p>img:only-child{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 62%;border-radius:var(--r-lg);box-shadow:var(--shadow)}
+
+/* Phone menu: the call-to-action button reads centered */
+@media (max-width:1060px){.nav .cta a.btn{text-align:center;justify-content:center}}
+
+/* Phones: buttons in a row fill it, and stack at full width when they wrap */
+@media (max-width:460px){.actions .btn{flex:1 1 auto;justify-content:center}}
+
+/* Phones: the space kept for the fixed call bar sits inside the navy footer, not under it as a white strip */
+@media (max-width:760px){body{padding-bottom:0}.foot{padding-bottom:calc(2rem + 64px + env(safe-area-inset-bottom))}}
+
+/* Our Team on phones: two portraits across instead of four full-screen photos in a column */
+@media (max-width:599px){.team{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem .8rem}.team figcaption{padding-top:.55rem}.team figcaption b{font-size:1.02rem;line-height:1.2}.team figcaption span{display:block;font-size:.82rem;line-height:1.4;margin-top:.15rem}}
