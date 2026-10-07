@@ -361,10 +361,18 @@ ICONS = {
 }
 
 
+def post_grid(pgs):
+    """A grid of post cards. When the count would leave a short last row, the newest post runs wide:
+    f3-2 spans two of three columns, f3-3 spans all three, and f2 spans both of two columns."""
+    n = len(pgs)
+    cls = "posts idx" + {1: " f3-3", 2: " f3-2"}.get(n % 3, "") * (n > 1) + " f2" * (n % 2 == 1 and n > 1)
+    return f'<ul class="{cls}">' + "".join(post_card(p) for p in pgs) + "</ul>"
+
+
 def expand_tokens(html):
     html = re.sub(r"\[\[cards:([a-z0-9,/-]+)\]\]", lambda m: cards(m.group(1).split(",")), html)
-    html = re.sub(r"\[\[postcards:([a-z0-9,/-]+)\]\]", lambda m: '<ul class="posts">' + "".join(post_card(BY_SLUG[s]) for s in m.group(1).split(",")) + "</ul>", html)
-    html = re.sub(r"\[\[latestposts:(\d+)\]\]", lambda m: '<ul class="posts">' + "".join(post_card(p) for p in posts_sorted()[: int(m.group(1))]) + "</ul>", html)
+    html = re.sub(r"\[\[postcards:([a-z0-9,/-]+)\]\]", lambda m: post_grid([BY_SLUG[s] for s in m.group(1).split(",")]), html)
+    html = re.sub(r"\[\[latestposts:(\d+)\]\]", lambda m: post_grid(posts_sorted()[: int(m.group(1))]), html)
     html = re.sub(r"\[\[reviews:(\d+)\]\]", lambda m: reviews_html(int(m.group(1))), html)
     html = re.sub(r"\[\[courts:([a-z0-9,_-]+)\]\]", lambda m: courts_html(m.group(1).split(",")), html)
     html = re.sub(r"\[\[author:([a-z]+)(?::([a-z]+))?\]\]", lambda m: author_box(m.group(1), m.group(2)), html)
@@ -410,12 +418,17 @@ def nav_html():
     return f'<nav class="nav" id="nav" aria-label="Main"><ul>{"".join(items)}</ul></nav>'
 
 
+def promise_line():
+    """The three template promises on one line, each kept whole so a wrap falls between promises, never inside one."""
+    return " · ".join(f'<span class="nw">{esc(x)}</span>' for x in firm.PROMISES)
+
+
 def header_html():
     logo_src, lw, lh = image_info(firm.LOGO)
-    promises = " · ".join(firm.PROMISES)
+    promises = promise_line()
     return (
         f'<a class="skip" href="#main">Skip to content</a>'
-        f'<div class="topbar"><div class="wrap"><span class="tag"><span class="line">{esc(promises)} <span style="color:#7f95b0">·</span> </span>'
+        f'<div class="topbar"><div class="wrap"><span class="tag"><span class="line">{promises} <span class="sep" style="color:#7f95b0">·</span> </span>'
         f'<a class="xsite" href="{esc(firm.MAIN_SITE)}/" rel="noopener">{firm.CROSS_LINK_SHORT} →</a></span>'
         f'<a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a></div></div>'
         f'<header class="hdr"><div class="wrap">'
@@ -438,7 +451,7 @@ def footer_html():
     return (
         f'<footer class="foot"><div class="wrap"><div class="grid">'
         f'<div><a class="brand" href="{url("home")}"><img src="{logo_src}" alt="" width="{lw}" height="{lh}"><span class="word">{esc(firm.SITE_NAME)}<small>{esc(firm.SITE_SUB)}</small></span></a>'
-        f'<p class="tagline">{esc(" · ".join(firm.PROMISES))}</p>'
+        f'<p class="tagline">{promise_line()}</p>'
         f'<address><b>{esc(firm.NAME)}</b><br>{firm.STREET}<br>{firm.CITY}, {firm.STATE} {firm.ZIP}<br><a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a><br><a href="mailto:{firm.EMAIL}">{firm.EMAIL}</a></address>'
         f'<p class="small" style="color:#93a4ba;margin:.6rem 0 0">{firm.HOURS_SHORT}</p><div class="soc">{soc}</div>'
         f'<div class="xsite-box"><b>Our main firm site</b><p>{firm.CROSS_LINK_TEXT}, <a href="{esc(firm.MAIN_SITE)}/" rel="noopener">{esc(firm.MAIN_SITE_LABEL)}</a>. Same office, same attorneys, same phone number.</p></div></div>'
@@ -554,7 +567,7 @@ def aside_html(p):
     cards_ = []
     cards_.append(f'<div class="acard navy"><h3>Free case review</h3><a class="big" href="tel:{firm.PHONE_E164}">{firm.PHONE}</a>'
                   f'<p style="margin:0 0 .8rem;font-size:.95rem">{firm.ASIDE_BLURB}</p><a class="btn light sm" href="{url("contact")}">Tell us what happened</a>'
-                  f'<p class="hours" style="color:#b9c9db">{esc(" · ".join(firm.PROMISES))}</p></div>')
+                  f'<p class="hours" style="color:#b9c9db">{promise_line()}</p></div>')
     if p["kind"] in ("hub", "spoke"):
         hub = p["slug"] if p["kind"] == "hub" else p["hub"]
         spokes = [s for s in firm.HUB_SPOKES.get(hub, []) if s in BY_SLUG][:14]

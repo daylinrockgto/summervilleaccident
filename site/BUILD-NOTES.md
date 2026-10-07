@@ -111,6 +111,18 @@ Every photo is a licensed Canva stock photo, placed in a copy of template DAHS3f
 
 A visual review swapped three photos before launch. A New York taxi on the pedestrian page became a boy at a crosswalk button. A roadside memorial cross on the fatal car accident page became an empty country road at sunset. A scooter crash on a street outside the United States on the uninsured motorist motorcycle page became a wrecked motorcycle in roadside grass.
 
+### Visual polish, October 2026
+
+Daylin asked for a polish pass on October 7. Every change is in the design layer (`site.css`, `design.py` and the rendering functions in `build_site.py`). A text snapshot of all 94 pages shows no copy change beyond the removed hero captions.
+
+- **Hero captions.** Blog posts, Our Team and both bios printed the photo's alt text in a white box over the hero photo. The box is gone. The alt text stays in the alt attribute, and the Our Team name cards keep their captions.
+- **Home closing panel.** The firm photo was a small 4:3 picture floating in a tall navy panel. It now runs edge to edge across the top of the panel, anchored high so every face stays in frame, with the paragraphs in two columns under the heading. One column under 900px.
+- **Top bar.** It cut off its text with an ellipsis on phones and small tablets. Each width now shows only what fits in full. Phones show the three promises, tablets show the cross-link and the phone number, and desktops show everything.
+- **Promises.** Each promise stays whole when a line wraps, in the top bar, the footer and the sidebar. The check marks sit on the text line.
+- **Home bands.** Each band heading lines up with the paragraph beside it and carries the gold section rule. The review names line up across the row.
+- **Cards.** A card left alone on the last row of a navigation grid runs as a wide banner. The blog index shows the newest post as a wide card when eight posts would leave an empty cell.
+- **Smaller fixes.** Breadcrumbs wrap as text. Wordmarks and short titles wrap in balanced lines. Phone buttons fill their row. The phone menu button text is centered. The white strip under the footer on phones is gone. Posts with no intro start level with the sidebar. The office photo on Our Team matches the other photos, and the team portraits sit two across on phones.
+
 ## Blog cover images
 
 The four September blog covers (`site/assets/img/cover-*.jpg`) are generated illustrations with no text, logos, plates or people, and the captions say so. Replace the files and rebuild to swap in real photos.
