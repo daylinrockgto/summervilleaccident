@@ -4,17 +4,16 @@
   "buildCommand": null,
   "installCommand": null,
   "outputDirectory": "website",
-  "trailingSlash": true,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/:path(.*)",
       "has": [
         {
           "type": "host",
           "value": "summervilleaccidentattorney.com"
         }
       ],
-      "destination": "https://www.summervilleaccidentattorney.com/:path*",
+      "destination": "https://www.summervilleaccidentattorney.com/:path",
       "permanent": true
     },
     {
@@ -835,6 +834,16 @@
     {
       "source": "/blog/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/",
       "destination": "/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?!\\.well-known(?:/|$))(?:[^/]+/)*[^/.]+)",
+      "destination": "/:path/",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?:[^/]+/)*[^/]+\\.\\w+)/",
+      "destination": "/:path",
       "permanent": true
     }
   ],

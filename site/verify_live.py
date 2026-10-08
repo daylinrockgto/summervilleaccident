@@ -9,7 +9,7 @@ Checks that
   - every URL in the sitemap returns 200 at the base, with no redirect,
   - every page has exactly one canonical, on https://www.summervilleaccidentattorney.com with its own path,
   - every page carries the tel:+18434196653 link, and the CallRail script when firm.CALLRAIL_SCRIPT is set,
-  - every redirect in site/content/redirects.json lands on its destination with a 200, with and without the trailing slash,
+  - every redirect in site/content/redirects.json lands on its destination with a 200 in one permanent hop, with and without the trailing slash,
   - an unknown URL returns 404.
 When the base is the real domain, it also checks that the bare domain and http both end at https://www.
 
@@ -189,17 +189,13 @@ def main():
         if chain[0][0] not in PERMANENT:
             return [f"redirect {old} uses {chain[0][0]}, expected a permanent redirect"]
         if len(chain) > 2:
-            multi.append(show(chain))
+            return [f"redirect {old} takes {len(chain) - 1} hops, expected one: {show(chain)}"]
         return []
-
-    multi = []
 
     with concurrent.futures.ThreadPoolExecutor(WORKERS) as ex:
         redirect_fails = [m for r in ex.map(check_redirect, tests) for m in r]
     fails += redirect_fails
-    print(f"  redirects: {len(tests) - len(redirect_fails)} of {len(tests)} land on their destination with 200 ({len(pairs)} entries, with and without the slash)")
-    if multi:
-        notes.append(f"{len(multi)} redirects take more than one hop, for example {min(multi, key=len)}")
+    print(f"  redirects: {len(tests) - len(redirect_fails)} of {len(tests)} land on their destination with 200 in one hop ({len(pairs)} entries, with and without the slash)")
 
     # unknown URL
     probe = f"/verify-live-{uuid.uuid4().hex[:12]}/"

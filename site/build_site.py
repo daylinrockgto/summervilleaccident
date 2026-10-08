@@ -939,14 +939,18 @@ def write_vercel_json():
         redirects.append({"source": old, "destination": new, "permanent": True})
         redirects.append({"source": old + "/", "destination": new, "permanent": True})
     host = ORIGIN.split("//", 1)[1]
-    redirects.insert(0, {"source": "/:path*", "has": [{"type": "host", "value": host.replace("www.", "")}], "destination": f"{ORIGIN}/:path*", "permanent": True})
+    redirects.insert(0, {"source": "/:path(.*)", "has": [{"type": "host", "value": host.replace("www.", "")}], "destination": f"{ORIGIN}/:path", "permanent": True})  # (.*) so the bare home page is covered too
+    # Trailing slashes. Vercel's "trailingSlash": true runs before every redirect, so an old address typed without its slash
+    # took two hops (add the slash, then the redirect). These are the same two rules that setting generates, placed after the
+    # old addresses instead, so every old address lands on its new page in one hop and every other path still gets its slash.
+    redirects.append({"source": "/:path((?!\\.well-known(?:/|$))(?:[^/]+/)*[^/.]+)", "destination": "/:path/", "permanent": True})
+    redirects.append({"source": "/:path((?:[^/]+/)*[^/]+\\.\\w+)/", "destination": "/:path", "permanent": True})
     cfg = {
         "$schema": "https://openapi.vercel.sh/vercel.json",
         "framework": None,
         "buildCommand": None,
         "installCommand": None,
         "outputDirectory": "website",
-        "trailingSlash": True,
         "redirects": redirects,
         "headers": [
             {"source": "/assets/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]},
