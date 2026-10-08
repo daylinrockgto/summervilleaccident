@@ -181,7 +181,7 @@ page("reviews", kind="page", hub="about", layout="one",
 # ----------------------------------------------------------------------------- BLOG INDEX
 blog_body = (
     '<p class="lead">Local news and neighborhood questions about crashes, injuries and insurance, answered by the attorney who handles those cases. Every article links to the original reporting or the official source, and to the statute where one applies.</p>'
-    '[[latestposts:20]]'
+    '[[latestposts:20:h2]]'
     '<h2>Ask the question that is not answered here</h2>'
     f'<p>Most of these articles started as a question a client, a neighbor or a Nextdoor thread asked. If yours is not here, call {TEL} or use the {A("contact", "contact form")}, and it may become the next one.</p>'
 )
@@ -264,7 +264,7 @@ access_body = (
         "A Spanish-language page is available for Spanish-speaking visitors.",
     ]) +
     '<h2>Known limitations</h2>'
-    + checks([
+    + ul([
         "The interactive map is provided by Google and loads only when you choose it; its accessibility is Google's. The written directions and address on the same page carry the same information as text.",
         "Some links lead to court, agency and news websites and to documents (often PDFs) we do not control.",
     ]) +

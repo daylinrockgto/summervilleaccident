@@ -209,7 +209,7 @@ post(hero_image="hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-b
          ])
          + f'<p>The full explanation, including the unknown-driver rules and how UIM claims are settled, is on {A(CARP + "/uninsured-motorist-coverage-in-south-carolina", "uninsured motorist coverage in South Carolina")}.</p>'
          '<h2>Mistakes that can hurt a UM or UIM claim</h2>'
-         + checks([
+         + ul([
              "Settling with the at-fault driver's insurer before talking to a lawyer about your UIM claim. Section 38-77-160 bars any policy clause that requires your UIM carrier's consent to that settlement, but the statute sets its own rules. Your UIM carrier must be served with the suit papers and has 30 days to appear, and when the at-fault driver's insurer pays its liability limits, the UIM carrier may take over the defense. A lawyer can walk you through those rules before you sign anything.",
              "Waiting too long to report a hit-and-run. To use UM coverage against an unknown driver, Section 38-77-170 requires a report to the police within a reasonable time under the circumstances. The claim also needs physical contact with the other vehicle, a witness other than the owner or driver of your vehicle who signs an affidavit, or, since May 2024, a recording that shows the unknown vehicle caused the crash. Save any video of the crash.",
              "Understating the injury to your own insurer. Your policy likely requires you to report the crash and cooperate. Keep in mind that in a UM or UIM suit, your own carrier is served with the papers and may defend the case in the at-fault driver's name.",
@@ -256,7 +256,7 @@ ECFR_387_9 = "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subch
 ECFR_382_303 = "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-382/subpart-C/section-382.303"
 SCDPS_FATAL = "https://scdps.sc.gov/fatalities"
 DPH_TRAUMA = "https://dph.sc.gov/professionals/healthcare-quality/ems-and-trauma/sc-trauma-system"
-MUSC_TRAUMA = "https://muschealth.org/medical-services/emergency/trauma"
+MUSC_TRAUMA = "https://muschealth.org/medical-services/emergency-urgent-care/trauma-"
 SIMS = "https://www.sccourts.org/media/opinions/HTMLFiles/COA/3291.htm"
 WINTERSTEEN = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/25254.htm"
 ABC4_MONCKS = "https://abcnews4.com/news/local/moncks-corner-receives-12m-grant-for-new-sidewalks-pedestrian-safety-project-infastructure-south-carolina"
