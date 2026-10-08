@@ -192,13 +192,13 @@ def cards(slugs):
     return '<ul class="cards">' + "".join(card(BY_SLUG[s]) for s in slugs) + "</ul>"
 
 
-def post_card(pg):
+def post_card(pg, hl=3):
     a = firm.ATTORNEYS[pg["author"]]
     cover = ""
     if pg.get("hero_image") and image_exists(pg["hero_image"]):
         cover = f'<a class="cover" href="{url(pg["slug"])}" tabindex="-1" aria-hidden="true">{resp_img(pg["hero_image"], "", sizes="(max-width: 700px) 100vw, 360px")}</a>'
-    return (f'<li class="post-card">{cover}<div class="cat">{esc(pg["category"])}</div><h3><a href="{url(pg["slug"])}">{esc(pg["h1"])}</a></h3>'
-            f'<p>{pg["summary"]}</p><div class="meta">{fmt_date(pg["date"])} · {esc(a["short"])}</div></li>')
+    return (f'<li class="post-card">{cover}<div class="cat">{esc(pg["category"])}</div><h{hl}><a href="{url(pg["slug"])}">{esc(pg["h1"])}</a></h{hl}>'
+            f'<p>{pg["summary"]}</p><div class="meta">{fmt_date(pg["date"])}<span class="dot"> · </span><span class="nw">{esc(a["short"])}</span></div></li>')
 
 
 def posts_sorted():
@@ -212,7 +212,7 @@ def fmt_date(d):
 def reviews_html(n):
     out = []
     for r in firm.REVIEWS[:n]:
-        out.append(f'<blockquote class="review"><div class="stars" aria-label="{r["stars"]} out of 5 stars">{"★" * r["stars"]}</div><p>“{esc(r["text"])}”</p><footer><b>{esc(r["name"])}</b> · {esc(r["source"])}</footer></blockquote>')
+        out.append(f'<blockquote class="review"><div class="stars" role="img" aria-label="{r["stars"]} out of 5 stars">{"★" * r["stars"]}</div><p>“{esc(r["text"])}”</p><footer><b>{esc(r["name"])}</b> · {esc(r["source"])}</footer></blockquote>')
     return '<div class="cards three" style="list-style:none">' + "".join(out) + "</div>"
 
 
@@ -361,18 +361,18 @@ ICONS = {
 }
 
 
-def post_grid(pgs):
+def post_grid(pgs, hl=3):
     """A grid of post cards. When the count would leave a short last row, the newest post runs wide:
     f3-2 spans two of three columns, f3-3 spans all three, and f2 spans both of two columns."""
     n = len(pgs)
     cls = "posts idx" + {1: " f3-3", 2: " f3-2"}.get(n % 3, "") * (n > 1) + " f2" * (n % 2 == 1 and n > 1)
-    return f'<ul class="{cls}">' + "".join(post_card(p) for p in pgs) + "</ul>"
+    return f'<ul class="{cls}">' + "".join(post_card(p, hl) for p in pgs) + "</ul>"
 
 
 def expand_tokens(html):
     html = re.sub(r"\[\[cards:([a-z0-9,/-]+)\]\]", lambda m: cards(m.group(1).split(",")), html)
     html = re.sub(r"\[\[postcards:([a-z0-9,/-]+)\]\]", lambda m: post_grid([BY_SLUG[s] for s in m.group(1).split(",")]), html)
-    html = re.sub(r"\[\[latestposts:(\d+)\]\]", lambda m: post_grid(posts_sorted()[: int(m.group(1))]), html)
+    html = re.sub(r"\[\[latestposts:(\d+)(?::h(\d))?\]\]", lambda m: post_grid(posts_sorted()[: int(m.group(1))], int(m.group(2) or 3)), html)
     html = re.sub(r"\[\[reviews:(\d+)\]\]", lambda m: reviews_html(int(m.group(1))), html)
     html = re.sub(r"\[\[courts:([a-z0-9,_-]+)\]\]", lambda m: courts_html(m.group(1).split(",")), html)
     html = re.sub(r"\[\[author:([a-z]+)(?::([a-z]+))?\]\]", lambda m: author_box(m.group(1), m.group(2)), html)
@@ -420,7 +420,7 @@ def nav_html():
 
 def promise_line():
     """The three template promises on one line, each kept whole so a wrap falls between promises, never inside one."""
-    return " · ".join(f'<span class="nw">{esc(x)}</span>' for x in firm.PROMISES)
+    return '<span class="dot"> · </span>'.join(f'<span class="nw">{esc(x)}</span>' for x in firm.PROMISES)
 
 
 def header_html():
@@ -429,10 +429,10 @@ def header_html():
     return (
         f'<a class="skip" href="#main">Skip to content</a>'
         f'<div class="topbar"><div class="wrap"><span class="tag"><span class="line">{promises} <span class="sep" style="color:#7f95b0">·</span> </span>'
-        f'<a class="xsite" href="{esc(firm.MAIN_SITE)}/" rel="noopener">{firm.CROSS_LINK_SHORT} →</a></span>'
+        f'<a class="xsite" href="{esc(firm.MAIN_SITE)}/" rel="noopener" target="_blank">{firm.CROSS_LINK_SHORT} →</a></span>'
         f'<a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a></div></div>'
         f'<header class="hdr"><div class="wrap">'
-        f'<a class="brand" href="{url("home")}" aria-label="{esc(firm.SITE_NAME)} home"><img src="{logo_src}" alt="" width="{lw}" height="{lh}"><span class="word">{esc(firm.SITE_NAME)}<small>{esc(firm.SITE_SUB)}</small></span></a>'
+        f'<a class="brand" href="{url("home")}"><img src="{logo_src}" alt="" width="{lw}" height="{lh}"><span class="word">{esc(firm.SITE_NAME)}<small>{esc(firm.SITE_SUB)}</small></span></a>'
         f'<a class="phone-hdr" href="tel:{firm.PHONE_E164}">{firm.PHONE}</a>'
         f'<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" data-navtoggle>Menu</button>'
         f'{nav_html()}</div><div class="progress" aria-hidden="true"><span></span></div></header>')
@@ -454,21 +454,24 @@ def footer_html():
         f'<p class="tagline">{promise_line()}</p>'
         f'<address><b>{esc(firm.NAME)}</b><br>{firm.STREET}<br>{firm.CITY}, {firm.STATE} {firm.ZIP}<br><a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a><br><a href="mailto:{firm.EMAIL}">{firm.EMAIL}</a></address>'
         f'<p class="small" style="color:#93a4ba;margin:.6rem 0 0">{firm.HOURS_SHORT}</p><div class="soc">{soc}</div>'
-        f'<div class="xsite-box"><b>Our main firm site</b><p>{firm.CROSS_LINK_TEXT}, <a href="{esc(firm.MAIN_SITE)}/" rel="noopener">{esc(firm.MAIN_SITE_LABEL)}</a>. Same office, same attorneys, same phone number.</p></div></div>'
-        f'<div><h3>Injury cases we handle</h3><ul>{pa}</ul></div>'
-        f'<div><h3>Explore</h3><ul>{explore}</ul><h3 style="margin-top:1.4rem">Find us</h3><ul>{find}</ul></div>'
-        f'<div><h3>Locations we serve</h3><ul>{areas}<li><a href="{url("locations")}">All locations →</a></li></ul></div>'
+        f'<div class="xsite-box"><b>Our main firm site</b><p>{firm.CROSS_LINK_TEXT}, <a href="{esc(firm.MAIN_SITE)}/" rel="noopener" target="_blank">{esc(firm.MAIN_SITE_LABEL)}</a>. Same office, same attorneys, same phone number.</p></div></div>'
+        f'<div><h2>Injury cases we handle</h2><ul>{pa}</ul></div>'
+        f'<div><h2>Explore</h2><ul>{explore}</ul><h2 style="margin-top:1.4rem">Find us</h2><ul>{find}</ul></div>'
+        f'<div><h2>Locations we serve</h2><ul>{areas}<li><a href="{url("locations")}">All locations →</a></li></ul></div>'
         f'</div><div class="legal"><p>© {BUILD_DATE[:4]} {esc(firm.NAME)}. {firm.DISCLAIMER}</p>'
-        f'<p><a href="{url("privacy-policy")}">Privacy policy</a> · <a href="{url("terms-of-use")}">Terms of use &amp; legal disclaimer</a> · <a href="{url("accessibility")}">Accessibility</a> · <a href="{url("locations")}">Locations we serve</a>' + ''.join(f' · <a href="{url(p["slug"])}" lang="es">Español</a>' for p in PAGES if p.get("lang") == "es") + '</p></div></div></footer>'
+        f'<p><a href="{url("privacy-policy")}">Privacy policy</a> · <a href="{url("terms-of-use")}">Terms of use &amp; legal disclaimer</a> · <a href="{url("accessibility")}">Accessibility</a> · <a href="{url("locations")}">Locations we serve</a>' + ''.join(f' · <a href="{url(p["slug"])}" lang="es">Español</a>' for p in PAGES if p.get("lang") == "es") + '</p></div></div>' + TOTOP + '</footer>'
         + action_bar())
 
 
+# The back-to-top button sits inside the footer landmark; it is fixed to the corner of the screen wherever it sits in the page.
+TOTOP = '<a class="totop" href="#main" aria-label="Back to top" data-totop><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></a>'
+
+
 def action_bar(lang="en"):
-    """Phone and free review buttons fixed to the bottom of small screens, and a back-to-top button."""
+    """Phone and free review buttons fixed to the bottom of small screens."""
     label = "Consulta gratis" if lang == "es" else "Free case review"
     return (f'<div class="mbar" role="region" aria-label="Contact Frost Law Group"><a class="mbar-call" href="tel:{firm.PHONE_E164}">{design.PHONE_SVG}{firm.PHONE}</a>'
-            f'<a class="mbar-cta" href="{url("contact")}">{label}</a></div>'
-            '<a class="totop" href="#main" aria-label="Back to top" data-totop><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></a>')
+            f'<a class="mbar-cta" href="{url("contact")}">{label}</a></div>')
 
 
 def breadcrumb_trail(p):
@@ -494,7 +497,10 @@ def crumbs_html(p):
     if p["kind"] == "home":
         return ""
     trail = breadcrumb_trail(p)
-    lis = "".join(f'<li><a href="{url(s)}">{esc(l)}</a></li>' for s, l in trail[:-1]) + f'<li aria-current="page">{esc(trail[-1][1])}</li>'
+    # a short crumb stays whole, so a phone never shows "Mount" on one line and "Pleasant" on the next; long titles still wrap
+    nw = lambda l: f'<span class="nw">{esc(l)}</span>' if len(l) <= 26 else esc(l)
+    # crumbs are joined by a space so a line can break between them, with the separator starting the next line
+    lis = " ".join([f'<li><a href="{url(s)}">{nw(l)}</a></li>' for s, l in trail[:-1]] + [f'<li aria-current="page">{nw(trail[-1][1])}</li>'])
     return f'<nav class="crumbs" aria-label="Breadcrumb"><ol>{lis}</ol></nav>'
 
 
@@ -507,7 +513,8 @@ def hero_html(p):
         btns = []
         for target, label, cls in cta:
             href = target if target.startswith(("tel:", "http", "mailto:")) else url(target)
-            btns.append(f'<a class="{cls}" href="{esc(href)}">{esc(label)}</a>')
+            ext = ' rel="noopener" target="_blank"' if href.startswith("http") else ""
+            btns.append(f'<a class="{cls}" href="{esc(href)}"{ext}>{esc(label)}</a>')
         actions = f'<div class="actions">{"".join(btns)}</div>'
     kicker = f'<p class="kicker">{p["kicker"]}</p>' if p["kicker"] else ""
     eyebrow = f'<div class="eyebrow">{esc(p["eyebrow"])}</div>' if p["eyebrow"] else ""
@@ -525,7 +532,10 @@ def hero_html(p):
             eyebrow = f'<div class="eyebrow">{first}<span class="eb2"> · {rest}</span></div>'
         text = f'<div>{kicker}{eyebrow}<h1>{p["h1"]}</h1>{lead}{actions}</div>'
         band_ = f'<div class="quote-band"><div class="wrap">{p["quote"]}</div></div>' if p["quote"] else ""
-        img_html = f'<img class="bg" src="{src}" alt="{esc(p["hero_caption"] or "")}" width="{w}" height="{h}" fetchpriority="high">'
+        srcset = ""
+        if p["hero_image"].lower().endswith((".jpg", ".jpeg")) and w > VARIANT_W + 100 and MODE == "prod":
+            srcset = f' srcset="{src.replace(p["hero_image"], variant_name(p["hero_image"]))} {VARIANT_W}w, {src} {min(w, 1600)}w" sizes="100vw"'
+        img_html = f'<img class="bg" src="{src}"{srcset} alt="{esc(p["hero_caption"] or "")}" width="{w}" height="{h}" fetchpriority="high">'
         if p.get("hero_image_wide"):  # wide crop with room for the text beside the subjects on large screens
             wsrc, _, _ = image_info(p["hero_image_wide"])
             img_html = f'<picture><source media="(min-width:1101px)" srcset="{wsrc}">{img_html}</picture>'
@@ -540,10 +550,10 @@ def hero_html(p):
         fig = f'<figure class="hero-fig">{resp_img(feat[0], feat[1], sizes="(max-width: 820px) 100vw, 500px", lazy=False)}</figure>'
         return f'<section class="hero has-photo"><div class="wrap">{text}{fig}</div></section>'
     if p["hero_image"]:
-        src, w, h = image_info(p["hero_image"])
         # The caption is the photo's alt text, so it stays hidden in the alt attribute rather than printed over the photo.
-        fig = f'<figure><img src="{src}" alt="{esc(p["hero_caption"] or p["h1"])}" width="{w}" height="{h}" fetchpriority="high"></figure>'
-        return f'<section class="hero"><div class="wrap">{text}{fig}</div></section>'
+        fig = f'<figure>{resp_img(p["hero_image"], p["hero_caption"] or p["h1"], sizes="(max-width: 820px) 100vw, 500px", lazy=False)}</figure>'
+        cls = "hero bio" if p["kind"] == "attorney" else "hero"
+        return f'<section class="{cls}"><div class="wrap">{text}{fig}</div></section>'
     return f'<section class="hero plain"><div class="wrap">{text}</div></section>'
 
 
@@ -604,7 +614,7 @@ def aside_html(p):
 def reviews_band():
     """Three Google review quotes for the home page (settled 2026-09-28: the quotes stay on home and reviews)."""
     picks = [r for r in firm.REVIEWS if r["name"] in ("Shannon D.", "Kevin O.", "Michelle F.")]
-    cards = "".join(f'<blockquote class="review"><div class="stars" aria-label="{r["stars"]} out of 5 stars">{"★" * r["stars"]}</div><p>“{esc(r["text"])}”</p><footer><b>{esc(r["name"])}</b> · {esc(r["source"])}</footer></blockquote>' for r in picks)
+    cards = "".join(f'<blockquote class="review"><div class="stars" role="img" aria-label="{r["stars"]} out of 5 stars">{"★" * r["stars"]}</div><p>“{esc(r["text"])}”</p><footer><b>{esc(r["name"])}</b> · {esc(r["source"])}</footer></blockquote>' for r in picks)
     return (f'<section class="hsec reviews-band"><div class="wrap"><p class="ex-title center">Frost Law Group is rated {firm.RATING} stars on Google</p>'
             f'<div class="rev-grid">{cards}</div><p class="small center">Testimonials reflect individual experiences. Prior results do not guarantee a similar outcome. '
             f'<a href="{url("reviews")}">Read more client reviews</a></p></div></section>')
@@ -699,12 +709,20 @@ def share_image(p):
     return ORIGIN + "/assets/img/og.jpg"
 
 
+def share_size(p):
+    """Pixel size of the social card share_image() returns, as built (write_prod caps photos at 1600px wide)."""
+    if share_image(p).endswith("/og.jpg"):
+        return 1200, 630
+    _, w, h = image_info(p["hero_image"])
+    return (1600, round(h * 1600 / w)) if w > 1600 else (w, h)
+
+
 def firm_ld():
     hours = [{"@type": "OpeningHoursSpecification", "dayOfWeek": d, "opens": o, "closes": c} for d, o, c in firm.HOURS_LD]
     d = {
         "@type": ["LegalService", "Attorney"], "@id": ORIGIN + "/#firm", "name": firm.NAME, "alternateName": "Frost Law Group",
         "slogan": firm.TAGLINE, "url": ORIGIN + "/", "telephone": firm.PHONE_E164, "image": ORIGIN + "/assets/img/og.jpg",
-        "logo": ORIGIN + "/assets/img/" + firm.LOGO, "priceRange": "$$",
+        "logo": ORIGIN + "/assets/img/" + firm.LOGO,
         "address": {"@type": "PostalAddress", "streetAddress": firm.STREET, "addressLocality": firm.CITY, "addressRegion": firm.STATE, "postalCode": firm.ZIP, "addressCountry": "US"},
         "openingHoursSpecification": hours, "sameAs": [s for s in firm.SAME_AS if s],
         "areaServed": [{"@type": t, "name": n} for t, n in firm.AREA_SERVED],
@@ -791,12 +809,19 @@ INLINE_JS = r"""
   /* highlight the section in view, fill the reading bar, show the back-to-top button */
   var secs=[].slice.call(document.querySelectorAll('main section.sec[id]')),links={},bar=document.querySelector('.progress span'),top=document.querySelector('[data-totop]');
   document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
-  var ticking=false;function onScroll(){ticking=false;var y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+  var ticking=false,last=null;function onScroll(){ticking=false;var y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
     if(bar&&secs.length){bar.style.width=(h>0?Math.min(100,y/h*100):0)+'%';}
     if(top){top.classList.toggle('show',y>900);}
     var cur=null;for(var i=0;i<secs.length;i++){if(secs[i].getBoundingClientRect().top<140)cur=secs[i].id;}
-    for(var k in links){links[k].classList.toggle('active',k===cur);}}
+    for(var k in links){links[k].classList.toggle('active',k===cur);}
+    /* keep the active entry visible inside a contents list that scrolls on its own */
+    if(cur!==last&&cur&&links[cur]){var ol=links[cur].closest('ol');if(ol&&ol.scrollHeight>ol.clientHeight){var r=links[cur].getBoundingClientRect(),o=ol.getBoundingClientRect();
+      if(r.top<o.top||r.bottom>o.bottom-24){ol.scrollTop+=r.top-o.top-o.height/3;}}}last=cur;}
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});onScroll();
+  /* printing opens every accordion so no section is left out, then closes the ones that were closed */
+  var shut=[];window.addEventListener('beforeprint',function(){document.querySelectorAll('img[loading=lazy]').forEach(function(i){i.loading='eager';});
+    shut=[].slice.call(document.querySelectorAll('details.acc:not([open])'));shut.forEach(function(d){d.open=true;});});
+  window.addEventListener('afterprint',function(){shut.forEach(function(d){d.open=false;});shut=[];});
 })();
 """
 
@@ -815,6 +840,8 @@ def head_html(p):
         f'<link rel="canonical" href="{abs_url(p["slug"])}">{alt}'
         f'<meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(firm.SITE_NAME)} · {esc(firm.NAME)}"><meta property="og:title" content="{esc(p["title"])}">'
         f'<meta property="og:description" content="{esc(p["description"])}"><meta property="og:url" content="{abs_url(p["slug"])}"><meta property="og:image" content="{share_image(p)}">'
+        f'<meta property="og:image:width" content="{share_size(p)[0]}"><meta property="og:image:height" content="{share_size(p)[1]}">'
+        f'<meta property="og:locale" content="{"es_US" if lang == "es" else "en_US"}">'
         '<meta name="twitter:card" content="summary_large_image">'
         f'<meta name="geo.region" content="US-SC"><meta name="geo.placename" content="{firm.CITY}">'
         '<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">'
@@ -825,12 +852,60 @@ def head_html(p):
         '</head><body>')
 
 
+_MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
+_KEEP_ANY = re.compile(r"\b(?:\d+(?:-\d+)+(?:\([0-9a-z]+\))*|[A-Z]{1,3}-\d+[A-Za-z]?)(?![\w-])")  # 38-77-140, 15-3-530(6), FR-10, I-26
+_KEEP_HEAD = re.compile(rf"\b(?:\w+(?:-\w+)+|(?:{_MONTHS}) \d{{1,2}})(?![\w-])")  # Hands-Free, Three-Year, January 1
+
+
+def keep_together(html):
+    """Markup only, no word changes: inside <main>, wrap statute numbers and form names (and, in headings and contents links,
+    any hyphenated word or month and day) in a no-wrap span, so a line never breaks inside them. Phone links are left alone
+    so CallRail's number swap still finds the number as one text node."""
+    a, b = html.find("<main"), html.rfind("</main>")
+    if a < 0 or b < 0:
+        return html
+    parts = re.split(r"(<[^>]+>)", html[a:b])
+    out, heading, anchor, skip, nw = [], False, None, None, 0
+    for seg in parts:
+        if seg.startswith("<"):
+            t = seg.lower()
+            if re.match(r"<h[1-4]\b", t):
+                heading = True
+            elif re.match(r"</h[1-4]>", t):
+                heading = False
+            elif t.startswith("<a "):
+                anchor = "tel" if 'href="tel:' in t else ("hash" if 'href="#' in t else "other")
+            elif t == "</a>":
+                anchor = None
+            m = re.match(r"<(script|style|option|textarea)\b", t)
+            if m:
+                skip = m.group(1)
+            elif skip and t == f"</{skip}>":
+                skip = None
+            if t.startswith('<span class="nw"'):
+                nw += 1
+            elif nw and t == "</span>":
+                nw -= 1
+            out.append(seg)
+            continue
+        if seg and not skip and not nw and anchor != "tel":
+            seg = (_KEEP_HEAD if heading or anchor == "hash" else _KEEP_ANY).sub(lambda m: m.group(0) if re.fullmatch(r"\d{3}-\d{4}", m.group(0)) else f'<span class="nw">{m.group(0)}</span>', seg)
+        out.append(seg)
+    return html[:a] + "".join(out) + html[b:]
+
+
+def in_main(hero, body):
+    """Put the hero inside the page's <main> element, right after its opening tag."""
+    m = re.match(r"<main\b[^>]*>", body)
+    return body[:m.end()] + hero + body[m.end():] if m else hero + body
+
+
 def render_prod(p):
     foot = footer_html()
     if p.get("lang") == "es":
         foot = foot.replace(f'<a class="mbar-cta" href="{url("contact")}">Free case review</a>', f'<a class="mbar-cta" href="{url("contact")}">Consulta gratis</a>')
-    doc = head_html(p) + header_html() + hero_html(p) + body_html(p) + foot + f"<script>{INLINE_JS}</script></body></html>"
-    return expand_tokens(doc)
+    doc = head_html(p) + header_html() + in_main(hero_html(p), body_html(p)) + foot + f"<script>{INLINE_JS}</script></body></html>"
+    return keep_together(expand_tokens(doc))
 
 
 def write_prod():
@@ -887,7 +962,7 @@ def write_prod():
     p404 = dict(BY_SLUG["home"], slug="404", title="Page not found | Summerville Accident Attorney", description="That page has moved.", h1="We couldn't find that page", kind="page", layout="one", noindex=True,
                 eyebrow="Page not found", lead="The address may have changed when we rebuilt the site. The links below will get you where you were headed.", kicker="", quote="", hero_image=None, hero_style=None, hero_image_wide=None, cta=None, faqs=[], related=[], sources=[], lang="en", alternate=None,
                 body='<p>Try one of these: <a href="[[car-accident-attorneys-in-summerville]]">Car accidents</a>, <a href="[[practice-areas]]">All practice areas</a>, <a href="[[locations]]">Locations we serve</a>, <a href="[[contact]]">Free case review</a>, or call <a href="tel:' + firm.PHONE_E164 + '">' + firm.PHONE + "</a>.</p>")
-    html = expand_tokens(head_html(p404).replace(f'<link rel="canonical" href="{abs_url("404")}">', "") + header_html() + hero_html(p404) + body_html(p404) + footer_html() + f"<script>{INLINE_JS}</script></body></html>")
+    html = expand_tokens(head_html(p404).replace(f'<link rel="canonical" href="{abs_url("404")}">', "") + header_html() + in_main(hero_html(p404), body_html(p404)) + footer_html() + f"<script>{INLINE_JS}</script></body></html>")
     open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(html)
 
 
@@ -996,7 +1071,7 @@ def write_og():
         im = Image.open(src).convert("RGB")
         scale = max(W / im.width, H / im.height)
         im = im.resize((round(im.width * scale), round(im.height * scale)), Image.LANCZOS)
-        left, top = (im.width - W) // 2, (im.height - H) // 2
+        left, top = (im.width - W) // 2, 0  # anchored at the top, so the standing attorney's face stays in the card
         im = im.crop((left, top, left + W, top + H))
     else:
         im = Image.new("RGB", (W, H), "#0f2a4a")
@@ -1009,7 +1084,12 @@ def write_og():
     except Exception:
         f1 = f2 = ImageFont.load_default()
     d.text((48, H - 140), "Summerville Accident Attorney", fill="#ffffff", font=f1)
-    d.text((48, H - 70), f"Frost Law Group · Personal injury · {' · '.join(firm.PROMISES)} · {firm.PHONE}", fill="#cfdcea", font=f2)
+    line = f"Frost Law Group · Personal injury · {' · '.join(firm.PROMISES)} · {firm.PHONE}"
+    size = 28
+    while size > 18 and hasattr(f2, "path") and d.textlength(line, font=f2) > W - 96:  # the whole line fits inside the card's margins
+        size -= 1
+        f2 = ImageFont.truetype(f2.path, size)
+    d.text((48, H - 70), line, fill="#cfdcea", font=f2)
     im.save(path, "JPEG", quality=85, optimize=True)
 
 

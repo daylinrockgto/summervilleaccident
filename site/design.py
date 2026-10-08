@@ -129,7 +129,8 @@ def _intro(p, intro):
 
 
 def toc_items(p, sections):
-    return "".join(f'<li><a href="#{sid}">{esc(title)}</a></li>' for sid, title in sections)
+    # the title sits in one span, so the entry stays one grid cell beside its number whatever inline markup it holds
+    return "".join(f'<li><a href="#{sid}"><span>{esc(title)}</span></a></li>' for sid, title in sections)
 
 
 def toc_mobile(p, sections, always=False):
@@ -200,21 +201,23 @@ def enhance(p, body, inserts=None, shell=_shell, intro_shell=None):
 # ---------------------------------------------------------------- cards and panels
 
 
-def card_img(slug):
+def card_img(slug, wide=False):
     pg = BY_SLUG.get(slug)
     f = featured(pg) if pg else None
     if not f:
         return '<span class="ph" aria-hidden="true"></span>'
-    return resp_img(f[0], "", sizes="(max-width: 600px) 100vw, 300px", cls="thumb")
+    # a card left alone on its row runs as a wide banner, so it asks for the full-size photo on larger screens
+    return resp_img(f[0], "", sizes="(max-width: 600px) 100vw, " + ("900px" if wide else "300px"), cls="thumb")
 
 
 def photo_cards(slugs, cls="pcards"):
     lis = []
-    for s in slugs:
-        pg = BY_SLUG.get(s)
-        if not pg:
-            continue
-        lis.append(f'<li><a href="{url(s)}">{card_img(s)}<span class="t">{esc(pg["nav_label"])}</span></a></li>')
+    slugs = [s for s in slugs if BY_SLUG.get(s)]
+    n = len(slugs)
+    for i, s in enumerate(slugs):
+        pg = BY_SLUG[s]
+        wide = i == n - 1 and ((n % 3 == 1 and n != 4) or n % 2 == 1)
+        lis.append(f'<li><a href="{url(s)}">{card_img(s, wide)}<span class="t">{esc(pg["nav_label"])}</span></a></li>')
     return f'<ul class="{cls} n{len(lis)}">' + "".join(lis) + "</ul>" if lis else ""
 
 
@@ -249,7 +252,11 @@ def explore(p):
         if answers:
             out.append(f'<p class="ex-title">{lab(p, "questions")}</p>{link_list(answers)}')
     else:
-        sib = [s for s in pages if s != p["slug"]][:5]
+        sib = [s for s in pages if s != p["slug"]]
+        if len(sib) > 5:  # more siblings than the grid holds: take the five after this page, wrapping round, so every child shows somewhere
+            i = pages.index(p["slug"]) if p["slug"] in pages else -1
+            sib = [s for s in pages[i + 1:] + pages[:max(i, 0)] if s != p["slug"]]
+        sib = sib[:5]
         out.append(f'<p class="ex-title">{esc(hp["section_label"] or hp["nav_label"])}</p>{photo_cards([hub] + sib)}')
         if p.get("_type") == "Answer page":
             others = [s for s in answers if s != p["slug"]][:8]

@@ -729,3 +729,72 @@ main.home .hsec.sec>.wrap>h2::before{content:"";display:block;width:44px;height:
 
 /* Our Team on phones: two portraits across instead of four full-screen photos in a column */
 @media (max-width:599px){.team{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem .8rem}.team figcaption{padding-top:.55rem}.team figcaption b{font-size:1.02rem;line-height:1.2}.team figcaption span{display:block;font-size:.82rem;line-height:1.4;margin-top:.15rem}}
+
+/* ===================================================================== Final QA, October 2026
+   Fixes from the pre-launch QA. Design and markup only, no copy changes. */
+
+/* Footer promises stack one per line, so no line starts or ends with a separator dot */
+.foot .tagline .nw{display:block}
+.foot .tagline .dot{display:none}
+
+/* Footer column headings are H2 elements so the page outline never skips a level; they keep the label style */
+.foot h2{color:#fff;font:650 .78rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin:0 0 .9rem}
+
+/* Blog index cards carry H2 titles under the H1; they keep the card title sizes */
+.post-card h2{margin:0;font-size:1.2rem}
+.post-card h2 a{text-decoration:none;color:var(--navy)}
+@media (min-width:600px) and (max-width:999px){.posts.idx.f2>li:first-child h2{font-size:1.5rem;margin:.1rem 0 .3rem}.posts.idx.f2>li:first-child>h2{grid-row:3}}
+@media (min-width:1000px){
+  .posts.idx.f3-2>li:first-child h2,.posts.idx.f3-3>li:first-child h2{font-size:1.75rem;margin:.1rem 0 .3rem}
+  .posts.idx:is(.f3-2,.f3-3)>li:first-child>h2{grid-row:3}
+}
+
+/* The main firm site link in the footer box is underlined, so it never relies on color alone */
+.xsite-box a{text-decoration:underline;text-underline-offset:2px}
+
+/* A link to an H3 lands with its accordion row clear of the sticky header */
+.acc>summary h3[id]{scroll-margin-top:1.5rem}
+
+/* Print: closed accordions print open (current browsers ignore display on the body of a closed details) */
+@media print{details.acc::details-content{content-visibility:visible}h2,h3,h4,.acc>summary{break-after:avoid}figure,.sec-fig,.prose img{break-inside:avoid}}
+
+/* Phone numbers never break at their hyphen; statute numbers, form names and hyphenated heading words stay on one line
+   (the build wraps them in .nw); breadcrumbs avoid a one-word last line */
+a[href^="tel:"]{white-space:nowrap}
+.crumbs{text-wrap:pretty}
+
+/* The call card's promises stack one per line, like the footer, so no line ends on a separator dot */
+.acard .hours .nw{display:block}
+.acard .hours .dot{display:none}
+
+/* Contact hours: the day stays on one line and every time sits flush right, wrapped or not */
+.nap .hours li>span:first-child{flex:none}
+.nap .hours li>span:last-child{text-align:right}
+
+/* Call-to-action bands: on wide screens the two buttons stack at one equal width */
+@media (min-width:761px){.band .actions{display:grid;grid-template-columns:minmax(0,1fr);justify-items:stretch;gap:.6rem}.band .actions .btn{justify-content:center;text-align:center}}
+
+/* Short headings, question rows and buttons wrap in balanced lines instead of leaving one word alone */
+h5,h6,summary,.btn{text-wrap:balance}
+
+/* Attorney portraits in the bio hero keep the whole head in the 4:3 and 16:10 crops */
+.hero.bio figure img{object-position:center 15%}
+
+/* Under 921px the sidebar follows the page's own call-to-action band, so its call card turns light
+   instead of stacking a second navy box under the first */
+@media (max-width:920px){
+  .layout:not(.long) .acard.navy{background:var(--frost);color:var(--ink);border-color:var(--line)}
+  .layout:not(.long) .acard.navy h3,.layout:not(.long) .acard.navy a.big{color:var(--navy)}
+  .layout:not(.long) .acard.navy .btn.light{background:var(--navy);border-color:var(--navy);color:#fff}
+  .layout:not(.long) .acard.navy p.hours{color:var(--muted)!important}
+}
+
+/* Related posts under an article: the compact cards put the date and the author on two lines, with no separator dot */
+@media (min-width:700px){.explore .post-card .meta .dot{display:none}.explore .post-card .meta .nw{display:block}}
+
+/* A contents list too long for the sticky sidebar fades at its bottom edge, so the scroll reads as intended
+   and no entry looks cut off; the padding lets the last entry scroll clear of the fade */
+.aside-stick .toc ol{padding-bottom:1.75rem;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 1.75rem),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 1.75rem),transparent);scrollbar-width:thin}
+/* the space between crumbs is the break point; the separator's left margin shrinks by about that space */
+.crumbs li+li::before{margin-left:.12rem}
+
