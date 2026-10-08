@@ -25,7 +25,7 @@ The page structure follows Legal Leads Group's **Page Manifest v7** (September 2
 | `site/content/firm.py` | Firm facts, phone, hours, the approved fee wording, each attorney's bar record, the CallRail tag, the form endpoint and the structured data inputs |
 | `site/content/meta.py` | Titles and descriptions for the pages that are not long-form pages |
 | `site/assets/site.css` | Every style. The page design work starts at the `Page design, October 2026` banner |
-| `site/assets/img/` | Every image. The firm's own photos, the blog covers and 270 Canva stock photos for the long-form pages |
+| `site/assets/img/` | Every image. The firm's own photos, the eight blog covers and 270 Canva stock photos for the long-form pages. The covers are Canva stock photos too, listed in `site/BUILD-NOTES.md` |
 | `site/BUILD-NOTES.md` | How the pages are written and checked, the settled decisions, the launch checklist and the open items |
 | `site/PHOTOS.md` | Every stock photo by page, with its file name and Canva stock ID |
 | `llg/` | The page kit. `llg/pages/*.html` is the source of truth for long-form copy. `llg/README.md` explains the edit, check, sync and build workflow |

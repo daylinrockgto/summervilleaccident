@@ -76,8 +76,8 @@ def post(**kw):
 
 
 # ----------------------------------------------------------------------------- 1. I-26 crash report
-post(hero_image="cover-i26-report.jpg",
-     hero_caption="A patrol car with its lights on, stopped on the shoulder behind a car on a highway lined with pines (illustration)",
+post(hero_image="crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it-wrecked-sedan-on-highway-shoulder.jpg",
+     hero_caption="A wrecked blue sedan with a crushed front end sits in the grass beside a highway lined with tall pines.",
      category="Car accidents",
      title="Crash on I-26 Near Summerville: Who Writes the Report, and How to Get It",
      description="After a crash on I-26 near Summerville, a Highway Patrol trooper often writes the report. What the FR-10 is, why it goes back to SCDMV within 15 days, and how to get the TR-310.",
@@ -116,8 +116,8 @@ post(hero_image="cover-i26-report.jpg",
            ("What if the report says the crash was my fault?", "The officer's contributing-factor findings are an opinion, not a ruling. Fault in an injury claim is decided on all the evidence, and Section 56-5-1290 bars using the reports required by Sections 56-5-1260 through 56-5-1280 as evidence of negligence at a damages trial.")])
 
 # ----------------------------------------------------------------------------- 2. Dog bites in the neighborhood
-post(hero_image="cover-dog-bite-neighborhood.jpg",
-     hero_caption="A dog standing outside a fence gate near a child's bicycle on the sidewalk (illustration)", category="Dog bites",
+post(hero_image="a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know-dog-barking-behind-iron-gate.jpg",
+     hero_caption="A barking dog stands behind an iron gate beside a paved walkway with shrubs and fallen leaves.", category="Dog bites",
      title="A Dog Bite in a Summerville Neighborhood: What Parents Should Know",
      description="A loose dog, a child, and a neighbor who says the dog never bit before. What South Carolina's dog bite statute says, who must report the bite, who usually pays, and what to do first.",
      h1="A dog bite in a Summerville neighborhood: what parents should know",
@@ -159,8 +159,8 @@ post(hero_image="cover-dog-bite-neighborhood.jpg",
            ("Will my neighbor have to pay out of pocket?", "Usually not, if the neighbor has homeowner's or renter's liability coverage that applies. That policy responds to the claim, subject to its limits and exclusions.")])
 
 # ----------------------------------------------------------------------------- 3. Motorcycle season and the helmet question
-post(hero_image="cover-motorcycle-season.jpg",
-     hero_caption="A motorcycle on a back road under moss-draped live oaks (illustration)", category="Motorcycle accidents",
+post(hero_image="motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim-rider-in-helmet-on-wooded-road.jpg",
+     hero_caption="A rider in a full face helmet and leather jacket rides a motorcycle down a two lane road past tall trees.", category="Motorcycle accidents",
      title="Motorcycle Season in the Lowcountry: The Helmet Question and Your Claim",
      description="After a motorcycle crash, riders ask whether not wearing a helmet hurts the claim. What South Carolina's helmet and eye protection laws say, and what they leave to the facts.",
      h1="Motorcycle season in the Lowcountry: the helmet question and your claim",
@@ -190,8 +190,8 @@ post(hero_image="cover-motorcycle-season.jpg",
            ("Is lane-splitting legal in South Carolina?", "No. Section 56-5-3640 bars riding between lanes of traffic or between rows of vehicles. Motorcycles may ride no more than two abreast in one lane.")])
 
 # ----------------------------------------------------------------------------- 4. Goose Creek UM
-post(hero_image="cover-goose-creek-uninsured.jpg",
-     hero_caption="A damaged sedan stopped against the side of an SUV near a traffic light (illustration)", category="Car accidents",
+post(hero_image="hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer-two-cars-after-collision.jpg",
+     hero_caption="A small blue car with a crumpled hood sits jammed against a dark car as steam rises after a collision.", category="Car accidents",
      title="Hit by an Uninsured Driver in Goose Creek? Your Own Policy May Be the Answer",
      description="When the driver who hit you in Goose Creek had no insurance or too little, the UM coverage on every South Carolina policy, and any UIM coverage you carry, may pay. How it works and what to avoid.",
      h1="Hit by an uninsured driver in Goose Creek? Your own policy may be the answer",

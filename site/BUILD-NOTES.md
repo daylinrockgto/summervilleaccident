@@ -83,6 +83,7 @@ Daylin confirmed these with the client on October 7.
   | `/blog/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/` | `/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/` |
 
   The Manifest v7 documents in `llg/v2/` still list the four September posts at their old addresses. They are the dated September 28 record, and this decision supersedes them for blog posts.
+- **Blog covers.** The four September covers were generated illustrations. Daylin had them replaced with licensed Canva stock photos, made the same way as the October covers, so the site carries no generated images. Their captions describe the new photos, and the "Blog cover images" table lists all eight covers.
 
 ## Launch checklist
 
@@ -143,12 +144,16 @@ Daylin asked for a polish pass on October 7. Every change is in the design layer
 
 ## Blog cover images
 
-The four September blog covers (`site/assets/img/cover-*.jpg`) are generated illustrations with no text, logos, plates or people, and the captions say so. Replace the files and rebuild to swap in real photos.
+All eight blog covers are licensed Canva stock photos, placed in copies of Canva template DAHS3fxddsA and exported as 1920x1080 JPGs with no text, logos, plates or AI provenance data. The caption, which is also the alt text, describes what the photo shows. A post's hero image is also its social card and BlogPosting image. The post hero crops the cover to 4:3 on desktop and 16:10 on phones, and the cards show it at 16:9, so each subject sits near the center. Do not reuse these stock photos on another post or page.
 
-The four October 2026 posts use licensed Canva stock photos, placed in copies of Canva template DAHS3fxddsA and exported as 1920x1080 JPGs with no text, logos, plates or AI provenance data. Each file is named for the post's final CTA heading, and the caption, which is also the alt text, describes what the photo shows. A post's hero image is also its social card and BlogPosting image. Do not reuse these stock photos on another post.
+The four October posts' files are named for each post's final CTA heading. The four September posts have no CTA heading, so their files are named for the post's slug and then the subject. The September covers replaced generated illustrations on October 8, 2026.
 
 | Post | File | Canva stock ID | Canva design |
 | --- | --- | --- | --- |
+| Crash on I-26 near Summerville report | `crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it-wrecked-sedan-on-highway-shoulder.jpg` | MAGZanmWg9M | DAHXceP5LrE |
+| Dog bite in a Summerville neighborhood | `a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know-dog-barking-behind-iron-gate.jpg` | MAEEP3Y6VTw | DAHXceP5LrE |
+| Motorcycle season and the helmet question | `motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim-rider-in-helmet-on-wooded-road.jpg` | MAEEXHNkvqk | DAHXceP5LrE |
+| Uninsured driver in Goose Creek | `hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer-two-cars-after-collision.jpg` | MADlD2viOGg | DAHXceP5LrE |
 | Summerville car accident medical bills | `talk-with-a-summerville-car-accident-lawyer-at-frost-law-group-today.jpg` | MAEWePdFnOY | DAHXR5r9A4c |
 | Goose Creek motorcycle shared fault | `call-a-goose-creek-motorcycle-accident-lawyer-before-you-accept-a-reduced-offer.jpg` | MADAaSpIXVg | DAHXR69-77Q |
 | Moncks Corner slip and fall liability | `talk-to-a-moncks-corner-slip-and-fall-lawyer-before-the-video-is-gone.jpg` | MAED4fviN6M | DAHXR_yiA7g |
