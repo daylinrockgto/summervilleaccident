@@ -798,3 +798,50 @@ h5,h6,summary,.btn{text-wrap:balance}
 /* the space between crumbs is the break point; the separator's left margin shrinks by about that space */
 .crumbs li+li::before{margin-left:.12rem}
 
+/* Final QA, tablet and narrow-phone widths */
+
+/* The narrowest phones: the top bar's promises wrap with check marks instead of a separator dot ending a line */
+@media (max-width:389px){
+  .topbar .tag .line .dot{display:none}
+  .topbar .tag .line .nw{display:inline-block;margin:0 .4rem}
+  .topbar .tag .line .nw::before{content:"";display:inline-block;width:.3em;height:.6em;margin:0 .45em .15em 0;border-right:2px solid #e8c76a;border-bottom:2px solid #e8c76a;transform:rotate(45deg)}
+}
+
+/* Review quotes: one column on phones, two on tablets with an odd last quote running full width, three on wide screens;
+   the reviews page keeps two columns so eight quotes fill four even rows */
+.rev-grid{grid-template-columns:1fr}
+@media (min-width:600px){.rev-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rev-grid>:last-child:nth-child(odd){grid-column:1/-1}}
+@media (min-width:1000px){.rev-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.rev-grid>:last-child:nth-child(odd){grid-column:auto}}
+.cards.revs{grid-template-columns:1fr}
+@media (min-width:600px){.cards.revs{grid-template-columns:repeat(2,minmax(0,1fr))}.cards.revs>:last-child:nth-child(odd){grid-column:1/-1}}
+
+/* Photo card labels stay readable over bright photos */
+.pcards a::after{background:linear-gradient(180deg,rgba(11,31,55,0) 25%,rgba(11,31,55,.5) 58%,rgba(11,31,55,.92) 100%)}
+.pcards .t{text-shadow:0 1px 6px rgba(0,0,0,.45)}
+
+/* Nine practice cards on tablets: three across, so no card is left alone on a last row */
+@media (min-width:600px) and (max-width:900px){.pcards.three.n9{grid-template-columns:repeat(3,minmax(0,1fr))}.pcards.three.n9 li:last-child:nth-child(odd){grid-column:auto}.pcards.three.n9 li:last-child:nth-child(odd) a{aspect-ratio:4/3}}
+
+/* A set of four help cards beside the sidebar runs two by two, so each label sits on a photo wide enough to read */
+@media (min-width:700px){.layout.long .explore .pcards.n4{grid-template-columns:repeat(2,minmax(0,1fr))}.layout.long .explore .pcards.n4 a{aspect-ratio:16/9}}
+
+/* Legal and other one-column pages keep text at a readable line length; grids still use the full width */
+.layout.single:not(.long)>.main.prose>:is(p,h2,h3,h4,blockquote,ul:not([class]),ol:not([class]),ul.checks,ol.steps,.callout){max-width:72ch}
+
+/* Attorney bio hero on tablets and phones: a portrait-shaped photo at its own size instead of a stretched wide crop */
+@media (max-width:820px){.hero.bio figure{max-width:340px}.hero.bio figure img{aspect-ratio:4/5;object-position:center 20%}}
+
+/* Home intro portrait: centered when the band stacks, and its frame stays inside the screen on phones */
+@media (max-width:900px){.intro-fig{margin-inline:auto}}
+@media (max-width:460px){.intro-fig::before{inset:-8px 8px 8px -8px}}
+
+/* Accordion titles fill their row before wrapping */
+.acc>summary h3{text-wrap:pretty}
+
+/* Contact details on tablets: office and phone side by side, hours across the full width */
+@media (min-width:600px) and (max-width:1023px){.nap{grid-template-columns:repeat(2,minmax(0,1fr))}.nap>:nth-child(3):last-child{grid-column:1/-1}}
+
+/* Footer: two columns up to small laptops, four only when each column has room */
+@media (max-width:1100px){.foot .grid{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.foot .grid{grid-template-columns:1fr}}
+

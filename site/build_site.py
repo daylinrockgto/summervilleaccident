@@ -213,7 +213,7 @@ def reviews_html(n):
     out = []
     for r in firm.REVIEWS[:n]:
         out.append(f'<blockquote class="review"><div class="stars" role="img" aria-label="{r["stars"]} out of 5 stars">{"★" * r["stars"]}</div><p>“{esc(r["text"])}”</p><footer><b>{esc(r["name"])}</b> · {esc(r["source"])}</footer></blockquote>')
-    return '<div class="cards three" style="list-style:none">' + "".join(out) + "</div>"
+    return '<div class="cards three revs" style="list-style:none">' + "".join(out) + "</div>"
 
 
 def team_html():
@@ -345,9 +345,9 @@ def author_box(key, reviewer=None):
     rev = ""
     if reviewer:
         r = firm.ATTORNEYS[reviewer]
-        rev = f' Reviewed by <a href="{url(r["slug"])}">{esc(r["name"])}</a>.'
+        rev = f' Reviewed by <a href="{url(r["slug"])}"><span class="nw">{esc(r["name"])}</span></a>.'
     return (f'<div class="byline">{img_tag(a["headshot"], a["name"])}'
-            f'<p><b>Written by <a href="{url(a["slug"])}">{esc(a["name"])}</a></b>, {esc(a["byline"])}.{rev}</p></div>')
+            f'<p><b>Written by <a href="{url(a["slug"])}"><span class="nw">{esc(a["name"])}</span></a></b>, {esc(a["byline"])}.{rev}</p></div>')
 
 
 ICONS = {
@@ -853,8 +853,8 @@ def head_html(p):
 
 
 _MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
-_KEEP_ANY = re.compile(r"\b(?:\d+(?:-\d+)+(?:\([0-9a-z]+\))*|[A-Z]{1,3}-\d+[A-Za-z]?)(?![\w-])")  # 38-77-140, 15-3-530(6), FR-10, I-26
-_KEEP_HEAD = re.compile(rf"\b(?:\w+(?:-\w+)+|(?:{_MONTHS}) \d{{1,2}})(?![\w-])")  # Hands-Free, Three-Year, January 1
+_KEEP_ANY = re.compile(r"\b(?:\d+(?:-\d+)+(?:\([0-9a-z]+\))*|[A-Z]{1,3}-\d+[A-Za-z]?|(?:US|SC) \d+[A-Z]?)(?![\w-])")  # 38-77-140, 15-3-530(6), FR-10, I-26, US 278
+_KEEP_HEAD = re.compile(rf"\b(?:\w+(?:-\w+)+|(?:{_MONTHS}) \d{{1,2}}|(?:US|SC) \d+[A-Z]?)(?![\w-])")  # Hands-Free, Three-Year, January 1, US 278
 
 
 def keep_together(html):
@@ -959,7 +959,7 @@ def write_prod():
     open(os.path.join(OUT, ".htaccess"), "w", encoding="utf-8").write(htaccess())
     open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8").write(llms_txt())
     write_vercel_json()
-    p404 = dict(BY_SLUG["home"], slug="404", title="Page not found | Summerville Accident Attorney", description="That page has moved.", h1="We couldn't find that page", kind="page", layout="one", noindex=True,
+    p404 = dict(BY_SLUG["home"], slug="404", nav_label="Page not found", title="Page not found | Summerville Accident Attorney", description="That page has moved.", h1="We couldn't find that page", kind="page", layout="one", noindex=True,
                 eyebrow="Page not found", lead="The address may have changed when we rebuilt the site. The links below will get you where you were headed.", kicker="", quote="", hero_image=None, hero_style=None, hero_image_wide=None, cta=None, faqs=[], related=[], sources=[], lang="en", alternate=None,
                 body='<p>Try one of these: <a href="[[car-accident-attorneys-in-summerville]]">Car accidents</a>, <a href="[[practice-areas]]">All practice areas</a>, <a href="[[locations]]">Locations we serve</a>, <a href="[[contact]]">Free case review</a>, or call <a href="tel:' + firm.PHONE_E164 + '">' + firm.PHONE + "</a>.</p>")
     html = expand_tokens(head_html(p404).replace(f'<link rel="canonical" href="{abs_url("404")}">', "") + header_html() + in_main(hero_html(p404), body_html(p404)) + footer_html() + f"<script>{INLINE_JS}</script></body></html>")
