@@ -89,6 +89,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 
   `site/BUILD-NOTES.md` has the details.
 - **2026-10-08. Blog URLs.** Daylin moved every blog post out of `/blog/` to the root, with the post's title as its slug. `post()` in `site/content/posts.py` derives the slug from the H1, and each old `/blog/` post address redirects to the new one. This supersedes the post URLs in Manifest v7.
+- **2026-10-08. Blog covers.** The four September blog covers, which were generated illustrations, are now licensed Canva stock photos made the same way as the October covers, so the site carries no generated images. `site/BUILD-NOTES.md` lists all eight covers.
 
 ## Voice
 
