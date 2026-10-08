@@ -845,3 +845,7 @@ h5,h6,summary,.btn{text-wrap:balance}
 @media (max-width:1100px){.foot .grid{grid-template-columns:1fr 1fr}}
 @media (max-width:540px){.foot .grid{grid-template-columns:1fr}}
 
+
+/* "From the blog" on practice parents: the wide card keeps its summary */
+@media (min-width:600px){.explore .posts.idx .post-card p{display:block}}
+@media (min-width:1000px){.posts.idx.two{grid-template-columns:repeat(2,minmax(0,1fr))}}

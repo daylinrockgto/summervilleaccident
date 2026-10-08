@@ -235,6 +235,16 @@ def attorney_panel(keys=("tara", "jack"), compact=False):
     return '<div class="attys">' + "".join(out) + "</div>"
 
 
+# "From the blog" cards on practice parents, for the posts that only /blog/ linked to (Final QA, October 2026).
+# Slugs follow each post's H1; a slug that stops matching a post fails the build.
+FROM_BLOG = {
+    "car-accident-attorneys-in-summerville": ["how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid",
+                                              "hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer"],
+    "motorcycle-accident-attorneys-in-summerville": ["motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim"],
+    "dog-bite-attorneys-in-summerville": ["a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know"],
+}
+
+
 def explore(p):
     """Navigation cards after the page copy: a hub's children, or a child's parent and siblings."""
     kind = p["kind"]
@@ -251,6 +261,8 @@ def explore(p):
             out.append(f'<p class="ex-title">{esc(hp["section_label"] or hp["nav_label"])}</p>{photo_cards(pages)}')
         if answers:
             out.append(f'<p class="ex-title">{lab(p, "questions")}</p>{link_list(answers)}')
+        if FROM_BLOG.get(p["slug"]):
+            out.append(f'<p class="ex-title">From the blog</p>[[postcards:{",".join(FROM_BLOG[p["slug"]])}:c2]]')
     else:
         sib = [s for s in pages if s != p["slug"]]
         if len(sib) > 5:  # more siblings than the grid holds: take the five after this page, wrapping round, so every child shows somewhere

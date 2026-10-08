@@ -84,6 +84,7 @@ def _hero_lead(row):
     return ""
 
 
+BY_ID = {}
 for row in ROWS:
     raw = open(os.path.join(DIR, row["file"]), encoding="utf-8").read()
     h1m = re.search(r"<h1[^>]*>(.*?)</h1>", raw, re.S)
@@ -110,6 +111,13 @@ for row in ROWS:
     p["_llg"] = row["id"]
     p["_kp"] = row.get("kp")
     p["_type"] = row["type"]
+    BY_ID[row["id"]] = p
+
+# The Spanish car accident page and the English car accident parent name each other as language versions (hreflang),
+# with the English page as the default for every other language.
+if "es" in BY_ID and "car" in BY_ID:
+    BY_ID["es"]["alternate"] = BY_ID["car"]["alternate"] = {
+        "es": BY_ID["es"]["slug"], "en": BY_ID["car"]["slug"], "x-default": BY_ID["car"]["slug"]}
 
 
 # Menus and sidebars follow the manifest: each hub lists its children first, then its answer pages.

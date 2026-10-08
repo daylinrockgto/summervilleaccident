@@ -91,6 +91,19 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - **2026-10-08. Blog URLs.** Daylin moved every blog post out of `/blog/` to the root, with the post's title as its slug. `post()` in `site/content/posts.py` derives the slug from the H1, and each old `/blog/` post address redirects to the new one. Manifest v7 in `llg/v2/` was updated to match.
 - **2026-10-08. Blog covers.** The four September blog covers, which were generated illustrations, are now licensed Canva stock photos made the same way as the October covers, so the site carries no generated images. `site/BUILD-NOTES.md` lists all eight covers.
 - **2026-10-08. One-hop redirects.** Every old address reaches its new page in one permanent hop, with or without the trailing slash. `vercel.json` adds trailing slashes with a rule placed after the redirect map instead of Vercel's `trailingSlash` setting, which ran first and added a hop. `site/verify_live.py` fails any redirect that takes more than one hop.
+- **2026-10-08. Final QA decisions.** Daylin approved these from the final QA report.
+  - The contact form offers no "Injured at work" option.
+  - Tara's probate judgeship is gone from the four passages that sat in the same section as probate or settlement approval content (home, wrongful death parent, fatal car, survival action). Those name only her Magistrate Judge service.
+  - "First meeting" is gone from the home page and the rideshare parent.
+  - Five titles and seven descriptions in `meta.py` changed. The seven keyphrase-only titles stay.
+  - About and Contact carry no fee clauses and no self-referential lines. Reviews says "each client review".
+  - The Spanish page and the car accident parent carry an hreflang pair, with English as `x-default`.
+  - Each long-form page's featured photo is its share image. Home and the core pages keep `og.jpg`.
+  - The car, motorcycle and dog bite parents end with a "From the blog" card (`FROM_BLOG` in `site/design.py`).
+  - Local TV news is an approved, followed source for posts.
+  - The Spanish header and footer wait for a Spanish reader (`site/SPANISH-CHROME.md`). WebP and a CallRail loading test come after launch.
+  - Daylin's co-worker adds the domain and moves DNS once staging is ready. Claude does not.
+- **2026-10-08. Long-form edits without the kit zip.** `sync_pages.py` runs from git alone, and `frost_check.py` runs every check except the sidecar check. An edit that only removes or rewords words, with no new fact, can go through without the kit zip. A new fact still needs the zip for its sidecar entry.
 
 ## Voice
 
