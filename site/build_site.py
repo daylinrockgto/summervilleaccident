@@ -864,7 +864,7 @@ def head_html(p):
         '<link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>'
         '<link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>'
         f'<link rel="stylesheet" href="{CSS_HREF}">'
-        f'<script type="application/ld+json">{ld}</script>{firm.CALLRAIL_SCRIPT}'
+        f'<script type="application/ld+json">{ld}</script>'
         '</head><body>')
 
 
@@ -920,7 +920,7 @@ def render_prod(p):
     foot = footer_html()
     if p.get("lang") == "es":
         foot = foot.replace(f'<a class="mbar-cta" href="{url("contact")}">Free case review</a>', f'<a class="mbar-cta" href="{url("contact")}">Consulta gratis</a>')
-    doc = head_html(p) + header_html() + in_main(hero_html(p), body_html(p)) + foot + f"<script>{INLINE_JS}</script></body></html>"
+    doc = head_html(p) + header_html() + in_main(hero_html(p), body_html(p)) + foot + f"<script>{INLINE_JS}</script>{firm.CALLRAIL_SCRIPT}</body></html>"
     return keep_together(expand_tokens(doc))
 
 
@@ -978,7 +978,7 @@ def write_prod():
     p404 = dict(BY_SLUG["home"], slug="404", nav_label="Page not found", title="Page not found | Summerville Accident Attorney", description="That page has moved.", h1="We couldn't find that page", kind="page", layout="one", noindex=True,
                 eyebrow="Page not found", lead="The address may have changed when we rebuilt the site. The links below will get you where you were headed.", kicker="", quote="", hero_image=None, hero_style=None, hero_image_wide=None, cta=None, faqs=[], related=[], sources=[], lang="en", alternate=None,
                 body='<p>Try one of these: <a href="[[car-accident-attorneys-in-summerville]]">Car accidents</a>, <a href="[[practice-areas]]">All practice areas</a>, <a href="[[locations]]">Locations we serve</a>, <a href="[[contact]]">Free case review</a>, or call <a href="tel:' + firm.PHONE_E164 + '">' + firm.PHONE + "</a>.</p>")
-    html = expand_tokens(head_html(p404).replace(f'<link rel="canonical" href="{abs_url("404")}">', "") + header_html() + in_main(hero_html(p404), body_html(p404)) + footer_html() + f"<script>{INLINE_JS}</script></body></html>")
+    html = expand_tokens(head_html(p404).replace(f'<link rel="canonical" href="{abs_url("404")}">', "") + header_html() + in_main(hero_html(p404), body_html(p404)) + footer_html() + f"<script>{INLINE_JS}</script>{firm.CALLRAIL_SCRIPT}</body></html>")
     open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(html)
 
 

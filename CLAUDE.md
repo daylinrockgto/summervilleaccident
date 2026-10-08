@@ -101,7 +101,10 @@ The firm's estate planning, probate and criminal defense work lives on a separat
   - Each long-form page's featured photo is its share image. Home and the core pages keep `og.jpg`.
   - The car, motorcycle and dog bite parents end with a "From the blog" card (`FROM_BLOG` in `site/design.py`).
   - Local TV news is an approved, followed source for posts.
-  - The Spanish header and footer wait for a Spanish reader (`site/SPANISH-CHROME.md`). WebP and a CallRail loading test come after launch.
+  - The Spanish header and footer wait for a Spanish reader (`site/SPANISH-CHROME.md`). WebP comes after launch.
+  - The CallRail tag sits just before `</body>` on every page, as CallRail's install guide says. Its tracking number's only source is Organic Search, so a direct visit always shows the office number.
+  - Canva stock photos for this site follow the `weekly-legal-blogs` method: search Canva, take the `MA` stock ID, then swap it into a copy of template DAHS3fxddsA. From a cloud session the search runs on Daylin's PC through Desktop Commander (`site/BUILD-NOTES.md` has the command). Never use Canva's design generator.
+  - The Goose Creek motorcycle post's cover is Canva stock MAHBjhWn0Ug, Daylin's pick, replacing a scooter photo.
   - Daylin's co-worker adds the domain and moves DNS once staging is ready. Claude does not.
 - **2026-10-08. Long-form edits without the kit zip.** `sync_pages.py` runs from git alone, and `frost_check.py` runs every check except the sidecar check. An edit that only removes or rewords words, with no new fact, can go through without the kit zip. A new fact still needs the zip for its sidecar entry.
 
