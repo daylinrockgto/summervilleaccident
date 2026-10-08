@@ -50,7 +50,7 @@ It also warns on titles over 70 characters (90 on the home page), descriptions o
 
 ## Editing
 
-- **Long-form copy.** Edit `llg/pages/<id>.html`, check it, sync it and build, as `llg/README.md` describes. The checker needs the kit zip, which is not in git.
+- **Long-form copy.** Edit `llg/pages/<id>.html`, check it, sync it and build, as `llg/README.md` describes. The sync and every check except the sidecar check run from git alone. A new fact needs its sidecar entry, which travels in the kit zip outside git.
 - **Other pages.** Edit `site/content/core.py`, `posts.py` or `questions_index.py`. Their titles and descriptions are in `meta.py`.
 - **Firm facts.** Edit `site/content/firm.py`.
 - **Design.** Edit `site/design.py` and `site/assets/site.css`. Never change copy to fix a design problem.

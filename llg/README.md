@@ -6,7 +6,7 @@ This folder holds everything behind the long-form pages on summervilleaccidentat
 
 The repository is public, so only part of this kit is committed. `README.md`, `pages/*.html`, `plan/`, `v2/` and `tools/` are in git. Those cover the edit, sync and build workflow. The sidecars (`pages/*.json`), `briefs/`, `context/`, `research/`, `review/`, `repo-review/`, the handoffs and the launch runbook are in `.gitignore` and travel in the kit zip.
 
-To run `frost_check.py`, unzip the kit over the checkout first, because the checker needs the sidecars. After you change a sidecar or any other local-only file, rebuild the kit zip so the change is not lost.
+Without the kit, `sync_pages.py` runs as usual and `frost_check.py` runs every check except the sidecar check, so an edit that adds no fact can go through. To clear the sidecar check, or to add a fact, unzip the kit over the checkout first. After you change a sidecar or any other local-only file, rebuild the kit zip so the change is not lost.
 
 ## Folder Map
 

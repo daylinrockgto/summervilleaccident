@@ -294,7 +294,7 @@ def allfaqs_html():
 def form_html():
     """The free-case-review form (Formspree). One per page; the inline script submits it over AJAX and redirects to /thank-you/."""
     topics = ["Car accident", "Truck accident", "Motorcycle accident", "Pedestrian or bicycle accident", "Uber or Lyft accident", "Hit by a drunk driver", "Dog bite",
-              "Slip and fall", "Injured at work", "Catastrophic injury", "Wrongful death", "Something else"]
+              "Slip and fall", "Catastrophic injury", "Wrongful death", "Something else"]
     opts = "".join(f"<option>{esc(t)}</option>" for t in topics)
     return (f'<form class="form" method="POST" action="{esc(firm.FORM_ENDPOINT)}" accept-charset="UTF-8" data-contact data-thanks="{url("thank-you")}">'
             f'<input type="hidden" name="_subject" value="Injury site inquiry">'
@@ -361,17 +361,21 @@ ICONS = {
 }
 
 
-def post_grid(pgs, hl=3):
+def post_grid(pgs, hl=3, cols=3):
     """A grid of post cards. When the count would leave a short last row, the newest post runs wide:
-    f3-2 spans two of three columns, f3-3 spans all three, and f2 spans both of two columns."""
+    f3-2 spans two of three columns, f3-3 spans all three, and f2 spans both of two columns. A single post runs full width.
+    cols=2 keeps the grid at two columns at every width, for the narrow column beside the long-form sidebar."""
     n = len(pgs)
-    cls = "posts idx" + {1: " f3-3", 2: " f3-2"}.get(n % 3, "") * (n > 1) + " f2" * (n % 2 == 1 and n > 1)
+    if cols == 2:
+        cls = "posts idx two" + " f3-3 f2" * (n % 2 == 1)
+    else:
+        cls = "posts idx" + {1: " f3-3", 2: " f3-2"}.get(n % 3, "") + " f2" * (n % 2 == 1)
     return f'<ul class="{cls}">' + "".join(post_card(p, hl) for p in pgs) + "</ul>"
 
 
 def expand_tokens(html):
     html = re.sub(r"\[\[cards:([a-z0-9,/-]+)\]\]", lambda m: cards(m.group(1).split(",")), html)
-    html = re.sub(r"\[\[postcards:([a-z0-9,/-]+)\]\]", lambda m: post_grid([BY_SLUG[s] for s in m.group(1).split(",")]), html)
+    html = re.sub(r"\[\[postcards:([a-z0-9,/-]+)(?::c(\d))?\]\]", lambda m: post_grid(sorted([BY_SLUG[s] for s in m.group(1).split(",")], key=lambda q: q["date"], reverse=True), cols=int(m.group(2) or 3)), html)
     html = re.sub(r"\[\[latestposts:(\d+)(?::h(\d))?\]\]", lambda m: post_grid(posts_sorted()[: int(m.group(1))], int(m.group(2) or 3)), html)
     html = re.sub(r"\[\[reviews:(\d+)\]\]", lambda m: reviews_html(int(m.group(1))), html)
     html = re.sub(r"\[\[courts:([a-z0-9,_-]+)\]\]", lambda m: courts_html(m.group(1).split(",")), html)
@@ -702,18 +706,30 @@ def body_html(p):
 
 # ---------------------------------------------------------------- structured data
 
+def share_photo(p):
+    """The page's own photo for its social card: a post's cover, or a long-form page's featured image. None for the
+    home page and the core pages, which use the site card."""
+    if p["kind"] == "post":
+        name = p.get("hero_image")
+    elif p.get("_llg") and p["kind"] != "home":
+        name = (design.featured(p) or (None,))[0]
+    else:
+        name = None
+    return name if name and os.path.exists(os.path.join(IMG_DIR, name)) else None
+
+
 def share_image(p):
-    """A post's featured image for its social card and BlogPosting markup. Every other page uses the site card."""
-    if p["kind"] == "post" and p.get("hero_image") and os.path.exists(os.path.join(IMG_DIR, p["hero_image"])):
-        return f"{ORIGIN}/assets/img/{p['hero_image']}"
-    return ORIGIN + "/assets/img/og.jpg"
+    """The social card and BlogPosting image: the page's own photo (share_photo), else the site card."""
+    name = share_photo(p)
+    return f"{ORIGIN}/assets/img/{name}" if name else ORIGIN + "/assets/img/og.jpg"
 
 
 def share_size(p):
     """Pixel size of the social card share_image() returns, as built (write_prod caps photos at 1600px wide)."""
-    if share_image(p).endswith("/og.jpg"):
+    name = share_photo(p)
+    if not name:
         return 1200, 630
-    _, w, h = image_info(p["hero_image"])
+    _, w, h = image_info(name)
     return (1600, round(h * 1600 / w)) if w > 1600 else (w, h)
 
 

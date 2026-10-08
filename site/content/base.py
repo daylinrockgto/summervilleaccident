@@ -3,7 +3,7 @@
 Content modules call ``page(...)`` to register a page. Internal links are written
 as ``[[slug]]`` (``[[home]]`` for the front page) and images as ``[[img:name]]``;
 the builder resolves them per output mode (production URLs or the single-file preview).
-Other tokens the builder expands: ``[[cards:slug,slug]]``, ``[[postcards:slug,slug]]``,
+Other tokens the builder expands: ``[[cards:slug,slug]]``, ``[[postcards:slug,slug]]`` (``:c2`` for two columns),
 ``[[reviews:n]]``, ``[[team]]``, ``[[nap]]``, ``[[map]]``, ``[[findus]]``, ``[[hours]]``,
 ``[[citylist]]``, ``[[courts:key,key]]``, ``[[author:key]]``, ``[[latestposts:n]]``.
 """

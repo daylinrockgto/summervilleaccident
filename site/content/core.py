@@ -40,17 +40,17 @@ def practice_cards():
 about_body = (
     '<h2>A husband-and-wife law firm in Summerville</h2>'
     '<p>Frost Law Group is built on a simple idea: people in a crisis should be able to talk to the lawyer, not a call center. Jack and Tara Frost are married, were Summerville High School sweethearts, and share an office on Linwood Lane with their paralegal, Cassie, and two Golden Retrievers who greet clients at the door.</p>'
-    '<p>This site is the firm\'s personal injury practice. Tara L. Frost focuses on personal injury, car accident and truck accident claims, and she is a former Dorchester County Magistrate Judge and Associate Probate Judge. Jack C. Frost spent fourteen years with the Summerville Police Department and the Charleston County Sheriff\'s Office before he practiced law, so he knows how a collision report is put together.</p>'
+    '<p>Tara L. Frost focuses on personal injury, car accident and truck accident claims, and she is a former Dorchester County Magistrate Judge and Associate Probate Judge. Jack C. Frost spent fourteen years with the Summerville Police Department and the Charleston County Sheriff\'s Office before he practiced law, so he knows how a collision report is put together.</p>'
     '[[team]]'
     '<h2>How we work</h2>'
     + checks([
-        "Your consultation is free, and injury cases are handled on a contingency fee: no fee unless we win.",
+        "Your consultation is free and confidential.",
         "You meet with an attorney, not an intake service.",
                 "We say when you do not need a lawyer. A minor property-damage claim with no injury is usually something you can handle yourself, and we will tell you how.",
         "If you cannot travel after an injury, call and tell us. We will talk through how to meet.",
             ]) +
     '<h2>One firm, two websites</h2>'
-    f'<p>Frost Law Group, LLC is one South Carolina firm at 128 Linwood Lane in Summerville. This site covers personal injury. {firm.CROSS_LINK_TEXT}, {ext(firm.MAIN_SITE + "/", firm.MAIN_SITE_LABEL)}. Same office, same attorneys, same phone number. We are not affiliated with other firms that use the Frost name in other states.</p>'
+    f'<p>Frost Law Group, LLC is one South Carolina firm at 128 Linwood Lane in Summerville. {firm.CROSS_LINK_TEXT}, {ext(firm.MAIN_SITE + "/", firm.MAIN_SITE_LABEL)}. Same office, same attorneys, same phone number. We are not affiliated with other firms that use the Frost name in other states.</p>'
     f'<p>{img("office-exterior.jpg", "Frost Law Group’s office on Linwood Lane in Summerville")}</p>'
     '<h2>Our comfort dogs</h2>'
     '<p>Mistoc and Palmer are Golden Retrievers with a talent for finding the most nervous person in the room. Tell us when you book if you would rather they stay in the back.</p>'
@@ -135,7 +135,6 @@ contact_body = (
             '<h3 style="margin-top:0">What to expect</h3>' + checks([
                 "You talk to Tara or Jack, not an intake service.",
                 "We tell you honestly whether you have a claim, what it may be worth, and what to do next, whether or not you hire us.",
-                "If you hire us, you pay nothing up front and no fee unless we win.",
                 "Bring or send what you have: the collision report or FR-10, photos, the other driver's insurance card, your own policy, medical paperwork and any letters from an insurer. Photos on your phone are fine.",
                 "If you cannot travel after an injury, tell us, and we will talk through how to meet.",
             ]) + '<div class="alert"><p><b>Before you talk to the insurance company:</b> you are not required to give the other driver\'s insurer a recorded statement. Talk with a lawyer before you sign a medical release or accept a check.</p></div>'),
@@ -152,12 +151,12 @@ page("contact", kind="page", layout="raw", cta=[("tel:" + firm.PHONE_E164, firm.
      title="Free Consultation | Summerville Accident Attorneys | (843) 419-6653",
      description="Call (843) 419-6653 for a free personal injury consultation with Frost Law Group at 128 Linwood Lane, Summerville, SC. No fee unless we win. Directions from every community we serve.",
      h1="Get Your Free Consultation", eyebrow="No fee unless we win", nav_label="Contact",
-     lead="Talk to a Summerville accident attorney today. Your consultation is free, confidential and comes with no obligation. If we take your case, you pay nothing unless we win.",
+     lead="Talk to a Summerville accident attorney today. Your consultation is free, confidential and comes with no obligation.",
      body="".join(contact_body), priority=0.9, changefreq="monthly")
 
 # ----------------------------------------------------------------------------- REVIEWS
 reviews_body = (
-    f'<p class="lead">Frost Law Group is rated {firm.RATING} stars on Google. We are a two-attorney firm, so every review below is about work Tara or Jack did personally.</p>'
+    f'<p class="lead">Frost Law Group is rated {firm.RATING} stars on Google. We are a two-attorney firm, so each client review is about work Tara or Jack did personally.</p>'
     '[[reviews:8]]'
     f'<div class="links"><a href="{esc(firm.GBP_URL)}" rel="noopener" target="_blank">Read every Google review</a><a href="{esc(firm.YELP_URL)}" rel="noopener" target="_blank">Reviews on Yelp</a></div>'
     '<p class="small">Testimonials reflect individual experiences. Prior results do not guarantee a similar outcome.</p>'
