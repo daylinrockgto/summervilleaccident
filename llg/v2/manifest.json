@@ -902,50 +902,6 @@
   "note": ""
  },
  {
-  "id": "post-i26",
-  "kind": "Site page (repo, compliance fixes)",
-  "h1": "Crash on I-26 near Summerville",
-  "url": "/blog/i-26-crash-summerville-who-writes-the-report/",
-  "kp": "",
-  "words": 0,
-  "status": "Repo page, fix pass",
-  "parent": null,
-  "note": ""
- },
- {
-  "id": "post-dog",
-  "kind": "Site page (repo, compliance fixes)",
-  "h1": "A dog bite in a Summerville neighborhood",
-  "url": "/blog/dog-bite-summerville-neighborhood-what-parents-should-know/",
-  "kp": "",
-  "words": 0,
-  "status": "Repo page, fix pass",
-  "parent": null,
-  "note": ""
- },
- {
-  "id": "post-moto",
-  "kind": "Site page (repo, compliance fixes)",
-  "h1": "Motorcycle season in the Lowcountry",
-  "url": "/blog/motorcycle-season-lowcountry-helmet-law-your-claim/",
-  "kp": "",
-  "words": 0,
-  "status": "Repo page, fix pass",
-  "parent": null,
-  "note": ""
- },
- {
-  "id": "post-um",
-  "kind": "Site page (repo, compliance fixes)",
-  "h1": "Hit by an uninsured driver in Goose Creek",
-  "url": "/blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy/",
-  "kp": "",
-  "words": 0,
-  "status": "Repo page, fix pass",
-  "parent": null,
-  "note": ""
- },
- {
   "id": "privacy",
   "kind": "Site page (repo, compliance fixes)",
   "h1": "Privacy Policy",
@@ -988,5 +944,93 @@
   "status": "Repo page, fix pass",
   "parent": null,
   "note": ""
+ },
+ {
+  "id": "post-i26",
+  "kind": "Blog post",
+  "h1": "Crash on I-26 near Summerville: who writes the report, and how to get it",
+  "url": "/crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it/",
+  "kp": "",
+  "words": 0,
+  "status": "Repo post, fix pass",
+  "parent": null,
+  "note": "Settled 2026-10-08"
+ },
+ {
+  "id": "post-dog",
+  "kind": "Blog post",
+  "h1": "A dog bite in a Summerville neighborhood: what parents should know",
+  "url": "/a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know/",
+  "kp": "",
+  "words": 0,
+  "status": "Repo post, fix pass",
+  "parent": null,
+  "note": "Settled 2026-10-08"
+ },
+ {
+  "id": "post-moto",
+  "kind": "Blog post",
+  "h1": "Motorcycle season in the Lowcountry: the helmet question and your claim",
+  "url": "/motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim/",
+  "kp": "",
+  "words": 0,
+  "status": "Repo post, fix pass",
+  "parent": null,
+  "note": "Settled 2026-10-08"
+ },
+ {
+  "id": "post-um",
+  "kind": "Blog post",
+  "h1": "Hit by an uninsured driver in Goose Creek? Your own policy may be the answer",
+  "url": "/hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer/",
+  "kp": "",
+  "words": 0,
+  "status": "Repo post, fix pass",
+  "parent": null,
+  "note": "Settled 2026-10-08"
+ },
+ {
+  "id": "post-medical",
+  "kind": "Blog post",
+  "h1": "How Does a Summerville Car Accident Lawyer Get Your Medical Bills Paid?",
+  "url": "/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/",
+  "kp": "",
+  "words": 0,
+  "status": "Repo post, October 2026",
+  "parent": null,
+  "note": "Settled 2026-10-08"
+ },
+ {
+  "id": "post-moto-fault",
+  "kind": "Blog post",
+  "h1": "What Can a Goose Creek Motorcycle Accident Lawyer Do If You Were Partly at Fault?",
+  "url": "/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/",
+  "kp": "",
+  "words": 0,
+  "status": "Repo post, October 2026",
+  "parent": null,
+  "note": "Settled 2026-10-08"
+ },
+ {
+  "id": "post-slip",
+  "kind": "Blog post",
+  "h1": "Who Can a Moncks Corner Slip and Fall Lawyer Hold Liable for Your Fall?",
+  "url": "/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/",
+  "kp": "",
+  "words": 0,
+  "status": "Repo post, October 2026",
+  "parent": null,
+  "note": "Settled 2026-10-08"
+ },
+ {
+  "id": "post-truck",
+  "kind": "Blog post",
+  "h1": "How Does a North Charleston Truck Accident Lawyer Figure Out What Your Claim Is Worth?",
+  "url": "/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/",
+  "kp": "",
+  "words": 0,
+  "status": "Repo post, October 2026",
+  "parent": null,
+  "note": "Settled 2026-10-08"
  }
 ]

@@ -9,11 +9,11 @@ The page structure follows Legal Leads Group's **Page Manifest v7** (September 2
 | Path | What it is |
 |---|---|
 | `website/` | The built site. 94 pages, plus `sitemap.xml` (93 URLs, everything except the thank-you page), `robots.txt`, `llms.txt`, `404.html` and an `.htaccess` for Apache hosts |
-| `vercel.json` | Serves `website/`, keeps trailing slashes, sends the bare domain to www, applies the redirect map and sets asset caching. The build writes it |
+| `vercel.json` | Serves `website/`, sends the bare domain to www, applies the redirect map so every old address lands in one hop, keeps trailing slashes and sets asset caching. The build writes it |
 | `site/build_site.py` | The generator. It writes `website/` and `vercel.json`, makes the 800px image copies and runs every check |
 | `site/design.py` | Turns the long-form copy into a designed page at build time, with sections, H3 accordions, an "On this page" sidebar, photos and navigation cards. It never changes a word of copy |
 | `site/checks.py` | Hard compliance checks. The build fails if any page breaks one |
-| `site/verify_live.py` | Checks a deployed site. Every sitemap URL, every redirect, robots.txt, the sitemap, a 404 probe and the canonicals |
+| `site/verify_live.py` | Checks a deployed site. Every sitemap URL, every redirect in one hop, robots.txt, the sitemap, a 404 probe and the canonicals |
 | `site/content/pages/` | The 74 long-form pages as plain HTML, plus `pages.json` with each page's id, slug, type, parent, keyphrase and H1. Both are written by `llg/v2/tools/sync_pages.py` from `llg/pages/`, so never edit them by hand |
 | `site/content/llg.py` | Registers the long-form pages and builds the menus, sidebars and footer from `pages.json` |
 | `site/content/images.json` | The photo map. Each long-form page's featured photo and the photo under each H2, with alt text and the Canva stock ID |

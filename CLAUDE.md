@@ -88,8 +88,9 @@ The firm's estate planning, probate and criminal defense work lives on a separat
   - Both bar numbers and admission dates are confirmed from the SC Judicial Branch directory.
 
   `site/BUILD-NOTES.md` has the details.
-- **2026-10-08. Blog URLs.** Daylin moved every blog post out of `/blog/` to the root, with the post's title as its slug. `post()` in `site/content/posts.py` derives the slug from the H1, and each old `/blog/` post address redirects to the new one. This supersedes the post URLs in Manifest v7.
+- **2026-10-08. Blog URLs.** Daylin moved every blog post out of `/blog/` to the root, with the post's title as its slug. `post()` in `site/content/posts.py` derives the slug from the H1, and each old `/blog/` post address redirects to the new one. Manifest v7 in `llg/v2/` was updated to match.
 - **2026-10-08. Blog covers.** The four September blog covers, which were generated illustrations, are now licensed Canva stock photos made the same way as the October covers, so the site carries no generated images. `site/BUILD-NOTES.md` lists all eight covers.
+- **2026-10-08. One-hop redirects.** Every old address reaches its new page in one permanent hop, with or without the trailing slash. `vercel.json` adds trailing slashes with a rule placed after the redirect map instead of Vercel's `trailingSlash` setting, which ran first and added a hop. `site/verify_live.py` fails any redirect that takes more than one hop.
 
 ## Voice
 

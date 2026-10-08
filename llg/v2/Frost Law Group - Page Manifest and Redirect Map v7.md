@@ -2,6 +2,8 @@
 
 Version 7, September 28, 2026, for summervilleaccidentattorney.com. It replaces version 6 of September 15. The site is now built from the GitHub repository daylinrockgto/summervilleaccident and deployed on Vercel, so every redirect below can be implemented.
 
+**Updated October 8, 2026.** Blog posts moved out of /blog/ to root URLs, and each slug is now the post's full title. The four October posts were added, and the redirect map gained the eight earlier /blog/ post addresses. Every old address now reaches its new page in one hop. Sections 2, 3, 7 and 8 show the changes.
+
 ## Status, September 29, 2026
 
 All 74 long-form pages in this manifest are written, reviewed and fixed. Each English page has cleared the page gate with grammar checks. They are in the GitHub repository on the branch llg/manifest-v7, and Vercel built a preview of that branch successfully. Production on summervilleaccident-pi.vercel.app serves main. The branch still needs to be merged into main, and that merge is Daylin's to approve.
@@ -40,6 +42,8 @@ Three page types are new, and each follows the H1 equals slug rule.
 
 **The Spanish page** sits in a language folder, /es/, and its slug is its H1.
 
+**Blog posts** sit at the root, never under /blog/. A post's slug is its full H1, lowercased and hyphenated, with punctuation dropped and every word kept. /blog/ stays as the blog index. Daylin set this on October 8, 2026.
+
 ---
 
 ## 3. Build Totals
@@ -57,8 +61,9 @@ Three page types are new, and each follows the H1 equals slug rule.
 | Spanish page | 1 | 2,500 |
 | Question index | 1 | 800 |
 | Legacy page | 1 | 0 |
-| Site page (repo, compliance fixes) | 14 | 0 |
-| **Total** | **90** | **250,900** |
+| Site page (repo, compliance fixes) | 10 | 0 |
+| Blog post | 8 | 0 |
+| **Total** | **94** | **250,900** |
 
 Word targets: homepage 8,000 to 10,000, parents 5,000, children and city pages 3,000, answer pages 1,500 to 2,000, Spanish page about 2,500. Answer pages are a new page type, and their target is a judgment call against the audit's 800 to 1,500.
 
@@ -214,20 +219,31 @@ The Catastrophic Injury and Pedestrian Accident parents have no children yet. Ad
 | Get Your Free Consultation | /contact/ | Repo page, fix pass |
 | Client Reviews | /reviews/ | Repo page, fix pass |
 | The Blog | /blog/ | Repo page, fix pass |
-| Crash on I-26 near Summerville | /blog/i-26-crash-summerville-who-writes-the-report/ | Repo page, fix pass |
-| A dog bite in a Summerville neighborhood | /blog/dog-bite-summerville-neighborhood-what-parents-should-know/ | Repo page, fix pass |
-| Motorcycle season in the Lowcountry | /blog/motorcycle-season-lowcountry-helmet-law-your-claim/ | Repo page, fix pass |
-| Hit by an uninsured driver in Goose Creek | /blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy/ | Repo page, fix pass |
 | Privacy Policy | /privacy-policy/ | Repo page, fix pass |
 | Terms of Use | /terms-of-use/ | Repo page, fix pass |
 | Accessibility Statement | /accessibility/ | Repo page, fix pass |
 | Thank you | /thank-you/ | Repo page, fix pass |
 
+### Blog Posts
+
+Every post sits at the root, and its slug is its full H1. The four September posts moved here from /blog/ on October 8, 2026, and their old addresses redirect. The four October posts were added to the manifest the same day.
+
+| Post (H1) | URL | Status |
+| --- | --- | --- |
+| Crash on I-26 near Summerville: who writes the report, and how to get it | /crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it/ | Repo post, fix pass |
+| A dog bite in a Summerville neighborhood: what parents should know | /a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know/ | Repo post, fix pass |
+| Motorcycle season in the Lowcountry: the helmet question and your claim | /motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim/ | Repo post, fix pass |
+| Hit by an uninsured driver in Goose Creek? Your own policy may be the answer | /hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer/ | Repo post, fix pass |
+| How Does a Summerville Car Accident Lawyer Get Your Medical Bills Paid? | /how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/ | Repo post, October 2026 |
+| What Can a Goose Creek Motorcycle Accident Lawyer Do If You Were Partly at Fault? | /what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/ | Repo post, October 2026 |
+| Who Can a Moncks Corner Slip and Fall Lawyer Hold Liable for Your Fall? | /who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/ | Repo post, October 2026 |
+| How Does a North Charleston Truck Accident Lawyer Figure Out What Your Claim Is Worth? | /how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/ | Repo post, October 2026 |
+
 ---
 
 ## 8. Redirect Map, All 301
 
-74 redirects. Vercel applies them from vercel.json, and the same list writes the .htaccess for any Apache host. The non-www host and trailing slash rules are separate and apply site wide. Sources are listed without the trailing slash, and both forms redirect.
+82 redirects. 74 are from the old site, and 8 are the earlier /blog/ post addresses added on October 8, 2026. Vercel applies them from vercel.json, and the same list writes the .htaccess for any Apache host. Sources are listed without the trailing slash, and both forms redirect in one hop. The non-www host rule runs first, and the trailing slash rule runs after this map, so an old address never takes an extra hop to gain its slash.
 
 | Old URL | New URL |
 | --- | --- |
@@ -305,6 +321,14 @@ The Catastrophic Injury and Pedestrian Accident parents have no children yet. Ad
 | /workers-compensation | /practice-areas/workers-compensation/ |
 | /contact-us | /contact/ |
 | /about-us | /about/ |
+| /blog/i-26-crash-summerville-who-writes-the-report | /crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it/ |
+| /blog/dog-bite-summerville-neighborhood-what-parents-should-know | /a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know/ |
+| /blog/motorcycle-season-lowcountry-helmet-law-your-claim | /motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim/ |
+| /blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy | /hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer/ |
+| /blog/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid | /how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/ |
+| /blog/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault | /what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/ |
+| /blog/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall | /who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/ |
+| /blog/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth | /how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/ |
 
 ---
 

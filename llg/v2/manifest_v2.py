@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Manifest v7 (2026-09-28): Sept 15 spine + audit extras, per Daylin's decisions of 2026-09-28.
+Updated 2026-10-08: blog posts sit at the root with their full H1 as the slug, and the old /blog/ post addresses redirect.
 Emits v2/manifest.json (every URL on the rebuilt site) and v2/redirects.json (every 301)."""
 import json, re
 P = {"car": "/car-accident-attorneys-in-summerville/", "truck": "/truck-accident-attorneys-in-summerville/",
@@ -98,13 +99,20 @@ add("wc-legacy", "Legacy page", "(old live copy)", "/practice-areas/workers-comp
 # Utility (repo pages, fixed)
 for id, h1, url in [("about","Our Team","/about/"),("tara","Tara L. Frost","/attorneys/tara-frost/"),("jack","Jack C. Frost","/attorneys/jack-frost/"),
                     ("contact","Get Your Free Consultation","/contact/"),("reviews","Client Reviews","/reviews/"),("blog","The Blog","/blog/"),
-                    ("post-i26","Crash on I-26 near Summerville","/blog/i-26-crash-summerville-who-writes-the-report/"),
-                    ("post-dog","A dog bite in a Summerville neighborhood","/blog/dog-bite-summerville-neighborhood-what-parents-should-know/"),
-                    ("post-moto","Motorcycle season in the Lowcountry","/blog/motorcycle-season-lowcountry-helmet-law-your-claim/"),
-                    ("post-um","Hit by an uninsured driver in Goose Creek","/blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy/"),
                     ("privacy","Privacy Policy","/privacy-policy/"),("terms","Terms of Use","/terms-of-use/"),("a11y","Accessibility Statement","/accessibility/"),
                     ("thanks","Thank you","/thank-you/")]:
     add(id, "Site page (repo, compliance fixes)", h1, url, "", 0, "Repo page, fix pass")
+# Blog posts sit at the root, and each slug is the post's full H1 (Settled 2026-10-08). /blog/ stays as the blog index.
+# The four September posts moved out of /blog/ that day, and the four October posts were added to the manifest.
+for id, h1, status in [("post-i26", "Crash on I-26 near Summerville: who writes the report, and how to get it", "Repo post, fix pass"),
+                       ("post-dog", "A dog bite in a Summerville neighborhood: what parents should know", "Repo post, fix pass"),
+                       ("post-moto", "Motorcycle season in the Lowcountry: the helmet question and your claim", "Repo post, fix pass"),
+                       ("post-um", "Hit by an uninsured driver in Goose Creek? Your own policy may be the answer", "Repo post, fix pass"),
+                       ("post-medical", "How Does a Summerville Car Accident Lawyer Get Your Medical Bills Paid?", "Repo post, October 2026"),
+                       ("post-moto-fault", "What Can a Goose Creek Motorcycle Accident Lawyer Do If You Were Partly at Fault?", "Repo post, October 2026"),
+                       ("post-slip", "Who Can a Moncks Corner Slip and Fall Lawyer Hold Liable for Your Fall?", "Repo post, October 2026"),
+                       ("post-truck", "How Does a North Charleston Truck Accident Lawyer Figure Out What Your Claim Is Worth?", "Repo post, October 2026")]:
+    add(id, "Blog post", h1, "/" + slug(h1) + "/", "", 0, status, note="Settled 2026-10-08")
 
 U = {m["id"]: m["url"] for m in M}
 R = [  # old URL (no host), new URL. Order matters: specific before general.
@@ -153,6 +161,15 @@ R = [  # old URL (no host), new URL. Order matters: specific before general.
  ("/results", "/about/"), ("/serving", U["loc"]), ("/other-areas", U["loc"]), ("/west-ashley", U["city-west-ashley"]),
  ("/pedestrian-accident", U["ped"]), ("/dog-bite", U["dog"]), ("/slip-and-fall", U["slip"]), ("/catastrophic-injuries", U["cat"]),
  ("/workers-compensation", "/practice-areas/workers-compensation/"), ("/contact-us", "/contact/"), ("/about-us", "/about/"),
+ # the earlier /blog/ post addresses, Settled 2026-10-08
+ ("/blog/i-26-crash-summerville-who-writes-the-report", U["post-i26"]),
+ ("/blog/dog-bite-summerville-neighborhood-what-parents-should-know", U["post-dog"]),
+ ("/blog/motorcycle-season-lowcountry-helmet-law-your-claim", U["post-moto"]),
+ ("/blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy", U["post-um"]),
+ ("/blog/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid", U["post-medical"]),
+ ("/blog/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault", U["post-moto-fault"]),
+ ("/blog/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall", U["post-slip"]),
+ ("/blog/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth", U["post-truck"]),
 ]
 assert len({a for a, b in R}) == len(R), "duplicate redirect source"
 live = {m["url"] for m in M}
