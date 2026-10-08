@@ -46,7 +46,7 @@ SOCIAL = [("Facebook", FACEBOOK, "fb"), ("Instagram", INSTAGRAM, "ig"), ("Linked
 SAME_AS = [MAIN_SITE + "/", GBP_URL, YELP_URL, FACEBOOK, INSTAGRAM, LINKEDIN, TWITTER]
 KGMID = "/g/11b5pl8mj4"
 RATING = 4.8  # Google Business Profile, September 2026. The approved proof point is "rated 4.8 stars on Google", never with a review count.
-# CallRail Dynamic Number Insertion. The tag goes in the head of every page. Leave it empty for no script.
+# CallRail Dynamic Number Insertion. The tag goes just before </body> on every page, as CallRail's install guide says. Leave it empty for no script.
 # The swap matches the phone exactly as PHONE displays it, so never change that format.
 CALLRAIL_SCRIPT = '<script type="text/javascript" src="//cdn.calltrk.com/companies/897987596/cc6b83e20b3e42332487/12/swap.js"></script>'
 

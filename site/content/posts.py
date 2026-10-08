@@ -380,7 +380,7 @@ faq_ld(p5, 'Frequently Asked Questions About Medical Bills After a Summerville C
 
 # ----------------------------------------------------------------------------- 6. Goose Creek motorcycle shared fault
 p6 = post(hero_image='call-a-goose-creek-motorcycle-accident-lawyer-before-you-accept-a-reduced-offer.jpg',
-     hero_caption='A crashed motorcycle lies on its side in the grass beside a paved road.',
+     hero_caption='A dark green sport motorcycle stands parked on a concrete plaza beside palm trees and a park bench.',
      category='Motorcycle accidents', date='2026-09-21', modified='2026-09-21',
      title='Goose Creek Motorcycle Accident Lawyer | Call Today',
      description='South Carolina requires a helmet only under 21. A Goose Creek motorcycle accident lawyer answers the helmet argument insurers use. Call for a free review.',
