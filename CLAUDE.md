@@ -65,6 +65,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - Children use Lawyers and nest under their parent.
 - City pages are children of their county parent. Ladson sits under Berkeley County.
 - Answer pages use the question as the H1 and the slug, and the first paragraph answers it in 40 to 60 words.
+- Blog posts sit at the root, never under `/blog/`. A post's slug is its H1, lowercased and hyphenated, with punctuation dropped and every word kept, for example `/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/`. `/blog/` stays as the blog index page.
 - `/practice-areas/`, `/locations/` and `/questions/` are menu pages. Their H1s do not have to match their slugs.
 - SEO titles are the exact keyphrase, then `|`, then a call to action of two or more words, 60 characters or fewer.
 - Meta descriptions run 150 to 156 characters and end in a call to action, with no phone number.
@@ -87,6 +88,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
   - Both bar numbers and admission dates are confirmed from the SC Judicial Branch directory.
 
   `site/BUILD-NOTES.md` has the details.
+- **2026-10-08. Blog URLs.** Daylin moved every blog post out of `/blog/` to the root, with the post's title as its slug. `post()` in `site/content/posts.py` derives the slug from the H1, and each old `/blog/` post address redirects to the new one. This supersedes the post URLs in Manifest v7.
 
 ## Voice
 

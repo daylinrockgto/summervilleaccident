@@ -10,7 +10,7 @@ to DPH, the 47-3-110 text and exceptions, minors' settlements and deadlines, hel
 settlement rules under 38-77-160, stacking, the 2024 rewrite of 38-77-170, and cover captions matched to the images."""
 import re
 
-from .base import page, A, ext, img, p, ul, checks, steps, callout, answer, band, esc, table
+from .base import page, BY_SLUG, A, ext, img, p, ul, checks, steps, callout, answer, band, esc, table
 from . import firm
 from .local import cite, link, LINKS
 
@@ -53,7 +53,16 @@ def src(*keys):
     return out
 
 
-def post(slug, **kw):
+def slugify(text):
+    """A post's URL slug is its H1, lowercased, apostrophes dropped and every other run of punctuation and spaces made one
+    hyphen, with every word kept (Settled 2026-10-08). Posts sit at the root, never under /blog/, which is the blog index."""
+    return re.sub(r"[^a-z0-9]+", "-", re.sub(r"['’]", "", text.lower())).strip("-")
+
+
+def post(**kw):
+    slug = slugify(kw["h1"])
+    if slug in BY_SLUG:
+        raise ValueError(f"post slug {slug} is already a page")
     kw.setdefault("kind", "post")
     kw.setdefault("hub", "blog")
     kw.setdefault("date", DATE)
@@ -63,11 +72,11 @@ def post(slug, **kw):
     kw.setdefault("priority", 0.5)
     kw.setdefault("author", "tara")
     kw.setdefault("reviewer", "jack")
-    return page("blog/" + slug, **kw)
+    return page(slug, **kw)
 
 
 # ----------------------------------------------------------------------------- 1. I-26 crash report
-post("i-26-crash-summerville-who-writes-the-report", hero_image="cover-i26-report.jpg",
+post(hero_image="cover-i26-report.jpg",
      hero_caption="A patrol car with its lights on, stopped on the shoulder behind a car on a highway lined with pines (illustration)",
      category="Car accidents",
      title="Crash on I-26 Near Summerville: Who Writes the Report, and How to Get It",
@@ -107,7 +116,7 @@ post("i-26-crash-summerville-who-writes-the-report", hero_image="cover-i26-repor
            ("What if the report says the crash was my fault?", "The officer's contributing-factor findings are an opinion, not a ruling. Fault in an injury claim is decided on all the evidence, and Section 56-5-1290 bars using the reports required by Sections 56-5-1260 through 56-5-1280 as evidence of negligence at a damages trial.")])
 
 # ----------------------------------------------------------------------------- 2. Dog bites in the neighborhood
-post("dog-bite-summerville-neighborhood-what-parents-should-know", hero_image="cover-dog-bite-neighborhood.jpg",
+post(hero_image="cover-dog-bite-neighborhood.jpg",
      hero_caption="A dog standing outside a fence gate near a child's bicycle on the sidewalk (illustration)", category="Dog bites",
      title="A Dog Bite in a Summerville Neighborhood: What Parents Should Know",
      description="A loose dog, a child, and a neighbor who says the dog never bit before. What South Carolina's dog bite statute says, who must report the bite, who usually pays, and what to do first.",
@@ -150,7 +159,7 @@ post("dog-bite-summerville-neighborhood-what-parents-should-know", hero_image="c
            ("Will my neighbor have to pay out of pocket?", "Usually not, if the neighbor has homeowner's or renter's liability coverage that applies. That policy responds to the claim, subject to its limits and exclusions.")])
 
 # ----------------------------------------------------------------------------- 3. Motorcycle season and the helmet question
-post("motorcycle-season-lowcountry-helmet-law-your-claim", hero_image="cover-motorcycle-season.jpg",
+post(hero_image="cover-motorcycle-season.jpg",
      hero_caption="A motorcycle on a back road under moss-draped live oaks (illustration)", category="Motorcycle accidents",
      title="Motorcycle Season in the Lowcountry: The Helmet Question and Your Claim",
      description="After a motorcycle crash, riders ask whether not wearing a helmet hurts the claim. What South Carolina's helmet and eye protection laws say, and what they leave to the facts.",
@@ -181,7 +190,7 @@ post("motorcycle-season-lowcountry-helmet-law-your-claim", hero_image="cover-mot
            ("Is lane-splitting legal in South Carolina?", "No. Section 56-5-3640 bars riding between lanes of traffic or between rows of vehicles. Motorcycles may ride no more than two abreast in one lane.")])
 
 # ----------------------------------------------------------------------------- 4. Goose Creek UM
-post("hit-by-an-uninsured-driver-goose-creek-your-own-policy", hero_image="cover-goose-creek-uninsured.jpg",
+post(hero_image="cover-goose-creek-uninsured.jpg",
      hero_caption="A damaged sedan stopped against the side of an SUV near a traffic light (illustration)", category="Car accidents",
      title="Hit by an Uninsured Driver in Goose Creek? Your Own Policy May Be the Answer",
      description="When the driver who hit you in Goose Creek had no insurance or too little, the UM coverage on every South Carolina policy, and any UIM coverage you carry, may pay. How it works and what to avoid.",
@@ -265,7 +274,7 @@ def faq_ld(p, heading):
 
 
 # ----------------------------------------------------------------------------- 5. Summerville car accident medical bills
-p5 = post('how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid', hero_image='talk-with-a-summerville-car-accident-lawyer-at-frost-law-group-today.jpg',
+p5 = post(hero_image='talk-with-a-summerville-car-accident-lawyer-at-frost-law-group-today.jpg',
      hero_caption="A man wearing a cervical collar holds the back of his neck during a visit to a doctor's office.",
      category='Car accidents', date='2026-09-16', modified='2026-09-16',
      title='Summerville Car Accident Lawyer for Medical Bills | Call Now',
@@ -370,7 +379,7 @@ p5 = post('how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-pai
 faq_ld(p5, 'Frequently Asked Questions About Medical Bills After a Summerville Car Accident')
 
 # ----------------------------------------------------------------------------- 6. Goose Creek motorcycle shared fault
-p6 = post('what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault', hero_image='call-a-goose-creek-motorcycle-accident-lawyer-before-you-accept-a-reduced-offer.jpg',
+p6 = post(hero_image='call-a-goose-creek-motorcycle-accident-lawyer-before-you-accept-a-reduced-offer.jpg',
      hero_caption='A crashed motorcycle lies on its side in the grass beside a paved road.',
      category='Motorcycle accidents', date='2026-09-21', modified='2026-09-21',
      title='Goose Creek Motorcycle Accident Lawyer | Call Today',
@@ -482,7 +491,7 @@ p6 = post('what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-part
 faq_ld(p6, 'Questions Goose Creek Riders Ask About Shared Fault')
 
 # ----------------------------------------------------------------------------- 7. Moncks Corner slip and fall liability
-p7 = post('who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall', hero_image='talk-to-a-moncks-corner-slip-and-fall-lawyer-before-the-video-is-gone.jpg',
+p7 = post(hero_image='talk-to-a-moncks-corner-slip-and-fall-lawyer-before-the-video-is-gone.jpg',
      hero_caption="A shopper's feet rest beside an overturned coffee cup and a puddle of spilled coffee on a store floor.",
      category='Slip and fall', date='2026-09-28', modified='2026-09-28',
      title='Ask a Moncks Corner Slip and Fall Lawyer Who Is Liable',
@@ -591,7 +600,7 @@ p7 = post('who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fal
 faq_ld(p7, 'Questions Moncks Corner Fall Victims Ask About Liability')
 
 # ----------------------------------------------------------------------------- 8. North Charleston truck claim value
-p8 = post('how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth', hero_image='talk-to-a-north-charleston-truck-accident-lawyer-about-your-claims-value.jpg',
+p8 = post(hero_image='talk-to-a-north-charleston-truck-accident-lawyer-about-your-claims-value.jpg',
      hero_caption='An overturned tractor-trailer lies on its side across a curving highway ramp.',
      category='Truck accidents', date='2026-10-06', modified='2026-10-06',
      title='Hire a North Charleston Truck Accident Lawyer for Your Claim',

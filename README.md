@@ -21,7 +21,7 @@ The page structure follows Legal Leads Group's **Page Manifest v7** (September 2
 | `site/content/posts.py` | The eight blog posts |
 | `site/content/questions_index.py` | The `/questions/` page, which links every answer page |
 | `site/content/legacy.py` | The old workers' compensation page at its old address, linked from nowhere (Settled 2026-09-28). Never edit it |
-| `site/content/redirects.json` | 74 old addresses and where each now points |
+| `site/content/redirects.json` | 82 old addresses and where each now points. 74 are from the old site, and 8 are the earlier `/blog/` post addresses |
 | `site/content/firm.py` | Firm facts, phone, hours, the approved fee wording, each attorney's bar record, the CallRail tag, the form endpoint and the structured data inputs |
 | `site/content/meta.py` | Titles and descriptions for the pages that are not long-form pages |
 | `site/assets/site.css` | Every style. The page design work starts at the `Page design, October 2026` banner |
@@ -70,7 +70,7 @@ Commit the source and the built output together, meaning `site/`, `llg/`, `websi
 - **Eight city pages** under their counties. Charleston, North Charleston, Mount Pleasant and West Ashley under Charleston County. Goose Creek, Moncks Corner and Ladson under Berkeley County. Walterboro under Colleton County
 - **Spanish page** at `/es/abogado-de-accidentes-de-carro-en-summerville/`
 - **Firm and legal pages.** Our team at `/about/`, the two attorney bios, contact, reviews, the blog index, privacy, terms, accessibility and the thank-you page, which is not indexed
-- **Eight blog posts** under `/blog/`
+- **Eight blog posts** at the root, each with its title as the slug. `/blog/` is the blog index
 - **The legacy workers' compensation page** at `/practice-areas/workers-compensation/`, linked from nowhere
 
 ## Deploying
