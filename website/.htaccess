@@ -83,6 +83,14 @@ RewriteRule ^catastrophic\-injuries/?$ /catastrophic-injury-attorneys-in-summerv
 RewriteRule ^workers\-compensation/?$ /practice-areas/workers-compensation/ [R=301,L]
 RewriteRule ^contact\-us/?$ /contact/ [R=301,L]
 RewriteRule ^about\-us/?$ /about/ [R=301,L]
+RewriteRule ^blog/i\-26\-crash\-summerville\-who\-writes\-the\-report/?$ /crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it/ [R=301,L]
+RewriteRule ^blog/dog\-bite\-summerville\-neighborhood\-what\-parents\-should\-know/?$ /a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know/ [R=301,L]
+RewriteRule ^blog/motorcycle\-season\-lowcountry\-helmet\-law\-your\-claim/?$ /motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim/ [R=301,L]
+RewriteRule ^blog/hit\-by\-an\-uninsured\-driver\-goose\-creek\-your\-own\-policy/?$ /hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer/ [R=301,L]
+RewriteRule ^blog/how\-does\-a\-summerville\-car\-accident\-lawyer\-get\-your\-medical\-bills\-paid/?$ /how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/ [R=301,L]
+RewriteRule ^blog/what\-can\-a\-goose\-creek\-motorcycle\-accident\-lawyer\-do\-if\-you\-were\-partly\-at\-fault/?$ /what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/ [R=301,L]
+RewriteRule ^blog/who\-can\-a\-moncks\-corner\-slip\-and\-fall\-lawyer\-hold\-liable\-for\-your\-fall/?$ /who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/ [R=301,L]
+RewriteRule ^blog/how\-does\-a\-north\-charleston\-truck\-accident\-lawyer\-figure\-out\-what\-your\-claim\-is\-worth/?$ /how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/ [R=301,L]
 # add a trailing slash to directory-style URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !/$

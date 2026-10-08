@@ -66,6 +66,24 @@ Daylin confirmed these with the client on October 7.
 
   Both appear in `firm.py`, in the Education and credentials list on each bio, and in each attorney's Person structured data as the bar number and the admission date.
 
+## Decisions settled on October 8, 2026
+
+- **Blog URLs.** Daylin moved all eight posts out of `/blog/` to the root. A post's slug is its H1, lowercased, with apostrophes dropped, every other run of punctuation and spaces made one hyphen, and every word kept. `post()` in `posts.py` derives the slug from the H1 and stops the build if it matches an existing page, so a future post cannot drift from its title. `/blog/` stays as the blog index, and the Blog menu item, the footer link and the Home › Blog breadcrumb stay. No title, description, date or word of copy changed. The posts' `meta.py` keys moved to the new slugs, because `page()` silently falls back to older strings when a key is missing.
+- **Blog redirects.** `redirects.json` gained one row for each old post address, so it holds 82 entries. 74 are from the old site, and 8 are the earlier `/blog/` post addresses. The posts had been live on the Vercel production URL since September, so their old addresses redirect even though they never reached the real domain. Four posts only lost `/blog/`. The four September posts also got new slugs that match their titles.
+
+  | Old address | New address |
+  | --- | --- |
+  | `/blog/i-26-crash-summerville-who-writes-the-report/` | `/crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it/` |
+  | `/blog/dog-bite-summerville-neighborhood-what-parents-should-know/` | `/a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know/` |
+  | `/blog/motorcycle-season-lowcountry-helmet-law-your-claim/` | `/motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim/` |
+  | `/blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy/` | `/hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer/` |
+  | `/blog/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/` | `/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/` |
+  | `/blog/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/` | `/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/` |
+  | `/blog/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/` | `/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/` |
+  | `/blog/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/` | `/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/` |
+
+  The Manifest v7 documents in `llg/v2/` still list the four September posts at their old addresses. They are the dated September 28 record, and this decision supersedes them for blog posts.
+
 ## Launch checklist
 
 1. **Vercel.** Done. Production deploys from `main`, confirmed September 29, and PR 5 merged the Manifest v7 build into `main` that day. The project serves `website/` from this repository with no build step.

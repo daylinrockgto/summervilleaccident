@@ -756,6 +756,86 @@
       "source": "/about-us/",
       "destination": "/about/",
       "permanent": true
+    },
+    {
+      "source": "/blog/i-26-crash-summerville-who-writes-the-report",
+      "destination": "/crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/i-26-crash-summerville-who-writes-the-report/",
+      "destination": "/crash-on-i-26-near-summerville-who-writes-the-report-and-how-to-get-it/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dog-bite-summerville-neighborhood-what-parents-should-know",
+      "destination": "/a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dog-bite-summerville-neighborhood-what-parents-should-know/",
+      "destination": "/a-dog-bite-in-a-summerville-neighborhood-what-parents-should-know/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/motorcycle-season-lowcountry-helmet-law-your-claim",
+      "destination": "/motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/motorcycle-season-lowcountry-helmet-law-your-claim/",
+      "destination": "/motorcycle-season-in-the-lowcountry-the-helmet-question-and-your-claim/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy",
+      "destination": "/hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hit-by-an-uninsured-driver-goose-creek-your-own-policy/",
+      "destination": "/hit-by-an-uninsured-driver-in-goose-creek-your-own-policy-may-be-the-answer/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid",
+      "destination": "/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/",
+      "destination": "/how-does-a-summerville-car-accident-lawyer-get-your-medical-bills-paid/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault",
+      "destination": "/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/",
+      "destination": "/what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall",
+      "destination": "/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/",
+      "destination": "/who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth",
+      "destination": "/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/",
+      "destination": "/how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/",
+      "permanent": true
     }
   ],
   "headers": [
