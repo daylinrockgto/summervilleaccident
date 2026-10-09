@@ -860,7 +860,7 @@ def head_html(p):
         f'<meta property="og:locale" content="{"es_US" if lang == "es" else "en_US"}">'
         '<meta name="twitter:card" content="summary_large_image">'
         f'<meta name="geo.region" content="US-SC"><meta name="geo.placename" content="{firm.CITY}">'
-        '<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">'
+        '<link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">'
         '<link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>'
         '<link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>'
         f'<link rel="stylesheet" href="{CSS_HREF}">'
@@ -1076,6 +1076,16 @@ def write_favicons():
         f = ImageFont.load_default()
     d.text((90, 92), "F", fill="#ffffff", font=f, anchor="mm")
     im.save(os.path.join(OUT, "assets", "img", "apple-touch-icon.png"))
+    # /favicon.ico for browsers without SVG icon support and for crawlers that request it by default
+    ico = Image.new("RGBA", (192, 192), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ico)
+    d.rounded_rectangle((0, 0, 191, 191), radius=42, fill="#7a1f1f")
+    try:
+        f = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf", 128)
+    except Exception:
+        f = ImageFont.load_default()
+    d.text((96, 100), "F", fill="#ffffff", font=f, anchor="mm")
+    ico.save(os.path.join(OUT, "favicon.ico"), sizes=[(16, 16), (32, 32), (48, 48)])
 
 
 def write_og():
