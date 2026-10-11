@@ -16,7 +16,7 @@ def add(id, kind, h1, url, kp, words, status, parent=None, note=""):
     M.append(dict(id=id, kind=kind, h1=h1, url=url, kp=kp, words=words, status=status, parent=parent, note=note))
 
 # Core
-add("home", "Home", "Summerville Personal Injury Attorneys", "/", "Summerville personal injury attorneys", 9200, "Written, fix pass")
+add("home", "Home", "Summerville Personal Injury Attorneys", "/", "Summerville personal injury attorneys", 4400, "Rewritten 2026-10-11 at home-page depth")
 add("pa", "Menu page", "Personal Injury Cases Frost Law Group Handles in Summerville, South Carolina", "/practice-areas/", "Summerville personal injury cases", 1700, "Written, fix pass, add the two new parents")
 add("loc", "Menu page", "South Carolina Personal Injury Attorneys Serving Summerville and the Surrounding Counties", "/locations/", "South Carolina personal injury attorneys", 5300, "Written, fix pass, add city links")
 # Parents

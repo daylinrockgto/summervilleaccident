@@ -50,7 +50,7 @@ Three page types are new, and each follows the H1 equals slug rule.
 
 | Page type | Pages | Words |
 | --- | --- | --- |
-| Home | 1 | 9,200 |
+| Home | 1 | 4,400 |
 | Menu page | 2 | 7,000 |
 | Practice parent | 9 | 46,800 |
 | Practice child | 20 | 64,000 |
@@ -63,9 +63,9 @@ Three page types are new, and each follows the H1 equals slug rule.
 | Legacy page | 1 | 0 |
 | Site page (repo, compliance fixes) | 10 | 0 |
 | Blog post | 8 | 0 |
-| **Total** | **94** | **250,900** |
+| **Total** | **94** | **246,100** |
 
-Word targets: homepage 8,000 to 10,000, parents 5,000, children and city pages 3,000, answer pages 1,500 to 2,000, Spanish page about 2,500. Answer pages are a new page type, and their target is a judgment call against the audit's 800 to 1,500.
+Word targets: homepage 4,000 to 5,000 (cut from 8,000 to 10,000 on October 11, 2026, so the home page routes to the parents instead of repeating them), parents 5,000, children and city pages 3,000, answer pages 1,500 to 2,000, Spanish page about 2,500. Answer pages are a new page type, and their target is a judgment call against the audit's 800 to 1,500.
 
 ---
 
@@ -73,7 +73,7 @@ Word targets: homepage 8,000 to 10,000, parents 5,000, children and city pages 3
 
 | H1 | URL | Words | Status |
 | --- | --- | --- | --- |
-| Summerville Personal Injury Attorneys | / | 9,200 | Written, fix pass |
+| Summerville Personal Injury Attorneys | / | 4,400 | Rewritten October 11, 2026 at home-page depth |
 | Personal Injury Cases Frost Law Group Handles in Summerville, South Carolina | /practice-areas/ | 1,700 | Written, fix pass, add the two new parents |
 | South Carolina Personal Injury Attorneys Serving Summerville and the Surrounding Counties | /locations/ | 5,300 | Written, fix pass, add city links |
 | Car Accident Attorneys in Summerville | /car-accident-attorneys-in-summerville/ | 5,200 | Written, fix pass |
