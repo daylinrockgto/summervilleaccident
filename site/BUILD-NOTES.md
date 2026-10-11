@@ -117,7 +117,7 @@ The old page ran 9,289 words, longer than every practice parent it links to. It 
 - **Review.** Five independent review lenses checked the draft: facts, South Carolina law, compliance, readability, and SEO and depth. A skeptic then tried to refute every finding. The confirmed findings were fixed, and a second round checked the revision. Two legal errors from the first draft were caught and fixed:
   - "No statute names a following distance" was too broad, because Section 56-5-1960 sets 500 feet behind fire apparatus. The page now says only Section 56-5-1930 names none.
   - Lyft log-on times do not show that a ride was accepted, and acceptance is what triggers the $1,000,000 tier.
-- **Gate.** `frost_check.py home --grammar` prints CLEARED. No 8-word run is shared with another page, and no sentence runs past 26 words.
+- **Gate.** `frost_check.py home --grammar` prints CLEARED. No 8-word run is shared with another page, and no sentence runs past 25 words.
 - **For the Monday structure review.**
   - Confirm the 4,000 to 5,000 band. The skill's home default is 6,000 to 8,000, and the September plan had 8,040 to 10,000.
   - Decide whether the home page should link the Pedestrian and Catastrophic Injury parents, which the home brief's link list predates.
