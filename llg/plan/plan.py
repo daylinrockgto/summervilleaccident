@@ -74,7 +74,7 @@ PAGES = []
 # ---------------------------------------------------------------- PHASE A
 PAGES.append(pg(id="home", phase="A", type="Home page", h1="Summerville Personal Injury Attorneys", url=HOME, slug="/",
  parent="none, root page (site home)", wp_title="Home", kp="Summerville personal injury attorneys",
- words=(8040, 10000), target=9200, replaces="Rewrite in place of the current homepage", redirect_from=[],
+ words=(4000, 5000), target=4400, replaces="Rewrite in place of the current homepage", redirect_from=[],
  title="Summerville Personal Injury Attorneys | Call Frost First",
  desc="Summerville personal injury attorneys at Frost Law Group help injured people across eight South Carolina counties. Call for a free, confidential consultation.",
  device="The caller's questions in the order a caller asks them. What kind of case is this, who will handle it, does the firm cover my county, what do I do now. The approved heading tree already follows that order, so every section answers the question a first-time caller is really asking at that point.",

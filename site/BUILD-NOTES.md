@@ -102,6 +102,27 @@ Daylin confirmed these with the client on October 7.
   - **Two small copy fixes.** On the "where car accidents happen" answer page, the H3 now reads "Does the US 17 Crash Figure for Dorchester County Mean Main Street?" instead of "...in the Dorchester Count...". The "what to do after a minor car accident" answer opens with 57 words instead of 61, after "If the crash only dented metal," became "If not,".
 - **Long-form edits without the kit zip.** `sync_pages.py` needs only files that are in git, and `frost_check.py` runs every check except the sidecar check without the kit zip. A deletion-only edit adds no fact and needs no sidecar change, so the four Tara passages and the two "first meeting" lines went through the normal check, sync and build. Each page's checker output matched its run before the edit, apart from the word count, which stayed in band. A new fact still needs its sidecar entry, which needs the kit zip.
 
+## Home page rewrite, October 11, 2026
+
+Jon Kennedy replied to the launch email that the home page "went deep and mixed pages". Daylin found the copy awkward to read and asked for a rewrite under the legal SEO writer skill.
+
+The old page ran 9,289 words, longer than every practice parent it links to. It repeated statute-level detail that the parent, child and answer pages already cover, such as Act 42, UIM stacking, Medicaid liens, probate approval, FR-10 forms, damages caps and crash counts by hour.
+
+- **Headings.** Every H2 and Nick's locked tree are unchanged. The four Why Turn H3s and seven of the eight county H3s keep their wording. The Charleston H3 promised a cause the research cannot support, so it now reads "Charleston County Has the Most Serious Injury Collisions in South Carolina".
+- **Removed H4s.** Seven deep H4s under Why Turn are gone: conflicting accounts, magistrate court limits, SCDMV report ordering, which police agency, Medicaid and Medicare repayment, damages, and probate court approval.
+- **H4 pairs.** Two pairs remain. "Questions the Attorneys Ask When You Call About an Injury" is new, paired with "Work That Starts Once You Hire Frost Law Group". "Documents to Gather Before You Meet the Attorneys" pairs with "Filing Deadlines We Review in Your Free Consultation".
+- **Copy.** Every paragraph is rewritten in short, active sentences, two to four to a paragraph. Each case type and county gets a summary at home-page depth and a link to the page that covers it.
+- **Facts.** No new facts. Each fact comes from the September 30 page, the approved client facts, the county research pack or the attorney bios. Firm routines the client has not approved are written as what the attorneys "can" do.
+- **Word band.** The home band is now 4,000 to 5,000 words, target 4,400, in `llg/plan/plan.json`, `plan.py` and Manifest v7. The parent band is 5,040 to 6,000, so the home page now routes to the parents instead of repeating them.
+- **Review.** Five independent review lenses checked the draft: facts, South Carolina law, compliance, readability, and SEO and depth. A skeptic then tried to refute every finding. The confirmed findings were fixed, and a second round checked the revision. Two legal errors from the first draft were caught and fixed:
+  - "No statute names a following distance" was too broad, because Section 56-5-1960 sets 500 feet behind fire apparatus. The page now says only Section 56-5-1930 names none.
+  - Lyft log-on times do not show that a ride was accepted, and acceptance is what triggers the $1,000,000 tier.
+- **Gate.** `frost_check.py home --grammar` prints CLEARED. No 8-word run is shared with another page, and no sentence runs past 25 words.
+- **For the Monday structure review.**
+  - Confirm the 4,000 to 5,000 band. The skill's home default is 6,000 to 8,000, and the September plan had 8,040 to 10,000.
+  - Decide whether the home page should link the Pedestrian and Catastrophic Injury parents, which the home brief's link list predates.
+  - Decide whether the locked case-type H4s and H5s should stay, since they share keyphrases with the parent pages.
+
 ## Launch checklist
 
 1. **Vercel.** Done. Production deploys from `main`, confirmed September 29, and PR 5 merged the Manifest v7 build into `main` that day. The project serves `website/` from this repository with no build step.
