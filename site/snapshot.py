@@ -8,14 +8,15 @@
 Each page prints at the 1280px desktop layout with screen styles, every accordion open and every image loaded. Each
 sheet names the live URL, the version and the capture time, and the PDF has one bookmark per page. Photos are scaled to
 640px for the archive copy, so a full set stays small enough to file; the full-size files stay in git at the commit.
-Needs Node with Playwright (preinstalled in cloud sessions), Pillow and pypdf (pip install pillow pypdf).
+Needs Node with Playwright (preinstalled in cloud sessions), Pillow and pypdf (pip install pillow pypdf). With pikepdf
+installed (pip install pikepdf), the PDF keeps one copy of each photo the pages share and packs its objects, which
+halves its size without changing a pixel.
 """
 import argparse
 import datetime
 import functools
 import hashlib
 import http.server
-import io
 import os
 import re
 import shutil
@@ -98,6 +99,39 @@ def serve(site):
     return httpd
 
 
+def compact(src, dst):
+    """Point every copy of an identical image at one stream and save with compressed object streams. Returns False when
+    pikepdf is not installed, so the caller keeps the uncompacted file."""
+    try:
+        import pikepdf
+    except ImportError:
+        return False
+    pdf = pikepdf.open(src)
+    seen, forms = {}, set()
+
+    def key(img):
+        mask = img.get("/SMask")
+        return (hashlib.sha1(img.read_raw_bytes()).hexdigest(), int(img.get("/Width", 0)), int(img.get("/Height", 0)), str(img.get("/Filter")),
+                str(img.get("/ColorSpace")), hashlib.sha1(mask.read_raw_bytes()).hexdigest() if mask is not None else "")
+
+    def walk(res):
+        if res is None or "/XObject" not in res:
+            return
+        xobjects = res["/XObject"]
+        for name in list(xobjects.keys()):
+            obj = xobjects[name]
+            if obj.get("/Subtype") == "/Image":
+                xobjects[name] = seen.setdefault(key(obj), obj)
+            elif obj.get("/Subtype") == "/Form" and obj.objgen not in forms:
+                forms.add(obj.objgen)
+                walk(obj.get("/Resources"))
+
+    for page in pdf.pages:
+        walk(page.obj.get("/Resources"))
+    pdf.save(dst, object_stream_mode=pikepdf.ObjectStreamMode.generate, compress_streams=True, recompress_flate=True)
+    return True
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("out")
@@ -139,10 +173,12 @@ def main():
             w.compress_identical_objects(remove_duplicates=True, remove_unreferenced=True)
         except TypeError:  # pypdf before 6
             w.compress_identical_objects(remove_identicals=True, remove_orphans=True)
-        buf = io.BytesIO()
-        w.write(buf)
-        open(args.out, "wb").write(buf.getvalue())
-        print(f"{args.out}: {len(paths)} pages, {len(w.pages)} sheets, {len(buf.getvalue()) / 1e6:.1f} MB, sha256 {hashlib.sha256(buf.getvalue()).hexdigest()}")
+        merged = os.path.join(work, "merged.pdf")
+        w.write(merged)
+        if not compact(merged, args.out):
+            shutil.copy(merged, args.out)
+        data = open(args.out, "rb").read()
+        print(f"{args.out}: {len(paths)} pages, {len(w.pages)} sheets, {len(data) / 1e6:.1f} MB, sha256 {hashlib.sha256(data).hexdigest()}")
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
