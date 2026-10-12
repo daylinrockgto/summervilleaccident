@@ -154,7 +154,8 @@ def enhance(p, body, inserts=None, shell=_shell, intro_shell=None):
     """Turn plain long-form copy into designed sections. Returns (html, [(section id, H2 text), ...]).
 
     inserts: {h2 index: html} placed after that section's intro paragraphs (cards, attorney panels),
-    {"intro": html} after the intro, and {"after:N": html} after section N closes.
+    {"intro": html} after the intro, {"after:intro": html} after the intro and its shell, and {"after:N": html} after
+    section N closes.
     shell(cls, id, inner) wraps each section; the home page uses it for full-width bands."""
     inserts = inserts or {}
     imgs = page_images(p)
@@ -195,7 +196,7 @@ def enhance(p, body, inserts=None, shell=_shell, intro_shell=None):
     head_html = intro + inserts.get("intro", "") + toc
     if intro_shell:
         head_html = intro_shell(head_html)
-    return head_html + "".join(html_secs), sections
+    return head_html + inserts.get("after:intro", "") + "".join(html_secs), sections
 
 
 # ---------------------------------------------------------------- cards and panels
@@ -206,8 +207,9 @@ def card_img(slug, wide=False):
     f = featured(pg) if pg else None
     if not f:
         return '<span class="ph" aria-hidden="true"></span>'
-    # a card left alone on its row runs as a wide banner, so it asks for the full-size photo on larger screens
-    return resp_img(f[0], "", sizes="(max-width: 600px) 100vw, " + ("900px" if wide else "300px"), cls="thumb")
+    # a card left alone on its row runs as a wide banner, so it asks for the full-size photo on larger screens.
+    # The photo keeps the page's own alt text for search engines and audits, and aria-hidden so the card link reads as its label.
+    return resp_img(f[0], f[1], sizes="(max-width: 600px) 100vw, " + ("900px" if wide else "300px"), cls="thumb", hidden=True)
 
 
 def photo_cards(slugs, cls="pcards"):

@@ -57,7 +57,18 @@ HOURS_LD = [("Monday", "09:00", "17:00"), ("Tuesday", "09:00", "17:00"), ("Wedne
 # The client's approved fee wording, confirmed 2026-10-07. The client's em dash became a comma, per the house punctuation rules.
 FEE_HEADLINE = "No Fee Unless We Win"
 FEE_TEXT = "You never pay out of pocket. We only collect a fee if we recover compensation for you, so there's no risk in reaching out."
-FEE_WORDING = f"<strong>{FEE_HEADLINE}.</strong> {FEE_TEXT}"
+# SC Rule 7.2(f): fee information must say whether the client owes expenses besides the fee, and whether a percentage fee
+# is figured before or after expenses come out. FEE_COSTS restates "You never pay out of pocket" for a case with no recovery
+# (added 2026-10-12, Daylin). FEE_BASIS waits for the client's fee agreement and prints nothing while it is empty.
+FEE_COSTS = "If there is no recovery, you owe no fee and no case costs."
+FEE_BASIS = ""
+FEE_WORDING = f"<strong>{FEE_HEADLINE}.</strong> {FEE_TEXT} {FEE_COSTS}" + (f" {FEE_BASIS}" if FEE_BASIS else "")
+# SC Rule 7.2(d): the name and office address of a lawyer responsible for the site, in the footer of every page (2026-10-12).
+RESPONSIBLE_ATTORNEY = f"The attorney responsible for this website is Tara L. Frost, {STREET}, {CITY}, {STATE} {ZIP}."
+# Spanish is spoken at the firm (Daylin, 2026-10-12): the top bar says so and links the Spanish page, and the firm markup
+# lists both languages.
+SPANISH_NOTE = "Se habla español"
+LANGUAGES = ["English", "Spanish"]
 
 DISCLAIMER = ("This website is attorney advertising and is for informational purposes only; it is not legal advice and does not create an attorney-client relationship. "
               "Prior results do not guarantee a similar outcome. Talk to a licensed South Carolina attorney about your own situation. "
