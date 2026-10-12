@@ -45,4 +45,8 @@ META = {
         "A Moncks Corner slip and fall lawyer explains who is liable for your fall, whether a store, a landlord, or a town. Call Frost Law Group for a free review."),
     "how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth": ("North Charleston Truck Accident Lawyer | Value Your Claim",
         "A North Charleston truck accident lawyer values your claim by adding up your losses and checking each company's insurance and fault. Get a free review."),
+    # October 12, 2026 post. The description is the draft's own. The draft's title, "IME Order? See a Charleston
+    # Catastrophic Injury Lawyer", stays in posts.py; this one follows the keyphrase | CTA rule.
+    "can-a-charleston-catastrophic-injury-lawyer-keep-you-away-from-the-insurance-companys-doctor": ("Charleston Catastrophic Injury Lawyer | Call Before an IME",
+        "Before a lawsuit, the other driver's insurer cannot order an IME. A Charleston catastrophic injury lawyer explains when a judge can. Call for a free review."),
 }

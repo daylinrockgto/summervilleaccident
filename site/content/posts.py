@@ -707,3 +707,126 @@ p8 = post(hero_image='talk-to-a-north-charleston-truck-accident-lawyer-about-you
               ("Live 5 News, SC Ports pauses Leatherman Terminal (June 2026)", LIVE5_LEATHERMAN, False)],
      related=[TRUCKP, CHS + "/truck-accident-lawyers-in-charleston-county", TRUCKP + "/who-is-liable-in-a-truck-accident", CHS + "/north-charleston-personal-injury-lawyers"])
 faq_ld(p8, 'Questions About Truck Accident Claim Value in North Charleston')
+
+# ----------------------------------------------------------------------------- 9. Charleston catastrophic injury, the insurance company's doctor
+# October 12, 2026 draft from Legal Leads Group. Same conversion as the October batch: the DNI number replaced the draft's
+# tracking number, the contingency fee clause came out of the CTA (the template and footer carry the fee wording), and two
+# Rule 7.4 words that described the rules' own text ("certified" examiner, the drafters' "experts") were reworded. The
+# Rule 35, Rule 37, 38-77-160, 15-78-110, Schlagenhauf and federal court facts were checked against the sources below on
+# October 12. The photos under H2s 2 and 4 are listed in images.json under this post's slug.
+CATP = "catastrophic-injury-attorneys-in-summerville"
+SCRCP_35 = "https://www.sccourts.org/resources/judicial-community/court-rules/civil/rule-35/"
+SCRCP_37 = "https://www.sccourts.org/resources/judicial-community/court-rules/civil/rule-37/"
+FRCP_35 = "https://www.law.cornell.edu/rules/frcp/rule_35"
+SCHLAGENHAUF = "https://www.law.cornell.edu/supremecourt/text/379/104"
+USC_1332 = "https://www.law.cornell.edu/uscode/text/28/1332"
+USC_1441 = "https://www.law.cornell.edu/uscode/text/28/1441"
+SCD_LOCATIONS = "https://www.scd.uscourts.gov/Court/location.asp"
+SCCOURTS_CHARLESTON = "https://www.sccourts.org/courts/courthouse-search/charleston/"
+
+p9 = post(hero_image='talk-to-a-charleston-catastrophic-injury-lawyer-before-any-insurance-medical-exam.jpg',
+     hero_caption='A doctor in a white coat holds a chart while examining an older man who presses a hand to his hip.',
+     category='Catastrophic injuries', date='2026-10-12', modified='2026-10-12',
+     title='IME Order? See a Charleston Catastrophic Injury Lawyer',
+     description="Before a lawsuit, the other driver's insurer cannot order an IME. A Charleston catastrophic injury lawyer explains when a judge can. Call for a free review.",
+     h1="Can a Charleston Catastrophic Injury Lawyer Keep You Away From the Insurance Company's Doctor?",
+     summary="Who can make you see an insurance doctor after a Charleston crash, when a judge can order the exam, and the Rule 35 protections that come with it.",
+     body=(
+         "<p>Before a lawsuit, the other driver's insurer cannot make you see its doctor. Once you sue, a Charleston catastrophic injury lawyer cannot always block an exam. South Carolina Rule 35 requires a court order, good cause, and a claim over $100,000 in actual damages. Your own doctor may attend, and the exam usually stays in your county or your doctor's.</p>"
+         "<p>Frost Law Group represents people with life-changing injuries across Charleston, Dorchester, and Berkeley counties. Brain injuries, spinal cord damage, amputations, and severe burns are claims where the extent of the harm drives the fight. You work directly with an attorney, not a call center. Jack C. Frost spent 14 years in law enforcement with the Summerville Police Department and the Charleston County Sheriff's Office before he practiced law.</p>"
+         '<p>If an insurer wants you to see its doctor after a Charleston crash, call Frost Law Group at ' + TEL + ' for a free case review. The call is free, and you stay in charge of what happens next.</p>'
+         '<h2>Who Can Ask You to See an Insurance Doctor After a Charleston Catastrophic Injury?</h2>'
+         '<p>The letter can land weeks after the Charleston Police Department writes the crash report. It asks you to attend an independent medical exam, often called an IME. The <a href="[[catastrophic-injury-attorneys-in-summerville]]">catastrophic injury attorneys at Frost Law Group</a> start with one question. Who is asking? A brain injury from a wreck on I-26 or a spinal cord injury on the Arthur Ravenel Jr. Bridge can draw requests from three different directions.</p>'
+         '<p>Each one gets its power from a different source.</p>'
+         "<ul><li>The at-fault driver's liability insurer has no contract with you and no court order before a lawsuit.</li><li>Your own auto insurer may point to a policy clause that lists a medical exam among your duties after a crash.</li><li>The defense lawyers in a filed lawsuit can ask a judge for an order under Rule 35 of the South Carolina Rules of Civil Procedure.</li></ul>"
+         '<p>Your answer depends on which of the three is asking. So do the consequences of saying no.</p>'
+         "<h3>The Other Driver's Insurer Cannot Order an Exam</h3>"
+         '<p>An adjuster for the driver who hit you may ask for an IME while the claim is still in negotiation. Before a lawsuit, that request has no legal force behind it. Rule 35 works only through the court where an action is pending, so no order can exist until a case is filed. You can decline, and a lawyer can answer the request in writing. Refusing can slow settlement talks, and whether that tradeoff is worth it turns on what your medical records already show.</p>'
+         '<h3>Your Own Policy May Require One</h3>'
+         '<p>Your own insurer stands in a different spot, because you signed a contract with it. Many auto policies list a medical exam by a doctor the company chooses among your duties after an accident. That duty usually attaches to medical payments or uninsured motorist claims. Read the duties section of your policy before you refuse. A refusal there can put those benefits at risk under the policy\'s own terms.</p>'
+         '<h3>Your Underinsured Motorist Carrier Can Defend the Lawsuit</h3>'
+         "<p>Catastrophic claims often outgrow the at-fault driver's policy, which brings your underinsured motorist coverage into play. Section 38-77-160 of the South Carolina Code requires the lawsuit papers to be served on that carrier. It then has 30 days to appear and defend in the name of the at-fault driver. If the at-fault insurer pays its limits, the underinsured carrier may take control of the defense. A motion for an exam can then come from your own insurance company. Frost Law Group explains how <a href=\"[[car-accident-attorneys-in-summerville/uninsured-motorist-coverage-in-south-carolina]]\">uninsured and underinsured motorist coverage in South Carolina</a> works.</p>"
+         '<h2>When Can a Charleston County Judge Order a Defense Medical Exam?</h2>'
+         f'<p>Once you file suit, the rules change. A lawsuit over a Charleston crash is often filed in the Court of Common Pleas. That court sits at the Charleston County Courthouse, 100 Broad Street, in the Ninth Judicial Circuit. The defense can then file a motion asking a circuit judge to order an exam. The judge decides under <a href="{SCRCP_35}" rel="noopener" target="_blank">Rule 35 of the South Carolina Rules of Civil Procedure</a>, not the insurer.</p>'
+         '<p>Rule 35 sets several conditions before any exam can be ordered. They protect you, but none of them guarantees a judge will say no. Whether an order issues in your case hinges on the injuries you claim and the facts each side puts in front of the court.</p>'
+         '<h3>The $100,000 Actual Damages Threshold</h3>'
+         '<p>South Carolina added a condition the federal rule never had. Rule 35(a) applies only when “the amount in controversy exceeds $100,000 actual damages.” The drafters\' note says the first paragraph tracks the federal rule except for that limitation. In a catastrophic injury case, the claimed damages usually clear that bar with room to spare. The threshold matters more in a smaller claim, where it can take a court-ordered exam off the table.</p>'
+         '<h3>Good Cause and a Condition in Controversy</h3>'
+         '<p>The defense also has to show that your physical or mental condition is in controversy and that good cause exists. The order can issue only on a motion, with notice to you and to every party. A judge does not sign one because an adjuster wants it. The motion has to give reasons tied to the claims you actually make.</p>'
+         '<h4>Brain Injury Claims Put Your Mental Condition at Issue</h4>'
+         "<p>The drafters' note says the South Carolina rule borrows its first paragraph from the federal rule. That makes the U.S. Supreme Court's reading of the federal text worth knowing. In Schlagenhauf v. Holder, 379 U.S. 104 (1964), the Court said conclusory allegations in the pleadings do not meet these requirements. It also said a negligence plaintiff who asserts a mental or physical injury places that injury in controversy. A claim for memory loss or personality change after a brain injury can open the door to a mental exam.</p>"
+         '<h4>What the Order Has to Spell Out</h4>'
+         '<p>An order under Rule 35(a) must specify the time, place, manner, conditions, and scope of the exam. It must also name the person or persons who will perform it. The order then goes to the examiner, so the doctor knows the limits too. Those terms are where a lawyer pushes for protections, such as how long testing runs or which injuries the doctor may examine.</p>'
+         '<h2>Protections the South Carolina Rule Gives You That Federal Courts Do Not</h2>'
+         '<p>Why does a South Carolina exam look different from one ordered in federal court? The second paragraph of Rule 35(a) is homegrown. The drafters\' note says it “is new and is not in the Federal Rule,” and it limits how the exam device is used. Those limits give you three protections that the federal rule does not write into its text.</p>'
+         "<p>Each protection still has an exception a judge can apply. A 1986 amendment gave courts discretion over location and timing when the facts justify it. How the rule plays out for you rests on the order the judge signs. Frost Law Group's <a href=\"[[personal-injury-attorneys-in-charleston-county/charleston-personal-injury-lawyers]]\">Charleston personal injury lawyers</a> read that order line by line before you go.</p>"
+         '<h3>Your Own Doctor Can Be in the Room</h3>'
+         f'<p>Rule 35 says plainly that the physician of the party to be examined may be present at the examination. That can be your neurologist, your spine surgeon, or your rehabilitation doctor. In the Lowcountry region, the state <a href="{DPH_TRAUMA}" rel="noopener" target="_blank">Department of Public Health lists MUSC as an Adult Level I trauma center</a>. A treating doctor at MUSC may know your injury better than anyone in the exam room. Whether that doctor has time to attend is a practical question to raise early.</p>'
+         "<h3>The Exam Stays in Your County or Your Doctor's</h3>"
+         "<p>Unless the parties agree or the court finds good cause, the exam takes place in the county where you or your physician resides. For a Charleston resident, that usually means an office in Charleston County. The rule does not send a West Ashley resident with a spinal cord injury on a long drive by default. The test also looks at where your physician resides. A patient who moved to Summerville after the crash may have two counties in play. The court gives special consideration to your convenience and your doctor's, and reasonable consideration to the examining doctor's.</p>"
+         '<h3>Objecting to the Doctor the Defense Picks</h3>'
+         "<p>You can object to the physician the defense names. If the parties cannot agree on who should do the exam, the court may designate a physician. The jury never learns the court chose that doctor, because the rule makes the designation inadmissible at trial. An objection might rest on the doctor's specialty or on the doctor's past work for insurers, and the judge decides whether it is reasonable.</p>"
+         "<h2>What You Can Get From the Examiner's Report Under Rule 35(b)</h2>"
+         '<p>The exam ends, and a report follows. Do you get to see it? Under Rule 35(b)(1), you or your lawyer can ask for it, and the party that caused the exam must deliver a copy. The report has to be written and detailed.</p>'
+         '<p>The rule spells out what that report must contain.</p>'
+         "<ul><li>The report sets out the examining physician's findings.</li><li>It includes the results of all tests made.</li><li>It states the physician's diagnoses and conclusions.</li><li>It comes with like reports of all earlier examinations of the same condition.</li></ul>"
+         '<p>That last item reaches earlier reports on the same condition, not only the newest one. Asking for the report also starts a trade, and that trade has a cost a lawyer weighs first.</p>'
+         '<h3>The Report Trade After You Ask for a Copy</h3>'
+         "<p>Once the defense delivers its report, it gets something back. Rule 35(b)(1) entitles it to a like report of any examination of the same condition, made before or after the defense exam. The drafters wrote that the goal is to encourage settlement when the two sides' medical opinions show no significant difference. When your treating doctors' findings are strong, that exchange can work in your favor.</p>"
+         "<h4>Your Treating Doctors' Reports Go to the Defense</h4>"
+         "<p>A neuropsychologist's retest or a surgeon's follow-up visit can fall inside that return duty. The rule carves out one exception for a report about a person who is not a party. If the party shows it cannot obtain that report, it does not have to hand it over. A parent suing over an injured child may face that situation with a provider who will not release records.</p>"
+         '<h4>An Examiner Who Will Not Write a Report</h4>'
+         "<p>Rule 35(b)(1) lets the court order a report delivered on terms that are just. If a physician fails or refuses to make a report, the court may exclude that physician's testimony at trial. A defense doctor who examines you and then produces nothing risks losing the chance to testify. Your lawyer can raise that remedy if the written report never arrives.</p>"
+         '<h3>The Privilege Waiver That Comes With the Report</h3>'
+         "<p>Asking for the report has a price. Rule 35(b)(2) says that obtaining the report waives any privilege you may have over other examiners' testimony about the same condition. That is why a lawyer decides whether to ask for it, instead of asking by reflex. How far the waiver reaches in your case varies with the claims you bring and the doctors involved.</p>"
+         '<h4>Asking for the Report or Deposing the Examiner</h4>'
+         '<p>Two acts trigger the waiver. The first is requesting and obtaining the report of the ordered exam. The second is taking the deposition of the examiner. Either step opens the door, so a lawyer plans the two moves together and decides on both before taking either one.</p>'
+         '<h5>Every Person Who Examines the Same Condition</h5>'
+         '<p>The waiver covers the testimony of every other person who has examined you, or later examines you, for the same condition. Past examiners and future ones both fall inside it. An unrelated condition stays outside, because the rule ties the waiver to the same mental or physical condition.</p>'
+         '<h5>This Lawsuit and Any Other Over the Same Controversy</h5>'
+         '<p>The waiver applies in the action where the exam happened. Rule 35(b)(2) also extends it to any other action involving the same controversy. A separate suit over the same crash against another driver or an insurer can fall within that phrase, depending on the claims in each case.</p>'
+         '<h4>Agreed Exams Follow the Same Rules</h4>'
+         '<p>Not every exam needs a motion. The lawyers can set an exam by agreement instead. Rule 35(b)(3) applies the report and waiver rules to an agreed exam unless the agreement expressly says otherwise. That makes the written agreement the place to settle terms on reports, waiver, and scope.</p>'
+         '<h2>What Changes if Your Case Moves to Federal Court in Charleston?</h2>'
+         '<p>Sometimes the case leaves 100 Broad Street. A suit against an out-of-state trucking company or other business can be removed to federal court under 28 U.S.C. 1332(a) and 1441. That generally requires parties who are citizens of different states and more than $75,000 at stake. In Charleston, the U.S. District Court sits at the J. Waties Waring Judicial Center, 83 Meeting Street, and the courthouse at 85 Broad Street.</p>'
+         '<p>Federal Rule of Civil Procedure 35 then governs the exam. It differs from the state version in four ways.</p>'
+         '<ul><li>The federal rule has no $100,000 threshold.</li><li>It allows an exam by any suitably licensed or credentialed examiner, while the South Carolina text names a physician.</li><li>It has no clause that lets your own physician attend.</li><li>It has no county rule, so the place is whatever the order specifies.</li></ul>'
+         "<p>The 1991 committee note says the word suitably lets a federal judge assess the examiner's credentials. That matters in a brain injury case, where a neuropsychologist may run the testing. Whether removal is proper rests on the identity and citizenship of each defendant. Interstate carriers often fit that pattern, so Frost Law Group's <a href=\"[[personal-injury-attorneys-in-charleston-county/truck-accident-lawyers-in-charleston-county]]\">truck accident lawyers in Charleston County</a> check the forum early.</p>"
+         '<h2>What Happens if You Skip a Court-Ordered Exam in Charleston County?</h2>'
+         "<p>Missing a court-ordered exam can damage a strong claim. Under Rule 37(b)(2) of the South Carolina Rules of Civil Procedure, a judge can respond when a party fails to obey a Rule 35 order. The court can treat facts as established in the defense's favor or bar you from offering certain evidence. It can also strike pleadings, stay the case, or dismiss the claim.</p>"
+         '<p>One sanction is off the table. Rule 37(b)(2)(D) allows contempt for disobeying most orders, but not an order to submit to a physical or mental examination. The court must still make the party who disobeyed, the advising lawyer, or both pay reasonable expenses, including attorney\'s fees. That changes only if the failure was substantially justified or other circumstances make the award unjust. Which sanction a judge chooses depends on the reason and the history of the case. If a medical problem gets in the way, call your lawyer before the appointment.</p>'
+         '<h2>How a Charleston Catastrophic Injury Lawyer Prepares You for a Defense Medical Exam</h2>'
+         '<p>The defense doctor is not there to treat you. The visit produces evidence, and every answer can end up in a report. Preparation keeps your account consistent with the records your treating doctors already wrote.</p>'
+         '<p>These steps come from the rule itself and from the records a catastrophic case builds.</p>'
+         '<ul><li>Read the order or written agreement first, since Rule 35 requires it to set the time, place, manner, conditions, and scope.</li><li>Ask your treating physician whether he or she can attend, since the South Carolina rule allows that doctor to be present.</li><li>Bring a list of your medications and treatment dates, including any admission at MUSC, so your history matches the chart.</li><li>Answer questions honestly without guessing, and tell your lawyer about any question outside the scope the order allows.</li><li>Write down when the exam started and ended, which tests were run, and anything that caused pain, as soon as you leave.</li></ul>'
+         '<p>Your notes become a check on the report when it arrives. If the report describes a test that never happened, your lawyer can use that record. How much any of this matters turns on the injuries and the examiner, which a lawyer reviews case by case.</p>'
+         '<h2>Questions Charleston Families Ask About Insurance Medical Exams</h2>'
+         '<p>These questions tend to come up during the week an exam letter or court motion arrives. Each answer names the rule behind it, so you can check the source yourself. Your own situation still turns on the order, the insurer, and the injuries in your file.</p>'
+         '<h3>Is an Independent Medical Exam Really Independent?</h3>'
+         "<p>The name suggests neutrality, but the defense usually proposes the doctor and pays the bill. South Carolina's Rule 35 never uses the word independent. It calls the visit a physical or mental examination by the physician the order names.</p>"
+         '<h3>Can I Record the Exam or Bring Someone With Me?</h3>'
+         '<p>Rule 35 does not mention recording, and it names only your own physician as someone who may be present. The order sets the manner and conditions of the exam. Raise recording or another observer before the exam date, not at the door. Ask your lawyer to put any agreement in writing.</p>'
+         '<h3>Can the Defense Ask to Examine My Child?</h3>'
+         '<p>Yes, in the right case. Rule 35(a) reaches a person in the custody or under the legal control of a party. A parent who sues for an injured child can be ordered to produce the child. Rule 37(b)(2)(E) lets a parent who truly cannot produce the child show that inability to avoid sanctions.</p>'
+         '<h3>How Long Do I Have to File a Catastrophic Injury Lawsuit in South Carolina?</h3>'
+         '<p>Section 15-3-530(5) gives most personal injury claims three years. Claims against a government agency fall under the South Carolina Tort Claims Act. Section 15-78-110 generally allows two years, or three if a verified claim under Section 15-78-80 is filed first. That claim must be received within one year after the loss was or should have been discovered. Frost Law Group\'s page on the <a href="[[car-accident-attorneys-in-summerville/south-carolina-car-accident-statute-of-limitations]]">South Carolina car accident statute of limitations</a> covers the exceptions.</p>'
+         '<h2>Talk to a Charleston Catastrophic Injury Lawyer Before Any Insurance Medical Exam</h2>'
+         '<p>An exam request after a brain or spinal cord injury is a turning point in the claim. A Charleston catastrophic injury lawyer at Frost Law Group can tell you who is asking, what power they have, and which Rule 35 protections apply. The firm can also negotiate the terms of an order or agreement before you walk into the examiner\'s office.</p>'
+         '<p>Frost Law Group serves Charleston, Dorchester, and Berkeley counties from 128 Linwood Lane, Summerville, SC 29483. <a href="[[attorneys/tara-frost]]">Tara L. Frost</a> is a former Dorchester County Magistrate Judge, and both attorneys graduated from the Charleston School of Law.</p>'
+         '<p>Call Frost First at ' + TEL + ' for a free case review. The firm answers 24/7. You can also send a short note about the exam request through the <a href="[[contact]]">contact page</a>.</p>'
+         '<p>Bring the exam letter or motion, the declarations page from your auto policy, and a list of your treating doctors. No lawyer can promise a result, and prior results do not guarantee a similar outcome.</p>'
+     ),
+     sources=[("S.C. Rule of Civil Procedure 35 and drafters' notes (physical and mental examinations)", SCRCP_35, False),
+              ("S.C. Rule of Civil Procedure 37 (sanctions for failing to obey an order)", SCRCP_37, False),
+              ("Schlagenhauf v. Holder, 379 U.S. 104 (1964)", SCHLAGENHAUF, False),
+              ("Federal Rule of Civil Procedure 35 and the 1991 committee note", FRCP_35, False),
+              ("28 U.S.C. § 1332 (diversity jurisdiction)", USC_1332, False),
+              ("28 U.S.C. § 1441 (removal)", USC_1441, False),
+              ("S.C. Code § 38-77-160 (underinsured motorist coverage)", CODE_38_77, False),
+              ("S.C. Code § 15-3-530 (filing deadlines)", CODE_15_3, False),
+              ("S.C. Code §§ 15-78-80 and 15-78-110 (Tort Claims Act claims and deadline)", CODE_15_78, False),
+              ("S.C. Judicial Branch, Charleston County courthouse", SCCOURTS_CHARLESTON, False),
+              ("U.S. District Court for the District of South Carolina, court locations", SCD_LOCATIONS, False),
+              ("S.C. Department of Public Health, trauma system", DPH_TRAUMA, False)],
+     related=[CATP, CHS + "/charleston-personal-injury-lawyers", CARP + "/uninsured-motorist-coverage-in-south-carolina", CHS + "/truck-accident-lawyers-in-charleston-county"])
+faq_ld(p9, 'Questions Charleston Families Ask About Insurance Medical Exams')
