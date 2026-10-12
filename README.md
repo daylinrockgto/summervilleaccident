@@ -14,6 +14,8 @@ The page structure follows Legal Leads Group's **Page Manifest v7** (September 2
 | `site/design.py` | Turns the long-form copy into a designed page at build time, with sections, H3 accordions, an "On this page" sidebar, photos and navigation cards. It never changes a word of copy |
 | `site/checks.py` | Hard compliance checks. The build fails if any page breaks one |
 | `site/verify_live.py` | Checks a deployed site. Every sitemap URL, every redirect in one hop, robots.txt, the sitemap, a 404 probe and the canonicals |
+| `site/snapshot.py` | Prints one version of the site to a PDF for the Rule 7.2(b) advertising record |
+| `site/ADVERTISING-RECORD.md` | Every version that has run on the real domain, with its live window, commit and PDF snapshot |
 | `site/content/pages/` | The 74 long-form pages as plain HTML, plus `pages.json` with each page's id, slug, type, parent, keyphrase and H1. Both are written by `llg/v2/tools/sync_pages.py` from `llg/pages/`, so never edit them by hand |
 | `site/content/llg.py` | Registers the long-form pages and builds the menus, sidebars and footer from `pages.json` |
 | `site/content/images.json` | The photo map. Each long-form page's featured photo and the photo under each H2, with alt text and the Canva stock ID |

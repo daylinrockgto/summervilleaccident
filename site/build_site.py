@@ -163,8 +163,9 @@ def variant_name(name):
     return os.path.splitext(name)[0] + f"-{VARIANT_W}w.jpg"
 
 
-def resp_img(name, alt, sizes="100vw", cls="", lazy=True):
-    """An <img> with width, height and, in production, a srcset that offers the 800px copy to small screens."""
+def resp_img(name, alt, sizes="100vw", cls="", lazy=True, hidden=False):
+    """An <img> with width, height and, in production, a srcset that offers the 800px copy to small screens.
+    hidden=True adds aria-hidden, for a photo whose link already reads as its visible label."""
     src, w, h = image_info(name)
     shown_w = min(w, 1600)
     shown_h = round(h * shown_w / w) if w else h
@@ -174,7 +175,8 @@ def resp_img(name, alt, sizes="100vw", cls="", lazy=True):
         srcset = f' srcset="{small} {VARIANT_W}w, {src} {shown_w}w" sizes="{sizes}"'
     c = f' class="{cls}"' if cls else ""
     load = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high" decoding="async"'
-    return f'<img src="{src}"{srcset} alt="{esc(alt)}" width="{shown_w}" height="{shown_h}"{c}{load}>'
+    aria = ' aria-hidden="true"' if hidden else ""
+    return f'<img src="{src}"{srcset} alt="{esc(alt)}"{aria} width="{shown_w}" height="{shown_h}"{c}{load}>'
 
 
 def init_design():
@@ -196,7 +198,7 @@ def post_card(pg, hl=3):
     a = firm.ATTORNEYS[pg["author"]]
     cover = ""
     if pg.get("hero_image") and image_exists(pg["hero_image"]):
-        cover = f'<a class="cover" href="{url(pg["slug"])}" tabindex="-1" aria-hidden="true">{resp_img(pg["hero_image"], "", sizes="(max-width: 700px) 100vw, 360px")}</a>'
+        cover = f'<a class="cover" href="{url(pg["slug"])}" tabindex="-1" aria-hidden="true">{resp_img(pg["hero_image"], pg["hero_caption"] or pg["h1"], sizes="(max-width: 700px) 100vw, 360px")}</a>'
     return (f'<li class="post-card">{cover}<div class="cat">{esc(pg["category"])}</div><h{hl}><a href="{url(pg["slug"])}">{esc(pg["h1"])}</a></h{hl}>'
             f'<p>{pg["summary"]}</p><div class="meta">{fmt_date(pg["date"])}<span class="dot"> · </span><span class="nw">{esc(a["short"])}</span></div></li>')
 
@@ -309,6 +311,35 @@ def form_html():
             '<p class="fine">Free, confidential and no obligation. Sending a message does not create an attorney-client relationship until we agree in writing to represent you. Please do not give a recorded statement to any insurance company before we talk.</p>'
             f'<p class="fine" data-formmsg hidden style="color:#8a1c1c">We could not send that message. Please call <a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a> or email <a href="mailto:{firm.EMAIL}">{firm.EMAIL}</a>.</p>'
             '<div><button class="btn" type="submit">Request my free case review</button></div></form>')
+
+
+# Pages that carry the short inline form (2026-10-12): the home page, the practice parents and children, and the county
+# parents, county children and city pages. Answer pages, menu pages, the Spanish page and posts do not.
+SHORT_FORM_TYPES = ("Home", "Practice parent", "Practice child", "County parent", "County child", "City page (county child)")
+
+
+def has_short_form(p):
+    return p.get("_type") in SHORT_FORM_TYPES and p.get("lang") != "es" and not p.get("noindex")  # noindex: the 404 page copies the home record
+
+
+def short_form_html(p):
+    """The short free-case-review form on long-form pages: name, phone, injury date and message. It posts to the same
+    Formspree form as the contact page, names the page it came from, and the inline script sends it the same way."""
+    label = "Home" if p["kind"] == "home" else p["nav_label"]
+    return (f'<div class="iform-card" id="case-review-form"><div class="iform-text"><p class="k">Free case review</p><p class="iform-blurb">{esc(firm.ASIDE_BLURB)}</p></div>'
+            f'<form class="form iform" method="POST" action="{esc(firm.FORM_ENDPOINT)}" accept-charset="UTF-8" data-contact data-thanks="{url("thank-you")}">'
+            f'<input type="hidden" name="_subject" value="Injury site inquiry: {esc(label)} page">'
+            f'<input type="hidden" name="_next" value="{ORIGIN}/thank-you/">'
+            f'<input type="hidden" name="site" value="summervilleaccidentattorney.com">'
+            f'<input type="hidden" name="page" value="{abs_url(p["slug"])}">'
+            '<div class="row three"><label>Your name<input type="text" name="name" autocomplete="name" required></label>'
+            '<label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>'
+            '<label>Date of injury<input type="date" name="injury_date"></label></div>'
+            '<label>What happened?<textarea name="message" rows="3"></textarea></label>'
+            '<label class="hp" aria-hidden="true">Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>'
+            '<div class="iform-foot"><p class="fine">Free, confidential and no obligation. Sending a message does not create an attorney-client relationship until we agree in writing to represent you.</p>'
+            '<button class="btn" type="submit">Request my free case review</button></div>'
+            f'<p class="fine" data-formmsg hidden style="color:#8a1c1c">We could not send that message. Please call <a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a> or email <a href="mailto:{firm.EMAIL}">{firm.EMAIL}</a>.</p></form></div>')
 
 
 def citylist_html():
@@ -427,42 +458,63 @@ def promise_line():
     return '<span class="dot"> · </span>'.join(f'<span class="nw">{esc(x)}</span>' for x in firm.PROMISES)
 
 
-def header_html():
+def logo_img():
+    """The firm's seal beside the wordmark. It carries alt text for search engines and audits, and aria-hidden so the
+    link's accessible name stays its visible wordmark (Final QA, October 2026)."""
     logo_src, lw, lh = image_info(firm.LOGO)
+    return f'<img src="{logo_src}" alt="Frost Law Group logo" aria-hidden="true" width="{lw}" height="{lh}">'
+
+
+def spanish_link():
+    """'Se habla español' for the top bar, linking the Spanish page when it exists."""
+    es = next((p for p in PAGES if p.get("lang") == "es"), None)
+    if not es:
+        return f'<span class="es-note" lang="es">{esc(firm.SPANISH_NOTE)}</span>'
+    return f'<a class="es-note" href="{url(es["slug"])}" lang="es" hreflang="es">{esc(firm.SPANISH_NOTE)}</a>'
+
+
+def header_html():
     promises = promise_line()
     return (
         f'<a class="skip" href="#main">Skip to content</a>'
         f'<div class="topbar"><div class="wrap"><span class="tag"><span class="line">{promises} <span class="sep" style="color:#7f95b0">·</span> </span>'
         f'<a class="xsite" href="{esc(firm.MAIN_SITE)}/" rel="noopener" target="_blank">{firm.CROSS_LINK_SHORT} →</a></span>'
-        f'<a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a></div></div>'
+        f'{spanish_link()}<a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a></div></div>'
         f'<header class="hdr"><div class="wrap">'
-        f'<a class="brand" href="{url("home")}"><img src="{logo_src}" alt="" width="{lw}" height="{lh}"><span class="word">{esc(firm.SITE_NAME)}<small>{esc(firm.SITE_SUB)}</small></span></a>'
+        f'<a class="brand" href="{url("home")}">{logo_img()}<span class="word">{esc(firm.SITE_NAME)}<small>{esc(firm.SITE_SUB)}</small></span></a>'
         f'<a class="phone-hdr" href="tel:{firm.PHONE_E164}">{firm.PHONE}</a>'
         f'<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" data-navtoggle>Menu</button>'
         f'{nav_html()}</div><div class="progress" aria-hidden="true"><span></span></div></header>')
 
 
+def footer_col(key, label, items, style=""):
+    """A footer column: a styled label, not a heading, so the footer adds nothing to any page's heading outline. The list
+    takes its accessible name from the label."""
+    return f'<p class="fh" id="fh-{key}"{style}>{esc(label)}</p><ul aria-labelledby="fh-{key}">{items}</ul>'
+
+
 def footer_html():
-    logo_src, lw, lh = image_info(firm.LOGO)
     pa = "".join(f'<li><a href="{url(s)}">{esc(l)}</a></li>' for l, s in firm.FOOTER_PRACTICE if s in BY_SLUG)
     explore = "".join(f'<li><a href="{url(s)}">{esc(l)}</a></li>' for l, s in firm.FOOTER_EXPLORE if s in BY_SLUG)
     areas = "".join(f'<li><a href="{url(s)}">{esc(BY_SLUG[s]["nav_label"])}</a></li>' for s in firm.FOOTER_AREAS if s in BY_SLUG)
     soc = "".join(f'<a href="{esc(h)}" rel="noopener" target="_blank" aria-label="{esc(l)}">{ICONS[i]}</a>' for l, h, i in firm.SOCIAL if h)
+    all_areas = f'<li><a href="{url("locations")}">All locations →</a></li>'
+    gap = ' style="margin-top:1.4rem"'
     find = (f'<li><a href="{esc(firm.GBP_URL)}" rel="noopener" target="_blank">Google Business Profile</a></li>'
             f'<li><a href="{esc(firm.DIRECTIONS_URL)}" rel="noopener" target="_blank">Directions</a></li>'
             f'<li><a href="{esc(firm.REVIEW_URL)}" rel="noopener" target="_blank">Leave a Google review</a></li>'
             f'<li><a href="{esc(firm.YELP_URL)}" rel="noopener" target="_blank">Find us on Yelp</a></li>')
     return (
         f'<footer class="foot"><div class="wrap"><div class="grid">'
-        f'<div><a class="brand" href="{url("home")}"><img src="{logo_src}" alt="" width="{lw}" height="{lh}"><span class="word">{esc(firm.SITE_NAME)}<small>{esc(firm.SITE_SUB)}</small></span></a>'
+        f'<div><a class="brand" href="{url("home")}">{logo_img()}<span class="word">{esc(firm.SITE_NAME)}<small>{esc(firm.SITE_SUB)}</small></span></a>'
         f'<p class="tagline">{promise_line()}</p>'
         f'<address><b>{esc(firm.NAME)}</b><br>{firm.STREET}<br>{firm.CITY}, {firm.STATE} {firm.ZIP}<br><a href="tel:{firm.PHONE_E164}">{firm.PHONE}</a><br><a href="mailto:{firm.EMAIL}">{firm.EMAIL}</a></address>'
         f'<p class="small" style="color:#93a4ba;margin:.6rem 0 0">{firm.HOURS_SHORT}</p><div class="soc">{soc}</div>'
         f'<div class="xsite-box"><b>Our main firm site</b><p>{firm.CROSS_LINK_TEXT}, <a href="{esc(firm.MAIN_SITE)}/" rel="noopener" target="_blank">{esc(firm.MAIN_SITE_LABEL)}</a>. Same office, same attorneys, same phone number.</p></div></div>'
-        f'<div><h2>Injury cases we handle</h2><ul>{pa}</ul></div>'
-        f'<div><h2>Explore</h2><ul>{explore}</ul><h2 style="margin-top:1.4rem">Find us</h2><ul>{find}</ul></div>'
-        f'<div><h2>Locations we serve</h2><ul>{areas}<li><a href="{url("locations")}">All locations →</a></li></ul></div>'
-        f'</div><div class="legal"><p>© {BUILD_DATE[:4]} {esc(firm.NAME)}. {firm.DISCLAIMER}</p>'
+        f'<div>{footer_col("cases", "Injury cases we handle", pa)}</div>'
+        f'<div>{footer_col("explore", "Explore", explore)}{footer_col("find", "Find us", find, gap)}</div>'
+        f'<div>{footer_col("areas", "Locations we serve", areas + all_areas)}</div>'
+        f'</div><div class="legal"><p>© {BUILD_DATE[:4]} {esc(firm.NAME)}. {firm.DISCLAIMER}</p><p>{esc(firm.RESPONSIBLE_ATTORNEY)}</p>'
         f'<p><a href="{url("privacy-policy")}">Privacy policy</a> · <a href="{url("terms-of-use")}">Terms of use &amp; legal disclaimer</a> · <a href="{url("accessibility")}">Accessibility</a> · <a href="{url("locations")}">Locations we serve</a>' + ''.join(f' · <a href="{url(p["slug"])}" lang="es">Español</a>' for p in PAGES if p.get("lang") == "es") + '</p></div></div>' + TOTOP + '</footer>'
         + action_bar())
 
@@ -633,6 +685,8 @@ def home_body(p):
         3: design.photo_cards(firm.COUNTY_HUBS, "pcards four"),
         "after:2": reviews_band(),
     }
+    if has_short_form(p):
+        inserts["after:intro"] = f'<section class="hsec form-band tint"><div class="wrap">{short_form_html(p)}</div></section>'
     n = [0]
 
     def shell(cls, sid, inner):
@@ -671,7 +725,10 @@ def body_html(p):
     if p.get("_llg") and p["kind"] == "home":
         return home_body(p)
     if p.get("_llg"):
-        inner, secs = design.enhance(p, p["body"], menu_inserts(p))
+        inserts = menu_inserts(p)
+        if has_short_form(p):
+            inserts["intro"] = inserts.get("intro", "") + short_form_html(p)
+        inner, secs = design.enhance(p, p["body"], inserts)
         inner += after_content(p)
         if p["sources"]:
             from content.base import sources as _sources
@@ -745,6 +802,10 @@ def firm_ld():
         "founder": [{"@id": abs_url(firm.ATTORNEYS[k]["slug"]) + "#person"} for k in ("tara", "jack")],
         "knowsAbout": ["Personal injury", "Car accidents", "Truck accidents", "Motorcycle accidents", "Pedestrian accidents", "Rideshare accidents", "Dog bites", "Premises liability", "Catastrophic injuries", "Wrongful death"],
         "hasMap": firm.GBP_URL, "description": firm.LLMS_SUMMARY, "email": firm.EMAIL,
+        # schema.org allows availableLanguage on a ContactPoint, not on LegalService itself, so the languages ride on the
+        # firm's phone contact point, and knowsLanguage (an Organization property) carries them on the firm.
+        "knowsLanguage": ["en", "es"],
+        "contactPoint": {"@type": "ContactPoint", "telephone": firm.PHONE_E164, "contactType": "customer service", "availableLanguage": firm.LANGUAGES},
     }
     if firm.GEO:
         d["geo"] = {"@type": "GeoCoordinates", "latitude": firm.GEO[0], "longitude": firm.GEO[1]}
@@ -804,13 +865,13 @@ INLINE_JS = r"""
   document.addEventListener('click',function(e){var b=e.target.closest('[data-loadmap]');if(!b)return;var m=b.closest('.map');
     if(window.__PREVIEW__){b.replaceWith(Object.assign(document.createElement('p'),{textContent:'The interactive Google Map loads here on the live site.'}));return;}
     var f=document.createElement('iframe');f.src=m.getAttribute('data-embed');f.title='Map to Frost Law Group, 128 Linwood Lane, Summerville';f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;m.appendChild(f);});
-  var f=document.querySelector('form[data-contact]');
-  if(f){f.addEventListener('submit',function(e){var hp=f.querySelector('[name=_gotcha]');if(hp&&hp.value){e.preventDefault();return;}var t=f.querySelector('[name=topic]'),s=f.querySelector('[name=_subject]');if(t&&s){s.value='Injury site inquiry: '+t.value;}
+  /* every free-case-review form on the page: the contact form and the short inline form */
+  document.querySelectorAll('form[data-contact]').forEach(function(f){f.addEventListener('submit',function(e){var hp=f.querySelector('[name=_gotcha]');if(hp&&hp.value){e.preventDefault();return;}var t=f.querySelector('[name=topic]'),s=f.querySelector('[name=_subject]');if(t&&s){s.value='Injury site inquiry: '+t.value;}
     if(window.__PREVIEW__){e.preventDefault();alert('On the live site this sends your message to the firm and lands on the thank-you page.');return;}
     if(!window.fetch||!window.FormData){return;}
-    e.preventDefault();var btn=f.querySelector('button[type=submit]'),msg=f.querySelector('[data-formmsg]');if(btn){btn.disabled=true;btn.textContent='Sending…';}
+    e.preventDefault();var btn=f.querySelector('button[type=submit]'),msg=f.querySelector('[data-formmsg]'),label=btn?btn.textContent:'';if(btn){btn.disabled=true;btn.textContent='Sending…';}
     fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){return r.ok?r.json().catch(function(){return {ok:true};}):Promise.reject(r);}).then(function(){window.location.href=f.getAttribute('data-thanks')||'/thank-you/';}).catch(function(){
-      if(btn){btn.disabled=false;btn.textContent='Request my free case review';}if(msg){msg.hidden=false;}});});}
+      if(btn){btn.disabled=false;btn.textContent=label;}if(msg){msg.hidden=false;}});});});
   /* submenus open and close on small screens */
   document.querySelectorAll('[data-subtoggle]').forEach(function(b){b.addEventListener('click',function(){var li=b.parentNode,o=li.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});});
   /* open the accordion that holds a linked heading */
@@ -1055,7 +1116,8 @@ def write_vercel_json():
 def llms_txt():
     lines = [f"# {firm.SITE_NAME} ({firm.NAME})", "", f"> {firm.LLMS_SUMMARY}", "", f"- Address: {firm.STREET}, {firm.CITY}, {firm.STATE} {firm.ZIP}", f"- Phone: {firm.PHONE}", f"- Hours: {firm.HOURS_SHORT}",
              f"- Attorneys: {firm.ATTORNEYS['tara']['name']} (personal injury; former Dorchester County Magistrate Judge and Associate Probate Judge) and {firm.ATTORNEYS['jack']['name']} (former Summerville Police Department officer and Charleston County Sheriff's Office detective)",
-             "- Fees: contingency fee on injury cases; free consultation; no fee unless we win",
+             "- Fees: contingency fee on injury cases; free consultation; no fee unless we win; no fee and no case costs if there is no recovery",
+             f"- Languages: English and Spanish ({firm.SPANISH_NOTE})",
              f"- Main firm site (other practice areas): {firm.MAIN_SITE}/", f"- Google Business Profile: {firm.GBP_URL}", f"- Yelp: {firm.YELP_URL}", "", "## Pages", ""]
     for p in PAGES:
         if not p["noindex"] and not p.get("_legacy"):

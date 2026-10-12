@@ -1,6 +1,6 @@
 # Spanish page interface wording, draft for review
 
-Status: draft, October 8, 2026. Nothing here is on the site yet.
+Status: draft, October 8, 2026. Nothing here is on the site yet. On October 12 the footer gained two English lines and the top bar gained "Se habla español", so their rows were added.
 
 The Spanish page at `/es/abogado-de-accidentes-de-carro-en-summerville/` has Spanish copy, a Spanish sidebar and Spanish hero buttons, but its header, breadcrumb and footer come from the shared template in English. Daylin decided on October 8 to translate them after launch, once a Spanish reader approves the wording below. The fee wording and the disclaimer also need the client's approval, because they are the client's approved English text.
 
@@ -37,6 +37,7 @@ When the wording is approved, add an `es` label set beside the English one in `b
 | Questions | Preguntas |
 | Blog | Blog |
 | Free case review | Revisión gratis de su caso |
+| Se habla español (top bar) | Se habla español |
 
 ## Breadcrumb
 
@@ -65,6 +66,7 @@ When the wording is approved, add an `es` label set beside the English one in `b
 | Terms of use & legal disclaimer | Términos de uso y aviso legal |
 | Accessibility | Accesibilidad |
 | Español (language link) | English |
+| The attorney responsible for this website is Tara L. Frost, 128 Linwood Lane, Summerville, SC 29483. | La abogada responsable de este sitio web es Tara L. Frost, 128 Linwood Lane, Summerville, SC 29483. |
 
 ## Needs the client's approval as well
 
@@ -72,4 +74,5 @@ When the wording is approved, add an `es` label set beside the English one in `b
 | --- | --- |
 | No Fee Unless We Win. | No cobramos a menos que ganemos. |
 | You never pay out of pocket. We only collect a fee if we recover compensation for you, so there's no risk in reaching out. | Nunca paga de su bolsillo. Solo cobramos honorarios si recuperamos una compensación para usted, así que no corre ningún riesgo al comunicarse con nosotros. |
+| If there is no recovery, you owe no fee and no case costs. | Si no hay recuperación, usted no debe honorarios ni gastos del caso. |
 | This website is attorney advertising and is for informational purposes only; it is not legal advice and does not create an attorney-client relationship. Prior results do not guarantee a similar outcome. Talk to a licensed South Carolina attorney about your own situation. | Este sitio web es publicidad de abogados y tiene fines solo informativos. No es asesoría legal y no crea una relación entre abogado y cliente. Los resultados anteriores no garantizan un resultado similar. Hable con un abogado con licencia en Carolina del Sur sobre su situación. |

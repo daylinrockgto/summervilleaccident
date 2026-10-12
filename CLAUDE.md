@@ -32,9 +32,15 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - The only approved proof point is "rated 4.8 stars on Google", with no review count. There are no case results, settlements, verdicts or client counts.
 - Daylin decided on 2026-09-28 to keep the Google review quotes on the home and reviews pages.
 
+**Rule 7.2**
+
+- The footer on every page names the attorney responsible for the site, Tara L. Frost at 128 Linwood Lane, from `RESPONSIBLE_ATTORNEY` in `site/content/firm.py` (Rule 7.2(d)). Keep it.
+- Every version that goes live is kept for two years after it last ran (Rule 7.2(b)). Log each production merge in `site/ADVERTISING-RECORD.md`.
+
 **Fees and the consultation**
 
-- Page copy carries no fee language. The site template carries "No fee unless we win". The footer on every page and the terms page carry the client's approved fee wording from `FEE_HEADLINE` and `FEE_TEXT` in `site/content/firm.py`. Never reword it, and never add a cost sentence that contradicts it.
+- Page copy carries no fee language. The site template carries "No fee unless we win". The footer on every page and the terms page carry the client's approved fee wording from `FEE_HEADLINE` and `FEE_TEXT` in `site/content/firm.py`, then the Rule 7.2(f) costs sentence in `FEE_COSTS`. Never reword them, and never add a cost sentence that contradicts them.
+- `FEE_BASIS` stays empty until the client confirms from the fee agreement whether the percentage fee is figured before or after expenses come out of a recovery. Never guess it.
 - Never write "first consultation", "initial consultation" or "first meeting". The consultation is free and confidential, with no obligation.
 
 **Tara Frost**
@@ -107,6 +113,13 @@ The firm's estate planning, probate and criminal defense work lives on a separat
   - The Goose Creek motorcycle post's cover is Canva stock MAHBjhWn0Ug, Daylin's pick, replacing a scooter photo.
   - Daylin's co-worker adds the domain and moves DNS once staging is ready. Claude does not.
 - **2026-10-08. Long-form edits without the kit zip.** `sync_pages.py` runs from git alone, and `frost_check.py` runs every check except the sidecar check. An edit that only removes or rewords words, with no new fact, can go through without the kit zip. A new fact still needs the zip for its sidecar entry.
+- **2026-10-12. Review fixes.** Daylin approved these from a co-worker's post-launch review. `site/BUILD-NOTES.md` has the details.
+  - The footer adds the `FEE_COSTS` sentence and the responsible attorney line. `FEE_BASIS` waits for the client.
+  - Spanish is spoken at the firm. The top bar says "Se habla español" and links the Spanish page, and the firm markup lists English and Spanish.
+  - The home page, the practice parents and children, and the county parents, county children and city pages carry a short inline form after the intro. It posts to the same Formspree form as the contact page.
+  - The footer column labels are plain text, not headings.
+  - The logo, the photo cards and the blog card covers carry alt text, with `aria-hidden` on the logo and card photos so each link still reads as its visible label.
+  - frostlawgroupsc.com now links `/car-accident-attorneys-in-summerville/` directly. That site builds from the `daylinrockgto/frost-audit` repository.
 
 ## Voice
 
