@@ -39,7 +39,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 
 **Fees and the consultation**
 
-- Page copy carries no fee language. The site template carries "No fee unless we win". The footer on every page and the terms page carry the client's approved fee wording from `FEE_HEADLINE` and `FEE_TEXT` in `site/content/firm.py`, then the Rule 7.2(f) costs sentence in `FEE_COSTS`. Never reword them, and never add a cost sentence that contradicts them.
+- Page copy carries no fee language. The site template carries "No fee unless we win". The footer on every page and the terms page carry the client's approved fee wording from `FEE_HEADLINE` and `FEE_TEXT` in `site/content/firm.py`, then the Rule 7.2(f) costs sentence in `FEE_COSTS`, which the client confirmed word for word on 2026-10-12. Never reword them, and never add a cost sentence that contradicts them.
 - `FEE_BASIS` stays empty until the client confirms from the fee agreement whether the percentage fee is figured before or after expenses come out of a recovery. Never guess it.
 - Never write "first consultation", "initial consultation" or "first meeting". The consultation is free and confidential, with no obligation.
 
@@ -114,7 +114,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
   - Daylin's co-worker adds the domain and moves DNS once staging is ready. Claude does not.
 - **2026-10-08. Long-form edits without the kit zip.** `sync_pages.py` runs from git alone, and `frost_check.py` runs every check except the sidecar check. An edit that only removes or rewords words, with no new fact, can go through without the kit zip. A new fact still needs the zip for its sidecar entry.
 - **2026-10-12. Review fixes.** Daylin approved these from a co-worker's post-launch review. `site/BUILD-NOTES.md` has the details.
-  - The footer adds the `FEE_COSTS` sentence and the responsible attorney line. `FEE_BASIS` waits for the client.
+  - The footer adds the `FEE_COSTS` sentence, which the client confirmed word for word the same day, and the responsible attorney line. `FEE_BASIS` stays empty.
   - Spanish is spoken at the firm. The top bar says "Se habla español" and links the Spanish page, and the firm markup lists English and Spanish.
   - The home page, the practice parents and children, and the county parents, county children and city pages carry a short inline form after the intro. It posts to the same Formspree form as the contact page.
   - The footer column labels are plain text, not headings.
