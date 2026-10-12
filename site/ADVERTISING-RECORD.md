@@ -17,7 +17,8 @@ Times are Eastern. Each start time is the moment Vercel built that production de
 | Launch | `42ba6a1` (PR 21) | Oct 9, 2026, 2:49 PM | Oct 9, 2026, 7:01 PM | The first version on the real domain | `summervilleaccidentattorney.com launch 2026-10-09 (42ba6a1).pdf` |
 | 2 | `cd3912f` (PR 22) and `4f3acfa` (PR 23) | Oct 9, 2026, 7:01 PM | Oct 11, 2026, 3:22 PM | Added `/favicon.ico` and its link in every page head. No visible change, so the launch snapshot covers it. PR 23 changed only the build notes | The launch snapshot |
 | 3 | `197a1bf` (PR 24) | Oct 11, 2026, 3:22 PM | Oct 12, 2026, 2:44 PM | The home page rewrite. Only the home page and the 404 page changed | `summervilleaccidentattorney.com home page 2026-10-11 (197a1bf).pdf` |
-| 4 | `17421bc` (PR 25) | Oct 12, 2026, 2:44 PM | Still live | The October 12 review fixes. Every footer gained the Rule 7.2(f) costs sentence and the responsible attorney line, and the top bar gained "Se habla español". 52 pages gained the short form, and images gained alt text | `summervilleaccidentattorney.com review fixes 2026-10-12 (17421bc).pdf` |
+| 4 | `17421bc` (PR 25) | Oct 12, 2026, 2:44 PM | Oct 12, 2026, 4:49 PM | The October 12 review fixes. Every footer gained the Rule 7.2(f) costs sentence and the responsible attorney line, and the top bar gained "Se habla español". 52 pages gained the short form, and images gained alt text | `summervilleaccidentattorney.com review fixes 2026-10-12 (17421bc).pdf` |
+| 5 | `ae5de57` (PR 28) | Oct 12, 2026, 4:49 PM | Still live | Added the blog post "Can a Charleston Catastrophic Injury Lawyer Keep You Away From the Insurance Company's Doctor?" with its cover and two in-article photos. The blog index, the other eight posts' "More from the blog" cards, the sitemap and `llms.txt` list it. No other page changed | `summervilleaccidentattorney.com IME blog post 2026-10-12 (ae5de57).pdf` |
 
 The same production deployments also answer at summervilleaccident-pi.vercel.app, which has served production since September 29, 2026 (PR 5). Its pages name www.summervilleaccidentattorney.com as their canonical address.
 
@@ -30,6 +31,7 @@ Made on October 12, 2026 with `site/snapshot.py` and sent to Daylin for the firm
 | `summervilleaccidentattorney.com launch 2026-10-09 (42ba6a1).pdf` | 94 | 792 | 25.5 MB | `75b769c62d66e9b4b7c6c002b99b39fca99beb45b21dc5f0abdfe77beee7fa85` |
 | `summervilleaccidentattorney.com home page 2026-10-11 (197a1bf).pdf` | 1 | 12 | 1.3 MB | `ad7e9ce8277386a541d860b58f9b9e66f591fc401120ea03519bfbdd1491659d` |
 | `summervilleaccidentattorney.com review fixes 2026-10-12 (17421bc).pdf` | 94 | 802 | 26.5 MB | `c3ee5ff03f05512cbdac220581619284f3fdedabadbd62e13347f4ab636eefa9` |
+| `summervilleaccidentattorney.com IME blog post 2026-10-12 (ae5de57).pdf` | 10 | 59 | 1.8 MB | `d801a543d4d63ad490aaebd157894a5cf1b9cef89fd4739f565fa32626af9a55` |
 
 ## Keeping This Record
 
