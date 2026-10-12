@@ -62,8 +62,9 @@ def slugify(text, used):
 
 
 def page_images(p):
-    """The image record for an LLG page: {"featured": {...}, "h2": {"1": {...}, ...}} with only files that exist."""
-    rec = IMAGES.get(p.get("_llg") or "", {})
+    """The image record for an LLG page: {"featured": {...}, "h2": {"1": {...}, ...}} with only files that exist.
+    A blog post's photos under its H2s are keyed by the post's slug; its featured photo is its hero_image."""
+    rec = IMAGES.get(p.get("_llg") or (p["slug"] if p["kind"] == "post" else ""), {})
     out = {"featured": None, "h2": {}}
     f = rec.get("featured")
     if f and image_exists(f["file"]):
