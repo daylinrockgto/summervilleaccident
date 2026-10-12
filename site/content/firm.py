@@ -58,8 +58,9 @@ HOURS_LD = [("Monday", "09:00", "17:00"), ("Tuesday", "09:00", "17:00"), ("Wedne
 FEE_HEADLINE = "No Fee Unless We Win"
 FEE_TEXT = "You never pay out of pocket. We only collect a fee if we recover compensation for you, so there's no risk in reaching out."
 # SC Rule 7.2(f): fee information must say whether the client owes expenses besides the fee, and whether a percentage fee
-# is figured before or after expenses come out. FEE_COSTS restates "You never pay out of pocket" for a case with no recovery
-# (added 2026-10-12, Daylin). FEE_BASIS waits for the client's fee agreement and prints nothing while it is empty.
+# is figured before or after expenses come out. FEE_COSTS covers a case with no recovery. It was added on 2026-10-12, and the
+# client confirmed it word for word the same day. FEE_BASIS holds a before-or-after sentence if the client gives one, and
+# prints nothing while it is empty.
 FEE_COSTS = "If there is no recovery, you owe no fee and no case costs."
 FEE_BASIS = ""
 FEE_WORDING = f"<strong>{FEE_HEADLINE}.</strong> {FEE_TEXT} {FEE_COSTS}" + (f" {FEE_BASIS}" if FEE_BASIS else "")
