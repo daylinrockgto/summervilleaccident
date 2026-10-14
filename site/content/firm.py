@@ -48,6 +48,9 @@ KGMID = "/g/11b5pl8mj4"
 RATING = 4.8  # Google Business Profile, September 2026. The approved proof point is "rated 4.8 stars on Google", never with a review count.
 # CallRail Dynamic Number Insertion. The tag goes just before </body> on every page, as CallRail's install guide says. Leave it empty for no script.
 # The swap matches the phone exactly as PHONE displays it, so never change that format.
+# Google Tag Manager container for the paid-search landing pages under /lp/ only (the SEO pages carry no tag manager).
+# The lander build fills [[GTM_ID]] from it; Google Ads conversions and the CallRail call tag are configured inside the container.
+GTM_ID = "GTM-W8WTJ5RF"
 CALLRAIL_SCRIPT = '<script type="text/javascript" src="//cdn.calltrk.com/companies/897987596/cc6b83e20b3e42332487/12/swap.js"></script>'
 
 HOURS_DISPLAY = [("Monday – Thursday", "9:00 AM – 5:00 PM"), ("Friday", "9:00 AM – 12:00 PM, afternoons by appointment"), ("Saturday – Sunday", "Closed")]

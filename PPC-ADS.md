@@ -220,12 +220,27 @@ Assets raise CTR without touching relevance. Add all of these at the campaign le
 | Asset | Content |
 |---|---|
 | Call | (843) 419-6653 with call reporting on; count calls of 60+ seconds as conversions |
-| Sitelinks (4+) | What To Do After A Crash → `/car-accident-attorneys-in-summerville/what-to-do-after-a-car-accident-in-south-carolina/` · Meet Tara Frost → `/attorneys/tara-frost/` · Client Reviews → `/reviews/` · Free Case Review → `/lp/summerville-car-accident/#case-form` |
+| Sitelinks (6) | The six `/lp/` sitelink pages in the table below. Every one leads with a call button and a form |
 | Callouts | No Fee Unless We Win · Free Case Review · Open 24/7 · Former Magistrate Judge · Se Habla Español · Local Summerville Office |
 | Structured snippets | Types: Car Accidents, Truck Accidents, Motorcycle Accidents, Rideshare Accidents, Pedestrian Accidents, Wrongful Death |
 | Location | Link the Google Business Profile (128 Linwood Lane) so the address and map pin show |
 | Image | The real team photo (`/assets/img/frost-team-lp.jpg`) and the office. Never stock or AI-generated people |
 | Lead form | Skip it. Google-hosted forms convert worse for injury intake and bypass the TCPA consent text |
+
+### Sitelinks
+
+Each sitelink has its own landing page under `/lp/`, built on the same chrome as the main lander (sticky phone, hero form, trust bar, reviews, fee band with a second form, sticky call bar on phones) so a click from any sitelink lands on a page whose only ways out are a call or the form. Sitelink text is 25 characters or fewer; each description line is 35 or fewer.
+
+| Sitelink text | Final URL | Description line 1 | Description line 2 |
+|---|---|---|---|
+| About Frost Law | `/lp/about-frost-law/` | Former judge & former detective | One office in Summerville |
+| Car Accident FAQs | `/lp/summerville-car-accident-faqs/` | Deadlines, fault, no insurance | Answers from a local attorney |
+| Free Case Review | `/lp/free-case-review/` | An attorney calls you back | Free, confidential, no obligation |
+| Injuries We Handle | `/lp/injuries-we-handle/` | Whiplash to serious injuries | Talk with an attorney for free |
+| No Fee Unless We Win | `/lp/no-fee-unless-we-win/` | You never pay out of pocket | In writing before we start |
+| What To Do After A Crash | `/lp/what-to-do-after-a-crash/` | 8 steps that protect your claim | Then one call. We handle the rest |
+
+Use the full URL `https://www.summervilleaccidentattorney.com` + path. Add all six at the campaign level and let Google pick which to show; on phones it shows two to four. Leads from a sitelink page carry their own `variant` (`lp-about-v1`, `lp-faqs-v1`, `lp-review-v1`, `lp-injuries-v1`, `lp-nofee-v1`, `lp-steps-v1`) so the Formspree email and the `dataLayer` say which page converted.
 
 Sitelinks may point at the SEO site's pages; those pages are indexed and that is fine, the lander is the only
 page that must stay noindex.
@@ -239,14 +254,19 @@ page that must stay noindex.
 - Real people and real photos (Tara, Jack, the dogs), real reviews quoted as written with first name and last
   initial, a real address and hours, the responsible attorney's name and bar number, privacy policy link.
 - A local proof line with a cited statistic (SCDPS 2023 Fact Book) and FAQ answers that cite the statute.
-- Self-contained: inline CSS, two font files, three images, no third-party scripts except CallRail. Aim for
-  Largest Contentful Paint under 2.5 s on 4G; check in PageSpeed Insights after every change.
-- No navigation menu, no links that leave the page except the privacy policy and sitelink targets.
+- Shares nothing with the SEO template: one small stylesheet and one script for all the landers (`site/assets/lp.css`,
+  `site/assets/lp.js`), two font files, the firm's photos, and no third-party scripts except Google Tag Manager and
+  CallRail. Aim for Largest Contentful Paint under 2.5 s on 4G; check in PageSpeed Insights after every change.
+- No navigation menu, no links that leave the page except the privacy policy.
 - TCPA consent language under every form; no pre-checked boxes.
 
 Clone it for a new case type or town by copying `site/landers/summerville-car-accident/` to a new folder,
-changing `CT`, `GEO`, `VARIANT`, the H1 allow-list, the local line and the FAQ, and rebuilding. The build checks
-every lander for noindex, one H1, the firm's phone and the cannibalization words.
+changing `data-ct`, `data-geo` and `data-variant` on `<body>`, the H1, the local line and the FAQ, and rebuilding.
+The shared chrome comes from `site/landers/_parts/` through `[[LP_HEAD]]`, `[[LP_BODY_OPEN]]`, `[[LP_CALLBAND]]`,
+`[[LP_FORM|id|where|heading|subline|button]]`, `[[LP_TRUST]]`, `[[LP_REVIEWS]]`, `[[LP_FEEBAND]]` and `[[LP_FOOTER]]`,
+so a change to the header, a form or the footer reaches every lander on the next build. The build checks every
+lander for noindex, one H1, the firm's phone, the GTM snippet, a `#case-form`, the cannibalization words and the
+hard compliance rules.
 
 ## 7. Conversion tracking
 
@@ -261,8 +281,11 @@ Set up, in order:
    `lead_form_submit` event in GTM). Mark it Primary.
 2. Create "Call from ads" (Calls from ads using call assets, 60 seconds) and "Call from website" (CallRail's
    Google Ads integration sends qualified calls back as conversions). Mark both Primary.
-3. Put the GTM container id in the `GTM_ID` variable on both lander pages and rebuild; until then the pages push
-   to `dataLayer` and nothing reads it.
+3. Google Tag Manager container `GTM-W8WTJ5RF` is on every `/lp/` page (the id lives in `GTM_ID` in
+   `site/content/firm.py`; the SEO pages do not carry it). Inside the container, add a Google Ads conversion tag
+   fired by a custom event trigger on `lead_form_submit` (or a page-view trigger on `/lp/thank-you/`), and a second
+   one on `call_click` as a secondary conversion. The `dataLayer` also carries `page_variant` and `h1_swap` for
+   reporting, and `lead_form_error` for alerting.
 4. Turn on auto-tagging (`gclid`). The lander stores `gclid`, `utm_*` and `kw` with every lead so the Formspree
    email shows which ad group sent it.
 5. Read results by `variant`: every lead carries `variant: summerville-car-ppc-v1`. Change the variant id when you

@@ -1053,9 +1053,25 @@ def write_landers():
     if not os.path.isdir(LANDERS):
         return
     dst = os.path.join(OUT, "lp")
-    shutil.copytree(LANDERS, dst)
+    shutil.copytree(LANDERS, dst, ignore=shutil.ignore_patterns("_*"))  # _parts/ holds the shared chrome, never served
+    # the landers share one stylesheet and one script, served from /assets/ under a content hash like site.css
+    shared = {}
+    for name in ("lp.css", "lp.js"):
+        src = os.path.join(ASSETS, name)
+        stem, ext = name.rsplit(".", 1)
+        hashed = f"{stem}.{file_hash(src)}.{ext}"
+        shutil.copy(src, os.path.join(OUT, "assets", hashed))
+        shared[name] = f"/assets/{hashed}"
+    parts_dir = os.path.join(LANDERS, "_parts")
+    parts = {n[:-5].upper().replace("-", "_"): open(os.path.join(parts_dir, n), encoding="utf-8").read().rstrip("\n") for n in os.listdir(parts_dir)} if os.path.isdir(parts_dir) else {}
+
+    def lp_form(m):
+        form_id, where, heading, sub, button = m.group(1).split("|")
+        return parts["FORM"].replace("[[ID]]", form_id).replace("[[WHERE]]", where).replace("[[HEADING]]", heading).replace("[[SUB]]", sub).replace("[[BUTTON]]", button)
+
     tokens = {"[[DISCLAIMER]]": firm.DISCLAIMER, "[[RESPONSIBLE_ATTORNEY]]": esc(firm.RESPONSIBLE_ATTORNEY), "[[FEE_HEADLINE]]": firm.FEE_HEADLINE,
-              "[[FEE_TEXT]]": esc(firm.FEE_TEXT), "[[FEE_COSTS]]": esc(firm.FEE_COSTS), "[[FEE_WORDING]]": firm.FEE_WORDING, "[[RATING]]": str(firm.RATING)}
+              "[[FEE_TEXT]]": esc(firm.FEE_TEXT), "[[FEE_COSTS]]": esc(firm.FEE_COSTS), "[[FEE_WORDING]]": firm.FEE_WORDING, "[[RATING]]": str(firm.RATING),
+              "[[GTM_ID]]": firm.GTM_ID, "[[YEAR]]": BUILD_DATE[:4], "[[LP_CSS]]": shared["lp.css"], "[[LP_JS]]": shared["lp.js"]}
     for dp, _, fs in os.walk(dst):
         for f in fs:
             if not f.endswith(".html"):
@@ -1063,9 +1079,16 @@ def write_landers():
             rel = "/" + os.path.relpath(os.path.join(dp, f), OUT).replace(os.sep, "/")
             path = os.path.join(dp, f)
             html = open(path, encoding="utf-8").read()
+            for _ in range(4):  # parts can hold other parts (the fee band holds a form)
+                html = re.sub(r"\[\[LP_FORM\|([^\]]+)\]\]", lp_form, html)
+                html = re.sub(r"\[\[LP_([A-Z_]+)\]\]", lambda m: parts.get(m.group(1), m.group(0)) if m.group(1) in parts else m.group(0), html)
             for k, v in tokens.items():
                 html = html.replace(k, v)
             open(path, "w", encoding="utf-8").write(html)
+            if "googletagmanager.com/gtm.js" not in html or "googletagmanager.com/ns.html" not in html:
+                warn(f"lander {rel}: Google Tag Manager snippet missing")
+            if 'id="case-form"' not in html and "lp/thank-you" not in rel:
+                warn(f"lander {rel}: no #case-form for the mobile bar and inline buttons to point at")
             title = re.search(r"<title>(.*?)</title>", html, re.S)
             desc = re.search(r'<meta name="description" content="([^"]*)"', html)
             lp = {"slug": rel.strip("/"), "title": title.group(1) if title else "", "description": desc.group(1) if desc else "", "noindex": True}
