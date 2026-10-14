@@ -1,6 +1,8 @@
 # PPC playbook: Google Ads that convert and keep a high Quality Score
 
-For Frost Law Group's personal injury ads on summervilleaccidentattorney.com. The landing pages live at
+For Frost Law Group's personal injury ads on summervilleaccidentattorney.com. `PPC-CAMPAIGN.md` is the
+enter-it-in-this-order build sheet and `PPC-ACCOUNT-SETUP-PROMPT.md` is a prompt that walks an assistant through
+the account setup; this file is the reasoning. The landing pages live at
 `/lp/<name>/` (source in `site/landers/`), are `noindex`, and post leads to the firm's Formspree form; the
 `lead_form_submit` event the form pushes to the `dataLayer` on success is the conversion.
 
@@ -118,9 +120,9 @@ or close to it.
 
 | Search | Pinned headline 1 | H1 the page shows (`?kw=`) | Form heading |
 |---|---|---|---|
-| car accident lawyer summerville | Summerville Car Accident Lawyer | Summerville Car Accident Lawyer | Free Summerville Case Review |
-| car accident attorney near me | Summerville Car Accident Attorney | Summerville Car Accident Attorney | Free Summerville Case Review |
-| auto accident lawyer | Summerville Auto Accident Lawyer | Summerville Auto Accident Lawyer | Free Summerville Case Review |
+| car accident lawyer summerville | Car Accident Lawyer Near You | Summerville Car Accident Lawyer | Do I Have a Case? |
+| car accident attorney near me | Car Accident Attorney Near You | Summerville Car Accident Attorney | Do I Have a Case? |
+| auto accident lawyer | Auto Accident Lawyer Near You | Summerville Auto Accident Lawyer | Do I Have a Case? |
 
 Everything else on the page is already aligned with the ad promises below: free case review, no fee unless we
 win, 24/7, an attorney answers, former judge, local office, Se habla español.
@@ -129,73 +131,46 @@ win, 24/7, an attorney answers, former judge, local office, Se habla español.
 
 Google allows 15 headlines (30 characters) and 4 descriptions (90 characters). Pin only Headline 1 (the
 keyword) and Headline 2 (the offer); leave the rest unpinned so Google can test combinations, which is what
-gets an "Excellent" ad strength without hurting relevance. Character counts are in brackets.
+gets an "Excellent" ad strength without hurting relevance. Character counts are in brackets and computed; every line fits the limit of 30 for headlines and 90 for
+descriptions. "Summerville Car Accident Lawyer" is 31 characters, which is why the pinned headline says "Near You"
+and the page's `?kw=` H1 carries the city.
 
-### Ad group: car accident lawyer
-
-Headlines
-
-```
-H1 (pin 1)  Summerville Car Accident Lawyer      [30]
-H2 (pin 2)  Free Case Review, Open 24/7          [27]
-H3          No Fee Unless We Win                 [20]
-H4          Talk To Attorney Tara Frost          [27]
-H5          Former County Magistrate Judge       [29]
-H6          An Attorney Answers Your Call        [29]
-H7          Local Family Firm In Summerville     [30]
-H8          Hurt In A Car Accident? Call Now     [30]
-H9          Never Pay Out Of Pocket              [23]
-H10         4.8★ Rated On Google                 [20]
-H11         Se Habla Español                     [16]
-H12         Don't Talk To Their Insurer First    [30]
-H13         Former Police Detective On Staff     [29]
-H14         Office On Linwood Lane, Summerville  [30]
-H15         Get Your Free Case Review Today      [30]
-```
-
-Descriptions
+### Ad group: car accident lawyer (the master copy)
 
 ```
-D1  Injured in a Summerville car accident? Speak directly with attorney Tara Frost. Free review.  [88]
-D2  No fee unless we win. Former magistrate judge and former detective handle your case locally. [89]
-D3  Serving Summerville, Ladson, Nexton & all of Dorchester County. Call 24/7 for a free review.  [88]
-D4  Don't give the insurance company a recorded statement. Call Frost Law Group first. Free 24/7. [89]
+H1  (pin 1)  Car Accident Lawyer Near You         [28]
+H2  (pin 2)  Free Case Review, Open 24/7          [27]
+H3           No Fee Unless We Win                 [20]
+H4           Talk To Attorney Tara Frost          [27]
+H5           Former Magistrate Judge              [23]
+H6           An Attorney Answers Your Call        [29]
+H7           Family Firm In Summerville, SC       [30]
+H8           Hurt In A Car Accident?              [23]
+H9           Never Pay Out Of Pocket              [23]
+H10          Rated 4.8 Stars On Google            [25]
+H11          Se Habla Español                     [16]
+H12          Don't Talk To Their Insurer          [27]
+H13          Former Detective On The Team         [28]
+H14          Office On Linwood Lane               [22]
+H15          Get Your Free Case Review            [25]
+
+D1  Hurt in a Summerville car accident? Talk directly with attorney Tara Frost. Free review.    [88]
+D2  No fee unless we win. A former magistrate judge and a former detective handle your case.    [88]
+D3  Serving Summerville, Ladson, Nexton and Dorchester County. Call 24/7 for a free review.     [87]
+D4  Don't give the insurer a recorded statement. Call Frost Law Group first. Free, 24/7.        [84]
 ```
 
-### Ad group: car accident attorney
+### The other ad groups
 
-Swap H1 for `Summerville Car Accident Attorney` [33 — too long]. Use `Car Accident Attorney Summerville` [32 — too
-long] … the 30-character limit bites, so use one of:
+Copy the master, then swap only these lines.
 
-```
-H1 (pin 1)  Summerville Accident Attorney        [29]
-H1 alt      Car Accident Attorney Near You       [30]
-```
-
-and set `?kw=car-accident-attorney` on the final URL so the H1 on the page still reads "Summerville Car
-Accident Attorney". Keep the rest of the headlines and all four descriptions.
-
-### Ad group: auto accident lawyer
-
-```
-H1 (pin 1)  Summerville Auto Accident Lawyer     [30]
-H2 (pin 2)  Free Case Review, Open 24/7          [27]
-```
-
-### Ad group: car wreck lawyer
-
-```
-H1 (pin 1)  Summerville Car Wreck Lawyer         [28]
-H8 swap     Hurt In A Car Wreck? Call Now        [28]
-D1 swap     Hurt in a Summerville car wreck? Speak directly with attorney Tara Frost. Free case review.  [89]
-```
-
-### Ad group: injury lawyer
-
-```
-H1 (pin 1)  Summerville Injury Lawyer            [25]
-H1 alt      Personal Injury Lawyer, Summerville  [30]
-```
+| Ad group | H1 (pin 1) | Other swaps |
+|---|---|---|
+| car accident attorney | `Car Accident Attorney Near You` [30] | none |
+| auto accident lawyer | `Auto Accident Lawyer Near You` [29] | D1 → `Hurt in an auto accident near Summerville? Talk directly with attorney Tara Frost. Free.` [88] |
+| car wreck lawyer | `Summerville Car Wreck Lawyer` [28] | H8 → `Hurt In A Car Wreck?` [20]; D1 → `Hurt in a Summerville car wreck? Talk directly with attorney Tara Frost. Free review.` [85] |
+| accident lawyer near me | `Accident Lawyer In Summerville` [30] | H8 → `Hurt In An Accident?` [20] |
+| injury lawyer | `Summerville Injury Lawyer` [25] | H8 → `Hurt In Summerville?` [20]; D1 → `Injured in Summerville? Talk directly with attorney Tara Frost. Free, confidential review.` [90] |
 
 ### Display path
 
@@ -360,7 +335,7 @@ Use this as the template when a client asks for an H1/H2/H3 outline for a new pa
 
 ```
 H1  Summerville Car Accident Lawyer                       (swaps with ?kw=)
-    H2  Free Summerville Case Review                      (hero form)
+    H2  Do I Have a Case?                                 (hero form, two steps)
     H2  Do You Have a Car Accident Case?
         H3  You were hurt
         H3  Someone else was at fault
@@ -373,6 +348,6 @@ H1  Summerville Car Accident Lawyer                       (swaps with ?kw=)
         H3  A former judge and a former detective
         H3  A local family firm
     H2  What Clients Say                                  (3 Google reviews)
-    H2  It's easy to get started                          (second form, "No fee unless we win" band)
+    H2  Do I Have a Case?                                 (second form, "No fee unless we win" band)
     H2  Summerville Car Accident FAQs                     (6 questions, statutes cited)
 ```

@@ -33,6 +33,8 @@ The page structure follows Legal Leads Group's **Page Manifest v7** (September 2
 | `llg/` | The page kit. `llg/pages/*.html` is the source of truth for long-form copy. `llg/README.md` explains the edit, check, sync and build workflow |
 | `site/landers/` | Paid-search landing pages, copied to `website/lp/` by the build and never indexed (see PPC landing pages below) |
 | `PPC-ADS.md` | How to build Google Ads campaigns for the landers: structure, keywords, ad copy, Quality Score, conversion tracking |
+| `PPC-CAMPAIGN.md` | The campaign build sheet: every setting, keyword, ad, asset and conversion in the order Google Ads asks for them |
+| `PPC-ACCOUNT-SETUP-PROMPT.md` | A prompt to paste into an assistant to set the Google Ads account up from the build sheet |
 
 ## Building
 
