@@ -254,3 +254,20 @@ A post can carry a photo under any H2. `images.json` lists them under the post's
 | --- | --- | --- | --- | --- |
 | Charleston catastrophic injury, the insurance company's doctor | Under H2 2 | `charleston-catastrophic-injury-lawyer-wooden-gavel-on-sound-block.jpg` | MAHKepgl7Xo | DAHX1GxzKWs |
 | Charleston catastrophic injury, the insurance company's doctor | Under H2 4 | `charleston-catastrophic-injury-lawyer-doctor-writing-exam-notes.jpg` | MAEKANoVVAc | DAHX1GxzKWs |
+
+## PPC landing pages (October 14)
+
+A Google Ads lander, `site/landers/summerville-car-accident/index.html`, and its conversion page, `site/landers/thank-you/index.html`, were built from an uploaded draft and rebuilt to the pattern used on results.goldbergloren.com. The build copies `site/landers/` to `website/lp/` after the normal pages, so `/lp/` survives the `rmtree` on every rebuild.
+
+How the landers differ from the rest of the site:
+
+- **Never indexed.** `<meta name="robots" content="noindex, nofollow">` on every lander, `X-Robots-Tag: noindex, nofollow` on `/lp/*` from `vercel.json` and from `.htaccess` (`SetEnvIf` + `Header set`), and nothing under `/lp/` in the sitemap or `llms.txt`. `robots.txt` must not block `/lp/`: Google only honours a noindex it can crawl, and AdsBot must reach the page or the ad group's landing-page experience falls to "below average".
+- **Self-contained.** Fonts and the stylesheet are inlined or preloaded from `/assets/`; no shared template, so a design change on the SEO site cannot break a running campaign. The build checks each lander for the noindex tag, exactly one `<h1>`, the firm phone in both display and `tel:` form, leftover `[[` placeholders, the `CANNIBAL_RE` rule, and that every `/assets/` reference exists.
+- **Conversion flow.** Two forms (hero and "No fee unless we win" band) post JSON to the contact page's Formspree endpoint with `case_type`, `geo`, `variant`, `form`, and any `gclid`, `utm_*` and `kw` from the URL. Success redirects to `/lp/thank-you/?geo=&ct=&variant=&form=`, which pushes `lead_form_submit` to `window.dataLayer`. Count the Google Ads conversion on that page view or that event. Phone links push `call_click`; CallRail's swap script on both pages replaces the number for call tracking (keep the number written as `(843) 419-6653` so the swap matches).
+- **Keyword match.** `?kw=car-accident-attorney` (and the other keys in the `KW` table in the page script) swaps the H1 so each ad group lands on its own headline. `PPC-ADS.md` maps ad groups to these URLs.
+- **Approved wording is single-sourced.** The landers carry `[[DISCLAIMER]]`, `[[RESPONSIBLE_ATTORNEY]]`, `[[FEE_TEXT]]`, `[[FEE_COSTS]]` and `[[RATING]]` tokens that `write_landers()` fills from `firm.py`, so the fee band, the cost FAQ, the footer and the proof point stay word for word what the client confirmed. Every lander also runs through `checks.py`, and a hard failure there fails the build. The proof point is "rated 4.8 stars on Google" with no review count.
+- **CallRail.** The landers carry the CallRail tag supplied with the PPC brief (company 571761726), not the organic-search tag in `firm.py`, so paid calls report in their own account.
+- **`GTM_ID` is blank** in both pages. Neither Frost site has a Tag Manager, Analytics or Clarity id yet; set the same id in both files once a container exists and rebuild.
+- **Photos.** The uploaded draft used AI-generated images: an invented attorney, a street sign for a Charleston address, a rendered dog. None are used. The hero photo is a crop of the firm's own `couple.jpg` (saved as `frost-team-lp.jpg`), and the office dogs photo is the real one. South Carolina Rule 7.1 treats a fabricated attorney photo as misleading, and Google Ads image assets must be real.
+
+Verified locally with Playwright on desktop and phone: fonts load, no console errors, the `?kw=` swap works, a dry-run submission (Formspree intercepted) redirects to the thank-you page with the right query string and `dataLayer` event.
