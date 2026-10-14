@@ -2,14 +2,13 @@
 
 For Frost Law Group's personal injury ads on summervilleaccidentattorney.com. The landing pages live at
 `/lp/<name>/` (source in `site/landers/`), are `noindex`, and post leads to the firm's Formspree form; the
-thank-you page at `/lp/thank-you/` is the conversion.
+`lead_form_submit` event the form pushes to the `dataLayer` on success is the conversion.
 
 Current pages:
 
 | Page | Final URL | Use for |
 |---|---|---|
 | Summerville car accident | `https://www.summervilleaccidentattorney.com/lp/summerville-car-accident/` | every car/auto accident ad group |
-| Thank you | `https://www.summervilleaccidentattorney.com/lp/thank-you/` | conversion page; never a final URL |
 
 Append `?kw=` to the final URL to make the H1 match the ad group (allow-listed values are in the page's
 script): `car-accident-lawyer`, `car-accident-attorney`, `auto-accident-lawyer`, `accident-lawyer`,
@@ -270,21 +269,22 @@ hard compliance rules.
 
 ## 7. Conversion tracking
 
-The lander redirects to `/lp/thank-you/?geo=…&ct=…&variant=…&form=hero|bottom` after Formspree accepts the
-lead, and the thank-you page pushes `lead_form_submit` to `dataLayer`. Calls are tracked by CallRail
-(`swap.js` is on both pages). The landers carry the CallRail tag supplied with the PPC brief (company 571761726), which is a different CallRail account from the organic-search tag in `firm.py`; keep it that way so paid calls report separately, and keep the number written as `(843) 419-6653` so the swap matches.
+The form is the two-step form from the Goldberg & Loren landers: step 1 is one tap ("Were you injured?"), step 2
+is name and mobile phone with an explicit consent box, and success shows inline with a call button. After Formspree
+accepts the lead the page pushes `lead_form_submit` to `dataLayer` (with `form: hero|bottom` and the step-1
+answer as `injured`); there is no thank-you page. Calls are tracked by CallRail (`swap.js` is on every `/lp/`
+page). The landers carry the CallRail tag supplied with the PPC brief (company 571761726), which is a different CallRail account from the organic-search tag in `firm.py`; keep it that way so paid calls report separately, and keep the number written as `(843) 419-6653` so the swap matches.
 
 Set up, in order:
 
 1. In Google Ads, create a conversion action "Lead form (PPC lander)": type Website, category Submit lead form,
-   count One, value none. Use the Google tag or GTM to fire it on a page view of `/lp/thank-you/` (or on the
-   `lead_form_submit` event in GTM). Mark it Primary.
+   count One, value none. Fire it from GTM on the `lead_form_submit` custom event. Mark it Primary.
 2. Create "Call from ads" (Calls from ads using call assets, 60 seconds) and "Call from website" (CallRail's
    Google Ads integration sends qualified calls back as conversions). Mark both Primary.
 3. Google Tag Manager container `GTM-W8WTJ5RF` is on every `/lp/` page (the id lives in `GTM_ID` in
    `site/content/firm.py`; the SEO pages do not carry it). Inside the container, add a Google Ads conversion tag
-   fired by a custom event trigger on `lead_form_submit` (or a page-view trigger on `/lp/thank-you/`), and a second
-   one on `call_click` as a secondary conversion. The `dataLayer` also carries `page_variant` and `h1_swap` for
+   fired by a custom event trigger on `lead_form_submit`, and a second one on `call_click` as a secondary
+   conversion. The `dataLayer` also carries `page_variant`, `h1_swap` and `lead_form_step` (the step-1 answer) for
    reporting, and `lead_form_error` for alerting.
 4. Turn on auto-tagging (`gclid`). The lander stores `gclid`, `utm_*` and `kw` with every lead so the Formspree
    email shows which ad group sent it.

@@ -11,7 +11,7 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/lp.cf301921.css">
+<link rel="stylesheet" href="/assets/lp.1c2a56e6.css">
 <!-- Google Tag Manager -->
 <script>window.dataLayer=window.dataLayer||[];(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -45,16 +45,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="local">Serving Summerville, Ladson, Nexton and all of Dorchester County: I-26, Dorchester Road, Highway 17-A, US-78 and Bacons Bridge Road. Dorchester County recorded 4,022 crashes in 2023, and more of them happened on Dorchester Road than on any other road in the county.<sup><a href="#s1">1</a></sup></p>
  </div>
  <a class="callband" href="tel:+18434196653"><span class="ring"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="24" height="24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span><span><small>Tap to call · Free · 24/7</small><b>(843) 419-6653</b></span></a>
- <form class="f" id="case-form" data-where="hero" aria-label="Free Summerville Case Review" novalidate>
-  <h2>Free Summerville Case Review</h2><p class="fs">Takes about a minute. No obligation.</p>
-  <div class="row"><label class="sr" for="case-form-fn">First name</label><input id="case-form-fn" name="first_name" placeholder="First name" autocomplete="given-name"><label class="sr" for="case-form-ln">Last name</label><input id="case-form-ln" name="last_name" placeholder="Last name" autocomplete="family-name"></div>
-  <div class="row"><label class="sr" for="case-form-ph">Mobile phone</label><input id="case-form-ph" name="phone" type="tel" inputmode="tel" placeholder="Mobile phone" autocomplete="tel"><label class="sr" for="case-form-zip">ZIP code</label><input id="case-form-zip" name="zip" inputmode="numeric" placeholder="ZIP code" autocomplete="postal-code"></div>
-  <label class="sr" for="case-form-em">Email</label><input id="case-form-em" name="email" type="email" placeholder="Email (optional)" autocomplete="email">
-  <label class="sr" for="case-form-ct">Case type</label><select id="case-form-ct" name="case_type_selected"><option selected>Car accident</option><option>Truck / 18-wheeler accident</option><option>Motorcycle accident</option><option>Pedestrian or bicycle</option><option>Rideshare (Uber/Lyft)</option><option>Hit by a drunk driver</option><option>Other injury</option></select>
-  <label class="sr" for="case-form-d">What happened</label><textarea id="case-form-d" name="details" placeholder="Briefly, what happened? (optional)"></textarea>
-  <p class="consent">By submitting, you agree Frost Law Group may call or text the number above about your case, including by automated means. Consent isn't required to hire us. Msg &amp; data rates may apply; reply STOP to opt out. Submitting this form does not create an attorney-client relationship. <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></p>
-  <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="ferr" role="alert"></p>
-  <button class="btn rust" type="submit">See if I have a case →</button>
+ <form class="f" id="case-form" data-where="hero" aria-label="Do I Have a Case?" novalidate>
+  <h2>Do I Have a Case?</h2><p class="fs">Free &amp; confidential · No obligation · 60 seconds</p>
+  <p class="fproof">Rated 4.8 stars on Google</p>
+  <p class="step-label"><span class="step-text">Step 1 of 2</span><span class="dots" aria-hidden="true"><i class="on"></i><i></i></span></p>
+  <div class="fstep" data-step="1">
+   <p class="q">Were you injured?</p>
+   <div class="opts">
+    <button type="button" class="opt" data-v="Yes, seen a doctor">Yes, I've seen a doctor</button>
+    <button type="button" class="opt" data-v="Yes, not treated yet">Yes, but not treated yet</button>
+    <button type="button" class="opt" data-v="Not sure">I'm not sure</button>
+   </div>
+  </div>
+  <div class="fstep" data-step="2" hidden>
+   <button type="button" class="back">← Back</button>
+   <p class="q">Where should we send your free case review?</p>
+   <label class="fl" for="case-form-name">Your name</label><input id="case-form-name" name="name" autocomplete="name">
+   <label class="fl" for="case-form-ph">Mobile phone</label><input id="case-form-ph" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="(843) 555-0123">
+   <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="ferr" role="alert"></p>
+   <label class="consent"><input type="checkbox" id="case-form-consent"><span>I agree that Frost Law Group may call or text me at this number about my case, including by automated means. Consent isn't required to hire the firm. You can simply call us. Msg &amp; data rates may apply; reply STOP to opt out. <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></span></label>
+   <button class="btn rust" type="submit">Get My Free Case Review →</button>
+   <p class="fnote">An attorney reads every message. We're on 24/7.</p>
+  </div>
+  <div class="fstep success" data-step="3" hidden>
+   <div class="tick" aria-hidden="true">✓</div>
+   <h3>Got it<span class="s-name"></span>.</h3>
+   <p>Keep your phone close. Tara or Jack will call you shortly. Until then, please don't give a recorded statement to any insurance company.</p>
+   <a class="btn rust" href="tel:+18434196653">Want answers faster? Call (843) 419-6653</a>
+  </div>
+  <p class="or-call">Prefer to talk? <a href="tel:+18434196653">(843) 419-6653</a>, free, 24/7</p>
+  <div class="quote"><div class="qstars" aria-label="5 out of 5 stars">★★★★★</div><p>“My family settled our claim with this company following a car accident last year. The staff was professional, courteous and polite throughout the entire process.”</p><div class="qby">Leonard J. · Google review</div></div>
 </form>
 </div></div></section>
 
@@ -131,16 +151,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="fee" id="start"><div class="w">
  <div><p class="big">No fee<br><em>unless we win.</em></p><p>You never pay out of pocket. We only collect a fee if we recover compensation for you, so there&#x27;s no risk in reaching out. If there is no recovery, you owe no fee and no case costs.</p><p style="color:#f3c9b9;font-weight:700">Call (843) 419-6653 · Injury line 24/7 · Se habla español</p></div>
- <form class="f" id="case-form-2" data-where="bottom" aria-label="It's easy to get started" novalidate>
-  <h2>It's easy to get started</h2><p class="fs">Tell us a little about what happened. Tara or Jack will reach out.</p>
-  <div class="row"><label class="sr" for="case-form-2-fn">First name</label><input id="case-form-2-fn" name="first_name" placeholder="First name" autocomplete="given-name"><label class="sr" for="case-form-2-ln">Last name</label><input id="case-form-2-ln" name="last_name" placeholder="Last name" autocomplete="family-name"></div>
-  <div class="row"><label class="sr" for="case-form-2-ph">Mobile phone</label><input id="case-form-2-ph" name="phone" type="tel" inputmode="tel" placeholder="Mobile phone" autocomplete="tel"><label class="sr" for="case-form-2-zip">ZIP code</label><input id="case-form-2-zip" name="zip" inputmode="numeric" placeholder="ZIP code" autocomplete="postal-code"></div>
-  <label class="sr" for="case-form-2-em">Email</label><input id="case-form-2-em" name="email" type="email" placeholder="Email (optional)" autocomplete="email">
-  <label class="sr" for="case-form-2-ct">Case type</label><select id="case-form-2-ct" name="case_type_selected"><option selected>Car accident</option><option>Truck / 18-wheeler accident</option><option>Motorcycle accident</option><option>Pedestrian or bicycle</option><option>Rideshare (Uber/Lyft)</option><option>Hit by a drunk driver</option><option>Other injury</option></select>
-  <label class="sr" for="case-form-2-d">What happened</label><textarea id="case-form-2-d" name="details" placeholder="Briefly, what happened? (optional)"></textarea>
-  <p class="consent">By submitting, you agree Frost Law Group may call or text the number above about your case, including by automated means. Consent isn't required to hire us. Msg &amp; data rates may apply; reply STOP to opt out. Submitting this form does not create an attorney-client relationship. <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></p>
-  <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="ferr" role="alert"></p>
-  <button class="btn rust" type="submit">See if I have a case →</button>
+ <form class="f" id="case-form-2" data-where="bottom" aria-label="Do I Have a Case?" novalidate>
+  <h2>Do I Have a Case?</h2><p class="fs">Free &amp; confidential · No obligation · 60 seconds</p>
+  <p class="fproof">Rated 4.8 stars on Google</p>
+  <p class="step-label"><span class="step-text">Step 1 of 2</span><span class="dots" aria-hidden="true"><i class="on"></i><i></i></span></p>
+  <div class="fstep" data-step="1">
+   <p class="q">Were you injured?</p>
+   <div class="opts">
+    <button type="button" class="opt" data-v="Yes, seen a doctor">Yes, I've seen a doctor</button>
+    <button type="button" class="opt" data-v="Yes, not treated yet">Yes, but not treated yet</button>
+    <button type="button" class="opt" data-v="Not sure">I'm not sure</button>
+   </div>
+  </div>
+  <div class="fstep" data-step="2" hidden>
+   <button type="button" class="back">← Back</button>
+   <p class="q">Where should we send your free case review?</p>
+   <label class="fl" for="case-form-2-name">Your name</label><input id="case-form-2-name" name="name" autocomplete="name">
+   <label class="fl" for="case-form-2-ph">Mobile phone</label><input id="case-form-2-ph" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="(843) 555-0123">
+   <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="ferr" role="alert"></p>
+   <label class="consent"><input type="checkbox" id="case-form-2-consent"><span>I agree that Frost Law Group may call or text me at this number about my case, including by automated means. Consent isn't required to hire the firm. You can simply call us. Msg &amp; data rates may apply; reply STOP to opt out. <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></span></label>
+   <button class="btn rust" type="submit">Get My Free Case Review →</button>
+   <p class="fnote">An attorney reads every message. We're on 24/7.</p>
+  </div>
+  <div class="fstep success" data-step="3" hidden>
+   <div class="tick" aria-hidden="true">✓</div>
+   <h3>Got it<span class="s-name"></span>.</h3>
+   <p>Keep your phone close. Tara or Jack will call you shortly. Until then, please don't give a recorded statement to any insurance company.</p>
+   <a class="btn rust" href="tel:+18434196653">Want answers faster? Call (843) 419-6653</a>
+  </div>
+  <p class="or-call">Prefer to talk? <a href="tel:+18434196653">(843) 419-6653</a>, free, 24/7</p>
+  <div class="quote"><div class="qstars" aria-label="5 out of 5 stars">★★★★★</div><p>“My family settled our claim with this company following a car accident last year. The staff was professional, courteous and polite throughout the entire process.”</p><div class="qby">Leonard J. · Google review</div></div>
 </form>
 </div></section>
 
@@ -171,7 +211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="mbar"><a class="btn rust" href="tel:+18434196653"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Call free 24/7</a><a class="btn navy" href="#case-form">Free review</a></div>
 
-<script src="/assets/lp.f40e224a.js" defer></script>
+<script src="/assets/lp.80e76dd0.js" defer></script>
 <!-- CallRail dynamic number insertion for the paid-search account: swaps (843) 419-6653 for the per-source tracking number -->
 <script type="text/javascript" src="//cdn.calltrk.com/companies/571761726/d821a75fce97d2d76a7e/12/swap.js"></script>
 </body>

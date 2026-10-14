@@ -1087,7 +1087,7 @@ def write_landers():
             open(path, "w", encoding="utf-8").write(html)
             if "googletagmanager.com/gtm.js" not in html or "googletagmanager.com/ns.html" not in html:
                 warn(f"lander {rel}: Google Tag Manager snippet missing")
-            if 'id="case-form"' not in html and "lp/thank-you" not in rel:
+            if 'id="case-form"' not in html:
                 warn(f"lander {rel}: no #case-form for the mobile bar and inline buttons to point at")
             title = re.search(r"<title>(.*?)</title>", html, re.S)
             desc = re.search(r'<meta name="description" content="([^"]*)"', html)
