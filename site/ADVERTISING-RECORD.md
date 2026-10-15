@@ -20,13 +20,14 @@ Times are Eastern. Each start time is the moment Vercel built that production de
 | 4 | `17421bc` (PR 25) | Oct 12, 2026, 2:44 PM | Oct 12, 2026, 4:49 PM | The October 12 review fixes. Every footer gained the Rule 7.2(f) costs sentence and the responsible attorney line, and the top bar gained "Se habla español". 52 pages gained the short form, and images gained alt text | `summervilleaccidentattorney.com review fixes 2026-10-12 (17421bc).pdf` |
 | 5 | `ae5de57` (PR 28) | Oct 12, 2026, 4:49 PM | Oct 14, 2026, 8:15 PM | Added the blog post "Can a Charleston Catastrophic Injury Lawyer Keep You Away From the Insurance Company's Doctor?" with its cover and two in-article photos. The blog index, the other eight posts' "More from the blog" cards, the sitemap and `llms.txt` list it. No other page changed | `summervilleaccidentattorney.com IME blog post 2026-10-12 (ae5de57).pdf` |
 | 6 | `b2aecbb` (PR 30) | Oct 14, 2026, 8:15 PM | Oct 14, 2026, 10:12 PM | Added the Google Ads landing pages under `/lp/`: the Summerville car accident lander and six sitelink pages (about, FAQs, free case review, injuries, no fee unless we win, what to do after a crash). They are `noindex`, outside the sitemap, and carry the Google Tag Manager container and the paid-search CallRail tag. `vercel.json` and `.htaccess` gained the `/lp/` noindex header. No indexed page changed. The 8:15 PM start is the merge time; confirm the minute from Vercel's production deployment list | `summervilleaccidentattorney.com PPC landers 2026-10-14 (b2aecbb).pdf` |
-| 7 | `6acd50e` (PR 31) | Oct 14, 2026, 10:12 PM | Still live | The Google Tag Manager snippet (`GTM-W8WTJ5RF`) went into the head and body of every page, after Google's tag check found no tag on the home page. No visible change on any page and no copy changed, so the launch, home page, review fixes, IME post and PPC landers snapshots together cover it. The 10:12 PM start is the merge time; confirm the minute from Vercel's production deployment list | The existing snapshots |
+| 7 | `6acd50e` (PR 31) | Oct 14, 2026, 10:12 PM | Oct 15, 2026, 2:04 PM | The Google Tag Manager snippet (`GTM-W8WTJ5RF`) went into the head and body of every page, after Google's tag check found no tag on the home page. No visible change on any page and no copy changed, so the launch, home page, review fixes, IME post and PPC landers snapshots together cover it. The 10:12 PM start is the merge time; confirm the minute from Vercel's production deployment list | The existing snapshots |
+| 8 | `9de22bd` (PR 33) | Oct 15, 2026, 2:04 PM | Still live | The firm's phone number changed to (843) 242-0821 on every page, in the structured data and on the landers, replacing (843) 419-6653. Every page changed, so this is a full snapshot. The 2:04 PM start is the merge time; confirm the minute from Vercel's production deployment list | `summervilleaccidentattorney.com phone change 2026-10-15 (9de22bd).pdf` |
 
 The same production deployments also answer at summervilleaccident-pi.vercel.app, which has served production since September 29, 2026 (PR 5). Its pages name www.summervilleaccidentattorney.com as their canonical address.
 
 ## Snapshot Files
 
-Made with `site/snapshot.py` and sent to Daylin for the firm's advertising file (the first four on October 12, 2026, the PPC landers file on October 14, 2026). A file whose SHA-256 matches the one here is unchanged since it was made.
+Made with `site/snapshot.py` and sent to Daylin for the firm's advertising file (the first four on October 12, 2026, the PPC landers file on October 14, 2026, the phone change file on October 15, 2026). A file whose SHA-256 matches the one here is unchanged since it was made.
 
 | File | Pages | Sheets | Size | SHA-256 |
 | --- | --- | --- | --- | --- |
@@ -35,6 +36,7 @@ Made with `site/snapshot.py` and sent to Daylin for the firm's advertising file 
 | `summervilleaccidentattorney.com review fixes 2026-10-12 (17421bc).pdf` | 94 | 802 | 26.5 MB | `c3ee5ff03f05512cbdac220581619284f3fdedabadbd62e13347f4ab636eefa9` |
 | `summervilleaccidentattorney.com IME blog post 2026-10-12 (ae5de57).pdf` | 10 | 59 | 1.8 MB | `d801a543d4d63ad490aaebd157894a5cf1b9cef89fd4739f565fa32626af9a55` |
 | `summervilleaccidentattorney.com PPC landers 2026-10-14 (b2aecbb).pdf` | 7 | 22 | 2.1 MB | `1a4a3ed09f32647ca03421b8fecba310677d9bb5ba83939abfc6f44ee05f4b9b` |
+| `summervilleaccidentattorney.com phone change 2026-10-15 (9de22bd).pdf` | 95 | 811 | 26.7 MB | `2a520d36b2219766870f22374ccdf6128cfc2341df9a1c3184673f06adf2996e` |
 
 ## Keeping This Record
 
