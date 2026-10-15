@@ -193,7 +193,7 @@ Assets raise CTR without touching relevance. Add all of these at the campaign le
 
 | Asset | Content |
 |---|---|
-| Call | (843) 419-6653 with call reporting on; count calls of 60+ seconds as conversions |
+| Call | (843) 242-0821 with call reporting on; count calls of 60+ seconds as conversions |
 | Sitelinks (6) | The six `/lp/` sitelink pages in the table below. Every one leads with a call button and a form |
 | Callouts | No Fee Unless We Win · Free Case Review · Open 24/7 · Former Magistrate Judge · Se Habla Español · Local Summerville Office |
 | Structured snippets | Types: Car Accidents, Truck Accidents, Motorcycle Accidents, Rideshare Accidents, Pedestrian Accidents, Wrongful Death |
@@ -248,7 +248,7 @@ The form is the two-step form from the Goldberg & Loren landers: step 1 is one t
 is name and mobile phone with an explicit consent box, and success shows inline with a call button. After Formspree
 accepts the lead the page pushes `lead_form_submit` to `dataLayer` (with `form: hero|bottom` and the step-1
 answer as `injured`); there is no thank-you page. Calls are tracked by CallRail (`swap.js` is on every `/lp/`
-page). The landers carry the CallRail tag supplied with the PPC brief (company 571761726), which is a different CallRail account from the organic-search tag in `firm.py`; keep it that way so paid calls report separately, and keep the number written as `(843) 419-6653` so the swap matches.
+page). The landers carry the CallRail tag supplied with the PPC brief (company 571761726), which is a different CallRail account from the organic-search tag in `firm.py`; keep it that way so paid calls report separately, and keep the number written as `(843) 242-0821` so the swap matches.
 
 Set up, in order:
 

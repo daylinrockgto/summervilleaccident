@@ -45,7 +45,7 @@ python3 site/build_site.py
 
 The build exits 1 on a hard compliance failure or a keyphrase cannibalization, and 0 when clean. A hard failure is any of these.
 
-- The CallRail tracking number, or a phone that is not `(843) 419-6653` in a `tel:+18434196653` link
+- The CallRail tracking number, or a phone that is not `(843) 242-0821` in a `tel:+18432420821` link
 - Workers' compensation content or links outside the legacy page
 - Georgia or Savannah places
 - A retirement year for Jack Frost, or "Judge Frost"

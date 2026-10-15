@@ -389,7 +389,7 @@ Sources: project doc "Frost Law Group - Approved Client Facts" (confirmed by Tar
 
 - Firm name in body copy: **Frost Law Group**. Legal name **Frost Law Group, LLC** only in metadata, legal notices, or a first mention where it reads naturally.
 - Office: **128 Linwood Lane, Summerville, SC 29483**. One office. Write the address exactly this way.
-- Phone for all page content: **(843) 419-6653**, display format locked (parentheses and a space). Every phone mention is a link: `<a href="tel:+18434196653">(843) 419-6653</a>`.
+- Phone for all page content: **(843) 242-0821**, display format locked (parentheses and a space). Every phone mention is a link: `<a href="tel:+18434196653">(843) 242-0821</a>`.
 - NEVER write the CallRail tracking number (843) 983-2304 anywhere in page content.
 - Office hours: Monday through Thursday 9:00 AM to 5:00 PM, Friday 9:00 AM to 12:00 PM with afternoon appointments on request, closed Saturday and Sunday. (Site also says available 24/7. Use "available 24/7" at most once per page, only if it fits, never alongside the hours.)
 - Domain for these pages: summervilleaccidentattorney.com (personal injury only).

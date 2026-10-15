@@ -8,7 +8,7 @@ legacy page, no Georgia, SC Rule 7.4(b) words, never "Judge Frost").
 import html as _html
 import re
 
-PHONE_OK = "(843) 419-6653"
+PHONE_OK = "(843) 242-0821"
 
 
 def _main(html):
@@ -29,10 +29,10 @@ def check(p, html, pages):
     if "983-2304" in html or "9832304" in html:
         out.append("!CallRail tracking number in the page")
     for m in re.finditer(r"href=\"tel:([^\"]+)\"", html):
-        if m.group(1) != "+18434196653":
-            out.append(f"!tel link {m.group(1)} is not +18434196653")
+        if m.group(1) != "+18432420821":
+            out.append(f"!tel link {m.group(1)} is not +18432420821")
     for m in re.finditer(r"\(?843\)?[ .-]?\d{3}[ .-]\d{4}", text):
-        if m.group(0) != PHONE_OK and "419" in m.group(0):
+        if m.group(0) != PHONE_OK and "242" in m.group(0):
             out.append(f"!phone shown as {m.group(0)!r}, DNI needs {PHONE_OK}")
     if not legacy:
         if re.search(r"worker'?s'? ?comp", text, re.I) or "workers-compensation" in re.sub(r'<link rel="canonical"[^>]*>', "", html):

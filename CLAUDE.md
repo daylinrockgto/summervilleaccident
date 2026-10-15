@@ -22,7 +22,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 
 **Phone**
 
-- The phone is always `<a href="tel:+18434196653">(843) 419-6653</a>`. The display format is locked, because CallRail's number swap matches it.
+- The phone is always `<a href="tel:+18432420821">(843) 242-0821</a>`. The display format is locked, because CallRail's number swap matches it.
 - Never write the CallRail tracking number, (843) 983-2304, anywhere.
 
 **Rule 7.4 and proof**
@@ -120,6 +120,8 @@ The firm's estate planning, probate and criminal defense work lives on a separat
   - The footer column labels are plain text, not headings.
   - The logo, the photo cards and the blog card covers carry alt text, with `aria-hidden` on the logo and card photos so each link still reads as its visible label.
   - frostlawgroupsc.com now links `/car-accident-attorneys-in-summerville/` directly. That site builds from the `daylinrockgto/frost-audit` repository.
+
+- **2026-10-14. Phone number.** The firm's number is now (843) 242-0821, replacing (843) 419-6653 on every page, in the structured data, the landers, the checks and these rules. LLG updates CallRail's swap target and the Google Business Profile to match. The old number appears only in the historical copies under `llg/v2/legacy/` and `llg/v2/retired/` and in the superseded notes in the grammar profile.
 
 ## Voice
 

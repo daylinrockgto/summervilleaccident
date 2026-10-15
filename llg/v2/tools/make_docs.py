@@ -79,7 +79,7 @@ for r in sorted(ROWS, key=lambda r: ORDER.index(r["type"])):
              P("Images.", "None placed yet. Images and alt text come from the Canva batch, which is still pending."),
              "<h3>Internal Links</h3>"] + [f'<li>{H.escape(H.unescape(re.sub(r"<[^>]+>","",t)))} to {H.escape(u)}</li>' for u, t in internal] + \
             ["<h3>Outbound Links</h3>"] + ([f'<li>{H.escape(H.unescape(re.sub(r"<[^>]+>","",t)))} to {H.escape(u)}</li>' for u, t in outbound] or ["<p>None.</p>"]) + \
-            ["<h3>Phone Links</h3>", f"<p>{len(tels)} phone links, each (843) 419-6653 linked to tel:+18434196653.</p>",
+            ["<h3>Phone Links</h3>", f"<p>{len(tels)} phone links, each (843) 242-0821 linked to tel:+18432420821.</p>",
              "<h3>Redirects to This Page</h3>"] + ([f"<li>{H.escape(o)} to {H.escape(path)} (301)</li>" for o in olds] or ["<p>None.</p>"])
     doc = "".join(head) + raw + "".join(sheet)
     folder = os.path.join(OUT, FOLDER[r["type"]]); os.makedirs(folder, exist_ok=True)

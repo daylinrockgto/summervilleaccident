@@ -8,7 +8,7 @@ Checks that
   - robots.txt and sitemap.xml load, and robots.txt points at the www sitemap,
   - every URL in the sitemap returns 200 at the base, with no redirect,
   - every page has exactly one canonical, on https://www.summervilleaccidentattorney.com with its own path,
-  - every page carries the tel:+18434196653 link, and the CallRail script when firm.CALLRAIL_SCRIPT is set,
+  - every page carries the tel:+18432420821 link, and the CallRail script when firm.CALLRAIL_SCRIPT is set,
   - every redirect in site/content/redirects.json lands on its destination with a 200 in one permanent hop, with and without the trailing slash,
   - an unknown URL returns 404.
 When the base is the real domain, it also checks that the bare domain and http both end at https://www.

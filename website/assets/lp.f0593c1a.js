@@ -2,7 +2,7 @@
   "use strict";
   /* Leads post to the firm's Formspree form (shared with the contact page). Each lander sets its case type, geo and variant
      on <body data-ct data-geo data-variant>. Forms are any form.f[id][data-where] built from site/landers/_parts/form.html. */
-  var ENDPOINT = "https://formspree.io/f/xdekonez", PHONE = "(843) 419-6653", B = document.body.dataset;
+  var ENDPOINT = "https://formspree.io/f/xdekonez", PHONE = "(843) 242-0821", B = document.body.dataset;
   var CT = B.ct || "car-accident", GEO = B.geo || "summerville-sc", VARIANT = B.variant || "lp";
   var FORMS = Array.prototype.map.call(document.querySelectorAll("form.f[id][data-where]"), function(f){ return {id: f.id, where: f.getAttribute("data-where"), pre: f.id + "-"}; });
   var q = new URLSearchParams(location.search);

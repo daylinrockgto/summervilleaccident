@@ -13,7 +13,7 @@ billing. Do not invent facts about the firm. Everything you need is below or in 
 
 ## The firm
 
-- Frost Law Group, LLC, 128 Linwood Lane, Summerville, SC 29483. Phone (843) 419-6653, answered 24/7. Spanish spoken.
+- Frost Law Group, LLC, 128 Linwood Lane, Summerville, SC 29483. Phone (843) 242-0821, answered 24/7. Spanish spoken.
 - Two attorneys, married. Tara L. Frost, a former Dorchester County Magistrate Judge (write it in the past tense,
   never "Judge Frost", never implying influence). Jack C. Frost, fourteen years with the Summerville Police
   Department and the Charleston County Sheriff's Office, a former detective (never a retirement year, never "inside
@@ -38,7 +38,7 @@ billing. Do not invent facts about the firm. Everything you need is below or in 
   the dataLayer. That event is the conversion. There is no thank-you page.
 - Google Tag Manager container GTM-W8WTJ5RF is on every page of the site, and it already carries the Google tag
   G-CP4MHK61GB and a Google Ads conversion tag (AW-18513854265) that fires on `lead_form_submit`. CallRail's paid-search swap script is on every
-  /lp/ page; the number must stay written as (843) 419-6653.
+  /lp/ page; the number must stay written as (843) 242-0821.
 
 ## Rules you must follow in every headline, description, callout and sitelink
 
