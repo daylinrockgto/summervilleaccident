@@ -914,6 +914,7 @@ def head_html(p):
         alt = "".join(f'<link rel="alternate" hreflang="{l}" href="{abs_url(s)}">' for l, s in p["alternate"].items())
     return (
         f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+        f'{firm.GTM_HEAD}'
         f'<title>{esc(p["title"])}</title><meta name="description" content="{esc(p["description"])}">{robots}'
         f'<link rel="canonical" href="{abs_url(p["slug"])}">{alt}'
         f'<meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{esc(firm.SITE_NAME)} · {esc(firm.NAME)}"><meta property="og:title" content="{esc(p["title"])}">'
@@ -927,7 +928,7 @@ def head_html(p):
         '<link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>'
         f'<link rel="stylesheet" href="{CSS_HREF}">'
         f'<script type="application/ld+json">{ld}</script>'
-        '</head><body>')
+        f'</head><body>{firm.GTM_BODY}')
 
 
 _MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"

@@ -48,9 +48,17 @@ KGMID = "/g/11b5pl8mj4"
 RATING = 4.8  # Google Business Profile, September 2026. The approved proof point is "rated 4.8 stars on Google", never with a review count.
 # CallRail Dynamic Number Insertion. The tag goes just before </body> on every page, as CallRail's install guide says. Leave it empty for no script.
 # The swap matches the phone exactly as PHONE displays it, so never change that format.
-# Google Tag Manager container for the paid-search landing pages under /lp/ only (the SEO pages carry no tag manager).
-# The lander build fills [[GTM_ID]] from it; Google Ads conversions and the CallRail call tag are configured inside the container.
+# Google Tag Manager container, on every page of the site since October 14, 2026 (Google's snippet, head and noscript, as supplied
+# by LLG). The landers fill [[GTM_ID]] from it. Inside the container: the Google tag G-CP4MHK61GB on all pages, the Google Ads
+# conversion on the landers' lead_form_submit event, and GA4 events for phone clicks and the thank-you page.
 GTM_ID = "GTM-W8WTJ5RF"
+GTM_HEAD = ("<!-- Google Tag Manager -->"
+            "<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
+            "var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;"
+            "j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','" + GTM_ID + "');</script>"
+            "<!-- End Google Tag Manager -->") if GTM_ID else ""
+GTM_BODY = ('<!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=' + GTM_ID + '" '
+            'height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->') if GTM_ID else ""
 CALLRAIL_SCRIPT = '<script type="text/javascript" src="//cdn.calltrk.com/companies/897987596/cc6b83e20b3e42332487/12/swap.js"></script>'
 
 HOURS_DISPLAY = [("Monday – Thursday", "9:00 AM – 5:00 PM"), ("Friday", "9:00 AM – 12:00 PM, afternoons by appointment"), ("Saturday – Sunday", "Closed")]

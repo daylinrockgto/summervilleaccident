@@ -11,7 +11,7 @@ reasoning behind each choice is in `PPC-ADS.md`; this file is the checklist. Fil
 | Google Ads account owner | `[ ]` the firm's Google account, with LLG added as a manager (MCC) | |
 | Billing | `[ ]` the firm's card, monthly invoicing later | |
 | Google Business Profile | Frost Law Group, 128 Linwood Lane, Summerville, SC 29483, linked to the Ads account | |
-| Google Tag Manager | Container `GTM-W8WTJ5RF`, already on every `/lp/` page | done |
+| Google Tag Manager | Container `GTM-W8WTJ5RF`, on every page of the site; Google tag `G-CP4MHK61GB` and the Ads conversion `AW-18513854265` are configured inside it | done |
 | CallRail | Paid-search account (company 571761726), swap script on every `/lp/` page | done |
 | Landing pages live | PR #30 merged and deployed; `/lp/summerville-car-accident/` answers with `X-Robots-Tag: noindex` | |
 | Auto-tagging | Account settings → Auto-tagging → on | |

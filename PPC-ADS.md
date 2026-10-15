@@ -257,7 +257,7 @@ Set up, in order:
 2. Create "Call from ads" (Calls from ads using call assets, 60 seconds) and "Call from website" (CallRail's
    Google Ads integration sends qualified calls back as conversions). Mark both Primary.
 3. Google Tag Manager container `GTM-W8WTJ5RF` is on every `/lp/` page (the id lives in `GTM_ID` in
-   `site/content/firm.py`; the SEO pages do not carry it). Inside the container, add a Google Ads conversion tag
+   `site/content/firm.py`, and on every SEO page too). Inside the container, add a Google Ads conversion tag
    fired by a custom event trigger on `lead_form_submit`, and a second one on `call_click` as a secondary
    conversion. The `dataLayer` also carries `page_variant`, `h1_swap` and `lead_form_step` (the step-1 answer) for
    reporting, and `lead_form_error` for alerting.

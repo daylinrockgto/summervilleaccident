@@ -36,7 +36,8 @@ billing. Do not invent facts about the firm. Everything you need is below or in 
   injuries-we-handle, no-fee-unless-we-win, what-to-do-after-a-crash.
 - The form is two steps (one tap, then name and phone). On success the page pushes a `lead_form_submit` event to
   the dataLayer. That event is the conversion. There is no thank-you page.
-- Google Tag Manager container GTM-W8WTJ5RF is on every /lp/ page. CallRail's paid-search swap script is on every
+- Google Tag Manager container GTM-W8WTJ5RF is on every page of the site, and it already carries the Google tag
+  G-CP4MHK61GB and a Google Ads conversion tag (AW-18513854265) that fires on `lead_form_submit`. CallRail's paid-search swap script is on every
   /lp/ page; the number must stay written as (843) 419-6653.
 
 ## Rules you must follow in every headline, description, callout and sitelink
