@@ -148,8 +148,8 @@ contact_body = (
     section('[[findus]]' + f'<p>{firm.CROSS_LINK_TEXT}, {ext(firm.MAIN_SITE + "/", firm.MAIN_SITE_LABEL)}.</p>', cls="tint", label="Online", title="Find and follow Frost Law Group"),
 )
 page("contact", kind="page", layout="raw", cta=[("tel:" + firm.PHONE_E164, firm.PHONE, "btn"), (firm.DIRECTIONS_URL, "Get directions", "btn ghost")],
-     title="Free Consultation | Summerville Accident Attorneys | (843) 419-6653",
-     description="Call (843) 419-6653 for a free personal injury consultation with Frost Law Group at 128 Linwood Lane, Summerville, SC. No fee unless we win. Directions from every community we serve.",
+     title="Free Consultation | Summerville Accident Attorneys | (843) 242-0821",
+     description="Call (843) 242-0821 for a free personal injury consultation with Frost Law Group at 128 Linwood Lane, Summerville, SC. No fee unless we win. Directions from every community we serve.",
      h1="Get Your Free Consultation", eyebrow="No fee unless we win", nav_label="Contact",
      lead="Talk to a Summerville accident attorney today. Your consultation is free, confidential and comes with no obligation.",
      body="".join(contact_body), priority=0.9, changefreq="monthly")

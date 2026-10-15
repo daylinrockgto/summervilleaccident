@@ -182,7 +182,7 @@ reviews of, complaints, cheap, cheapest, cost of a lawyer, how much does a lawye
 
 | Asset | Entry |
 |---|---|
-| Call | `(843) 419-6653`, call reporting on, count calls of 60+ seconds as conversions, show all hours |
+| Call | `(843) 242-0821`, call reporting on, count calls of 60+ seconds as conversions, show all hours |
 | Callouts | `No Fee Unless We Win` · `Free Case Review` · `Open 24/7` · `Former Magistrate Judge` · `Se Habla Español` · `Local Summerville Office` |
 | Structured snippet | Header **Types**: `Car Accidents`, `Truck Accidents`, `Motorcycle Accidents`, `Rideshare Accidents`, `Pedestrian Accidents`, `Wrongful Death` |
 | Location | Link the Google Business Profile |

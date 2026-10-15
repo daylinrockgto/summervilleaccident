@@ -20,8 +20,8 @@ OUTS = {v[0]: k for k, v in PLAN["outbound"].items() if k != "census_quickfacts_
 DOMAIN = "summervilleaccidentattorney.com"
 BASE = "https://www.summervilleaccidentattorney.com"
 ALLOWED_INTERNAL = {p["url"] for p in PLAN["pages"]} | {BASE + "/contact", BASE + "/about", BASE + "/practice-areas", BASE + "/"}
-TEL = "tel:+18434196653"
-PHONE = "(843) 419-6653"
+TEL = "tel:+18432420821"
+PHONE = "(843) 242-0821"
 
 fails, warns, passes = [], [], []
 def FAIL(msg): fails.append(msg)
@@ -151,7 +151,7 @@ def main():
     intro = [b for b in B[1:fh2] if not b["lvl"]] if fh2 else []
     if len(intro) != 4: FAIL(f"H1 section must be exactly 4 paragraphs, has {len(intro)}")
     if intro:
-        if not any(u == TEL for u, _ in intro[-1]["links"]): FAIL("H1 section last paragraph needs the tel link on (843) 419-6653")
+        if not any(u == TEL for u, _ in intro[-1]["links"]): FAIL("H1 section last paragraph needs the tel link on (843) 242-0821")
         if len(sentences(intro[-1]["text"])) > 3: WARN("H1 phone CTA paragraph should be two sentences")
         first100 = " ".join(" ".join(b["text"] for b in intro).split()[:100]).lower()
         if ANS:
@@ -213,11 +213,11 @@ def main():
         if u != TEL: FAIL(f"tel link must be {TEL}, found {u}")
         if a != PHONE: FAIL(f"tel anchor must read {PHONE}, found '{a}'")
     # every phone mention linked
-    raw_phones = re.findall(r"\(843\)\s?419-6653", alltext)
+    raw_phones = re.findall(r"\(843\)\s?242-0821", alltext)
     if len(raw_phones) != len(tels): FAIL(f"{len(raw_phones)} phone mentions but {len(tels)} tel links, every mention must be linked")
     if re.search(r"983[-. ]?2304", src): FAIL("CallRail tracking number in content")
-    if re.search(r"843[-.]419[-.]6653|\+1 ?843|843 419 6653", alltext): FAIL("Phone in a non-locked format")
-    other_ph = [m for m in re.findall(r"\(?\b\d{3}\)?[\s.-]\d{3}[-.]\d{4}\b", alltext) if "419-6653" not in m]
+    if re.search(r"843[-.]242[-.]0821|\+1 ?843|843 242 0821", alltext): FAIL("Phone in a non-locked format")
+    other_ph = [m for m in re.findall(r"\(?\b\d{3}\)?[\s.-]\d{3}[-.]\d{4}\b", alltext) if "242-0821" not in m]
     if other_ph: FAIL(f"Other phone numbers in copy {other_ph[:3]}")
     # first internal link
     if fh2 is not None:
@@ -329,7 +329,7 @@ def main():
     # repeated phrases within the page (4+ word, 3+ times, not keyphrase)
     toks = re.findall(r"[a-z0-9']+", low)
     grams = Counter(" ".join(toks[i:i+5]) for i in range(len(toks) - 4))
-    fixed_bits = [kpl, "frost law group", "843 419 6653", "128 linwood lane", "south carolina", "free consultation"]
+    fixed_bits = [kpl, "frost law group", "843 242 0821", "128 linwood lane", "south carolina", "free consultation"]
     rep = [g for g, c in grams.items() if c >= 3 and g not in kpl and not any(f in g for f in fixed_bits)]
     if rep: WARN(f"5-word phrases used 3+ times {rep[:4]}")
 
@@ -343,7 +343,7 @@ def main():
     def shingles(t, n=8):
         w = re.findall(r"[a-z0-9%']+", t.lower().replace("$", ""))
         return {" ".join(w[i:i+n]) for i in range(len(w) - n + 1)}
-    FIXED = ["843 419 6653", "128 linwood lane", "summerville sc 29483", "free confidential consultation"]
+    FIXED = ["843 242 0821", "128 linwood lane", "summerville sc 29483", "free confidential consultation"]
     fp = f"{ROOT}/tools/fixed_phrases.txt"
     if os.path.exists(fp): FIXED += [l.strip().lower() for l in open(fp) if l.strip() and not l.startswith("#")]
     FIXED = [re.sub(r"[^a-z0-9%' ]", " ", f.replace("$", "")).split() for f in FIXED]
