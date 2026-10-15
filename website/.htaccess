@@ -101,6 +101,9 @@ RewriteRule ^(.*)$ /$1/ [R=301,L]
 <IfModule mod_headers.c>
 Header set X-Content-Type-Options "nosniff"
 Header set Referrer-Policy "strict-origin-when-cross-origin"
+# PPC landing pages: never indexed (the pages also carry a noindex meta tag)
+SetEnvIf Request_URI "^/lp/" LANDER
+Header set X-Robots-Tag "noindex, nofollow" env=LANDER
 <FilesMatch "\.(woff2|css|svg|jpg|png)$">
 Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>

@@ -4,7 +4,7 @@
     python3 site/build_site.py                 -> website/  (production: one folder per URL, sitemap, .htaccess)
     python3 site/build_site.py --preview OUT   -> single-file preview with a hash router (for the artifact)
 
-Content lives in site/content/*.py; assets in site/assets/.
+Content lives in site/content/*.py; assets in site/assets/; PPC landing pages in site/landers/ (copied to website/lp/, noindex).
 """
 import argparse
 import base64
@@ -24,6 +24,7 @@ SITE = os.path.join(ROOT, "site")
 ASSETS = os.path.join(SITE, "assets")
 IMG_DIR = os.path.join(ASSETS, "img")
 OUT = os.path.join(ROOT, "website")
+LANDERS = os.path.join(SITE, "landers")  # hand-written PPC landing pages -> /lp/<name>/ (noindex, never in the sitemap)
 sys.path.insert(0, SITE)
 
 from content.base import PAGES, BY_SLUG, esc  # noqa: E402
@@ -1041,6 +1042,75 @@ def write_prod():
                 body='<p>Try one of these: <a href="[[car-accident-attorneys-in-summerville]]">Car accidents</a>, <a href="[[practice-areas]]">All practice areas</a>, <a href="[[locations]]">Locations we serve</a>, <a href="[[contact]]">Free case review</a>, or call <a href="tel:' + firm.PHONE_E164 + '">' + firm.PHONE + "</a>.</p>")
     html = expand_tokens(head_html(p404).replace(f'<link rel="canonical" href="{abs_url("404")}">', "") + header_html() + in_main(hero_html(p404), body_html(p404)) + footer_html() + f"<script>{INLINE_JS}</script>{firm.CALLRAIL_SCRIPT}</body></html>")
     open(os.path.join(OUT, "404.html"), "w", encoding="utf-8").write(html)
+    write_landers()
+
+
+def write_landers():
+    """Copy site/landers/<name>/index.html to website/lp/<name>/, fill the [[FIRM]] tokens from firm.py so the approved fee
+    wording, disclaimer, responsible-attorney line and rating stay single-sourced, then check each one: the hard compliance
+    checks in checks.py, noindex, one h1, the firm's phone, no unresolved tokens and no main-site practice areas (the
+    cannibalization rule applies to ads too)."""
+    if not os.path.isdir(LANDERS):
+        return
+    dst = os.path.join(OUT, "lp")
+    shutil.copytree(LANDERS, dst, ignore=shutil.ignore_patterns("_*"))  # _parts/ holds the shared chrome, never served
+    # the landers share one stylesheet and one script, served from /assets/ under a content hash like site.css
+    shared = {}
+    for name in ("lp.css", "lp.js"):
+        src = os.path.join(ASSETS, name)
+        stem, ext = name.rsplit(".", 1)
+        hashed = f"{stem}.{file_hash(src)}.{ext}"
+        shutil.copy(src, os.path.join(OUT, "assets", hashed))
+        shared[name] = f"/assets/{hashed}"
+    parts_dir = os.path.join(LANDERS, "_parts")
+    parts = {n[:-5].upper().replace("-", "_"): open(os.path.join(parts_dir, n), encoding="utf-8").read().rstrip("\n") for n in os.listdir(parts_dir)} if os.path.isdir(parts_dir) else {}
+
+    def lp_form(m):
+        form_id, where, heading, sub, button = m.group(1).split("|")
+        return parts["FORM"].replace("[[ID]]", form_id).replace("[[WHERE]]", where).replace("[[HEADING]]", heading).replace("[[SUB]]", sub).replace("[[BUTTON]]", button)
+
+    tokens = {"[[DISCLAIMER]]": firm.DISCLAIMER, "[[RESPONSIBLE_ATTORNEY]]": esc(firm.RESPONSIBLE_ATTORNEY), "[[FEE_HEADLINE]]": firm.FEE_HEADLINE,
+              "[[FEE_TEXT]]": esc(firm.FEE_TEXT), "[[FEE_COSTS]]": esc(firm.FEE_COSTS), "[[FEE_WORDING]]": firm.FEE_WORDING, "[[RATING]]": str(firm.RATING),
+              "[[GTM_ID]]": firm.GTM_ID, "[[YEAR]]": BUILD_DATE[:4], "[[LP_CSS]]": shared["lp.css"], "[[LP_JS]]": shared["lp.js"]}
+    for dp, _, fs in os.walk(dst):
+        for f in fs:
+            if not f.endswith(".html"):
+                continue
+            rel = "/" + os.path.relpath(os.path.join(dp, f), OUT).replace(os.sep, "/")
+            path = os.path.join(dp, f)
+            html = open(path, encoding="utf-8").read()
+            for _ in range(4):  # parts can hold other parts (the fee band holds a form)
+                html = re.sub(r"\[\[LP_FORM\|([^\]]+)\]\]", lp_form, html)
+                html = re.sub(r"\[\[LP_([A-Z_]+)\]\]", lambda m: parts.get(m.group(1), m.group(0)) if m.group(1) in parts else m.group(0), html)
+            for k, v in tokens.items():
+                html = html.replace(k, v)
+            open(path, "w", encoding="utf-8").write(html)
+            if "googletagmanager.com/gtm.js" not in html or "googletagmanager.com/ns.html" not in html:
+                warn(f"lander {rel}: Google Tag Manager snippet missing")
+            if 'id="case-form"' not in html:
+                warn(f"lander {rel}: no #case-form for the mobile bar and inline buttons to point at")
+            title = re.search(r"<title>(.*?)</title>", html, re.S)
+            desc = re.search(r'<meta name="description" content="([^"]*)"', html)
+            lp = {"slug": rel.strip("/"), "title": title.group(1) if title else "", "description": desc.group(1) if desc else "", "noindex": True}
+            for msg in checks.check(lp, html, PAGES):
+                warn(("HARD FAIL " if msg.startswith("!") else "") + f"lander {rel}: {msg.lstrip('!')}")
+            if not re.search(r'<meta name="robots" content="noindex', html):
+                warn(f"lander {rel}: missing noindex")
+            if html.count("<h1") != 1:
+                warn(f"lander {rel}: {html.count('<h1')} h1 tags")
+            if firm.PHONE not in html or firm.PHONE_E164 not in html:
+                warn(f"lander {rel}: phone missing or formatted differently from {firm.PHONE} / tel:{firm.PHONE_E164}")
+            if "[[" in html:
+                warn(f"lander {rel}: unresolved token")
+            body = html
+            for ph in firm.CROSS_LINK_PHRASES:
+                body = body.replace(ph, "")
+            m = CANNIBAL_RE.search(body)
+            if m:
+                warn(f"CANNIBALIZATION on lander {rel}: ...{body[max(0, m.start() - 60):m.end() + 60]!r}")
+            for src in re.findall(r'(?:src|href)="(/assets/[^"?]+)', html):
+                if not os.path.exists(os.path.join(OUT, src.lstrip("/"))):
+                    warn(f"lander {rel}: {src} does not exist in website/")
 
 
 _REDIRECT_CACHE = []
@@ -1079,6 +1149,7 @@ def htaccess():
     lines += ["# add a trailing slash to directory-style URLs", "RewriteCond %{REQUEST_FILENAME} !-f", "RewriteCond %{REQUEST_URI} !/$", "RewriteCond %{REQUEST_URI} !\\.[a-zA-Z0-9]{2,5}$",
               "RewriteRule ^(.*)$ /$1/ [R=301,L]", "</IfModule>", "",
               "<IfModule mod_headers.c>", 'Header set X-Content-Type-Options "nosniff"', 'Header set Referrer-Policy "strict-origin-when-cross-origin"',
+              "# PPC landing pages: never indexed (the pages also carry a noindex meta tag)", 'SetEnvIf Request_URI "^/lp/" LANDER', 'Header set X-Robots-Tag "noindex, nofollow" env=LANDER',
               '<FilesMatch "\\.(woff2|css|svg|jpg|png)$">', 'Header set Cache-Control "public, max-age=31536000, immutable"', "</FilesMatch>", "</IfModule>", "",
               "<IfModule mod_deflate.c>", "AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml", "</IfModule>", ""]
     return "\n".join(lines)
@@ -1106,6 +1177,7 @@ def write_vercel_json():
         "redirects": redirects,
         "headers": [
             {"source": "/assets/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]},
+            {"source": "/lp/(.*)", "headers": [{"key": "X-Robots-Tag", "value": "noindex, nofollow"}]},
             {"source": "/(.*)", "headers": [{"key": "X-Content-Type-Options", "value": "nosniff"}, {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
                                              {"key": "X-Frame-Options", "value": "SAMEORIGIN"}, {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"}]},
         ],

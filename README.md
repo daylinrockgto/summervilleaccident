@@ -31,6 +31,10 @@ The page structure follows Legal Leads Group's **Page Manifest v7** (September 2
 | `site/BUILD-NOTES.md` | How the pages are written and checked, the settled decisions, the launch checklist and the open items |
 | `site/PHOTOS.md` | Every stock photo by page, with its file name and Canva stock ID |
 | `llg/` | The page kit. `llg/pages/*.html` is the source of truth for long-form copy. `llg/README.md` explains the edit, check, sync and build workflow |
+| `site/landers/` | Paid-search landing pages, copied to `website/lp/` by the build and never indexed (see PPC landing pages below) |
+| `PPC-ADS.md` | How to build Google Ads campaigns for the landers: structure, keywords, ad copy, Quality Score, conversion tracking |
+| `PPC-CAMPAIGN.md` | The campaign build sheet: every setting, keyword, ad, asset and conversion in the order Google Ads asks for them |
+| `PPC-ACCOUNT-SETUP-PROMPT.md` | A prompt to paste into an assistant to set the Google Ads account up from the build sheet |
 
 ## Building
 
@@ -74,6 +78,12 @@ Commit the source and the built output together, meaning `site/`, `llg/`, `websi
 - **Firm and legal pages.** Our team at `/about/`, the two attorney bios, contact, reviews, the blog index, privacy, terms, accessibility and the thank-you page, which is not indexed
 - **Eight blog posts** at the root, each with its title as the slug. `/blog/` is the blog index
 - **The legacy workers' compensation page** at `/practice-areas/workers-compensation/`, linked from nowhere
+
+## PPC landing pages
+
+Google Ads traffic goes to pages under `/lp/`: the main lander `/lp/summerville-car-accident/`, and six sitelink pages (about, FAQs, free case review, injuries, no fee unless we win, what to do after a crash). They share one stylesheet, one script and the parts in `site/landers/_parts/`, and nothing with the SEO template. They live in `site/landers/`, are copied into `website/lp/` by the build, and are kept out of search on purpose: a `noindex, nofollow` meta tag, an `X-Robots-Tag` header from `vercel.json` and `.htaccess`, and no entry in `sitemap.xml` or `llms.txt`. Do not block `/lp/` in `robots.txt`; Google has to crawl the page to see the noindex, and AdsBot needs it for Quality Score.
+
+The lander follows the pattern of the Goldberg & Loren results pages: keyword H1 (swapped by `?kw=` per ad group), two copies of a two-step form (one tap, then name and phone) that post to the same Formspree endpoint as the contact page and push a `lead_form_submit` event to the `dataLayer` for Google Ads conversion tracking, CallRail number swapping, and `call_click` events. Google Tag Manager container `GTM-W8WTJ5RF` is on the `/lp/` pages only. The build checks every lander for the noindex tag, a single H1, the firm phone, unresolved placeholders, the cannibalization rule and missing assets. `PPC-ADS.md` has the campaign plan.
 
 ## Deploying
 

@@ -1,0 +1,31 @@
+<form class="f" id="[[ID]]" data-where="[[WHERE]]" aria-label="[[HEADING]]" novalidate>
+  <h2>[[HEADING]]</h2><p class="fs">[[SUB]]</p>
+  <p class="fproof">Rated [[RATING]] stars on Google</p>
+  <p class="step-label"><span class="step-text">Step 1 of 2</span><span class="dots" aria-hidden="true"><i class="on"></i><i></i></span></p>
+  <div class="fstep" data-step="1">
+   <p class="q">Were you injured?</p>
+   <div class="opts">
+    <button type="button" class="opt" data-v="Yes, seen a doctor">Yes, I've seen a doctor</button>
+    <button type="button" class="opt" data-v="Yes, not treated yet">Yes, but not treated yet</button>
+    <button type="button" class="opt" data-v="Not sure">I'm not sure</button>
+   </div>
+  </div>
+  <div class="fstep" data-step="2" hidden>
+   <button type="button" class="back">← Back</button>
+   <p class="q">Where should we send your free case review?</p>
+   <label class="fl" for="[[ID]]-name">Your name</label><input id="[[ID]]-name" name="name" autocomplete="name">
+   <label class="fl" for="[[ID]]-ph">Mobile phone</label><input id="[[ID]]-ph" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="(843) 555-0123">
+   <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="ferr" role="alert"></p>
+   <label class="consent"><input type="checkbox" id="[[ID]]-consent"><span>I agree that Frost Law Group may call or text me at this number about my case, including by automated means. Consent isn't required to hire the firm. You can simply call us. Msg &amp; data rates may apply; reply STOP to opt out. <a href="/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a></span></label>
+   <button class="btn rust" type="submit">[[BUTTON]] →</button>
+   <p class="fnote">An attorney reads every message. We're on 24/7.</p>
+  </div>
+  <div class="fstep success" data-step="3" hidden>
+   <div class="tick" aria-hidden="true">✓</div>
+   <h3>Got it<span class="s-name"></span>.</h3>
+   <p>Keep your phone close. Tara or Jack will call you shortly. Until then, please don't give a recorded statement to any insurance company.</p>
+   <a class="btn rust" href="tel:+18434196653">Want answers faster? Call (843) 419-6653</a>
+  </div>
+  <p class="or-call">Prefer to talk? <a href="tel:+18434196653">(843) 419-6653</a>, free, 24/7</p>
+  <div class="quote"><div class="qstars" aria-label="5 out of 5 stars">★★★★★</div><p>“My family settled our claim with this company following a car accident last year. The staff was professional, courteous and polite throughout the entire process.”</p><div class="qby">Leonard J. · Google review</div></div>
+</form>
