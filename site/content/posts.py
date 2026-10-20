@@ -830,3 +830,126 @@ p9 = post(hero_image='talk-to-a-charleston-catastrophic-injury-lawyer-before-any
               ("S.C. Department of Public Health, trauma system", DPH_TRAUMA, False)],
      related=[CATP, CHS + "/charleston-personal-injury-lawyers", CARP + "/uninsured-motorist-coverage-in-south-carolina", CHS + "/truck-accident-lawyers-in-charleston-county"])
 faq_ld(p9, 'Questions Charleston Families Ask About Insurance Medical Exams')
+
+# ----------------------------------------------------------------------------- 10. Ladson slip and fall, churches and charities
+# October 19, 2026 draft from Legal Leads Group, published October 20. Same conversion as the October batch: the DNI
+# number replaced the draft's tracking number, the contingency fee clause came out of the CTA (the template and footer
+# carry the fee wording), and the draft's metadata block stays out of the page copy. The title and description are the
+# draft's own. The photos under H2s 1 and 5 are listed in images.json under this post's slug. The statutes, cases, S.922
+# history, IRS Publication 1828, fair details, courthouses and Ladson's county lines were checked against the sources below
+# and the Census geocoder on October 20; three sentences were tightened to match 15-78-30(g), 27-3-30 and 27-3-40, and 15-3-40.
+CODE_33_56 = "https://www.scstatehouse.gov/code/t33c056.php"
+CODE_27_3 = "https://www.scstatehouse.gov/code/t27c003.php"
+IRS_P1828 = "https://www.irs.gov/pub/irs-pdf/p1828.pdf"
+SCCOURTS_DORCHESTER = "https://www.sccourts.org/courts/courthouse-search/dorchester/"
+DOE_BISHOP = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/28252.pdf"
+SC_S922 = "https://www.scstatehouse.gov/sess126_2025-2026/bills/922.htm"
+CCFAIR = "https://www.coastalcarolinafair.org/fair-hours-directions/"
+
+p10 = post(hero_image='talk-with-a-ladson-slip-and-fall-lawyer-before-the-charitys-insurer-calls.jpg',
+     hero_caption='Tables with white cloths, red carnations and candles fill a church fellowship hall beneath a wooden cross.',
+     category='Slip and fall', date='2026-10-20', modified='2026-10-20',
+     title='Hurt at a Church Event? Call a Ladson Slip and Fall Lawyer',
+     description='Churches and charities can be sued for a fall in South Carolina, but a cap may apply. A Ladson slip and fall lawyer explains it. Call for a free review.',
+     h1='Can a Ladson Slip and Fall Lawyer Bring a Claim Against a Church or Charity?',
+     summary='South Carolina ended charitable immunity in 1981, but Section 33-56-180 caps what a qualifying charity pays. Who counts as a charity, who else can be named, and which Ladson courthouse hears the case.',
+     body=(
+         '<p>Yes. South Carolina abolished charitable immunity in 1981, so a Ladson slip and fall lawyer can bring a negligence claim against a church, charity, or nonprofit event host. Section 33-56-180 then limits what that claim can recover. A 501(c)(3) or 501(d) organization owes only actual damages, capped at $300,000 per person and $600,000 per occurrence.</p>'
+         "<p>Frost Law Group is a husband-and-wife firm with one office at 128 Linwood Lane in Summerville. It handles injury claims across Berkeley, Charleston, and Dorchester counties. Tara L. Frost and Jack C. Frost both graduated from the Charleston School of Law. Jack spent 14 years in law enforcement with the Summerville Police Department and the Charleston County Sheriff's Office.</p>"
+         '<p>If you fell at a church, a nonprofit thrift shop, or a charity event in Ladson, call Frost Law Group at ' + TEL + ' for a free case review. The call costs nothing, and you decide what happens next.</p>'
+         '<h2>Can You Sue a Church in South Carolina After a Slip and Fall?</h2>'
+         '<p>Picture a freshly mopped fellowship hall off Ladson Road. You step onto the wet tile and break your wrist. Can you hold the church responsible? The <a href="[[slip-and-fall-attorneys-in-summerville]]">slip and fall attorneys at Frost Law Group</a> start with history, because South Carolina changed its rule.</p>'
+         "<p>South Carolina adopted charitable immunity in 1914, in Lindler v. Columbia Hospital of Richland County. The Supreme Court of South Carolina abolished the doctrine prospectively in 1981, in Fitzer v. Greater Greenville S.C. Young Men's Christian Association. Since then, a church that leaves a hazard on its floor answers for negligence like any other owner.</p>"
+         '<p>In Doe v. Bishop of Charleston, decided January 15, 2025, the court added that the doctrine never covered intentional torts. A fall is a negligence claim, though, and a later statute governs it.</p>'
+         "<h2>How South Carolina's Charitable Immunity Statute Caps a Fall Claim</h2>"
+         f'<p>Ending immunity did not leave charities fully exposed. The General Assembly passed <a href="{CODE_33_56}" rel="noopener" target="_blank">Section 33-56-180 of the South Carolina Code</a>, which people often call the charitable immunity statute. It does not bar your claim. It limits what you can collect from a qualifying charity.</p>'
+         '<p>The limits matter only if the organization qualifies, and the definition is narrower than the word nonprofit suggests. When the statute does apply, it works in four ways.</p>'
+         '<ul><li>It lets you recover only actual damages, such as medical bills, lost wages, and pain and suffering.</li><li>It caps that recovery at the limits written into the South Carolina Tort Claims Act.</li><li>It bars a separate recovery against the employee whose act caused the fall, unless you allege and prove reckless, willful, or grossly negligent conduct.</li><li>It lets you name the employee first when the organization is unclear, then add the right entity once it is identified.</li></ul>'
+         "<p>Whether the cap reaches your fall depends on the organization's tax status and on facts a lawyer has to review.</p>"
+         '<h3>The Dollar Limits Borrowed From the Tort Claims Act</h3>'
+         '<p>Section 33-56-180 does not set its own numbers. It points to the Tort Claims Act, the law that caps claims against government bodies. Section 15-78-120 limits one person to $300,000 for loss from a single occurrence. It also limits the total for one occurrence to $600,000, however many people bring claims. So the same ceilings that protect a county also protect a qualifying church.</p>'
+         '<h4>Actual Damages Only, With No Punitive Award</h4>'
+         '<p>The statute allows only the actual damages you sustain. That covers hospital bills, physical therapy, missed paychecks, and the pain a broken hip causes. Punitive damages, which punish rather than repay, fall outside that language. Where your losses land against the ceiling depends on records a lawyer gathers with you.</p>'
+         '<h4>The Per-Occurrence Ceiling When Several People Fall</h4>'
+         '<p>Some falls hurt more than one person, such as when a stair rail gives way during a crowded festival. Section 15-78-120 caps all claims from one occurrence at $600,000 combined. Section 15-78-30(g) defines an occurrence as an unfolding sequence of events that proximately flows, or directly results, from a single act of negligence. How a court applies that definition in a charity case depends on the facts.</p>'
+         '<h3>A 2026 Bill That Would Have Doubled the Cap</h3>'
+         "<p>On May 6, 2026, the House Judiciary Committee reported an amendment to Senate Bill 922. It would have raised the Tort Claims Act limits to $600,000 per person and $1.2 million per occurrence. Because Section 33-56-180 borrows those limits, the charity cap would have doubled too. On June 25, 2026, the House refused to concur in the Senate's amendments, and the legislature's record shows no later action. As of October 2026, the cap still stands at $300,000 per person.</p>"
+         '<h2>Which Organizations Count as Charitable Under Section 33-56-170?</h2>'
+         '<p>The cap protects a charitable organization, and the statute defines that term tightly. Section 33-56-170 covers an organization exempt from federal tax under Section 501(c)(3) or 501(d) of the Internal Revenue Code. That is the whole test.</p>'
+         "<p>Why does that matter after a Ladson fall? Plenty of groups are nonprofits without holding either exemption. A fall inside a qualifying charity's building runs into the cap. The same fall inside a hall that belongs to a group with a different exemption may not, and neither may a fall at a for-profit store down the road.</p>"
+         '<h3>Churches and Religious Groups</h3>'
+         f'<p>Most churches fit Section 501(c)(3). <a href="{IRS_P1828}" rel="noopener" target="_blank">IRS Publication 1828</a> says churches that meet the 501(c)(3) requirements are automatically considered tax exempt. They do not have to apply for recognition. So a young congregation that never sought an IRS letter can still fall within the statute. Whether a particular congregation meets those requirements is still a fact the parties can dispute in court.</p>'
+         '<h4>When Title Belongs to a Larger Church Body</h4>'
+         '<p>The congregation you know may not own the building. Some denominations hold property through a regional body. In Doe v. Bishop of Charleston, the defendants included the Bishop of Charleston, a Corporation Sole, a type of entity that can hold property for a church. The county register of deeds shows who holds title to the lot where you fell. Naming the right owner early avoids a fight over the wrong defendant later.</p>'
+         '<h4>Church Schools, Daycares, and Thrift Shops</h4>'
+         "<p>Many churches run a school, a daycare, or a resale shop. Some run those programs under the church's own exemption, and others through a separate corporation. A company formed for profit is not a charitable organization under Section 33-56-170, even when a church owns it. The entity that ran the program on the day you fell decides which rules apply.</p>"
+         '<h3>Other Nonprofits, Clubs, and Event Hosts</h3>'
+         '<p>Section 33-56-170 names only two exemptions. The Internal Revenue Code lists many more categories of tax-exempt groups, and the statute leaves them out. These are common examples.</p>'
+         '<ul><li>Civic leagues and social welfare groups are exempt under Section 501(c)(4).</li><li>Social and recreation clubs are exempt under Section 501(c)(7).</li><li>Domestic fraternal lodges are exempt under Section 501(c)(10).</li><li>Posts of past or present members of the Armed Forces are exempt under Section 501(c)(19).</li></ul>'
+         "<p>A fall at a group in one of those categories sits outside the cap's text. A group's exemption is a public record that a lawyer checks before valuing the claim.</p>"
+         '<h4>A Revoked or Lapsed Exemption</h4>'
+         '<p>An exemption can also end. IRS Publication 1828 notes that the IRS lists organizations whose exemption was automatically revoked for missing their annual filing requirement three years in a row. The same publication says churches are not required to file those Form 990 returns, so the issue arises with other charities. A lawyer compares any revocation date with the date of your fall.</p>'
+         '<h4>Fair Season at Exchange Park on Highway 78</h4>'
+         '<p>The 2026 Coastal Carolina Fair runs October 29 through November 8 at Exchange Park, 9850 Highway 78 in Ladson. Its website says the fair gave more than $504,000 to over 90 local nonprofit organizations and students in 2024. That giving does not decide the cap. What matters is the exemption held by the entity that controlled the spot where someone fell, and a crowded event can involve several entities.</p>'
+         '<h5>The Venue and the Group That Rents It</h5>'
+         '<p>Exchange Park also rents its halls for weddings, trade shows, and conventions. When an outside group hosts the event, the venue owner and the host can be different entities. A rental agreement typically says who sets up, who cleans, and who carries insurance for the space. That document often shows which entity controlled the floor.</p>'
+         '<h5>Food Vendors and Contractors on the Grounds</h5>'
+         '<p>Large events bring in food vendors, cleaning crews, and equipment companies. Many of them are businesses formed for profit. A for-profit vendor that let grease coat a walkway is not a charitable organization, so the cap does not limit a claim against it.</p>'
+         '<h2>Who Else Can a Ladson Slip and Fall Lawyer Name Besides the Church?</h2>'
+         '<p>A church or charity rarely works alone. Volunteers set up chairs and contractors mop floors. A congregation may also lease storefront space in a strip center along College Park Road or US 78. Each of those people and companies sits in a different spot under South Carolina law.</p>'
+         '<p>The charity statute treats some of them as part of the organization. Others stand outside it completely, and their liability is not capped. Sorting them out early shapes how much coverage is available, though the final picture depends on evidence a lawyer has to confirm.</p>'
+         '<h3>Employees and Volunteers Acting for the Organization</h3>'
+         '<p>Section 33-56-170 defines an employee as an agent, servant, employee, or officer of a charitable organization. A volunteer usher or kitchen helper may count as an agent, depending on what the church asked that person to do. Under Section 33-56-180, a suit against the charity bars a recovery against that employee for the same fall. To get past that bar, you must allege and prove reckless, willful, or grossly negligent conduct, and the employee must be joined as a defendant.</p>'
+         '<h3>Landlords, Contractors, and Vendors Outside the Cap</h3>'
+         '<p>The cap protects the charitable organization and its employees, not outside businesses. A shopping center owner, a janitorial company, or a parking lot contractor answers under ordinary negligence rules. Frost Law Group has explained <a href="[[who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall]]">who can be held liable for a fall in a store, apartment, or public building</a>, and those rules reach these companies too. Parties who can share responsibility for a church or charity fall include these.</p>'
+         '<ul><li>The congregation or charity that ran the event may have controlled the room.</li><li>A regional church body or holding entity may own the property.</li><li>A landlord may lease the storefront or hall to the organization.</li><li>A cleaning, maintenance, or event company may have worked the space that day.</li></ul>'
+         '<p>A jury can weigh the fault of each one, and the cap limits only what the charity pays. How that plays out in your case turns on the contracts and the evidence.</p>'
+         '<h2>Does the Recreational Use Statute Protect a Free Church Ball Field?</h2>'
+         f'<p>Many churches open a ball field, a walking trail, or a picnic shelter to the neighborhood for free. South Carolina has a separate law for that. <a href="{CODE_27_3}" rel="noopener" target="_blank">Sections 27-3-10 through 27-3-70</a> limit the liability of owners who let the public use land for recreation without charge.</p>'
+         '<p>Under Section 27-3-30, an owner owes people who use the land for recreation no duty to keep the premises safe or to warn them. Under Section 27-3-40, an owner who lets people in without charge does not make any visitor an invitee or a licensee. Land includes buildings and structures, and recreation includes picnicking, hiking, and sports.</p>'
+         '<p>The protection disappears when the owner charges. Section 27-3-60(b) keeps liability in place where the owner charges people who enter for recreational use, and Section 27-3-20(e) defines a charge as an admission price or fee. A ticket to a church festival or fairground event proves that charge, so keep it.</p>'
+         '<p>Free use does not excuse everything, either. Section 27-3-60(a) preserves liability for a grossly negligent, willful, or malicious failure to guard or warn against a dangerous condition. A rotted bleacher board that church leaders knew about for months could fit that exception, depending on proof of what they knew and when.</p>'
+         "<h2>Ladson's ZIP Code Spans Three Counties, and the Fall Location Picks the Courthouse</h2>"
+         '<p>Ladson has no town government. It is an unincorporated community, and its 29456 ZIP code reaches into Berkeley, Charleston, and Dorchester counties. So the first fact a Ladson fall claim needs is the exact address where you went down.</p>'
+         "<p>The Census Bureau's address lookup places College Park Road addresses inside Ladson in Berkeley County. It puts Exchange Park, at 9850 Highway 78, in Charleston County. I-26 Exit 203 serves the community, and US 78 runs parallel to the interstate. Venue rules in Section 15-7-30 generally let a suit proceed where the most substantial part of the act or omission occurred, with details that vary by type of defendant.</p>"
+         '<h3>Falls on the Berkeley County Side</h3>'
+         '<p>A lawsuit over a fall on the Berkeley County side goes to the Court of Common Pleas at the Berkeley County Courthouse, 300-B California Avenue, in Moncks Corner. Berkeley County sits in the Ninth Judicial Circuit. Frost Law Group handles cases there through its <a href="[[personal-injury-attorneys-in-berkeley-county]]">Berkeley County personal injury practice</a>. Check the address on any incident form, because a Ladson mailing address does not settle the county.</p>'
+         '<h3>Falls on the Charleston County Side</h3>'
+         "<p>Charleston County cases are heard at the Charleston County Courthouse, 100 Broad Street, also in the Ninth Judicial Circuit. Exchange Park sits on this side, so a fall at the fairgrounds is usually a Charleston County matter. The area is unincorporated, so Charleston County Sheriff's Office deputies, not town police, answer emergency calls there. Frost Law Group's <a href=\"[[personal-injury-attorneys-in-charleston-county]]\">Charleston County injury attorneys</a> handle claims filed at Broad Street.</p>"
+         '<h3>Falls on the Dorchester County Side</h3>'
+         "<p>Part of the 29456 ZIP code lies in Dorchester County, which belongs to the First Judicial Circuit. A suit there goes to the Dorchester County Courthouse, 5200 East Jim Bilton Boulevard, in St. George. A Ladson address on that side changes both the circuit and the courthouse. Frost Law Group's <a href=\"[[personal-injury-attorneys-in-dorchester-county]]\">Dorchester County personal injury lawyers</a> take claims from that side of the line too.</p>"
+         '<h2>What to Gather After a Fall at a Ladson Church or Charity Event</h2>'
+         '<p>Church and charity falls leave a different paper trail than store falls. There may be no surveillance camera and no manager on duty. The records sit with volunteers, bulletins, and rental files, and they scatter quickly once an event ends.</p>'
+         '<p>Start with what you can collect yourself. Each item below ties to a rule covered above.</p>'
+         "<ul><li>Write down the exact name on the sign, bulletin, program, or receipt, since the legal entity decides whether the cap applies.</li><li>Keep your ticket or wristband from any paid event, because a charge defeats the recreational use defense under Section 27-3-60(b).</li><li>Note who was assigned to set up, clean, or greet that day, because a volunteer schedule can show who acted as the organization's agent.</li><li>Photograph the spot, the lighting, and any wet floor sign, and note the nearest cross street to confirm the county.</li><li>Get medical care the same day and keep every bill, since only actual damages count against the cap.</li></ul>"
+         "<p>Hold off on a recorded statement to the organization's insurer until you know which entity ran the event. Its adjuster may already know whether the cap applies.</p>"
+         '<h2>Questions About Church and Charity Falls in South Carolina</h2>'
+         "<p>These questions come up after falls at churches, charity events, and nonprofit shops around Ladson. Each short answer names the rule behind it, so you can check the source yourself. Your own claim still turns on the organization's exempt status, the property records, and the facts of your fall.</p>"
+         "<h3>Does a Church's Insurance Policy Change the $300,000 Cap?</h3>"
+         '<p>Section 33-56-180 contains no exception for a larger insurance policy. A church may carry coverage above the cap, but the statute still limits what you can recover in an action against a qualifying charity.</p>'
+         '<h3>How Long Do I Have to Sue a Church for a Fall in South Carolina?</h3>'
+         "<p>Section 15-3-530(5) generally allows three years for an injury to the person. Section 33-56-180 borrows the Tort Claims Act's dollar limits and says nothing about its two-year deadline in Section 15-78-110, which governs claims against public bodies. Section 15-3-40 can extend a child's deadline, but the extension never runs past one year after the child turns 18.</p>"
+         '<h3>Does It Matter That I Was Not a Member of the Church?</h3>'
+         "<p>Membership does not decide the cap, because the cap turns on the organization's tax exemption. Your reason for being on the property still affects the duty the owner owed you. Frost Law Group's page on <a href=\"[[slip-and-fall-attorneys-in-summerville/premises-liability-lawyers-in-summerville]]\">premises liability in South Carolina</a> explains how visitor status works.</p>"
+         '<h3>Can I Still Recover if I Was Partly at Fault for My Fall?</h3>'
+         '<p>Yes, if your share is not greater than the combined fault of the defendants. Nelson v. Concrete Supply Co., decided in 1991, set that rule, and your award drops by your percentage. Any charity cap still limits what the charity itself pays. Read <a href="[[car-accident-attorneys-in-summerville/how-comparative-negligence-works-in-south-carolina]]">how comparative negligence works in South Carolina</a> for more.</p>'
+         "<h2>Talk With a Ladson Slip and Fall Lawyer Before the Charity's Insurer Calls</h2>"
+         "<p>A fall at a church or charity raises questions a store fall never does. A Ladson slip and fall lawyer at Frost Law Group can check the organization's exemption, find out who controlled the space, and look for outside companies whose liability is not capped.</p>"
+         '<p>Frost Law Group serves Berkeley, Charleston, and Dorchester counties from 128 Linwood Lane, Summerville, SC 29483. <a href="[[attorneys/tara-frost]]">Tara L. Frost</a> is a former Dorchester County Magistrate Judge.</p>'
+         '<p>Call Frost First at ' + TEL + ' for a free case review. The firm answers 24/7. You can also describe your fall through the <a href="[[contact]]">contact page</a> and ask for a call back.</p>'
+         '<p>Bring the event program, your receipts, and the names of anyone who saw the hazard. No lawyer can promise a result, and prior results do not guarantee a similar outcome.</p>'
+     ),
+     sources=[("S.C. Code §§ 33-56-170 and 33-56-180 (charitable organizations)", CODE_33_56, False),
+              ("Doe v. Bishop of Charleston, S.C. Sup. Ct. Op. No. 28252 (2025)", DOE_BISHOP, False),
+              ("S.C. General Assembly, S.922 (2025-2026 session) bill history", SC_S922, False),
+              ("S.C. Code §§ 15-78-30, 15-78-110 and 15-78-120 (Tort Claims Act)", CODE_15_78, False),
+              ("S.C. Code §§ 27-3-10 to 27-3-70 (recreational use of land)", CODE_27_3, False),
+              ("S.C. Code § 15-7-30 (venue)", CODE_15_7, False),
+              ("S.C. Code §§ 15-3-40 and 15-3-530 (filing deadlines)", CODE_15_3, False),
+              ("IRS Publication 1828, Tax Guide for Churches and Religious Organizations", IRS_P1828, False),
+              ("Coastal Carolina Fair, hours and directions", CCFAIR, False),
+              ("S.C. Judicial Branch, Berkeley County courts", SCCOURTS_BERKELEY, False),
+              ("S.C. Judicial Branch, Charleston County courthouse", SCCOURTS_CHARLESTON, False),
+              ("S.C. Judicial Branch, Dorchester County courts", SCCOURTS_DORCHESTER, False)],
+     related=[SLIPP, SLIPP + "/premises-liability-lawyers-in-summerville", BERK + "/ladson-car-accident-lawyers", "who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall"])
+faq_ld(p10, 'Questions About Church and Charity Falls in South Carolina')
