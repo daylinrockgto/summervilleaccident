@@ -49,4 +49,8 @@ META = {
     # Catastrophic Injury Lawyer", stays in posts.py; this one follows the keyphrase | CTA rule.
     "can-a-charleston-catastrophic-injury-lawyer-keep-you-away-from-the-insurance-companys-doctor": ("Charleston Catastrophic Injury Lawyer | Call Before an IME",
         "Before a lawsuit, the other driver's insurer cannot order an IME. A Charleston catastrophic injury lawyer explains when a judge can. Call for a free review."),
+    # October 20, 2026 post. Daylin asked for the draft's own title and description, so the title is not in the
+    # keyphrase | CTA form.
+    "can-a-ladson-slip-and-fall-lawyer-bring-a-claim-against-a-church-or-charity": ("Hurt at a Church Event? Call a Ladson Slip and Fall Lawyer",
+        "Churches and charities can be sued for a fall in South Carolina, but a cap may apply. A Ladson slip and fall lawyer explains it. Call for a free review."),
 }
