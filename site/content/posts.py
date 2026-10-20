@@ -835,11 +835,16 @@ faq_ld(p9, 'Questions Charleston Families Ask About Insurance Medical Exams')
 # October 19, 2026 draft from Legal Leads Group, published October 20. Same conversion as the October batch: the DNI
 # number replaced the draft's tracking number, the contingency fee clause came out of the CTA (the template and footer
 # carry the fee wording), and the draft's metadata block stays out of the page copy. The title and description are the
-# draft's own. The photos under H2s 1 and 5 are listed in images.json under this post's slug.
+# draft's own. The photos under H2s 1 and 5 are listed in images.json under this post's slug. The statutes, cases, S.922
+# history, IRS Publication 1828, fair details, courthouses and Ladson's county lines were checked against the sources below
+# and the Census geocoder on October 20; three sentences were tightened to match 15-78-30(g), 27-3-30 and 27-3-40, and 15-3-40.
 CODE_33_56 = "https://www.scstatehouse.gov/code/t33c056.php"
 CODE_27_3 = "https://www.scstatehouse.gov/code/t27c003.php"
 IRS_P1828 = "https://www.irs.gov/pub/irs-pdf/p1828.pdf"
 SCCOURTS_DORCHESTER = "https://www.sccourts.org/courts/courthouse-search/dorchester/"
+DOE_BISHOP = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/28252.pdf"
+SC_S922 = "https://www.scstatehouse.gov/sess126_2025-2026/bills/922.htm"
+CCFAIR = "https://www.coastalcarolinafair.org/fair-hours-directions/"
 
 p10 = post(hero_image='talk-with-a-ladson-slip-and-fall-lawyer-before-the-charitys-insurer-calls.jpg',
      hero_caption='Tables with white cloths, red carnations and candles fill a church fellowship hall beneath a wooden cross.',
@@ -866,7 +871,7 @@ p10 = post(hero_image='talk-with-a-ladson-slip-and-fall-lawyer-before-the-charit
          '<h4>Actual Damages Only, With No Punitive Award</h4>'
          '<p>The statute allows only the actual damages you sustain. That covers hospital bills, physical therapy, missed paychecks, and the pain a broken hip causes. Punitive damages, which punish rather than repay, fall outside that language. Where your losses land against the ceiling depends on records a lawyer gathers with you.</p>'
          '<h4>The Per-Occurrence Ceiling When Several People Fall</h4>'
-         '<p>Some falls hurt more than one person, such as when a stair rail gives way during a crowded festival. Section 15-78-120 caps all claims from one occurrence at $600,000 combined. Section 15-78-30(g) defines an occurrence as an unfolding sequence of events that flows from a single act of negligence. How a court applies that definition in a charity case depends on the facts.</p>'
+         '<p>Some falls hurt more than one person, such as when a stair rail gives way during a crowded festival. Section 15-78-120 caps all claims from one occurrence at $600,000 combined. Section 15-78-30(g) defines an occurrence as an unfolding sequence of events that proximately flows, or directly results, from a single act of negligence. How a court applies that definition in a charity case depends on the facts.</p>'
          '<h3>A 2026 Bill That Would Have Doubled the Cap</h3>'
          "<p>On May 6, 2026, the House Judiciary Committee reported an amendment to Senate Bill 922. It would have raised the Tort Claims Act limits to $600,000 per person and $1.2 million per occurrence. Because Section 33-56-180 borrows those limits, the charity cap would have doubled too. On June 25, 2026, the House refused to concur in the Senate's amendments, and the legislature's record shows no later action. As of October 2026, the cap still stands at $300,000 per person.</p>"
          '<h2>Which Organizations Count as Charitable Under Section 33-56-170?</h2>'
@@ -901,7 +906,7 @@ p10 = post(hero_image='talk-with-a-ladson-slip-and-fall-lawyer-before-the-charit
          '<p>A jury can weigh the fault of each one, and the cap limits only what the charity pays. How that plays out in your case turns on the contracts and the evidence.</p>'
          '<h2>Does the Recreational Use Statute Protect a Free Church Ball Field?</h2>'
          f'<p>Many churches open a ball field, a walking trail, or a picnic shelter to the neighborhood for free. South Carolina has a separate law for that. <a href="{CODE_27_3}" rel="noopener" target="_blank">Sections 27-3-10 through 27-3-70</a> limit the liability of owners who let the public use land for recreation without charge.</p>'
-         '<p>Under Section 27-3-30, an owner who allows free recreational use owes those visitors no duty to keep the premises safe or to warn them. Section 27-3-40 adds that free permission does not make a visitor an invitee or a licensee. Land includes buildings and structures, and recreation includes picnicking, hiking, and sports.</p>'
+         '<p>Under Section 27-3-30, an owner owes people who use the land for recreation no duty to keep the premises safe or to warn them. Under Section 27-3-40, an owner who lets people in without charge does not make any visitor an invitee or a licensee. Land includes buildings and structures, and recreation includes picnicking, hiking, and sports.</p>'
          '<p>The protection disappears when the owner charges. Section 27-3-60(b) keeps liability in place where the owner charges people who enter for recreational use, and Section 27-3-20(e) defines a charge as an admission price or fee. A ticket to a church festival or fairground event proves that charge, so keep it.</p>'
          '<p>Free use does not excuse everything, either. Section 27-3-60(a) preserves liability for a grossly negligent, willful, or malicious failure to guard or warn against a dangerous condition. A rotted bleacher board that church leaders knew about for months could fit that exception, depending on proof of what they knew and when.</p>'
          "<h2>Ladson's ZIP Code Spans Three Counties, and the Fall Location Picks the Courthouse</h2>"
@@ -923,7 +928,7 @@ p10 = post(hero_image='talk-with-a-ladson-slip-and-fall-lawyer-before-the-charit
          "<h3>Does a Church's Insurance Policy Change the $300,000 Cap?</h3>"
          '<p>Section 33-56-180 contains no exception for a larger insurance policy. A church may carry coverage above the cap, but the statute still limits what you can recover in an action against a qualifying charity.</p>'
          '<h3>How Long Do I Have to Sue a Church for a Fall in South Carolina?</h3>'
-         "<p>Section 15-3-530(5) generally allows three years for an injury to the person. Section 33-56-180 borrows the Tort Claims Act's dollar limits and says nothing about its two-year deadline in Section 15-78-110, which governs claims against public bodies. A child's deadline can pause under Section 15-3-40, but never past one year after the child turns 18.</p>"
+         "<p>Section 15-3-530(5) generally allows three years for an injury to the person. Section 33-56-180 borrows the Tort Claims Act's dollar limits and says nothing about its two-year deadline in Section 15-78-110, which governs claims against public bodies. Section 15-3-40 can extend a child's deadline, but the extension never runs past one year after the child turns 18.</p>"
          '<h3>Does It Matter That I Was Not a Member of the Church?</h3>'
          "<p>Membership does not decide the cap, because the cap turns on the organization's tax exemption. Your reason for being on the property still affects the duty the owner owed you. Frost Law Group's page on <a href=\"[[slip-and-fall-attorneys-in-summerville/premises-liability-lawyers-in-summerville]]\">premises liability in South Carolina</a> explains how visitor status works.</p>"
          '<h3>Can I Still Recover if I Was Partly at Fault for My Fall?</h3>'
@@ -935,11 +940,14 @@ p10 = post(hero_image='talk-with-a-ladson-slip-and-fall-lawyer-before-the-charit
          '<p>Bring the event program, your receipts, and the names of anyone who saw the hazard. No lawyer can promise a result, and prior results do not guarantee a similar outcome.</p>'
      ),
      sources=[("S.C. Code §§ 33-56-170 and 33-56-180 (charitable organizations)", CODE_33_56, False),
+              ("Doe v. Bishop of Charleston, S.C. Sup. Ct. Op. No. 28252 (2025)", DOE_BISHOP, False),
+              ("S.C. General Assembly, S.922 (2025-2026 session) bill history", SC_S922, False),
               ("S.C. Code §§ 15-78-30, 15-78-110 and 15-78-120 (Tort Claims Act)", CODE_15_78, False),
               ("S.C. Code §§ 27-3-10 to 27-3-70 (recreational use of land)", CODE_27_3, False),
               ("S.C. Code § 15-7-30 (venue)", CODE_15_7, False),
               ("S.C. Code §§ 15-3-40 and 15-3-530 (filing deadlines)", CODE_15_3, False),
               ("IRS Publication 1828, Tax Guide for Churches and Religious Organizations", IRS_P1828, False),
+              ("Coastal Carolina Fair, hours and directions", CCFAIR, False),
               ("S.C. Judicial Branch, Berkeley County courts", SCCOURTS_BERKELEY, False),
               ("S.C. Judicial Branch, Charleston County courthouse", SCCOURTS_CHARLESTON, False),
               ("S.C. Judicial Branch, Dorchester County courts", SCCOURTS_DORCHESTER, False)],
