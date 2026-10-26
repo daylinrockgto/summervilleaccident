@@ -53,4 +53,8 @@ META = {
     # keyphrase | CTA form.
     "can-a-ladson-slip-and-fall-lawyer-bring-a-claim-against-a-church-or-charity": ("Hurt at a Church Event? Call a Ladson Slip and Fall Lawyer",
         "Churches and charities can be sued for a fall in South Carolina, but a cap may apply. A Ladson slip and fall lawyer explains it. Call for a free review."),
+    # October 26, 2026 post. The title and description are the draft's own metadata, so the title is not in the
+    # keyphrase | CTA form.
+    "does-hiring-a-charleston-dog-bite-lawyer-mean-the-dog-gets-put-down": ("Get a Charleston Dog Bite Lawyer Before the Insurer Calls",
+        "Most bite claims have three years to file in South Carolina. Talk to a Charleston dog bite lawyer about quarantine records, deadlines and your injuries."),
 }

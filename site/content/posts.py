@@ -953,3 +953,128 @@ p10 = post(hero_image='talk-with-a-ladson-slip-and-fall-lawyer-before-the-charit
               ("S.C. Judicial Branch, Dorchester County courts", SCCOURTS_DORCHESTER, False)],
      related=[SLIPP, SLIPP + "/premises-liability-lawyers-in-summerville", BERK + "/ladson-car-accident-lawyers", "who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall"])
 faq_ld(p10, 'Questions About Church and Charity Falls in South Carolina')
+
+# ----------------------------------------------------------------------------- 11. Charleston dog bites, what happens to the dog
+# October 26, 2026 draft from Legal Leads Group, published October 26. Same conversion as the October batch: the office
+# number replaced the draft's tracking number in both places, and the draft's metadata block stays out of the page copy.
+# The title and description are the draft's own. The photos under H2s 2 and 3 are listed in images.json under this post's
+# slug. The statutes, the 2026 acts, the DPH releases, the Charleston County Code and the animal control and shelter details
+# were checked against the sources below on October 26. Seven sentences were tightened to match them: Act 146 updated state
+# laws to match the 2023 DHEC restructuring (Act 60) rather than being the restructuring act, 47-5-100 says who removes the
+# head rather than ordering removal, the Act's vaccination duty outlasts the quarantine, DPH announced the two raccoons on
+# September 3 and 11 (the lab confirmed them September 1 and 10), 47-3-110 covers a person in a public place or lawfully on
+# private property rather than anyone, and the 47-3-640 answer no longer implies no record existed before May 15, 2026. The
+# CPD Animal Control sentence rests on the City of Charleston's July 24, 2025 release (CPD_JULY_2025), which is about an
+# officer shooting a charging dog, so it stays out of the reader-facing sources list.
+DPH_BITES = "https://dph.sc.gov/diseases-conditions/infectious-diseases/animal-borne-diseases/rabies/reporting-and"
+DPH_RABIES_DAY_2026 = "https://dph.sc.gov/news/dph-supports-world-rabies-day-2026-stronger-together"
+DPH_RACCOON_SEP3 = "https://dph.sc.gov/news/rabid-raccoon-confirmed-charleston-county-one-pet-exposed-2"
+DPH_RACCOON_SEP11 = "https://dph.sc.gov/news/rabid-raccoon-confirmed-charleston-county-two-pets-exposed"
+SC_ACT_146 = "https://www.scstatehouse.gov/sess126_2025-2026/bills/4189.htm"
+SC_ACT_130 = "https://www.scstatehouse.gov/sess126_2025-2026/bills/3034.htm"
+CHS_ORD_2358 = "https://www.charlestoncounty.gov/ordinances/archived/2300-2399/2358.pdf"
+CCSO_COMMUNITY = "https://sheriff.charlestoncounty.gov/community-info.php"
+CAS_STRAYS = "https://charlestonanimalsociety.org/where-to-take-found-stray-animals/"
+CPD_JULY_2025 = "https://www.charleston-sc.gov/CivicAlerts.aspx?AID=1495"
+
+p11 = post(hero_image='call-a-charleston-dog-bite-lawyer-about-the-bite-not-the-dog.jpg',
+     hero_caption='A German shepherd stands behind the metal bars of a kennel with its tongue out.',
+     category='Dog bites', date='2026-10-26', modified='2026-10-26',
+     title='Get a Charleston Dog Bite Lawyer Before the Insurer Calls',
+     description='Most bite claims have three years to file in South Carolina. Talk to a Charleston dog bite lawyer about quarantine records, deadlines and your injuries.',
+     h1='Does Hiring a Charleston Dog Bite Lawyer Mean the Dog Gets Put Down?',
+     summary="A bite claim asks for money, never for the dog. Who orders the ten-day quarantine, when a Charleston dog counts as dangerous, and when a court can order it destroyed.",
+     body=(
+         "<p>No. Hiring a Charleston dog bite lawyer starts a claim for money under S.C. Code Section 47-3-110. The claim runs against the dog's owner or keeper, and it never asks for the dog. The dog's fate runs on a separate track. A quarantine of at least ten days comes first, and a destruction order needs a court's finding of continuing danger.</p>"
+         "<p>Frost Law Group is a husband-and-wife injury firm at 128 Linwood Lane, Summerville, SC 29483. Attorneys Tara L. Frost and Jack C. Frost represent people hurt by dogs in Charleston and across Charleston County. Tara is a former Dorchester County Magistrate Judge. Jack spent 14 years in law enforcement with the Summerville Police Department and the Charleston County Sheriff's Office. Here is who decides what happens to a dog after a Charleston bite, and why none of it depends on your claim.</p>"
+         '<p>If a dog bit you or your child in Charleston, call Frost Law Group at ' + TEL + ' for a free consultation. You talk with an attorney, not a call center, and the call commits you to nothing.</p>'
+         '<h2>Why a Charleston Dog Bite Claim Never Asks for the Dog</h2>'
+         '<p>A bite claim is about money. Under Section 47-3-110, the owner or keeper “is liable for the damages suffered” by the person bitten. The <a href="[[dog-bite-attorneys-in-summerville]]">dog bite attorneys at Frost Law Group</a> build that claim around medical bills, lost pay, pain and scarring. Nothing in the statute gives you, or a civil judge, any say over the dog.</p>'
+         "<p>The dangerous animal law makes the same point from the other side. Section 47-3-760(F) says nothing in that chapter is designed to abrogate civil remedies. Your claim and the dog's case move side by side, and neither one waits on the other. Three public bodies, none of them part of your claim, make the decisions about the dog.</p>"
+         "<ul><li>The South Carolina Department of Public Health serves the quarantine notice and watches for rabies.</li><li>Charleston Police Animal Control or the Charleston County Sheriff's Office enforces the animal laws, depending on the address.</li><li>A criminal court decides any charge under the dangerous animal law and any order to destroy the dog.</li></ul>"
+         "<p>The money often comes from a homeowner or renter policy, not from the owner's savings. Frost Law Group's page on <a href=\"[[dog-bite-attorneys-in-summerville/dog-bite-insurance-claim-lawyers-in-summerville]]\">dog bite insurance claims</a> explains how those policies respond.</p>"
+         "<h3>Your Doctor's Report Starts the Process, Not Your Lawyer</h3>"
+         '<p>Section 47-5-90 requires a physician who treats a bite to report it to the county health department by the end of the next working day. If no doctor treats it, the bitten adult must report it, or the parent of a bitten child. DPH uses the report to contact the patient and open a rabies investigation. The statute now names DPH. Act No. 146 of 2026, which updated state laws to match the 2023 DHEC restructuring, took effect May 15, 2026. It rewrote the Rabies Control Act\'s definition of “department.” Some South Carolina injury pages still point readers to DHEC and a 24-hour deadline. Neither matches the statute today.</p>'
+         '<h3>Why Waiting to Call a Lawyer Does Not Protect the Dog</h3>'
+         "<p>Some people hold off on a claim because they like the dog or its owner. That delay does nothing for the dog, because the health department's clock started with the report. It only uses up your own time. Section 15-3-530(5) gives most injury claims three years, measured under Section 15-3-535 from when you knew or should have known of the claim. Records such as the quarantine notice are easiest to collect in the first weeks. The exact deadline depends on facts a lawyer checks, such as the bitten person's age.</p>"
+         '<h2>What Happens to the Dog During the Ten-Day Quarantine?</h2>'
+         '<p>The dog is confined and watched for signs of rabies for at least ten days. Section 47-5-100 has the county health department serve the owner with a quarantine notice, and the owner pays for it. The notice can keep the dog on the owner\'s premises, at an animal shelter or at another place it names. When the dog shows no sign of rabies, nothing in Section 47-5-100 calls for a test or for putting the dog down.</p>'
+         '<p>A licensed veterinarian or the rabies control officer may examine the dog at any time during those ten days, even daily. The owner must allow it, and no one may interfere. DPH sets the location, conditions and length under Section 47-5-20, so two Charleston bites can produce two different notices.</p>'
+         '<h3>When Does the Health Department Order a Rabies Test?</h3>'
+         "<p>Testing follows a suspicion of rabies, not the bite itself. When DPH tests an animal suspected of having rabies, Section 47-5-100 requires a licensed veterinarian to remove the head. A dog that stays healthy through its quarantine never reaches that step. Rabies in dogs is rare here. DPH's 2026 World Rabies Day release counts 760 rabies-positive animals in South Carolina from 2019 through 2025, and only 7 were dogs.</p>"
+         '<h3>What if the Owner Ignores the Quarantine Notice?</h3>'
+         "<p>The owner risks a criminal charge. Section 47-5-200 makes refusing to comply with the Rabies Control Act a misdemeanor, punished up to the maximum penalties of magistrate's court. Deputies, police officers and animal control officials help DPH enforce the Act under Section 47-5-180. For you, a missed quarantine has a medical cost. Without ten days of observation, your doctor loses the best evidence that the dog was healthy, and that can push the decision toward rabies shots.</p>"
+         '<h3>How the Quarantine Shapes Your Medical Care</h3>'
+         f'<p>In its <a href="{DPH_BITES}" rel="noopener" target="_blank">guidance on reporting bites and treating rabies exposure</a>, DPH says most animal exposures will not require post-exposure prophylaxis, often called PEP. It adds that locating the animal for quarantine or testing may prevent unnecessary PEP. When shots are needed, DPH describes a series of vaccines over a 14-day period. Your treating physician makes that call, not the owner and not an adjuster.</p>'
+         '<h4>Rabid Wildlife Confirmed Around Charleston in 2026</h4>'
+         "<p>Charleston's rabies risk comes mostly from wildlife. On September 3, 2026, DPH announced a rabid raccoon near Swan Avenue and Swallow Drive in Charleston, and one dog was exposed. Eight days later, it announced another near Starfish Drive and River Road on Johns Island. That raccoon was the 11th animal in Charleston County to test positive in 2026.</p>"
+         '<h4>Who Pays for Rabies Shots While Your Claim Is Open</h4>'
+         "<p>Section 47-5-150 requires DPH to make human rabies vaccine and globulin available to people exposed to an animal found or suspected to have rabies. DPH may seek reimbursement from the patient's health insurance, Medicaid or Medicare. In a bite claim, the cost of shots sits with the other medical bills. Whether the owner's insurer pays them depends on the records and the policy, which a lawyer reviews first.</p>"
+         '<h2>When Does a Charleston Dog Count as a Dangerous Animal?</h2>'
+         f"<p>Only when it fits the definition in Section 47-3-710, part of <a href=\"{CODE_47_3}\" rel=\"noopener\" target=\"_blank\">South Carolina's dangerous animal law</a>. One unprovoked bite that punctures the skin can qualify, as long as it happens away from the place where the dog is confined. In unincorporated Charleston County, Sheriff's Office animal control officers enforce that law under County Code Section 3-12. The label brings strict rules for the owner, and by itself it does not require putting the dog down.</p>"
+         '<p>Four routes lead into the definition.</p>'
+         '<ul><li>The owner knows, or reasonably should know, that the dog tends to attack unprovoked or endanger people or domestic animals.</li><li>The dog makes an unprovoked attack that injures a person away from the place where it is confined.</li><li>Away from its confinement, the dog acts in an unprovoked way that makes a person reasonably expect an attack.</li><li>Someone owns, harbors or trains the dog for fighting.</li></ul>'
+         '<p>Exclusions matter just as much. A dog that attacks a trespasser is not dangerous under the statute, and neither is an animal used only for agriculture. Section 47-3-710(C) adds that no animal is dangerous solely because of its breed.</p>'
+         '<h3>Two Details That Decide Whether the Label Fits</h3>'
+         '<p>The definition turns on two words a reader might skim past, injury and confinement. Both are narrower than everyday speech. A bite can support a full injury claim under Section 47-3-110 and still fall short of the dangerous animal definition. That gap is why a claim can move forward even when the dog never gets the label. Here is how each word works in practice.</p>'
+         '<h4>Bodily Injury Means Broken Bones, Lacerations or Punctures</h4>'
+         '<p>Section 47-3-710(E) defines bodily injury as broken bones, lacerations, punctures of the skin, or any physical injury resulting in death. A deep bruise from a jump may not meet that test. The civil statute reaches further, because it covers a person “bitten or otherwise attacked.” A knockdown that breaks your wrist fits both laws.</p>'
+         '<h4>A Bite Inside a Secure Pen Can Fall Outside It</h4>'
+         "<p>The bite route covers attacks away from the place where the dog is confined under Section 47-3-720. That section means indoors, or inside a securely enclosed fence or locked pen. A bite at the dog's own pen may not make it dangerous on that route, unless the owner already knew of its tendency to attack. An invited guest bitten on the property can still bring a civil claim.</p>"
+         '<h3>Who Enforces the Law Inside and Outside Charleston City Limits</h3>'
+         '<p>The address of the bite decides which officers respond. Parts of West Ashley, James Island and Johns Island sit inside the City of Charleston, and other parts do not. A bite on one block can belong to the city while a bite nearby belongs to the county. Ask the dispatcher which agency took the call, because you will need that name to request the report.</p>'
+         '<h4>Charleston Police Animal Control Inside the City</h4>'
+         "<p>Inside city limits, the Charleston Police Department has its own Animal Control officers. A July 2025 CPD release describes them at a scene near Radcliffe Place Drive and Bees Ferry Road. Charleston Animal Society's guide sends found city strays to its shelter at 2455 Remount Road in North Charleston. The county ordinance below covers only unincorporated areas, so it does not govern a bite inside city limits.</p>"
+         "<h4>Charleston County Sheriff's Office Animal Control Outside the City</h4>"
+         "<p>In unincorporated Charleston County, the Sheriff's Office runs Animal Control. Its page says the unit enforces both local ordinances and state laws on domestic animals. Chapter 3 of the Charleston County Code, amended in September 2025, makes deputies and others the Sheriff's Office designates its animal control officers.</p>"
+         '<h5>Impoundment of a Dangerous or Loose Dog</h5>'
+         "<p>County Code Section 3-5 lets an officer impound any dangerous animal, at-large animal or stray. An unclaimed stray can be euthanized after five working days or placed for adoption, at the shelter's discretion. An identifiable dog gets more time, because Section 47-3-540 requires notice to the owner and two weeks to respond. Charleston Animal Society's guide sends found strays from unincorporated areas to Pet Helpers at 1447 Folly Road on James Island.</p>"
+         '<h5>A Court Action to Stop a Repeat Threat</h5>'
+         "<p>County Code Section 3-18 calls a dog that repeatedly chases, snaps at or attacks pedestrians a public nuisance. Anyone specifically damaged may file a civil action in magistrate or circuit court to abate it. That remedy aims at stopping the behavior. It stays separate from a claim for your injuries, and whether it fits depends on the dog's history.</p>"
+         '<h3>What a Dangerous Label Requires of the Owner</h3>'
+         '<p>The label puts the owner under tighter rules, and none of them is euthanasia. Section 47-3-720 requires confinement indoors or in a locked pen marked as holding a dangerous animal. Section 47-3-730 bars taking the dog off the premises unless it is safely restrained. Under Section 47-3-760(E), the owner must also register the dog with county law enforcement. That registration needs liability insurance or a surety bond of at least $50,000 for injuries the dog inflicts.</p>'
+         '<h2>Can a Court Order a Dog Destroyed After a Charleston Bite?</h2>'
+         "<p>Yes, under the dangerous animal law, and never automatically. Section 47-3-760(C) allows a destruction order when, in the court's judgment, a dangerous animal that attacked is a continuing threat of serious harm. The statute says “may,” so the court weighs the dog and the facts. That decision belongs to the criminal case against the owner, not to your injury claim.</p>"
+         '<p>The owner\'s criminal exposure depends on what the dog did. Section 47-3-760 sets three tiers.</p>'
+         '<ul><li>Breaking the confinement, restraint or registration rules carries up to $200 or 30 days for a first offense.</li><li>Owning a dangerous dog that attacks and injures a person carries up to $5,000 or three years for a first offense.</li><li>A second offense of that kind is a felony with up to $10,000 or five years.</li></ul>'
+         '<p>Law enforcement brings the charge, and the court decides it. You may be asked for a statement, but you do not control the outcome.</p>'
+         '<h3>Seizure While the Criminal Case Is Pending</h3>'
+         '<p>Section 47-3-750 lets an officer act before trial. With probable cause that a dangerous animal is kept in violation of the confinement or registration rules, the officer can ask the court to impound it. If the dog is off its premises without safe restraint, the officer can seize it directly. Impoundment holds the dog while the trial is pending. It is a holding step, and it decides nothing about the charge itself.</p>'
+         '<h3>Medical Bills a Criminal Court Can Order Repaid</h3>'
+         '<p>Section 47-3-760(D) requires a person found guilty under the dangerous animal law to pay the expenses tied to the case. The list includes the medical expenses a victim incurred from the attack. It does not name pain or scarring. Those losses belong to the civil claim, and what a claim may bring turns on facts a lawyer has to review.</p>'
+         "<h2>Why the Dog's Record Matters to a Charleston Dog Bite Lawyer</h2>"
+         "<p>South Carolina gives no dog a free first bite. Section 47-3-110 makes the owner liable without proof of an earlier attack. Frost Law Group's page on <a href=\"[[dog-bite-attorneys-in-summerville/dog-bite-strict-liability-lawyers-in-summerville]]\">strict liability for dog bites</a> walks through its limits. Even so, the dog's record can change how a claim is valued, and by how much depends on the evidence.</p>"
+         "<p>Punitive damages are where the record counts most. Section 15-32-520(D) allows them only on clear and convincing evidence of willful, wanton or reckless conduct. In setting the amount, a jury may consider the defendant's awareness and similar past conduct under Section 15-32-520(E). An owner who ignored an earlier quarantine gives a jury something real to weigh. Still, no lawyer can predict a punitive award in any case.</p>"
+         "<p>Frost Law Group's page for <a href=\"[[personal-injury-attorneys-in-charleston-county/charleston-personal-injury-lawyers]]\">Charleston personal injury lawyers</a> covers city police reports and the courts on Broad Street. <a href=\"[[attorneys/jack-frost]]\">Jack C. Frost's years with the Charleston County Sheriff's Office</a> give the firm a practical read on how an incident file gets built.</p>"
+         '<h2>Questions Charleston Bite Victims Ask About the Dog</h2>'
+         '<p>These questions come up most when the dog belongs to someone the victim knows. They also come up when a family is still deciding whether to make a claim at all. Each answer comes from the statute or ordinance that controls it. For your own bite, a short call can sort out which rule applies.</p>'
+         '<h3>Can I Stop the Quarantine if the Dog Belongs to a Friend?</h3>'
+         '<p>No. Section 47-5-100 says the county health department “shall serve notice” on the owner, so the victim has no veto. The notice can allow the quarantine on the owner\'s premises, which can make it easier on a friend.</p>'
+         '<h3>Does a Dog With No Rabies Shot Have to Be Put Down?</h3>'
+         "<p>Not automatically. The ten-day quarantine in Section 47-5-100 applies to any dog that bites a person, vaccinated or not. A missing shot is the owner's violation of Section 47-5-60, and it can weigh on your doctor's decision about rabies shots.</p>"
+         '<h3>Is There a Record When a Police Dog Bites Someone?</h3>'
+         "<p>Yes. Since May 15, 2026, Section 47-3-640, added by Act No. 130 of 2026, has required an officer whose police dog bites a person to keep a detailed report with images of the bite. The Freedom of Information Act applies to it, and a claim against the agency follows the Tort Claims Act's own deadlines.</p>"
+         '<h3>How Long Do I Have to File a Dog Bite Claim in South Carolina?</h3>'
+         '<p>Most bite claims must be filed within three years under Section 15-3-530(5). A Charleston County suit goes to the Court of Common Pleas at the Judicial Center, 100 Broad Street. Children and government claims follow different timing rules, so check the deadline early.</p>'
+         '<h2>Call a Charleston Dog Bite Lawyer About the Bite, Not the Dog</h2>'
+         "<p>Your claim is about your injuries. A Charleston dog bite lawyer at Frost Law Group can deal with the owner's insurer while the health department and animal control handle the dog. You can care about the dog and still ask for your medical bills to be paid.</p>"
+         '<p>Tara L. Frost and Jack C. Frost practice from 128 Linwood Lane, Summerville, SC 29483, and they take bite cases from across Charleston County. Call Frost First at ' + TEL + ' for a free consultation. The line is answered 24/7, and you reach an attorney, not a call center.</p>'
+         '<p>Would you rather write? Send a few lines about the bite through the firm\'s <a href="[[contact]]">contact page</a>, and the office will reach out. Have the quarantine notice, the owner\'s name and any photos of the wound ready if you have them.</p>'
+     ),
+     sources=[("S.C. Code §§ 47-3-110, 47-3-540, 47-3-640 and 47-3-710 to 47-3-760 (dog attacks and dangerous animals)", CODE_47_3, False),
+              ("S.C. Code §§ 47-5-20 to 47-5-200 (Rabies Control Act)", CODE_47_5, False),
+              ("S.C. General Assembly, Act No. 146 of 2026 (H.4189)", SC_ACT_146, False),
+              ("S.C. General Assembly, Act No. 130 of 2026 (H.3034)", SC_ACT_130, False),
+              ("S.C. Department of Public Health, reporting bites and rabies treatment", DPH_BITES, False),
+              ("S.C. Department of Public Health, World Rabies Day 2026", DPH_RABIES_DAY_2026, False),
+              ("S.C. Department of Public Health, rabid raccoon near Swan Avenue (September 3, 2026)", DPH_RACCOON_SEP3, False),
+              ("S.C. Department of Public Health, rabid raccoon on Johns Island (September 11, 2026)", DPH_RACCOON_SEP11, False),
+              ("Charleston County Ordinance No. 2358 (Chapter 3, animals, September 2025)", CHS_ORD_2358, False),
+              ("Charleston County Sheriff's Office, Animal Control", CCSO_COMMUNITY, False),
+              ("Charleston Animal Society, where to take found stray animals", CAS_STRAYS, False),
+              ("S.C. Code §§ 15-3-530 and 15-3-535 (filing deadlines)", CODE_15_3, False),
+              ("S.C. Code § 15-32-520 (punitive damages)", CODE_15_32, False),
+              ("S.C. Judicial Branch, Charleston County courthouse", SCCOURTS_CHARLESTON, False)],
+     related=[DOG, DOG + "/dog-bite-insurance-claim-lawyers-in-summerville", DOG + "/dog-bite-strict-liability-lawyers-in-summerville",
+              CHS + "/charleston-personal-injury-lawyers"])
+faq_ld(p11, 'Questions Charleston Bite Victims Ask About the Dog')
