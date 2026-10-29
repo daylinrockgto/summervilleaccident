@@ -103,7 +103,7 @@ ol.steps b{color:var(--navy-3)}
 .rev .st{color:var(--rust);letter-spacing:2px}
 .rev p{margin:6px 0 10px}
 .rev small{font-weight:700;color:var(--muted)}
-/* case results under the trust bar (settled 2026-10-29): four car results, the Rule 7.1(d)(4) disclaimer right under them */
+/* case results under the trust bar (settled 2026-10-29): the car total and four car results */
 section.results{background:var(--navy-3);color:#e9eef5;padding:46px 0 40px}
 section.results .eyebrow{color:#f3c9b9}
 section.results h2.h{color:#fff;margin-bottom:22px}
@@ -112,7 +112,6 @@ section.results h2.h{color:#fff;margin-bottom:22px}
 .rgrid li::before{content:"";display:block;width:30px;height:3px;border-radius:3px;background:#f3c9b9;margin-bottom:13px}
 .rgrid b{display:block;font-family:var(--display);font-weight:600;font-size:38px;line-height:1;color:#fff;white-space:nowrap;font-variation-settings:"opsz" 72,"SOFT" 30}
 .rgrid span{display:block;margin-top:8px;font-size:14.5px;font-weight:700;color:#c9d6e6}
-.rnote{margin:18px 0 0;font-size:14px;line-height:1.55;color:#c9d6e6}
 .fee{background:var(--navy-3);color:#e9eef5}
 .fee .w{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:56px;padding-bottom:56px}
 .fee .big{font-family:var(--display);font-weight:600;font-size:66px;line-height:.98;color:#fff;margin:0 0 14px}

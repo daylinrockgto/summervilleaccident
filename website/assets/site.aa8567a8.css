@@ -560,8 +560,7 @@ main.home .cta-band .sec-cta .sec-intro p{break-inside:avoid}
 .reviews-band .ex-title{margin-top:0}
 .rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:1.1rem;margin:1.2rem 0}
 .reviews-band .small{margin:0}
-/* Case results band under the home hero (settled 2026-10-29). The total above, four figures in a row, and the Rule 7.1(d)(4)
-   disclaimer right under the figures at a readable size, so it stays clear and conspicuous. Two by two below 1000px. */
+/* Case results band under the home hero (settled 2026-10-29). The total above and four figures in a row, two by two below 1000px. */
 .results-band{background:var(--navy);color:#dfe8f2;padding:clamp(2.2rem,4.5vw,3.3rem) 0 clamp(2rem,4vw,2.7rem);position:relative;overflow:hidden}
 .results-band::after{content:"";position:absolute;right:-120px;top:-150px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(232,199,106,.15),transparent 70%);pointer-events:none}
 .results-band .wrap{position:relative;z-index:1}
@@ -574,7 +573,6 @@ main.home .cta-band .sec-cta .sec-intro p{break-inside:avoid}
 .rb-grid li::before{content:"";display:block;width:32px;height:3px;border-radius:3px;background:#e8c76a;margin-bottom:.85rem}
 .rb-grid b{display:block;font-family:var(--display);font-weight:600;font-size:clamp(1.45rem,1rem + 1.7vw,2.45rem);line-height:1;letter-spacing:-.01em;color:#fff;white-space:nowrap;font-variant-numeric:lining-nums;font-variation-settings:"opsz" 72,"SOFT" 30}
 .rb-grid span{display:block;margin-top:.55rem;font-size:.93rem;line-height:1.35;font-weight:550;color:#c4d3e3}
-.rb-note{margin:clamp(1.2rem,2.5vw,1.6rem) 0 0;font-size:.9rem;line-height:1.55;color:#c9d6e5}
 @media (max-width:1000px){.rb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:400px){.rb-grid li{padding:1rem .85rem .95rem}}
 

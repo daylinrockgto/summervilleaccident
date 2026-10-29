@@ -3,7 +3,7 @@
 check() returns messages. A message that starts with "!" fails the build. The rest are warnings.
 Settled rules behind these checks: Page Manifest v7 and the project instructions (phone format for CallRail DNI,
 no CallRail number in content, no retirement year for Jack, no workers' compensation content except the unlinked
-legacy page, no Georgia, SC Rule 7.4(b) words, never "Judge Frost", the SC Rule 7.1(d)(4) disclaimer under any case results).
+legacy page, no Georgia, SC Rule 7.4(b) words, never "Judge Frost", the footer's "Prior results" sentence on any page with case results).
 """
 import html as _html
 import re
@@ -45,10 +45,9 @@ def check(p, html, pages):
         out.append("!retirement year for Jack Frost")
     if re.search(r"judge frost", text, re.I):
         out.append('!"Judge Frost"')
-    # SC Rule 7.1(d)(4) and Comment [3]: a result needs the clear and conspicuous disclaimer, so each results block carries it
-    for block in re.findall(r"<section\b[^>]*\bdata-results\b.*?</section>", html, re.S):
-        if results.DISCLAIMER not in " ".join(_text(block).split()):
-            out.append("!case results without the Rule 7.1(d)(4) disclaimer under them")
+    # SC Rule 7.1(d)(4): the results bands carry no disclaimer of their own (2026-10-29), so the footer's must stay on the page
+    if re.search(r"\bdata-results\b", html) and results.PRIOR_RESULTS not in " ".join(text.split()):
+        out.append(f'!case results on a page without "{results.PRIOR_RESULTS}"')
     if re.search(r"\belli(ana)?\b", text, re.I):
         out.append("!Elli named")
     for m in re.finditer(r"\b(specialist\w*|speciali[sz]\w*|expert\w*|certif\w*)\b", main, re.I):

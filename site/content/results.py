@@ -6,8 +6,9 @@ the cent so the totals match the sheet. The sheet's one workers' compensation ro
 no workers' compensation content (settled 2026-09-28).
 
 SC Rule 7.1(d)(4) and its Comment [3] allow results only with a clear and conspicuous statement that a result in one
-matter does not necessarily indicate similar results for other clients. Every block that shows a figure from this file
-carries DISCLAIMER right under the figures, and checks.py fails the build when a results block is missing it.
+matter does not necessarily indicate similar results for other clients. Daylin decided on 2026-10-29 that the bands
+carry no disclaimer of its own, so the footer's "Prior results do not guarantee a similar outcome." is the only one,
+and checks.py fails the build when a page with a results block is missing it.
 
 Results appear only in the results bands (results_band() in build_site.py for the home page, the [[LP_RESULTS]] part
 for the landers). Long-form copy never repeats them.
@@ -41,9 +42,8 @@ LABELS = {CAR: "Car accident settlement", DEATH: "Wrongful death settlement", PR
 HOME_PICKS = [(2202000, DEATH), (850000, DEATH), (500000, CAR), (350000, PREMISES)]
 LANDER_PICKS = [(500000, CAR), (325000, CAR), (275000, CAR), (213191, CAR)]
 
-DISCLAIMER = ("Any result Frost Law Group has achieved for a client in one matter does not necessarily indicate that "
-              "the firm can obtain a similar result for other clients. Each case turns on its own facts and law. "
-              "The amounts shown are net settlement proceeds.")
+# the footer sentence that has to stay on any page showing a result (checks.py)
+PRIOR_RESULTS = "Prior results do not guarantee a similar outcome."
 
 
 def total(kind=None):

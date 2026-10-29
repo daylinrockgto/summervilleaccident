@@ -31,7 +31,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - No outcome promises. Never call the firm best, top, leading, premier, number one or award-winning.
 - The approved proof points are "rated 4.8 stars on Google", with no review count, and the case results in `site/content/results.py` (settled 2026-10-29). There are no verdicts, client counts or case counts.
 - Case results appear only in the results bands on the home page and the PPC landers, built from `results.py`. Long-form copy, blog posts and metadata never state a result or a recovery total. Never show a figure that is not a row in the client's spreadsheet.
-- Every results block carries `results.DISCLAIMER` right under the figures, at a readable size (SC Rule 7.1(d)(4) and Comment [3]). `checks.py` fails the build when a `data-results` block is missing it.
+- The results bands carry no disclaimer of their own. Daylin decided that on 2026-10-29, knowing SC Rule 7.1(d)(4) and Comment [3] call for a clear and conspicuous one beside advertised results. The footer's "Prior results do not guarantee a similar outcome." is the only one, and `checks.py` fails any page with a `data-results` block that loses it.
 - Daylin decided on 2026-09-28 to keep the Google review quotes on the home and reviews pages.
 
 **Rule 7.2**
@@ -128,6 +128,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
   - The home page shows a results band under the hero with the total and the four largest results across wrongful death, car accidents and premises liability. Each lander shows car results only, under its trust bar, because every lander is a car accident ad.
   - The sheet's workers' compensation row is left out of `results.py`. The medical malpractice and insurance claim rows count toward the total but get no card, because the site markets neither.
   - Totals round down to a tenth of a million after "More than", and figures drop cents, so no number reads higher than the sheet.
+  - The disclaimer that first sat under the figures was removed at Daylin's direction the same day. See the Rule 7.4 and proof rules above.
 
   `site/BUILD-NOTES.md` has the details and the open questions.
 
