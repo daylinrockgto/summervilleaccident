@@ -11,7 +11,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - **Deploys.** Production is the `main` branch, served at www.summervilleaccidentattorney.com since October 9, 2026, and still at summervilleaccident-pi.vercel.app. Vercel also builds a preview for every other branch.
 - **Branches.** The default branch is `main`, here and in `daylinrockgto/frost-audit`, and it always stays `main`. Work on a branch and open a pull request. Never push to `main` directly. Claude merges its own pull request into `main` once `python3 site/build_site.py` exits 0 and every check passes. Merging publishes to the live site, so never merge a failing build.
 - **Long-form pages.** The 74 long-form pages come from `llg/pages/*.html`, synced into `site/content/pages/`. See `llg/README.md` for the edit, check, sync and build workflow. Never edit `site/content/pages/*.html` by hand.
-- **Other pages.** Team, bios, contact, reviews, the blog index and the legal pages are in `site/content/core.py`. Blog posts are in `site/content/posts.py`. Their titles and descriptions are in `site/content/meta.py`. Firm facts, navigation defaults and the form endpoint are in `site/content/firm.py`. The redirect map is `site/content/redirects.json`.
+- **Other pages.** Team, bios, contact, reviews, the blog index and the legal pages are in `site/content/core.py`. Blog posts are in `site/content/posts.py`. Their titles and descriptions are in `site/content/meta.py`. Firm facts, navigation defaults and the form endpoint are in `site/content/firm.py`. The case results are in `site/content/results.py`. The redirect map is `site/content/redirects.json`.
 - **Page design.** `site/design.py` turns the long-form copy into sections, H3 accordions, a table of contents, photos and navigation cards at build time. Page photos and their alt text are listed in `site/content/images.json`. The CSS is in `site/assets/site.css`. Never change copy to change the design.
 - **Legacy page.** `site/content/legacy.py` is the old workers' compensation page, kept at its old address with its old copy and linked from nowhere. Never edit it and never link to it.
 - **Build notes.** `site/BUILD-NOTES.md` has the launch checklist and the open items.
@@ -29,7 +29,9 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 
 - Never write specialist, specializes, expert, certified or authority about the attorneys. Write "focuses on", "handles" or "practices in".
 - No outcome promises. Never call the firm best, top, leading, premier, number one or award-winning.
-- The only approved proof point is "rated 4.8 stars on Google", with no review count. There are no case results, settlements, verdicts or client counts.
+- The approved proof points are "rated 4.8 stars on Google", with no review count, and the case results in `site/content/results.py` (settled 2026-10-29). There are no verdicts, client counts or case counts.
+- Case results appear only in the results bands on the home page and the PPC landers, built from `results.py`. Long-form copy, blog posts and metadata never state a result or a recovery total. Never show a figure that is not a row in the client's spreadsheet.
+- The results bands carry no disclaimer of their own. Daylin decided that on 2026-10-29, knowing SC Rule 7.1(b) and (d)(4), read with Comment [3], call for a clear and conspicuous one beside advertised results. The footer's "Prior results do not guarantee a similar outcome." is the only one, and `checks.py` fails any page with a `data-results` block that loses it.
 - Daylin decided on 2026-09-28 to keep the Google review quotes on the home and reviews pages.
 
 **Rule 7.2**
@@ -122,6 +124,13 @@ The firm's estate planning, probate and criminal defense work lives on a separat
   - frostlawgroupsc.com now links `/car-accident-attorneys-in-summerville/` directly. That site builds from the `daylinrockgto/frost-audit` repository.
 
 - **2026-10-14. Phone number.** The firm's number is now (843) 242-0821, replacing (843) 419-6653 on every page, in the structured data, the landers, the checks and these rules. LLG updates CallRail's swap target and the Google Business Profile to match. The old number appears only in the historical copies under `llg/v2/legacy/` and `llg/v2/retired/` and in the superseded notes in the grammar profile.
+- **2026-10-29. Case results.** Daylin had the case results Dustin Douglas sent for Tara on October 29 ("Case Settlements.xlsx", whose "Net Settlement Proceeds" column Daylin confirmed is each case's total settlement, all from the firm's own injury cases) added to the home page and the seven PPC landers. This replaces the old "no case results" rule.
+  - The home page shows a results band under the hero with the total and the four largest results across wrongful death, car accidents and slip and fall (the $350,000 premises case, which Daylin confirmed was a slip and fall). Each lander shows car results only, under its trust bar, because every lander is a car accident ad.
+  - The sheet's workers' compensation row is left out of `results.py`. The medical malpractice and insurance claim rows count toward the total but get no card, because the site markets neither.
+  - Totals round down to a tenth of a million after "More than", and figures drop cents, so no number reads higher than the sheet.
+  - The disclaimer that first sat under the figures was removed at Daylin's direction the same day. See the Rule 7.4 and proof rules above.
+
+  `site/BUILD-NOTES.md` has the details and the open questions.
 
 ## Voice
 

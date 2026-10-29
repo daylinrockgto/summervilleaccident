@@ -560,6 +560,33 @@ main.home .cta-band .sec-cta .sec-intro p{break-inside:avoid}
 .reviews-band .ex-title{margin-top:0}
 .rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:1.1rem;margin:1.2rem 0}
 .reviews-band .small{margin:0}
+/* Case results band under the home hero (settled 2026-10-29). The total above and four figures in a row, two by two below that. */
+.results-band{background:var(--navy);color:#dfe8f2;padding:clamp(2.2rem,4.5vw,3.3rem) 0 clamp(2rem,4vw,2.7rem);position:relative;overflow:hidden}
+.results-band::after{content:"";position:absolute;right:-120px;top:-150px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(232,199,106,.15),transparent 70%);pointer-events:none}
+.results-band .wrap{position:relative;z-index:1}
+.rb-head{margin-bottom:clamp(1.3rem,3vw,1.9rem)}
+.rb-head .eyebrow{color:#e8c76a;margin:0 0 .55rem}
+.rb-title{font-family:var(--display);font-weight:600;font-size:clamp(1.45rem,1.05rem + 1.4vw,2.2rem);line-height:1.15;color:#fff;margin:0;text-wrap:balance;font-variation-settings:"opsz" 72,"SOFT" 30}
+.rb-title em{font-style:normal;color:#e8c76a;white-space:nowrap}
+.rb-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.7rem,1.6vw,1.1rem)}
+.rb-grid li{margin:0;padding:1.15rem 1.2rem 1.1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:var(--r-lg)}
+.rb-grid li::before{content:"";display:block;width:32px;height:3px;border-radius:3px;background:#e8c76a;margin-bottom:.85rem}
+.rb-grid b{display:block;font-family:var(--display);font-weight:600;font-size:clamp(1.45rem,1rem + 1.7vw,2.45rem);line-height:1;letter-spacing:-.01em;color:#fff;white-space:nowrap;font-variant-numeric:lining-nums;font-variation-settings:"opsz" 72,"SOFT" 30}
+.rb-grid span{display:block;margin-top:.55rem;font-size:.93rem;line-height:1.35;font-weight:550;color:#c4d3e3}
+@media (max-width:1100px){.results-band{border-top:1px solid rgba(255,255,255,.1)}.results-band::after{top:-40px}}
+@media (max-width:67.5em){.rb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:19.9em){.rb-grid{grid-template-columns:minmax(0,1fr)}}
+/* where container queries work, the column count follows the band's own width in rem, so a larger text setting gets
+   fewer, wider cards even on a wide screen, where the 1140px wrap stops growing but the figures do not */
+@supports (container-type:inline-size){
+  .results-band .wrap{container-type:inline-size}
+  .rb-grid{grid-template-columns:minmax(0,1fr)}
+  @container (min-width:18rem){.rb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @container (min-width:67rem){.rb-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+}
+@media (max-width:400px){.rb-grid li{padding:1rem .85rem .95rem}}
+@media (max-width:350px){.rb-grid b{font-size:1.25rem}}
+@media print{.results-band{background:none;color:#000}.results-band::after{display:none}.rb-title,.rb-grid b{color:var(--navy)}.rb-title em,.rb-head .eyebrow{color:var(--gold)}.rb-grid li{border-color:var(--line)}.rb-grid span{color:#333}}
 
 /* Header: wide dropdowns, mobile submenus, reading bar */
 .nav .sub.wide{min-width:470px;display:none;grid-template-columns:1fr 1fr;column-gap:.3rem}

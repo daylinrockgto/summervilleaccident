@@ -313,8 +313,9 @@ The repository's `CLAUDE.md` hard rules apply to ad copy as much as to pages. In
   filled in from `site/content/firm.py` at build time (the `[[DISCLAIMER]]` and `[[RESPONSIBLE_ATTORNEY]]` tokens).
 - Rule 7.4: never "specialist", "specializes", "expert", "certified" or "authority" about the attorneys. Never
   "best", "top", "leading", "premier", "number one" or "award-winning". The build fails on the Rule 7.4(b) words.
-- The only approved proof point is "rated 4.8 stars on Google", with no review count. No case results,
-  settlement figures, verdicts or client counts anywhere, including headlines and callouts.
+- The approved proof points are "rated 4.8 stars on Google", with no review count, and the case results band on
+  the landers, built from `site/content/results.py` (settled 2026-10-29). Keep settlement figures, recovery totals,
+  verdicts and client counts out of the ads themselves, including headlines, descriptions and callouts.
 - Fee wording is the client's approved text from `firm.py` (`FEE_HEADLINE`, `FEE_TEXT`, `FEE_COSTS`), used word for
   word in the fee band, the cost FAQ and the footer. Do not paraphrase it in ads beyond "No fee unless we win".
 - Never "first consultation", "initial consultation" or "first meeting". The case review is free and confidential.

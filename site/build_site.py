@@ -29,6 +29,7 @@ sys.path.insert(0, SITE)
 
 from content.base import PAGES, BY_SLUG, esc  # noqa: E402
 from content import firm  # noqa: E402
+from content import results  # noqa: E402  (case results for the home page and the landers, settled 2026-10-29)
 import content.llg  # noqa: E402,F401  (registers the LLG long-form pages first: home, menus, parents, children, counties)
 import content.core  # noqa: E402,F401  (team, contact, reviews, blog index, legal pages)
 import content.posts  # noqa: E402,F401
@@ -677,6 +678,19 @@ def reviews_band():
             f'<a href="{url("reviews")}">Read more client reviews</a></p></div></section>')
 
 
+def results_items(picks, labels=results.LABELS):
+    return "".join(f'<li><b>{results.money(a)}</b><span>{esc(results.CASE_LABELS.get((a, k), labels[k]))}</span></li>' for a, k in picks)
+
+
+def results_band():
+    """Case results under the home hero (settled 2026-10-29). The band carries no disclaimer of its own (Daylin's call,
+    2026-10-29), so checks.py requires the footer's "Prior results" sentence on the page instead."""
+    return (f'<section class="results-band" data-results aria-labelledby="results-title"><div class="wrap">'
+            f'<div class="rb-head"><p class="eyebrow">Selected case results</p>'
+            f'<p class="rb-title" id="results-title">More than <em>{results.more_than(results.total())}</em> recovered for our clients</p></div>'
+            f'<ul class="rb-grid">{results_items(results.HOME_PICKS)}</ul></div></section>')
+
+
 def home_body(p):
     """The home page: full-width bands, cards for the practice areas and counties, and the attorneys beside the copy."""
     p["_toc"] = False
@@ -704,7 +718,7 @@ def home_body(p):
         return f'<section class="hsec intro-band"><div class="wrap{" intro-grid" if fig else ""}"><div>{h}</div>{fig}</div></section>'
 
     inner, _ = design.enhance(p, p["body"], inserts, shell=shell, intro_shell=intro_shell)
-    return f'<main id="main" class="home">{inner}</main>'
+    return f'<main id="main" class="home">{results_band()}{inner}</main>'
 
 
 def after_content(p):
@@ -1065,6 +1079,12 @@ def write_landers():
         shared[name] = f"/assets/{hashed}"
     parts_dir = os.path.join(LANDERS, "_parts")
     parts = {n[:-5].upper().replace("-", "_"): open(os.path.join(parts_dir, n), encoding="utf-8").read().rstrip("\n") for n in os.listdir(parts_dir)} if os.path.isdir(parts_dir) else {}
+    # [[LP_RESULTS]] is built here rather than kept in _parts/, so the figures stay single-sourced in results.py.
+    # Every lander is a car accident ad, so the band shows car results and the car total, and each card just says "Settlement".
+    parts["RESULTS"] = (f'<section class="results" data-results aria-labelledby="results-h"><div class="w">'
+                        f'<span class="eyebrow">Selected case results</span>'
+                        f'<h2 class="h" id="results-h">More Than {results.more_than(results.total(results.CAR)).replace(" million", "&nbsp;Million")} Recovered for Car Accident Clients</h2>'
+                        f'<ul class="rgrid">{results_items(results.LANDER_PICKS, results.LANDER_LABELS)}</ul></div></section>')
 
     def lp_form(m):
         form_id, where, heading, sub, button = m.group(1).split("|")
@@ -1354,7 +1374,7 @@ def main():
     if args.preview:
         MODE = "preview"
         for p in PAGES:  # run per-page checks against a rendered document too
-            check_page(p, hero_html(p) + expand_tokens(body_html(p)))
+            check_page(p, hero_html(p) + expand_tokens(body_html(p)) + expand_tokens(footer_html()))
         n = write_preview(args.preview)
         print(f"preview: {args.preview} ({n/1e6:.2f} MB, {len(PAGES)} pages)")
     else:

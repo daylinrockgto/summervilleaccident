@@ -18,8 +18,9 @@ billing. Do not invent facts about the firm. Everything you need is below or in 
   never "Judge Frost", never implying influence). Jack C. Frost, fourteen years with the Summerville Police
   Department and the Charleston County Sheriff's Office, a former detective (never a retirement year, never "inside
   access").
-- Rated 4.8 stars on Google. That is the only proof point allowed. No review counts, case results, settlement
-  figures, verdicts or client counts anywhere.
+- Rated 4.8 stars on Google. That is the only proof point allowed in the ads. No review counts, case results,
+  settlement figures, verdicts or client counts in any headline, description or asset. The landing pages carry
+  their own case results band, which is not ad copy.
 - Fee wording, which may be shortened in ads only to "No fee unless we win": "You never pay out of pocket. We only
   collect a fee if we recover compensation for you, so there's no risk in reaching out. If there is no recovery, you
   owe no fee and no case costs."
