@@ -103,6 +103,16 @@ ol.steps b{color:var(--navy-3)}
 .rev .st{color:var(--rust);letter-spacing:2px}
 .rev p{margin:6px 0 10px}
 .rev small{font-weight:700;color:var(--muted)}
+/* case results under the trust bar (settled 2026-10-29): four car results, the Rule 7.1(d)(4) disclaimer right under them */
+section.results{background:var(--navy-3);color:#e9eef5;padding:46px 0 40px}
+section.results .eyebrow{color:#f3c9b9}
+section.results h2.h{color:#fff;margin-bottom:22px}
+.rgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.rgrid li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:18px 18px 16px}
+.rgrid li::before{content:"";display:block;width:30px;height:3px;border-radius:3px;background:#f3c9b9;margin-bottom:13px}
+.rgrid b{display:block;font-family:var(--display);font-weight:600;font-size:38px;line-height:1;color:#fff;white-space:nowrap;font-variation-settings:"opsz" 72,"SOFT" 30}
+.rgrid span{display:block;margin-top:8px;font-size:14.5px;font-weight:700;color:#c9d6e6}
+.rnote{margin:18px 0 0;font-size:14px;line-height:1.55;color:#c9d6e6}
 .fee{background:var(--navy-3);color:#e9eef5}
 .fee .w{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:56px;padding-bottom:56px}
 .fee .big{font-family:var(--display);font-weight:600;font-size:66px;line-height:.98;color:#fff;margin:0 0 14px}
@@ -119,7 +129,7 @@ footer .w{padding-top:30px;padding-bottom:30px}
 footer a{color:#d8dee8}
 .srcs{margin:10px 0 0;padding-left:18px}.srcs a{word-break:break-word}
 .mbar{display:none}
-@media (max-width:980px){.hero .box{grid-template-columns:1fr;padding:24px}.fee .w{grid-template-columns:1fr}.g3,.revs{grid-template-columns:1fr 1fr}.why{grid-template-columns:1fr}}
+@media (max-width:980px){.hero .box{grid-template-columns:1fr;padding:24px}.fee .w{grid-template-columns:1fr}.g3,.revs,.rgrid{grid-template-columns:1fr 1fr}.why{grid-template-columns:1fr}}
 @media (max-width:640px){
  body{font-size:16px}header .w{height:60px}.brand img{width:36px;height:36px}.brand b{font-size:15px}.brand small{display:none}
  .hphone{display:none}.hcall{display:inline-flex;background:var(--rust);color:#fff;font-weight:800;text-decoration:none;border-radius:8px;padding:9px 13px;font-size:14px;white-space:nowrap}
@@ -132,7 +142,7 @@ footer a{color:#d8dee8}
  .f{padding:18px}.f input,.f select,.f textarea{padding:11px;margin-bottom:8px}
  .trust .w{grid-template-columns:1fr 1fr;padding:16px}
  .revs,ol.steps,.g3{grid-template-columns:1fr}.g3.dm{grid-template-columns:1fr 1fr;gap:10px}.dm .card{padding:13px}.dm .card b{font-size:15.5px}.dm .card p{font-size:13.5px}
- h2.h{font-size:30px}section.s{padding:36px 0}.fee .big{font-size:46px}.fee .w{padding-top:38px;padding-bottom:38px;gap:22px}
+ h2.h{font-size:30px}section.s{padding:36px 0}section.results{padding:34px 0 30px}.rgrid{gap:10px}.rgrid li{padding:14px 13px 13px}.rgrid b{font-size:27px}.rgrid span{font-size:13px}.fee .big{font-size:46px}.fee .w{padding-top:38px;padding-bottom:38px;gap:22px}
  .mbar{display:grid;grid-template-columns:1.3fr 1fr;gap:8px;position:sticky;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:9px 10px calc(9px + env(safe-area-inset-bottom));box-shadow:0 -6px 16px rgba(11,31,55,.12)}
  .mbar .btn{padding:13px 8px;font-size:15.5px}
 }

@@ -33,7 +33,8 @@ The fix logs sit outside the repository with the page drafts.
 - Georgia places,
 - a retirement year for Jack Frost,
 - "Judge Frost",
-- specialist, expert, certified or authority language under Rule 7.4.
+- specialist, expert, certified or authority language under Rule 7.4,
+- a case results block (`data-results`) without the Rule 7.1(d)(4) disclaimer from `site/content/results.py`.
 
 `build_site.py` also fails if a page offers estate planning, probate or criminal defense outside the one designed cross-link sentence.
 
@@ -282,3 +283,21 @@ Verified locally with Playwright on desktop and phone: fonts load, no console er
 ## Phone number change (October 14)
 
 The firm's number changed to (843) 242-0821. `PHONE` and `PHONE_E164` in `firm.py` carry it, the 74 long-form pages were changed in `llg/pages/` and synced, the landers and their shared parts, the contact page title and description, `checks.py`, `frost_check.py`, `verify_live.py`, `make_docs.py` and the docs all follow. The build output has no trace of (843) 419-6653. CallRail's number swap matches the displayed number, so the swap target in both CallRail accounts (organic and paid search) and the Google Business Profile must be changed to (843) 242-0821 for call tracking and the NAP match to hold.
+
+## Case results (October 29)
+
+Dustin Douglas (LLG Customer Experience) sent "Case Settlements.xlsx" on October 29, 2026 as case wins for Tara, and Daylin had them added to the home page and the PPC landers the same day. The sheet has 67 rows of "Net Settlement Proceeds" with a case type. `site/content/results.py` holds 66 of them in the sheet's order, to the cent, and asserts that every figure shown is one of those rows.
+
+- **Left out.** The one workers' compensation row ($50,000), because the site carries no workers' compensation content (settled September 28).
+- **Counted but not shown.** The medical malpractice row ($200,000) and the insurance claim row ($366,408.22). They are real results, so they count toward the total, but the site markets neither, so they get no card.
+- **Home page.** A navy band right under the hero. "More than $7.4 million recovered for our clients" (the 66 rows total $7,431,445.41), then $2,202,000 and $850,000 wrongful death, $500,000 car accident and $350,000 premises liability settlements. The title is a styled paragraph, not an H2, so the page's heading outline stays as written, and the section is labelled by it for screen readers.
+- **Landers.** `[[LP_RESULTS]]` sits under the trust bar on all seven landers. `write_landers()` builds it from `results.py` rather than from `_parts/`, so the figures stay single-sourced. Every lander is a car accident ad, so it shows "More Than $3.1 Million Recovered for Car Accident Clients" (52 car rows, $3,167,462.19) and the $500,000, $325,000, $275,000 and $213,191 car accident settlements.
+- **Rounding.** Totals round down to a tenth of a million after "More than", and figures drop cents, so no number reads higher than the sheet.
+- **Rule 7.1(d)(4) and Comment [3].** South Carolina allows advertised results only with a clear and conspicuous statement that a result for one client does not necessarily mean similar results for others. Checked against the official Rule 407 text on sccourts.org (Rule 7.1, last amended August 10, 2016). `results.DISCLAIMER` says so in active voice, adds that each case turns on its own facts and law, and says the amounts are net settlement proceeds. It sits right under the figures in the same block, at 14 to 15px in light text on navy, never in the footer alone. `checks.py` fails any `data-results` block without it.
+- **Pending legislation.** S. 821 and H. 5004 (2026) would make Consumer Affairs enforce extra disclosures beside any advertised settlement figure, including the fees and costs deducted from it. On October 29, S. 821's last action was a favorable committee report on March 3, 2026, H. 5004 was still in House Judiciary, and neither had passed. If either becomes law, the note under the figures needs the fees and costs.
+- **No structured data.** The results stay out of the JSON-LD.
+
+Open questions for the client, through Dustin:
+
+- **What "net" means.** If "Net Settlement Proceeds" is what each client received after fees and costs, the note can say that in plain words. Until then it uses the sheet's own term.
+- **Whose results.** Confirm every row is a Frost Law Group result, none from an earlier firm, and that the firm is fine publishing each amount, with no confidentiality term in any settlement.

@@ -25,6 +25,7 @@ The page structure follows Legal Leads Group's **Page Manifest v7** (September 2
 | `site/content/legacy.py` | The old workers' compensation page at its old address, linked from nowhere (Settled 2026-09-28). Never edit it |
 | `site/content/redirects.json` | 82 old addresses and where each now points. 74 are from the old site, and 8 are the earlier `/blog/` post addresses |
 | `site/content/firm.py` | Firm facts, phone, hours, the approved fee wording, each attorney's bar record, the CallRail tag, the form endpoint and the structured data inputs |
+| `site/content/results.py` | The case results from the client's October 29 spreadsheet, the four figures the home page and the landers show, and the Rule 7.1(d)(4) disclaimer that sits under them |
 | `site/content/meta.py` | Titles and descriptions for the pages that are not long-form pages |
 | `site/assets/site.css` | Every style. The page design work starts at the `Page design, October 2026` banner |
 | `site/assets/img/` | Every image. The firm's own photos, the eight blog covers and 270 Canva stock photos for the long-form pages. The covers are Canva stock photos too, listed in `site/BUILD-NOTES.md` |
@@ -51,6 +52,7 @@ The build exits 1 on a hard compliance failure or a keyphrase cannibalization, a
 - A retirement year for Jack Frost, or "Judge Frost"
 - Specialist, expert, certified or authority language barred by Rule 7.4
 - An estate planning, probate or criminal defense offer outside the one designed cross-link
+- A case results block without the Rule 7.1(d)(4) disclaimer under the figures
 
 It also warns on titles over 70 characters (90 on the home page), descriptions outside 60 to 160 characters, a page without exactly one H1, and an unresolved `[[token]]`. The one expected warning is the legacy workers' compensation description at 172 characters, which stays as it is by decision.
 

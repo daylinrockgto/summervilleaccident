@@ -3,10 +3,12 @@
 check() returns messages. A message that starts with "!" fails the build. The rest are warnings.
 Settled rules behind these checks: Page Manifest v7 and the project instructions (phone format for CallRail DNI,
 no CallRail number in content, no retirement year for Jack, no workers' compensation content except the unlinked
-legacy page, no Georgia, SC Rule 7.4(b) words, never "Judge Frost").
+legacy page, no Georgia, SC Rule 7.4(b) words, never "Judge Frost", the SC Rule 7.1(d)(4) disclaimer under any case results).
 """
 import html as _html
 import re
+
+from content import results
 
 PHONE_OK = "(843) 242-0821"
 
@@ -43,6 +45,10 @@ def check(p, html, pages):
         out.append("!retirement year for Jack Frost")
     if re.search(r"judge frost", text, re.I):
         out.append('!"Judge Frost"')
+    # SC Rule 7.1(d)(4) and Comment [3]: a result needs the clear and conspicuous disclaimer, so each results block carries it
+    for block in re.findall(r"<section\b[^>]*\bdata-results\b.*?</section>", html, re.S):
+        if results.DISCLAIMER not in " ".join(_text(block).split()):
+            out.append("!case results without the Rule 7.1(d)(4) disclaimer under them")
     if re.search(r"\belli(ana)?\b", text, re.I):
         out.append("!Elli named")
     for m in re.finditer(r"\b(specialist\w*|speciali[sz]\w*|expert\w*|certif\w*)\b", main, re.I):
