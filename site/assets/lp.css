@@ -147,6 +147,7 @@ footer a{color:#d8dee8}
  .mbar .btn{padding:13px 8px;font-size:15.5px}
 }
 @media (max-width:350px){.rgrid li{padding:13px 11px}.rgrid b{font-size:23px}}
+@media print{section.results{background:none;color:#000}section.results h2.h,.rgrid b{color:var(--navy-3)}section.results .eyebrow{color:var(--rust)}.rgrid li{border-color:var(--line)}.rgrid span{color:#333}}
 @media (min-width:981px) and (max-width:1120px){.tn{padding:6px 9px 7px}.tn i{font-size:9px;letter-spacing:.04em;white-space:normal}}
 @media (max-width:640px){.tn{flex:1 1 0;min-width:0;padding:5px 8px 6px}.tn b{font-size:12px}.tn i{font-size:8.5px;letter-spacing:.06em;white-space:normal}}
 

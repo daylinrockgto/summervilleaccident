@@ -33,8 +33,9 @@ SETTLEMENTS = [
     (2202000, DEATH), (850000, DEATH), (162075, DEATH),
 ]
 
-# the label under each figure. "Premises liability" is the sheet's own term: an injury caused by unsafe property.
-LABELS = {CAR: "Car accident settlement", DEATH: "Wrongful death settlement", PREMISES: "Premises liability settlement",
+# the label under each figure. The sheet says "Premises liability", a legal term, so the card says it in the home
+# page's own plain words ("falls on unsafe property") without claiming the case was a fall.
+LABELS = {CAR: "Car accident settlement", DEATH: "Wrongful death settlement", PREMISES: "Unsafe property settlement",
           MED_MAL: "Medical malpractice settlement", INSURANCE: "Insurance claim settlement"}
 
 # the landers' heading already names car accidents, so their cards carry the short label
