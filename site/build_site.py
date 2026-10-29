@@ -678,15 +678,15 @@ def reviews_band():
             f'<a href="{url("reviews")}">Read more client reviews</a></p></div></section>')
 
 
-def results_items(picks):
-    return "".join(f'<li><b>{results.money(a)}</b><span>{esc(results.LABELS[k])}</span></li>' for a, k in picks)
+def results_items(picks, labels=results.LABELS):
+    return "".join(f'<li><b>{results.money(a)}</b><span>{esc(labels[k])}</span></li>' for a, k in picks)
 
 
 def results_band():
     """Case results under the home hero (settled 2026-10-29). The band carries no disclaimer of its own (Daylin's call,
     2026-10-29), so checks.py requires the footer's "Prior results" sentence on the page instead."""
     return (f'<section class="results-band" data-results aria-labelledby="results-title"><div class="wrap">'
-            f'<div class="rb-head"><p class="eyebrow">Case results</p>'
+            f'<div class="rb-head"><p class="eyebrow">Selected case results</p>'
             f'<p class="rb-title" id="results-title">More than <em>{results.more_than(results.total())}</em> recovered for our clients</p></div>'
             f'<ul class="rb-grid">{results_items(results.HOME_PICKS)}</ul></div></section>')
 
@@ -1080,11 +1080,11 @@ def write_landers():
     parts_dir = os.path.join(LANDERS, "_parts")
     parts = {n[:-5].upper().replace("-", "_"): open(os.path.join(parts_dir, n), encoding="utf-8").read().rstrip("\n") for n in os.listdir(parts_dir)} if os.path.isdir(parts_dir) else {}
     # [[LP_RESULTS]] is built here rather than kept in _parts/, so the figures stay single-sourced in results.py.
-    # Every lander is a car accident ad, so the band shows car results and the car total.
+    # Every lander is a car accident ad, so the band shows car results and the car total, and each card just says "Settlement".
     parts["RESULTS"] = (f'<section class="results" data-results aria-labelledby="results-h"><div class="w">'
-                        f'<span class="eyebrow">Case results</span>'
-                        f'<h2 class="h" id="results-h">More Than {results.more_than(results.total(results.CAR)).replace("million", "Million")} Recovered for Car Accident Clients</h2>'
-                        f'<ul class="rgrid">{results_items(results.LANDER_PICKS)}</ul></div></section>')
+                        f'<span class="eyebrow">Selected case results</span>'
+                        f'<h2 class="h" id="results-h">More Than {results.more_than(results.total(results.CAR)).replace(" million", "&nbsp;Million")} Recovered for Car Accident Clients</h2>'
+                        f'<ul class="rgrid">{results_items(results.LANDER_PICKS, results.LANDER_LABELS)}</ul></div></section>')
 
     def lp_form(m):
         form_id, where, heading, sub, button = m.group(1).split("|")
@@ -1374,7 +1374,7 @@ def main():
     if args.preview:
         MODE = "preview"
         for p in PAGES:  # run per-page checks against a rendered document too
-            check_page(p, hero_html(p) + expand_tokens(body_html(p)))
+            check_page(p, hero_html(p) + expand_tokens(body_html(p)) + expand_tokens(footer_html()))
         n = write_preview(args.preview)
         print(f"preview: {args.preview} ({n/1e6:.2f} MB, {len(PAGES)} pages)")
     else:

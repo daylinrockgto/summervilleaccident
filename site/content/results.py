@@ -5,10 +5,10 @@ Tara Frost, and supplied by Daylin the same day. Each amount is the sheet's "Net
 the cent so the totals match the sheet. The sheet's one workers' compensation row is left out, because the site carries
 no workers' compensation content (settled 2026-09-28).
 
-SC Rule 7.1(d)(4) and its Comment [3] allow results only with a clear and conspicuous statement that a result in one
+SC Rule 7.1(b) and (d)(4), read with Comment [3], allow results only with a clear and conspicuous statement that a result in one
 matter does not necessarily indicate similar results for other clients. Daylin decided on 2026-10-29 that the bands
-carry no disclaimer of its own, so the footer's "Prior results do not guarantee a similar outcome." is the only one,
-and checks.py fails the build when a page with a results block is missing it.
+carry no disclaimer of their own, so the footer's firm.PRIOR_RESULTS ("Prior results do not guarantee a similar outcome.")
+is the only one, and checks.py fails the build when the footer of a page with a results block is missing it.
 
 Results appear only in the results bands (results_band() in build_site.py for the home page, the [[LP_RESULTS]] part
 for the landers). Long-form copy never repeats them.
@@ -37,13 +37,13 @@ SETTLEMENTS = [
 LABELS = {CAR: "Car accident settlement", DEATH: "Wrongful death settlement", PREMISES: "Premises liability settlement",
           MED_MAL: "Medical malpractice settlement", INSURANCE: "Insurance claim settlement"}
 
+# the landers' heading already names car accidents, so their cards carry the short label
+LANDER_LABELS = {CAR: "Settlement"}
+
 # The four figures each band shows, largest first. The home page spans the three practice areas the site markets
 # (wrongful death, car accidents, premises injuries). Every lander is a car accident ad, so its band shows car results only.
 HOME_PICKS = [(2202000, DEATH), (850000, DEATH), (500000, CAR), (350000, PREMISES)]
 LANDER_PICKS = [(500000, CAR), (325000, CAR), (275000, CAR), (213191, CAR)]
-
-# the footer sentence that has to stay on any page showing a result (checks.py)
-PRIOR_RESULTS = "Prior results do not guarantee a similar outcome."
 
 
 def total(kind=None):
@@ -57,8 +57,10 @@ def money(amount):
 
 
 def more_than(amount):
-    """'$7.4 million' for $7,431,445.41. Rounds down to a tenth of a million, so 'more than' stays true."""
-    return f"${math.floor(amount / 100000) / 10:.1f} million"
+    """'$7.4 million' for $7,431,445.41: the largest tenth of a million below the amount, so "More than" stays true
+    even for a total that lands exactly on a tenth ($3,100,000 reads $3.0 million)."""
+    assert amount > 1000000, "more_than() words totals in millions"
+    return f"${(math.ceil(amount / 100000) - 1) / 10:.1f} million"
 
 
 for _pick in HOME_PICKS + LANDER_PICKS:  # a pick must be a real row, so a typo can never put a figure on the site

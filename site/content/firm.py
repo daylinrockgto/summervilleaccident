@@ -82,8 +82,9 @@ RESPONSIBLE_ATTORNEY = f"The attorney responsible for this website is Tara L. Fr
 SPANISH_NOTE = "Se habla español"
 LANGUAGES = ["English", "Spanish"]
 
+PRIOR_RESULTS = "Prior results do not guarantee a similar outcome."  # the only disclaimer on pages with case results (checks.py)
 DISCLAIMER = ("This website is attorney advertising and is for informational purposes only; it is not legal advice and does not create an attorney-client relationship. "
-              "Prior results do not guarantee a similar outcome. Talk to a licensed South Carolina attorney about your own situation. "
+              f"{PRIOR_RESULTS} Talk to a licensed South Carolina attorney about your own situation. "
               # The fee wording below is the client's, confirmed by Daylin on 2026-10-07. It replaced a costs sentence that contradicted it.
               + FEE_WORDING)
 ASIDE_BLURB = "Tell us what happened. An attorney will explain your options and what to do before you talk to the insurance company."

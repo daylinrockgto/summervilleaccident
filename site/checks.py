@@ -8,7 +8,7 @@ legacy page, no Georgia, SC Rule 7.4(b) words, never "Judge Frost", the footer's
 import html as _html
 import re
 
-from content import results
+from content import firm
 
 PHONE_OK = "(843) 242-0821"
 
@@ -45,9 +45,12 @@ def check(p, html, pages):
         out.append("!retirement year for Jack Frost")
     if re.search(r"judge frost", text, re.I):
         out.append('!"Judge Frost"')
-    # SC Rule 7.1(d)(4): the results bands carry no disclaimer of their own (2026-10-29), so the footer's must stay on the page
-    if re.search(r"\bdata-results\b", html) and results.PRIOR_RESULTS not in " ".join(text.split()):
-        out.append(f'!case results on a page without "{results.PRIOR_RESULTS}"')
+    # SC Rule 7.1(b) and (d)(4), with Comment [3]: the results bands carry no disclaimer of their own (2026-10-29), so the
+    # site footer's must stay. The footer is the page's last <footer>; review quotes use <footer> too, and come before it.
+    if re.search(r"\bdata-results\b", html):
+        foot = html[html.rfind("<footer"):] if "<footer" in html else ""
+        if firm.PRIOR_RESULTS not in " ".join(_text(foot).split()):
+            out.append(f'!case results on a page whose footer lacks "{firm.PRIOR_RESULTS}"')
     if re.search(r"\belli(ana)?\b", text, re.I):
         out.append("!Elli named")
     for m in re.finditer(r"\b(specialist\w*|speciali[sz]\w*|expert\w*|certif\w*)\b", main, re.I):

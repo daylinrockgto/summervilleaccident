@@ -31,7 +31,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - No outcome promises. Never call the firm best, top, leading, premier, number one or award-winning.
 - The approved proof points are "rated 4.8 stars on Google", with no review count, and the case results in `site/content/results.py` (settled 2026-10-29). There are no verdicts, client counts or case counts.
 - Case results appear only in the results bands on the home page and the PPC landers, built from `results.py`. Long-form copy, blog posts and metadata never state a result or a recovery total. Never show a figure that is not a row in the client's spreadsheet.
-- The results bands carry no disclaimer of their own. Daylin decided that on 2026-10-29, knowing SC Rule 7.1(d)(4) and Comment [3] call for a clear and conspicuous one beside advertised results. The footer's "Prior results do not guarantee a similar outcome." is the only one, and `checks.py` fails any page with a `data-results` block that loses it.
+- The results bands carry no disclaimer of their own. Daylin decided that on 2026-10-29, knowing SC Rule 7.1(b) and (d)(4), read with Comment [3], call for a clear and conspicuous one beside advertised results. The footer's "Prior results do not guarantee a similar outcome." is the only one, and `checks.py` fails any page with a `data-results` block that loses it.
 - Daylin decided on 2026-09-28 to keep the Google review quotes on the home and reviews pages.
 
 **Rule 7.2**
