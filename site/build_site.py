@@ -679,7 +679,7 @@ def reviews_band():
 
 
 def results_items(picks, labels=results.LABELS):
-    return "".join(f'<li><b>{results.money(a)}</b><span>{esc(labels[k])}</span></li>' for a, k in picks)
+    return "".join(f'<li><b>{results.money(a)}</b><span>{esc(results.CASE_LABELS.get((a, k), labels[k]))}</span></li>' for a, k in picks)
 
 
 def results_band():
