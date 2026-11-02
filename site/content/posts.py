@@ -1078,3 +1078,126 @@ p11 = post(hero_image='call-a-charleston-dog-bite-lawyer-about-the-bite-not-the-
      related=[DOG, DOG + "/dog-bite-insurance-claim-lawyers-in-summerville", DOG + "/dog-bite-strict-liability-lawyers-in-summerville",
               CHS + "/charleston-personal-injury-lawyers"])
 faq_ld(p11, 'Questions Charleston Bite Victims Ask About the Dog')
+
+# ----------------------------------------------------------------------------- 12. Summerville wrongful death, a child's share
+# November 2, 2026 draft from Legal Leads Group, published November 2. Same conversion as the October batch: the office
+# number replaced the draft's tracking number in both places, and the draft's metadata block stays out of the page copy.
+# The title and description are the draft's own. The draft named Tara's probate judgeship in the opening and her "time on
+# the Dorchester County bench" in the conservator section, both beside probate court procedure, so both now name only her
+# Magistrate Judge service, as Final QA set for the wrongful death and survival pages. The photos under H2s 2 and 5 are
+# listed in images.json under this post's slug. The statutes, Act No. 200 of 2024 (H.4234), the Dorchester and Berkeley
+# probate court addresses and the Town's three-county wording were checked against the sources below on November 2.
+# Eight sentences were corrected to match them: the survival settlement standard is 15-51-42(B) and (G) only defers
+# accountings, 62-3-915 says "authorized by this Code or otherwise", the application contents are 62-5-402(B), the
+# expense account's activity is reported "as required by the court" (62-5-409), Act 200 applies to cases filed on or
+# after May 21, 2024, 62-5-405(A)(1) names an annuity contract and a suitable trust without the draft's added terms,
+# 15-50-80(B)(1) reaches a parent or guardian only when no conservator is appointed, and the 180-day guardianship
+# filing is 62-5-303(C), not 62-5-101(11).
+WDP = "wrongful-death-attorneys-in-summerville"
+CODE_15_1 = "https://www.scstatehouse.gov/code/t15c001.php"
+CODE_15_50 = "https://www.scstatehouse.gov/code/t15c050.php"
+CODE_15_51 = "https://www.scstatehouse.gov/code/t15c051.php"
+CODE_62_2 = "https://www.scstatehouse.gov/code/t62c002.php"
+CODE_62_3 = "https://www.scstatehouse.gov/code/t62c003.php"
+CODE_63_5 = "https://www.scstatehouse.gov/code/t63c005.php"
+SC_ACT_200_2024 = "https://www.scstatehouse.gov/sess125_2023-2024/bills/4234.htm"
+SUMMERVILLE_GIP = "https://www.summervillesc.gov/DocumentCenter/View/125/Final-Approved-Green-Infrastructure-Plan-PDF"
+
+p12 = post(hero_image='talk-with-a-summerville-wrongful-death-lawyer-before-the-check-is-divided.jpg',
+     hero_caption="A mother wearing a backpack holds her young daughter's hand as they walk toward a red brick school entrance.",
+     category='Wrongful death', date='2026-11-02', modified='2026-11-02',
+     title='Protect Kids With a Summerville Wrongful Death Lawyer',
+     description="A Summerville wrongful death lawyer explains who holds a child's share, the $15,000 line, conservator duties and what happens at 18. Call Frost First today.",
+     h1="Who Controls a Child's Share After a Summerville Wrongful Death Lawyer Settles the Case?",
+     summary="A caregiver can take up to $15,000 a year for a child. Above that, the probate court steps in. Who holds a child's share of a death settlement, and what changes at 18.",
+     body=(
+         "<p>A conservator or another arrangement the probate court approves does, once the money passes $15,000 net a year. When a Summerville wrongful death lawyer settles a parent's death claim, Section 62-5-103 of the South Carolina Code limits what a caregiver may receive. The limit is $15,000 net a year, and anything larger requires a protective proceeding in probate court.</p>"
+         "<p>Frost Law Group is a husband-and-wife injury firm at 128 Linwood Lane, Summerville, SC 29483. Attorneys Tara L. Frost and Jack C. Frost represent families after fatal crashes in Summerville and across Dorchester, Berkeley and Charleston counties. Tara is a former Dorchester County Magistrate Judge. Here is how a child's money travels from the settlement check to a protected account, and what changes on the child's 18th birthday.</p>"
+         "<p>If a parent's death left children in your family, call Frost Law Group at " + TEL + " for a free consultation. An attorney answers your questions, not a call center, and the call commits you to nothing.</p>"
+         "<h2>How a Summerville Wrongful Death Lawyer Figures Each Child's Share</h2>"
+         f"<p>Every child's share starts with a statute, not a negotiation. Section 15-51-20 of the South Carolina Code gives the wrongful death claim to the spouse and children first. The executor or administrator brings it for them. The <a href=\"[[{WDP}]]\">wrongful death attorneys at Frost Law Group</a> name those beneficiaries and their shares before anyone talks about money.</p>"
+         "<p>Section 15-51-40 then divides the recovery as if the parent had died without a will. Under Section 62-2-102, a surviving spouse takes half when there are children. The children split the rest equally under Section 62-2-103. With no surviving spouse, the children take everything. Picture a divorced father in Summerville who leaves two young daughters. Each girl is entitled to half of the wrongful death recovery, and neither one can manage that money on her own.</p>"
+         "<h3>The Personal Representative Receives the Money First</h3>"
+         "<p>Only a duly appointed personal representative can settle a death claim, under Section 15-51-42(A). After a court approves the settlement, subsection (E) releases the insurer once it pays the personal representative. The insurer has no duty to see how the money is divided. From that moment, protecting each child's share falls to the personal representative and the probate court. Section 62-3-915 lets the representative meet that duty by paying the child's conservator or another person the law authorizes to give a valid receipt.</p>"
+         "<h3>Survival Money Takes a Different Route</h3>"
+         f"<p>A death case often carries a second claim for what the parent suffered before dying. That survival claim belongs to the estate. Under Section 15-51-42(B), a survival settlement must be fair, reasonable and in the best interests of the estate. Subsection (G) lets the probate court hold off on estate accountings until the survival claim ends. The estate's creditors come into that picture. Frost Law Group's page on <a href=\"[[{WDP}/survival-action-lawyers-in-summerville]]\">survival action claims in Summerville</a> covers the order an estate pays its bills. Whatever reaches a child from either claim still runs through the minor rules below.</p>"
+         "<h2>When Does a Child's Wrongful Death Share Need a Conservator?</h2>"
+         f"<p>It needs a protective proceeding when the net amount due the child in a single year passes $15,000. That case may end with a conservator or another court-approved arrangement. <a href=\"{CODE_62_5}\" rel=\"noopener\" target=\"_blank\">South Carolina Code Section 62-5-103</a> puts it plainly. When the net aggregate amount to be paid in a given year exceeds $15,000, “a protective proceeding is required.” Below that line, the personal representative may pay a caregiver directly. Above it, the probate court steps in before the money moves.</p>"
+         "<p>The word net matters here. Section 62-5-101(15) defines the net aggregate amount as the total due after subtracting outstanding reimbursements and relevant deductions. A child's gross share and net share can look very different on paper. Which deductions count in a particular settlement is something a lawyer works through with the court.</p>"
+         "<h3>Shares of $15,000 or Less in a Year</h3>"
+         "<p>Smaller shares can skip the conservatorship. Section 62-5-103(A) covers the case where the representative knows of no conservator, appointed or pending. It allows payments of up to $15,000 net a year to one of three recipients. Each one comes with its own rules, and the representative picks the one that fits the child.</p>"
+         "<ul><li>The person who has care and custody of the child, and lives with the child, can receive the money.</li><li>A guardian of the child can receive the money.</li><li>A financial institution can take it as a deposit to a federally insured savings account. The account can be in the child's sole name or held under the Uniform Transfers to Minors Act.</li></ul>"
+         "<p>Each route protects the person paying. Under subsection (C), someone who pays this way is not responsible for how the money is later spent. That protection makes the caregiver's own duties all the more important.</p>"
+         "<h4>Rules a Caregiver Must Follow With a Child's Money</h4>"
+         "<p>A caregiver who takes a child's money becomes a fiduciary under Section 62-5-103(B). The money must be spent for the child. The caregiver weighs how long the minority will last and the household's usual standard of living. Subsection (C) bars caregivers from paying themselves, except to reimburse out-of-pocket costs for things the child needs. It also bars using the money to cover a support obligation the caregiver already owes the child. Whatever is left must be saved and turned over when the child reaches majority.</p>"
+         "<h4>Custodial Accounts Under South Carolina's Transfers to Minors Act</h4>"
+         "<p>Section 63-5-630 lets a personal representative move a child's share to a custodian under the South Carolina Uniform Transfers to Minors Act. The representative must consider the transfer to be in the child's best interest. A court must approve the custodian, and it must authorize any transfer worth more than $15,000. One detail is easy to miss. Under Section 63-5-700, property a personal representative transfers this way goes to the child at majority, not at 21. Section 15-1-320 sets majority at 18.</p>"
+         "<h3>Shares Over $15,000 in a Year</h3>"
+         "<p>Larger shares go to the probate court in a protective proceeding. Section 62-5-402(A) allows a conservator when funds must be obtained and managed for a minor's health, education, maintenance and support. Under subsection (B), the verified application names the child, where the child has lived for the past six months and the person proposed to serve. It also estimates the value of the child's assets. The court may rule with or without a hearing, always on the child's best interests. Under subsection (F), it may also appoint a guardian ad litem when the child's interests are not adequately represented.</p>"
+         "<h2>Which Probate Court Handles a Summerville Child's Share?</h2>"
+         "<p>The probate court for the county where the child lives handles it. Section 62-5-401 places a minor's protective proceeding in the county where the minor child resides. The parent's estate may sit in a different court. Section 62-3-201 opens the estate in the county where the parent was domiciled at death.</p>"
+         f"<p>That split matters in Summerville. The Town of Summerville describes its boundaries as lying in portions of three counties, Dorchester, Charleston and Berkeley. A Summerville mailing address does not tell you which probate court has the case. Frost Law Group's page for <a href=\"[[{DORCH}]]\">Dorchester County personal injury attorneys</a> explains which county courts sit in St. George and which sit in Summerville.</p>"
+         "<h3>When the Estate and the Children Sit in Different Counties</h3>"
+         f"<p>Take a father who lived on the Dorchester County side of Summerville and died after a crash. His children live with their mother in Moncks Corner, the Berkeley County seat. His estate opens in Dorchester County, because that was his domicile. A conservatorship for the children would open in Berkeley County, because that is where they live. The firm's page on <a href=\"[[{BERK}]]\">Berkeley County injury claims</a> covers the Moncks Corner courthouse. One settlement can involve two probate files in two different counties.</p>"
+         "<h3>Probate Courts That Serve Summerville Families</h3>"
+         "<p>The South Carolina Judicial Branch lists each county's probate judge with an office address. A family may deal with one of these courts, or with two of them in the situation above. Here is where each one sits.</p>"
+         f"<ul><li>The Dorchester County Probate Court sits at 5200 East Jim Bilton Boulevard in St. George, per the <a href=\"{SCCOURTS_DORCHESTER}\" rel=\"noopener\" target=\"_blank\">Judicial Branch's Dorchester County listing</a>.</li><li>The Berkeley County Probate Court sits at 300-B California Avenue in Moncks Corner.</li><li>The Charleston County Probate Court serves children who live on the Charleston County side of town.</li></ul>"
+         "<p>Children who live outside South Carolina follow a different rule. Section 62-5-401(2) then places the case in a county where the child has property or the right to take legal action. Which court fits a particular family turns on addresses a lawyer confirms from deeds, leases and school records.</p>"
+         "<h2>What a Conservator Must Do With a Child's Settlement Money</h2>"
+         "<p>A conservator answers to the court for every dollar. Section 62-5-414(A) requires the conservator to act as a fiduciary and follow the standards of care that apply to trustees. Section 62-5-417 vests title in the conservator as trustee for the child. The court keeps watch over the account until the child turns 18.</p>"
+         "<p>Who serves depends on Section 62-5-408. A parent sits on its priority list, so a surviving mother or father can ask to serve. That parent then takes on the same bond, reporting and spending rules as anyone else. The court may still pass over a higher-priority person when the child's best interests call for it. Tara L. Frost's years as a Dorchester County Magistrate Judge are described on <a href=\"[[attorneys/tara-frost]]\">her attorney profile</a>.</p>"
+         "<h3>Bond, a Restricted Account or Both</h3>"
+         "<p>Section 62-5-402(D) requires the court to order a bond, a restricted account or both, unless it finds good cause not to. A restricted account blocks unapproved spending, and the bond's sureties answer for losses. The statute leaves the mix to the judge. A large share and a modest one may get very different orders. Each tool has its own mechanics under Section 62-5-409.</p>"
+         "<h4>How the Court Sets the Bond Amount</h4>"
+         "<p>When bond is required, the conservator files a sworn estimate of the child's personal estate and the income expected over the next calendar year. The bond must be at least that estimate. The court approves the sureties. A surety can be a company, or individuals whose promise is backed by pledged property, a mortgage or other adequate security. Under Section 62-5-410, the sureties are jointly and severally liable with the conservator.</p>"
+         "<h4>Restricted Accounts and a Separate Expense Account</h4>"
+         "<p>The court may reduce the bond by money deposited with a domestic financial institution in a way that blocks unauthorized withdrawals. That is a restricted account. The court may also allow an unrestricted account for the child's ordinary expenses. The conservator must still report all activity in that account as the court requires.</p>"
+         "<h3>Spending on Health, Education and Support</h3>"
+         "<p>A conservator may spend for the child's health, education, maintenance and support without asking the court each time. Section 62-5-423(A) sets the conditions. The spending must fit a financial plan the court already approved. The conservator also weighs the size of the estate, the child's usual standard of living and other money available for the child's support. The statute even allows paying in advance for services when advance payment is customary or reasonably necessary.</p>"
+         "<h4>The Financial Plan the Court Can Require</h4>"
+         "<p>Under Section 62-5-414(B), the court may require a written financial plan for managing, spending and distributing the child's money. The plan must be tailored to the child and revised as needs change. It estimates whether the money will cover current and future needs and projects expenses against resources. The court can approve it, reject it or change it.</p>"
+         "<h5>When a Parent's Request Benefits the Parent</h5>"
+         "<p>The conservator must consider a parent's recommendations about the child's care. Section 62-5-423(A)(2) protects a conservator who pays providers on those recommendations, with two exceptions. One is actual knowledge that the parent is getting a personal financial benefit, including relief from the parent's own duty of support. The other is a recommendation clearly against the child's best interests.</p>"
+         "<h5>Allowances and Debit Cards for an Older Child</h5>"
+         "<p>Teenagers sometimes need money in hand. Section 62-5-423(A)(5) lets a conservator give funds to the child through checks, cash, a debit card or an allowance. Every dollar provided this way still goes on the accountings the court requires. An older child gets some practice with money while the court keeps watch.</p>"
+         "<h4>The 30-Day Inventory and Yearly Reports</h4>"
+         "<p>Section 62-5-415 gives the conservator 30 days from appointment to file a complete inventory, under oath. Section 62-5-416 then requires a report every year, listing receipts, payments, the assets and where they are held. Once the child turns 14 and can understand it, the child gets a copy. So does the parent the child lives with.</p>"
+         "<h2>What Happens to the Money When the Child Turns 18?</h2>"
+         "<p>The conservator pays it out to the new adult. Section 62-5-423(B)(1) requires the conservator to distribute all remaining funds as soon as practical once the child reaches 18. The exceptions are a protective order based on incapacity or a pending petition about the child. Section 62-5-428 lets the conservator ask the court to close the conservatorship and approve a final accounting.</p>"
+         "<p>For a family, that means an 18-year-old can receive the entire balance at once. Some families are comfortable with that. Others would rather the money arrive in stages. The time to arrange stages is before the settlement is paid out, not after the birthday.</p>"
+         "<h3>A Trust or Annuity That Reaches Past 18</h3>"
+         "<p>Section 62-5-405 lets the probate court approve a protective arrangement, with or without a conservator, once a formal proceeding shows a basis for one. Act No. 200 of 2024 changed that section for cases filed on or after May 21, 2024. A conservator may now be authorized to create or fund an irrevocable trust for a minor that lasts past the age of majority. The arrangements the statute names include these.</p>"
+         "<ul><li>The court can approve an annuity contract for the child.</li><li>The court can approve a deposit contract or a contract for training and education.</li><li>The court can approve adding to or setting up a suitable trust for the child.</li></ul>"
+         "<p>Which structure fits depends on the size of the share, the child's age and the child's needs. A lawyer reviews those facts with the family before asking the court for anything.</p>"
+         "<h3>Selling Structured Settlement Payments Later</h3>"
+         "<p>Companies sometimes offer cash now for a child's future annuity payments. South Carolina's Structured Settlement Protection Act puts a judge between the family and that sale. Section 15-50-40 says no transfer is effective without a court order made in advance. For a minor, the court must also find the money will be used only for the child's support, care, education, health and welfare. Section 15-50-80(B)(1) requires the court to appoint an attorney as guardian ad litem when a conservator proposes selling a minor's payments. The same rule applies to a parent or guardian when no conservator has been appointed.</p>"
+         "<h3>A Child Who Receives SSI or Medicaid</h3>"
+         "<p>A sudden lump sum can put needs-based benefits at risk, and the Probate Code addresses it directly. Section 62-5-402(E) lets the court limit access to a minor's funds to prevent payments that would disqualify the child. For a disabled minor, Section 62-5-432(B) lets the court create a special needs trust that continues past 18. If a disabled child will need a guardian as an adult, Section 62-5-303(C) lets the family file up to 180 days before the child turns 18.</p>"
+         "<h2>Questions Summerville Families Ask About a Child's Wrongful Death Money</h2>"
+         "<p>These questions come from parents and grandparents raising children after a death. Most arrive before any settlement exists. Each answer below comes from the statute that controls it. Your own family's facts may change the answer, so treat these as a starting point for a conversation.</p>"
+         "<h3>What if a Relative Thinks the Money Is Being Misused?</h3>"
+         "<p>Anyone interested in the child's welfare can send the probate court a written request for relief under Section 62-5-413. Under Section 62-5-428, the court can also require an accounting or remove a conservator for good cause. The sureties on the bond answer for a conservator's breach of duty.</p>"
+         "<h3>Can a 14-Year-Old Pick the Conservator?</h3>"
+         "<p>A child who is at least 14 and able to make a reasoned choice may nominate a conservator under Section 62-5-408(A)(2). The nomination carries weight, but the court makes the final decision based on the child's best interests.</p>"
+         "<h3>What if the Children Live in Another State?</h3>"
+         "<p>Section 62-5-401(2) allows a South Carolina case in a county where the child has property or the right to take legal action. Section 62-5-429 also lets money go to a conservator appointed in the child's home state. That payment requires proof of appointment and an affidavit.</p>"
+         "<h3>Who Pays the Costs of a Conservatorship?</h3>"
+         "<p>Section 62-5-412 entitles a conservator to reasonable compensation from the child's estate, as the court decides. Under Section 62-5-105(C), petitioners pay their own attorney's fees and costs unless the court orders otherwise. Ask about those costs at the start, so they are planned into the settlement.</p>"
+         "<h2>Talk With a Summerville Wrongful Death Lawyer Before the Check Is Divided</h2>"
+         "<p>The best time to protect a child's share is before the settlement is approved. A Summerville wrongful death lawyer at Frost Law Group can line up the probate filings in the right counties. That way, a protected account is ready the day the money is paid.</p>"
+         "<p>Tara L. Frost and Jack C. Frost meet families at 128 Linwood Lane, Summerville, SC 29483. Call Frost First at " + TEL + " for a free consultation. The line is answered 24/7, and you talk with an attorney, not a call center.</p>"
+         "<p>Would you rather write first? Send a short note through the firm's <a href=\"[[contact]]\">contact page</a>, and the office will reach out. Have each child's age and address handy, along with any letters from the probate court or an insurer.</p>"
+     ),
+     sources=[("S.C. Code §§ 62-5-101 to 62-5-433 (minors, conservators and protective arrangements)", CODE_62_5, False),
+              ("S.C. General Assembly, Act No. 200 of 2024 (H.4234)", SC_ACT_200_2024, False),
+              ("S.C. Code §§ 15-51-20, 15-51-40 and 15-51-42 (wrongful death and survival)", CODE_15_51, False),
+              ("S.C. Code §§ 62-2-102 and 62-2-103 (intestate shares)", CODE_62_2, False),
+              ("S.C. Code §§ 62-3-201 and 62-3-915 (estate venue and distribution to a minor)", CODE_62_3, False),
+              ("S.C. Code §§ 63-5-630 and 63-5-700 (Uniform Transfers to Minors Act)", CODE_63_5, False),
+              ("S.C. Code § 15-1-320 (age of majority)", CODE_15_1, False),
+              ("S.C. Code §§ 15-50-40 and 15-50-80 (Structured Settlement Protection Act)", CODE_15_50, False),
+              ("S.C. Judicial Branch, Dorchester County courthouse", SCCOURTS_DORCHESTER, False),
+              ("S.C. Judicial Branch, Berkeley County courthouse", SCCOURTS_BERKELEY, False),
+              ("Town of Summerville, Green Infrastructure Plan (the Town's three counties)", SUMMERVILLE_GIP, False)],
+     related=[WDP, WDP + "/survival-action-lawyers-in-summerville", WDP + "/fatal-car-accident-lawyers-in-summerville", DORCH])
+faq_ld(p12, "Questions Summerville Families Ask About a Child's Wrongful Death Money")
