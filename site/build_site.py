@@ -1320,7 +1320,9 @@ window.__PREVIEW__=true;
 
 # This site is personal injury only. The main site owns estate planning, probate and criminal defense, so no page here
 # may name those services (or offer to defend a drunk driver) except in the one cross-link sentence defined in firm.py.
-CANNIBAL_RE = re.compile(r"estate plan|probate (attorney|lawyer|law firm|practice|services)|criminal defen[cs]e|expungement|guardianship attorney|power of attorney|living will|revocable trust|last will|"
+# "\brevocable trust" catches the estate planning product without flagging the court-approved irrevocable trust for a
+# minor that S.C. Code 62-5-405 allows, which the November 2, 2026 wrongful death post describes.
+CANNIBAL_RE = re.compile(r"estate plan|probate (attorney|lawyer|law firm|practice|services)|criminal defen[cs]e|expungement|guardianship attorney|power of attorney|living will|\brevocable trust|last will|"
                          r"DUI (lawyer|attorney|defense)|defend(ing)? (a |the )?DUI|drug charge (lawyer|attorney|defense)|we (can )?(defend|fight) (your|the) (ticket|charge)", re.I)
 
 

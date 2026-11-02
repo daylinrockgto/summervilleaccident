@@ -57,4 +57,8 @@ META = {
     # keyphrase | CTA form.
     "does-hiring-a-charleston-dog-bite-lawyer-mean-the-dog-gets-put-down": ("Get a Charleston Dog Bite Lawyer Before the Insurer Calls",
         "Most bite claims have three years to file in South Carolina. Talk to a Charleston dog bite lawyer about quarantine records, deadlines and your injuries."),
+    # November 2, 2026 post. The title and description are the draft's own metadata, so the title is not in the
+    # keyphrase | CTA form.
+    "who-controls-a-childs-share-after-a-summerville-wrongful-death-lawyer-settles-the-case": ("Protect Kids With a Summerville Wrongful Death Lawyer",
+        "A Summerville wrongful death lawyer explains who holds a child's share, the $15,000 line, conservator duties and what happens at 18. Call Frost First today."),
 }
