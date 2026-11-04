@@ -11,11 +11,14 @@ Current pages:
 | Page | Final URL | Use for |
 |---|---|---|
 | Summerville car accident | `https://www.summervilleaccidentattorney.com/lp/summerville-car-accident/` | every car/auto accident ad group |
+| Summerville personal injury | `https://www.summervilleaccidentattorney.com/lp/summerville-personal-injury/` | the injury lawyer ad group and any general injury keyword |
 
-Append `?kw=` to the final URL to make the H1 match the ad group (allow-listed values are in the page's
-script): `car-accident-lawyer`, `car-accident-attorney`, `auto-accident-lawyer`, `accident-lawyer`,
-`injury-lawyer`, `personal-injury-lawyer`, `car-wreck-lawyer`, `truck-accident-lawyer`,
-`motorcycle-accident-lawyer`. Anything else leaves the default H1.
+Append `?kw=` to the final URL to make the page match the ad group. Since November 4 the match is rendered at build time:
+each allow-listed `kw` has its own HTML at `/lp/<lander>/<kw>/` with the matching H1, `<title>`, meta description and
+subhead, and Vercel serves it for `?kw=` without changing the URL or the canonical. Car lander values: `car-accident-lawyer`,
+`car-accident-attorney`, `auto-accident-lawyer`, `accident-lawyer`, `car-wreck-lawyer`, `car-crash-lawyer`,
+`truck-accident-lawyer`, `motorcycle-accident-lawyer`. Personal injury lander values: `personal-injury-lawyer`,
+`personal-injury-attorney`, `injury-lawyer`, `injury-attorney`, `accident-lawyer`. Anything else serves the base page.
 
 ## 1. What Quality Score actually measures
 

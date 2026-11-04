@@ -91,6 +91,37 @@ RewriteRule ^blog/how\-does\-a\-summerville\-car\-accident\-lawyer\-get\-your\-m
 RewriteRule ^blog/what\-can\-a\-goose\-creek\-motorcycle\-accident\-lawyer\-do\-if\-you\-were\-partly\-at\-fault/?$ /what-can-a-goose-creek-motorcycle-accident-lawyer-do-if-you-were-partly-at-fault/ [R=301,L]
 RewriteRule ^blog/who\-can\-a\-moncks\-corner\-slip\-and\-fall\-lawyer\-hold\-liable\-for\-your\-fall/?$ /who-can-a-moncks-corner-slip-and-fall-lawyer-hold-liable-for-your-fall/ [R=301,L]
 RewriteRule ^blog/how\-does\-a\-north\-charleston\-truck\-accident\-lawyer\-figure\-out\-what\-your\-claim\-is\-worth/?$ /how-does-a-north-charleston-truck-accident-lawyer-figure-out-what-your-claim-is-worth/ [R=301,L]
+# PPC landers: ?kw= serves the keyword variant's HTML (same URL)
+RewriteCond %{QUERY_STRING} (^|&)kw=car-accident-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/car-accident-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=car-accident-attorney(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/car-accident-attorney/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=auto-accident-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/auto-accident-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=accident-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/accident-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=car-wreck-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/car-wreck-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=car-crash-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/car-crash-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=truck-accident-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/truck-accident-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=motorcycle-accident-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/motorcycle-accident-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=injury-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/injury-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=personal-injury-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/personal-injury-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=personal-injury-lawyer(&|$)
+RewriteRule ^lp/summerville-personal-injury/?$ /lp/summerville-personal-injury/personal-injury-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=personal-injury-attorney(&|$)
+RewriteRule ^lp/summerville-personal-injury/?$ /lp/summerville-personal-injury/personal-injury-attorney/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=injury-lawyer(&|$)
+RewriteRule ^lp/summerville-personal-injury/?$ /lp/summerville-personal-injury/injury-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=injury-attorney(&|$)
+RewriteRule ^lp/summerville-personal-injury/?$ /lp/summerville-personal-injury/injury-attorney/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=accident-lawyer(&|$)
+RewriteRule ^lp/summerville-personal-injury/?$ /lp/summerville-personal-injury/accident-lawyer/index.html [L]
 # add a trailing slash to directory-style URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !/$

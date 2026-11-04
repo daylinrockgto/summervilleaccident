@@ -847,6 +847,173 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "car-accident-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/car-accident-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "car-accident-attorney"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/car-accident-attorney/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "auto-accident-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/auto-accident-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "accident-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/accident-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "car-wreck-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/car-wreck-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "car-crash-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/car-crash-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "truck-accident-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/truck-accident-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "motorcycle-accident-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/motorcycle-accident-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "injury-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/injury-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "personal-injury-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/personal-injury-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-personal-injury/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "personal-injury-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-personal-injury/personal-injury-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-personal-injury/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "personal-injury-attorney"
+        }
+      ],
+      "destination": "/lp/summerville-personal-injury/personal-injury-attorney/index.html"
+    },
+    {
+      "source": "/lp/summerville-personal-injury/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "injury-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-personal-injury/injury-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-personal-injury/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "injury-attorney"
+        }
+      ],
+      "destination": "/lp/summerville-personal-injury/injury-attorney/index.html"
+    },
+    {
+      "source": "/lp/summerville-personal-injury/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
+          "value": "accident-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-personal-injury/accident-lawyer/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

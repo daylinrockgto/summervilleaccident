@@ -16,6 +16,9 @@ header .w{display:flex;align-items:center;justify-content:space-between;height:7
 .hphone{color:#fff;text-decoration:none;font-weight:800;font-size:27px;letter-spacing:.01em;white-space:nowrap;text-align:right}
 .hphone small{display:block;font-size:11px;font-weight:700;color:#f3c9b9;letter-spacing:.14em;text-transform:uppercase}
 .hcall{display:none}
+.brand .wm{display:none}
+.hero .chips{margin:0 0 14px}.hero .chips li{padding:7px 12px;font-size:13.5px}
+.hero.pi .team{max-width:440px}
 .hero{padding:26px 0 34px}
 .hero .box{background:#e7eef6;border-radius:16px;display:grid;grid-template-columns:1.25fr .95fr;gap:34px;padding:34px;align-items:center}
 .eyebrow{display:inline-block;font-weight:800;color:var(--rust);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
@@ -131,10 +134,17 @@ footer a{color:#d8dee8}
 .mbar{display:none}
 @media (max-width:980px){.hero .box{grid-template-columns:1fr;padding:24px}.fee .w{grid-template-columns:1fr}.g3,.revs{grid-template-columns:1fr 1fr}.rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.why{grid-template-columns:1fr}}
 @media (max-width:640px){
- body{font-size:16px}header .w{height:60px}.brand img{width:36px;height:36px}.brand b{font-size:15px}.brand small{display:none}
+ body{font-size:16px}header .w{height:60px}.brand img{width:36px;height:36px}.brand b{display:none}.brand small{display:none}
+ .brand .wm{display:block;font-family:var(--display);font-size:17px;font-weight:600;line-height:1.1;white-space:nowrap}
+ /* Above the fold on phones (2026-11-04): H1, subhead, call band, form step 1, then the checks, the photo and the local line.
+    The hero's left column becomes display:contents so its children join the one-column grid and can be ordered. */
+ .hero .box>div:first-child{display:contents}
+ .hero .box>div>.eyebrow{order:1;margin:0}.hero .box>div>h1{order:2;margin:0}.hero .box>div>.sub{order:3;margin:0}.hero .box>.callband{order:4}
+ .hero .box>.f{order:5}.hero .box>div>.checks{order:6;margin:0}.hero .box>div>.chips{order:7;margin:0}.hero .box>div>.team{order:8;margin:0;max-width:none}
+ .hero .box>div>.local{order:9}.hero .box>div>.ctas{order:10;margin:0}
+ .team img{height:180px;object-fit:cover;object-position:50% 32%}
  .hphone{display:none}.hcall{display:inline-flex;background:var(--rust);color:#fff;font-weight:800;text-decoration:none;border-radius:8px;padding:9px 13px;font-size:14px;white-space:nowrap}
- .hero{padding:14px 0 24px}.hero .box{padding:18px;border-radius:14px;gap:18px}
- .team{margin:0 auto 14px;max-width:340px}
+ .hero{padding:10px 0 24px}.hero .box{padding:16px;border-radius:14px;gap:12px}
  h1{font-size:35px}.sub{font-size:18px}
  .callband{display:flex;align-items:center;gap:14px;background:var(--navy);color:#fff;text-decoration:none;border-radius:12px;padding:14px 16px}
  .callband .ring{flex:0 0 auto;width:50px;height:50px;border-radius:50%;background:var(--rust);display:grid;place-items:center;color:#fff;box-shadow:0 0 0 7px rgba(163,58,30,.22)}
