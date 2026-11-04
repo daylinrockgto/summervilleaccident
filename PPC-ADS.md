@@ -15,7 +15,7 @@ Current pages:
 
 Append `?kw=` to the final URL to make the page match the ad group. Since November 4 the match is rendered at build time:
 each allow-listed `kw` has its own HTML at `/lp/<lander>/<kw>/` with the matching H1, `<title>`, meta description and
-subhead, and Vercel serves it for `?kw=` without changing the URL or the canonical. Car lander values: `car-accident-lawyer`,
+subhead, and the site's Vercel middleware serves it for `?kw=` without changing the URL or the canonical. Car lander values: `car-accident-lawyer`,
 `car-accident-attorney`, `auto-accident-lawyer`, `accident-lawyer`, `car-wreck-lawyer`, `car-crash-lawyer`,
 `truck-accident-lawyer`, `motorcycle-accident-lawyer`. Personal injury lander values: `personal-injury-lawyer`,
 `personal-injury-attorney`, `injury-lawyer`, `injury-attorney`, `accident-lawyer`. Anything else serves the base page.
