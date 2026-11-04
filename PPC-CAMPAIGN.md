@@ -46,7 +46,7 @@ reasoning behind each choice is in `PPC-ADS.md`; this file is the checklist. Fil
 
 Phrase and exact only. One theme per ad group. Default max CPC $60 under Maximize clicks (the bid limit above caps
 it anyway). Every `?kw=` final URL serves a page whose H1, `<title>`, meta description and subhead already carry the ad
-group's words (rendered at build time at `/lp/<lander>/<kw>/` and served for `?kw=` by a Vercel rewrite), so AdsBot and
+group's words (rendered at build time at `/lp/<lander>/<kw>/` and served for `?kw=` by the site's Vercel middleware, with a client-side fallback), so AdsBot and
 the landing-page-experience score see the keyword in the HTML, not only after a script runs. Allowed `kw` values for the
 car lander: `car-accident-lawyer`, `car-accident-attorney`, `auto-accident-lawyer`, `accident-lawyer`, `car-wreck-lawyer`,
 `car-crash-lawyer`, `truck-accident-lawyer`, `motorcycle-accident-lawyer`. For the personal injury lander:
