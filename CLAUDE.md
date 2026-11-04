@@ -132,6 +132,8 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 
   `site/BUILD-NOTES.md` has the details and the open questions.
 
+- **2026-11-04. PPC lander fixes (Jon's handoff).** A personal injury lander at `/lp/summerville-personal-injury/` whose results band shows the overall total and the home page's four picks, because it is not a car accident ad; the car lander's band stays car-only. Keyword variants of both landers are rendered at build time (`LANDER_KW` in `build_site.py`) and served for `?kw=` by Vercel rewrites, canonical on the base page. On phones the hero orders H1, subhead, call band, form first. The lander consent box is optional and the lead records "checked" or "not checked"; the handoff asked for the firm's confirmation of that, which is still owed. `site/BUILD-NOTES.md` has the details.
+
 ## Voice
 
 Warm, plain-spoken and direct. The firm is two attorneys who grew up in Summerville and practice together, and a client reaches an attorney, not a call center. Write short, active sentences, and explain each legal term the first time it appears. Page copy uses no colons, semicolons, bullets or dashes as punctuation. `llg/context/WRITER-BRIEF.md` is binding for page copy.

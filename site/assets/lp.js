@@ -9,16 +9,12 @@
 
   window.dataLayer = window.dataLayer || [];
   function track(ev, extra){ var e = {event: ev, case_type: CT, geo: GEO, variant: VARIANT}; if (extra) for (var k in extra) e[k] = extra[k]; window.dataLayer.push(e); }
-  window.dataLayer.push({event: "page_variant", variant: VARIANT, case_type: CT, geo: GEO});
+  window.dataLayer.push({event: "page_variant", variant: VARIANT, case_type: CT, geo: GEO, kw: B.kw || (q.get("kw") || "")});
   document.addEventListener("click", function(e){ if (e.target.closest && e.target.closest('a[href^="tel:"]')) track("call_click"); });
 
-  /* ?kw= swaps the H1 to match the ad group that sent the click (allow-listed so no one can inject text). */
-  var KW = {"car-accident-lawyer":"Summerville Car Accident Lawyer", "car-accident-attorney":"Summerville Car Accident Attorney", "auto-accident-lawyer":"Summerville Auto Accident Lawyer",
-            "accident-lawyer":"Summerville Accident Lawyer", "injury-lawyer":"Summerville Injury Lawyer", "personal-injury-lawyer":"Summerville Personal Injury Lawyer",
-            "car-wreck-lawyer":"Summerville Car Wreck Lawyer", "truck-accident-lawyer":"Summerville Truck Accident Lawyer", "motorcycle-accident-lawyer":"Summerville Motorcycle Accident Lawyer"};
-  var kw = (q.get("kw") || "").toLowerCase();
-  var h1 = document.getElementById("h1");
-  if (KW[kw] && h1) { h1.textContent = KW[kw]; track("h1_swap", {kw: kw}); }
+  /* The keyword variant is rendered at build time (/lp/<lander>/<kw>/, served for ?kw=); the page only reports it. */
+  var KW_SLUG = B.kw || (q.get("kw") || "").toLowerCase().replace(/[^a-z0-9-]/g, "");
+  if (KW_SLUG) track("page_keyword", {kw: KW_SLUG});
 
   /* Two-step form, like the Goldberg & Loren landers: step 1 is one tap ("Were you injured?"), step 2 is name and mobile
      phone with an explicit consent box, and success shows inline with a call button. Formspree gets the lead; the
@@ -45,18 +41,25 @@
       var ph = raw.replace(/\D/g, ""); if (ph.length === 11 && ph.charAt(0) === "1") ph = ph.slice(1);
       if (!(/^[2-9]\d{2}[2-9]\d{6}$/.test(ph) && !/^(\d)\1{9}$/.test(ph) && !/^[2-9]11/.test(ph) && !/^\d{3}[2-9]11/.test(ph)))
         return fail("Please enter a valid 10-digit phone number.");
-      if (consent && !consent.checked) return fail("Please tick the box so we can call or text you back.");
       fail("");
-      data.phone = ph; data.injured = answer || "not answered"; data.consent = "checked the consent box";
-      function done(){
-        track("lead_form_submit", {form: cfg.where, injured: data.injured});
+      /* The consent box is optional (2026-11-04): a person asking for a callback is called back either way, and the firm
+         sees "checked" or "not checked" on the lead so it knows whether automated texts are allowed. */
+      data.phone = ph; data.injured = answer || "not answered"; data.consent = (consent && consent.checked) ? "checked" : "not checked";
+      function finish(){
         var sn = form.querySelector(".s-name"); if (sn) sn.textContent = ", " + data.name.split(" ")[0];
         show(3); var proof = form.querySelector(".fproof"); if (proof) proof.hidden = true;
       }
-      if (form.querySelector('[name="_gotcha"]').value !== "") { done(); return; }  /* bots see success, nothing is sent */
+      function done(){
+        /* The conversion. Only reached after Formspree accepts the lead. user_data feeds Google Ads enhanced conversions
+           (the phone in E.164); GTM's user-provided data variable reads it from this event. */
+        track("lead_form_submit", {form: cfg.where, injured: data.injured, consent: data.consent, user_data: {phone_number: "+1" + ph}});
+        finish();
+      }
+      if (form.querySelector('[name="_gotcha"]').value !== "") { finish(); return; }  /* bots see success; nothing is sent and no conversion fires */
       data.case_type = CT; data.geo = GEO; data.variant = VARIANT; data.form = cfg.where;
       data.page = location.href; data.submitted = new Date().toISOString();
       ["gclid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "kw"].forEach(function(k){ if (q.get(k)) data[k] = q.get(k); });
+      if (KW_SLUG) data.kw = KW_SLUG;
       data._subject = "PPC lead (" + CT + ", " + VARIANT + "): " + data.name;
       var text = btn.textContent, settled = false; btn.disabled = true; btn.textContent = "Sending…";
       function sendFail(status, detail){ if (settled) return; settled = true; btn.disabled = false; btn.textContent = text;

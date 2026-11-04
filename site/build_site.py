@@ -25,6 +25,51 @@ ASSETS = os.path.join(SITE, "assets")
 IMG_DIR = os.path.join(ASSETS, "img")
 OUT = os.path.join(ROOT, "website")
 LANDERS = os.path.join(SITE, "landers")  # hand-written PPC landing pages -> /lp/<name>/ (noindex, never in the sitemap)
+# Keyword variants of the landers, rendered at build time so the HTML AdsBot fetches carries the ad group's words (settled
+# 2026-11-04: Quality Score reads the served HTML, and the old client-side H1 swap left every variant reading "Car Accident
+# Lawyer"). Each variant lives at /lp/<lander>/<kw>/ and is served for /lp/<lander>/?kw=<kw> by a Vercel rewrite and an
+# .htaccess rule. The H1, <title>, meta description and hero subhead change; the canonical stays the base page.
+# Value: (H1, the noun for "Hurt in a <noun>?" in the description and subhead, or None to keep the base wording).
+LANDER_KW = {
+    "summerville-car-accident": {
+        "car-accident-lawyer": ("Summerville Car Accident Lawyer", "car accident"),
+        "car-accident-attorney": ("Summerville Car Accident Attorney", "car accident"),
+        "auto-accident-lawyer": ("Summerville Auto Accident Lawyer", "auto accident"),
+        "accident-lawyer": ("Summerville Accident Lawyer", "accident"),
+        "car-wreck-lawyer": ("Summerville Car Wreck Lawyer", "car wreck"),
+        "car-crash-lawyer": ("Summerville Car Crash Lawyer", "car crash"),
+        "truck-accident-lawyer": ("Summerville Truck Accident Lawyer", "truck accident"),
+        "motorcycle-accident-lawyer": ("Summerville Motorcycle Accident Lawyer", "motorcycle accident"),
+        "injury-lawyer": ("Summerville Injury Lawyer", "accident"),  # kept until the injury lawyer ad group moves to the personal injury lander
+        "personal-injury-lawyer": ("Summerville Personal Injury Lawyer", "accident"),
+    },
+    "summerville-personal-injury": {
+        "personal-injury-lawyer": ("Summerville Personal Injury Lawyer", None),
+        "personal-injury-attorney": ("Summerville Personal Injury Attorney", None),
+        "injury-lawyer": ("Summerville Injury Lawyer", None),
+        "injury-attorney": ("Summerville Injury Attorney", None),
+        "accident-lawyer": ("Summerville Accident Lawyer", None),
+    },
+}
+
+
+def lander_kw_rewrites():
+    """(lander, kw) pairs for every keyword variant, for vercel.json and .htaccess."""
+    return [(lander, kw) for lander, kws in LANDER_KW.items() for kw in kws]
+
+
+def lander_kw_variant(html, kw, h1, noun):
+    """The base lander's final HTML with the variant's H1, title, description and subhead, and data-kw on <body>."""
+    base_h1 = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.S).group(1)
+    html = re.sub(r"(<h1[^>]*>).*?(</h1>)", lambda m: m.group(1) + h1 + m.group(2), html, count=1, flags=re.S)
+    html = re.sub(r"<title>.*?\|", f"<title>{h1} |", html, count=1, flags=re.S)
+    html = html.replace(f'property="og:title" content="{base_h1}', f'property="og:title" content="{h1}')
+    if noun:
+        art = "an" if noun[0] in "aeiou" else "a"
+        html = re.sub(r"Hurt in a Summerville( or Dorchester County)? car accident\?", lambda m: f"Hurt in a Summerville{m.group(1) or ''} {noun}?", html)
+        html = re.sub(r"Hurt in a car accident\?", f"Hurt in {art} {noun}?", html)
+    html = re.sub(r"<body([^>]*)>", lambda m: f'<body{m.group(1)} data-kw="{kw}">', html, count=1)
+    return html
 sys.path.insert(0, SITE)
 
 from content.base import PAGES, BY_SLUG, esc  # noqa: E402
@@ -1086,6 +1131,13 @@ def write_landers():
                         f'<h2 class="h" id="results-h">More Than {results.more_than(results.total(results.CAR)).replace(" million", "&nbsp;Million")} Recovered for Car Accident Clients</h2>'
                         f'<ul class="rgrid">{results_items(results.LANDER_PICKS, results.LANDER_LABELS)}</ul></div></section>')
 
+    # [[LP_RESULTS_ALL]] for a lander that is not a car accident ad (the personal injury lander): the overall total and the
+    # home page's four picks across wrongful death, car accidents and slip and fall, with their full labels.
+    parts["RESULTS_ALL"] = (f'<section class="results" data-results aria-labelledby="results-h"><div class="w">'
+                            f'<span class="eyebrow">Selected case results</span>'
+                            f'<h2 class="h" id="results-h">More Than {results.more_than(results.total()).replace(" million", "&nbsp;Million")} Recovered for Our Clients</h2>'
+                            f'<ul class="rgrid">{results_items(results.HOME_PICKS)}</ul></div></section>')
+
     def lp_form(m):
         form_id, where, heading, sub, button = m.group(1).split("|")
         return parts["FORM"].replace("[[ID]]", form_id).replace("[[WHERE]]", where).replace("[[HEADING]]", heading).replace("[[SUB]]", sub).replace("[[BUTTON]]", button)
@@ -1132,6 +1184,15 @@ def write_landers():
             for src in re.findall(r'(?:src|href)="(/assets/[^"?]+)', html):
                 if not os.path.exists(os.path.join(OUT, src.lstrip("/"))):
                     warn(f"lander {rel}: {src} does not exist in website/")
+            lander = os.path.basename(dp)
+            if f == "index.html" and lander in LANDER_KW:
+                for kw, (h1, noun) in LANDER_KW[lander].items():
+                    vhtml = lander_kw_variant(html, kw, h1, noun)
+                    vdir = os.path.join(dp, kw)
+                    os.makedirs(vdir, exist_ok=True)
+                    open(os.path.join(vdir, "index.html"), "w", encoding="utf-8").write(vhtml)
+                    if vhtml.count("<h1") != 1 or h1 not in vhtml or f'<link rel="canonical" href="{ORIGIN}{rel.rsplit("/", 1)[0]}/">' not in vhtml:
+                        warn(f"lander {rel} variant {kw}: H1 or canonical wrong")
 
 
 _REDIRECT_CACHE = []
@@ -1167,6 +1228,10 @@ def htaccess():
              "# old addresses -> new pages"]
     for old, new in redirect_pairs():
         lines.append(f"RewriteRule ^{re.escape(old.lstrip('/'))}/?$ {new} [R=301,L]")
+    lines.append("# PPC landers: ?kw= serves the keyword variant's HTML (same URL)")
+    for lander, kw in lander_kw_rewrites():
+        lines.append(f"RewriteCond %{{QUERY_STRING}} (^|&)kw={kw}(&|$)")
+        lines.append(f"RewriteRule ^lp/{lander}/?$ /lp/{lander}/{kw}/index.html [L]")
     lines += ["# add a trailing slash to directory-style URLs", "RewriteCond %{REQUEST_FILENAME} !-f", "RewriteCond %{REQUEST_URI} !/$", "RewriteCond %{REQUEST_URI} !\\.[a-zA-Z0-9]{2,5}$",
               "RewriteRule ^(.*)$ /$1/ [R=301,L]", "</IfModule>", "",
               "<IfModule mod_headers.c>", 'Header set X-Content-Type-Options "nosniff"', 'Header set Referrer-Policy "strict-origin-when-cross-origin"',
@@ -1196,6 +1261,9 @@ def write_vercel_json():
         "installCommand": None,
         "outputDirectory": "website",
         "redirects": redirects,
+        # ?kw= serves the keyword variant's HTML (same URL, same canonical) so AdsBot scores the ad group's words
+        "rewrites": [{"source": f"/lp/{lander}/", "has": [{"type": "query", "key": "kw", "value": kw}], "destination": f"/lp/{lander}/{kw}/index.html"}
+                     for lander, kw in lander_kw_rewrites()],
         "headers": [
             {"source": "/assets/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]},
             {"source": "/lp/(.*)", "headers": [{"key": "X-Robots-Tag", "value": "noindex, nofollow"}]},

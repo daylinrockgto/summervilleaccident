@@ -45,7 +45,13 @@ reasoning behind each choice is in `PPC-ADS.md`; this file is the checklist. Fil
 ## 2. Ad groups, keywords and final URLs
 
 Phrase and exact only. One theme per ad group. Default max CPC $60 under Maximize clicks (the bid limit above caps
-it anyway).
+it anyway). Every `?kw=` final URL serves a page whose H1, `<title>`, meta description and subhead already carry the ad
+group's words (rendered at build time at `/lp/<lander>/<kw>/` and served for `?kw=` by a Vercel rewrite), so AdsBot and
+the landing-page-experience score see the keyword in the HTML, not only after a script runs. Allowed `kw` values for the
+car lander: `car-accident-lawyer`, `car-accident-attorney`, `auto-accident-lawyer`, `accident-lawyer`, `car-wreck-lawyer`,
+`car-crash-lawyer`, `truck-accident-lawyer`, `motorcycle-accident-lawyer`. For the personal injury lander:
+`personal-injury-lawyer`, `personal-injury-attorney`, `injury-lawyer`, `injury-attorney`, `accident-lawyer`. Anything else
+serves the base page.
 
 ### Ad group 1: car accident lawyer
 
@@ -108,7 +114,7 @@ Final URL: `…/lp/summerville-car-accident/?kw=accident-lawyer`
 
 ### Ad group 6: injury lawyer
 
-Final URL: `…/lp/summerville-car-accident/?kw=injury-lawyer`
+Final URL: `https://www.summervilleaccidentattorney.com/lp/summerville-personal-injury/?kw=injury-lawyer` (the personal injury lander, live since November 4; the page's H1, title and description say personal injury, never car accident)
 
 ```
 "summerville injury lawyer"              [summerville injury lawyer]
@@ -208,8 +214,9 @@ reviews of, complaints, cheap, cheapest, cost of a lawyer, how much does a lawye
 | 2 | Google Ads → Goals → Conversions → New | **Call from ads**: Calls from ads using call assets, 60 seconds, Primary |
 | 3 | CallRail → Integrations → Google Ads | Connect the paid-search CallRail account to the Ads account; it creates **Call from website** as a conversion. Mark it Primary, 60 seconds |
 | 4 | GTM container `GTM-W8WTJ5RF` | Tag: Google Ads Conversion Tracking with the ID and Label from step 1. Trigger: Custom Event, event name `lead_form_submit`. Add the Conversion Linker tag on All Pages. Publish |
-| 5 | GTM, optional | Second Google Ads tag on custom event `call_click`, as a Secondary conversion, so phone taps show in reports without inflating the primary count |
-| 6 | Test | Open `/lp/summerville-car-accident/?gclid=test` in GTM Preview, complete the form with a real test name, confirm the tag fires on `lead_form_submit` and Formspree emails the lead. Then delete the test lead |
+| 5 | GTM | Second Google Ads conversion tag on custom event `call_click` (create the conversion action "Click to call (website)" in Ads first, category Contact, count One). Set it to **Secondary** in Ads: observation only, never for bidding |
+| 5b | GTM, enhanced conversions | The `lead_form_submit` event carries `user_data.phone_number` in E.164 (`+1XXXXXXXXXX`). Create a User-Provided Data variable (type Data Layer, variable name `user_data`), set it on the Google tag under "Include user-provided data from your website", and leave the Lead form action on "Enhanced conversions: managed through Google tag" |
+| 6 | Test | Tell the firm first so nobody calls the number back. Open `/lp/summerville-car-accident/?gclid=test` in GTM Preview, complete the form with the name "TEST - ignore", confirm the Ads conversion tag (`__awct`, label `-spWCLTLnZ0dELn-i_xE`) fires on `lead_form_submit` and that Formspree emails the lead. The page fires the event only after Formspree returns success, and never for a honeypot submission |
 
 The `dataLayer` on every lander also carries `page_variant`, `h1_swap`, `lead_form_step` (the step-1 answer) and
 `lead_form_error`. Each lead's Formspree email includes `gclid`, `kw`, `variant` and the step-1 answer.
