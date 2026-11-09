@@ -30,6 +30,13 @@ LANDERS = os.path.join(SITE, "landers")  # hand-written PPC landing pages -> /lp
 # Lawyer"). Each variant lives at /lp/<lander>/<kw>/ and is served for /lp/<lander>/?kw=<kw> by a Vercel rewrite and an
 # .htaccess rule. The H1, <title>, meta description and hero subhead change; the canonical stays the base page.
 # Value: (H1, the noun for "Hurt in a <noun>?" in the description and subhead, or None to keep the base wording).
+# Phrases the landers may never say again (2026-11-09). Every CallRail number forwards to a 24/7 intake team, so a page
+# cannot promise that an attorney answers the phone or reads the form first (SC Rule 7.1). The build fails a lander that
+# carries one, case-insensitively.
+LANDER_FORBIDDEN = ("talk directly with attorney", "an attorney answers", "not a call center", "speak with tara or jack",
+                    "an attorney reads", "tara or jack will call", "talk with an attorney for free", "an attorney calls",
+                    "answered by the firm", "not an intake desk", "scripted intake", "an attorney takes your call")
+
 LANDER_KW = {
     "summerville-car-accident": {
         "car-accident-lawyer": ("Summerville Car Accident Lawyer", "car accident"),
@@ -1130,17 +1137,20 @@ def write_landers():
     parts = {n[:-5].upper().replace("-", "_"): open(os.path.join(parts_dir, n), encoding="utf-8").read().rstrip("\n") for n in os.listdir(parts_dir)} if os.path.isdir(parts_dir) else {}
     # [[LP_RESULTS]] is built here rather than kept in _parts/, so the figures stay single-sourced in results.py.
     # Every lander is a car accident ad, so the band shows car results and the car total, and each card just says "Settlement".
+    # The landers' bands carry the Rule 7.1 disclaimer under the figures since 2026-11-09, at the firm's direction (the home page band does not).
     parts["RESULTS"] = (f'<section class="results" data-results aria-labelledby="results-h"><div class="w">'
                         f'<span class="eyebrow">Selected case results</span>'
                         f'<h2 class="h" id="results-h">More Than {results.more_than(results.total(results.CAR)).replace(" million", "&nbsp;Million")} Recovered for Car Accident Clients</h2>'
-                        f'<ul class="rgrid">{results_items(results.LANDER_PICKS, results.LANDER_LABELS)}</ul></div></section>')
+                        f'<ul class="rgrid">{results_items(results.LANDER_PICKS, results.LANDER_LABELS)}</ul>'
+                        f'<p class="rdisc">{firm.PRIOR_RESULTS}</p></div></section>')
 
     # [[LP_RESULTS_ALL]] for a lander that is not a car accident ad (the personal injury lander): the overall total and the
     # home page's four picks across wrongful death, car accidents and slip and fall, with their full labels.
     parts["RESULTS_ALL"] = (f'<section class="results" data-results aria-labelledby="results-h"><div class="w">'
                             f'<span class="eyebrow">Selected case results</span>'
                             f'<h2 class="h" id="results-h">More Than {results.more_than(results.total()).replace(" million", "&nbsp;Million")} Recovered for Our Clients</h2>'
-                            f'<ul class="rgrid">{results_items(results.HOME_PICKS)}</ul></div></section>')
+                            f'<ul class="rgrid">{results_items(results.HOME_PICKS)}</ul>'
+                            f'<p class="rdisc">{firm.PRIOR_RESULTS}</p></div></section>')
 
     def lp_form(m):
         form_id, where, heading, sub, button = m.group(1).split("|")
@@ -1179,6 +1189,10 @@ def write_landers():
                 warn(f"lander {rel}: phone missing or formatted differently from {firm.PHONE} / tel:{firm.PHONE_E164}")
             if "[[" in html:
                 warn(f"lander {rel}: unresolved token")
+            low = re.sub(r"<[^>]+>", " ", html).lower()
+            for ph in LANDER_FORBIDDEN:
+                if ph in low:
+                    warn(f"HARD FAIL lander {rel}: says \"{ph}\", which the intake arrangement cannot back (2026-11-09)")
             body = html
             for ph in firm.CROSS_LINK_PHRASES:
                 body = body.replace(ph, "")

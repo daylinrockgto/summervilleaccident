@@ -59,6 +59,7 @@ form.f{background:#fff;border:1px solid var(--line);border-radius:14px;padding:2
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .ferr{color:var(--err);font-size:14px;font-weight:700;margin:0 0 10px}
 .ferr:empty{display:none}
+.ferr .errcall{color:var(--err);text-decoration:underline;font-weight:800}
 .fnote{margin:10px 0 0;text-align:center;font-size:12.5px;color:var(--muted)}
 .success{text-align:center}
 .tick{width:58px;height:58px;border-radius:50%;background:var(--ok);color:#fff;font-size:30px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:4px auto 12px}
@@ -116,6 +117,8 @@ section.results h2.h{color:#fff;margin-bottom:22px}
 .rgrid li::before{content:"";display:block;width:30px;height:3px;border-radius:3px;background:#f3c9b9;margin-bottom:13px}
 .rgrid b{display:block;font-family:var(--display);font-weight:600;font-size:38px;line-height:1;color:#fff;white-space:nowrap;font-variation-settings:"opsz" 72,"SOFT" 30}
 .rgrid span{display:block;margin-top:8px;font-size:14.5px;font-weight:700;color:#c9d6e6}
+.rdisc{margin:16px 0 0;font-size:13.5px;color:#c9d6e6}
+section.how{padding:28px 0 8px}section.how h2.h{font-size:26px;margin-bottom:14px}
 .fee{background:var(--navy-3);color:#e9eef5}
 .fee .w{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:56px;padding-bottom:56px}
 .fee .big{font-family:var(--display);font-weight:600;font-size:66px;line-height:.98;color:#fff;margin:0 0 14px}
@@ -157,7 +160,7 @@ footer a{color:#d8dee8}
  .mbar .btn{padding:13px 8px;font-size:15.5px}
 }
 @media (max-width:350px){.rgrid li{padding:13px 11px}.rgrid b{font-size:23px}}
-@media print{section.results{background:none;color:#000}section.results h2.h,.rgrid b{color:var(--navy-3)}section.results .eyebrow{color:var(--rust)}.rgrid li{border-color:var(--line)}.rgrid span{color:#333}}
+@media print{section.results{background:none;color:#000}.rdisc{color:#333}section.results h2.h,.rgrid b{color:var(--navy-3)}section.results .eyebrow{color:var(--rust)}.rgrid li{border-color:var(--line)}.rgrid span{color:#333}}
 @media (min-width:981px) and (max-width:1120px){.tn{padding:6px 9px 7px}.tn i{font-size:9px;letter-spacing:.04em;white-space:normal}}
 @media (max-width:640px){.tn{flex:1 1 0;min-width:0;padding:5px 8px 6px}.tn b{font-size:12px}.tn i{font-size:8.5px;letter-spacing:.06em;white-space:normal}}
 
