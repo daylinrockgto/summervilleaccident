@@ -61,4 +61,8 @@ META = {
     # keyphrase | CTA form.
     "who-controls-a-childs-share-after-a-summerville-wrongful-death-lawyer-settles-the-case": ("Protect Kids With a Summerville Wrongful Death Lawyer",
         "A Summerville wrongful death lawyer explains who holds a child's share, the $15,000 line, conservator duties and what happens at 18. Call Frost First today."),
+    # November 9, 2026 post. The title and description are the draft's own metadata, so the title is not in the
+    # keyphrase | CTA form.
+    "who-can-hire-a-goose-creek-catastrophic-injury-lawyer-when-the-injured-person-cannot": ("Who Signs? Ask a Goose Creek Catastrophic Injury Lawyer",
+        "When a crash leaves a loved one unable to decide, a Goose Creek catastrophic injury lawyer explains who can sign and which deadlines still run. Call today."),
 }
