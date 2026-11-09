@@ -231,7 +231,7 @@ Daylin asked for a final visual, SEO and launch-readiness pass before launch. Ev
 
 ## Blog cover images
 
-All twelve blog covers are licensed Canva stock photos, placed in copies of Canva template DAHS3fxddsA and exported as 1920x1080 JPGs with no text, logos, plates or AI provenance data. The caption, which is also the alt text, describes what the photo shows. A post's hero image is also its social card and BlogPosting image. The post hero crops the cover to 4:3 on desktop and 16:10 on phones, and the cards show it at 16:9, so each subject sits near the center. Do not reuse these stock photos on another post or page.
+All thirteen blog covers are licensed Canva stock photos, placed in copies of Canva template DAHS3fxddsA and exported as 1920x1080 JPGs with no text, logos, plates or AI provenance data. The caption, which is also the alt text, describes what the photo shows. A post's hero image is also its social card and BlogPosting image. The post hero crops the cover to 4:3 on desktop and 16:10 on phones, and the cards show it at 16:9, so each subject sits near the center. Do not reuse these stock photos on another post or page.
 
 The October posts' files are named for each post's final CTA heading. The four September posts have no CTA heading, so their files are named for the post's slug and then the subject. The September covers replaced generated illustrations on October 8, 2026. The Goose Creek motorcycle cover, a wrecked scooter (MADAaSpIXVg), became a parked sport motorcycle on a palm-lined plaza (MAHBjhWn0Ug) the same day, the photo Daylin picked. Its file name stayed the same, so anyone who viewed it on the Vercel production URL may need a hard refresh to see the new one, since `/assets/` files are cached for a year.
 
@@ -249,6 +249,7 @@ The October posts' files are named for each post's final CTA heading. The four S
 | Ladson slip and fall, churches and charities | `talk-with-a-ladson-slip-and-fall-lawyer-before-the-charitys-insurer-calls.jpg` | MAHIU4GP-X0 | DAHYkHkKS1Q |
 | Charleston dog bites, what happens to the dog | `call-a-charleston-dog-bite-lawyer-about-the-bite-not-the-dog.jpg` | MAHVUPwLXbI | DAHZJBxsDgQ |
 | Summerville wrongful death, a child's share | `talk-with-a-summerville-wrongful-death-lawyer-before-the-check-is-divided.jpg` | MAG2H7v514A | DAHZyzBOCxw |
+| Goose Creek catastrophic injury, who can act for an injured adult | `talk-with-a-goose-creek-catastrophic-injury-lawyer-about-who-can-act.jpg` | MAFZ4FZ9VQA | DAHad5n0Xpg |
 
 ### Photos inside a post
 
@@ -264,6 +265,8 @@ A post can carry a photo under any H2. `images.json` lists them under the post's
 | Charleston dog bites, what happens to the dog | Under H2 3 | `charleston-dog-bite-lawyer-dog-in-shelter-kennel-run.jpg` | MAHWfFy73hg | DAHZJaqhGDo |
 | Summerville wrongful death, a child's share | Under H2 2 | `summerville-wrongful-death-lawyer-coin-dropped-into-pink-piggy-bank.jpg` | MAHXGPiYY9A | DAHZy2nJZ1A |
 | Summerville wrongful death, a child's share | Under H2 5 | `summerville-wrongful-death-lawyer-teen-graduate-in-cap-and-gown.jpg` | MAEEq0fh_z4 | DAHZyycqZ1Q |
+| Goose Creek catastrophic injury, who can act for an injured adult | Under H2 2 | `goose-creek-catastrophic-injury-lawyer-empty-courtroom-with-burgundy-leather-chairs.jpg` | MAGDkHBcOt8 | DAHadxsiWw0 |
+| Goose Creek catastrophic injury, who can act for an injured adult | Under H2 3 | `goose-creek-catastrophic-injury-lawyer-hourglass-beside-desk-calendar.jpg` | MAGxsJn62bo | DAHad3PJvkc |
 
 ## PPC landing pages (October 14)
 

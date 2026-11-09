@@ -1431,8 +1431,14 @@ window.__PREVIEW__=true;
 # This site is personal injury only. The main site owns estate planning, probate and criminal defense, so no page here
 # may name those services (or offer to defend a drunk driver) except in the one cross-link sentence defined in firm.py.
 # "\brevocable trust" catches the estate planning product without flagging the court-approved irrevocable trust for a
-# minor that S.C. Code 62-5-405 allows, which the November 2, 2026 wrongful death post describes.
-CANNIBAL_RE = re.compile(r"estate plan|probate (attorney|lawyer|law firm|practice|services)|criminal defen[cs]e|expungement|guardianship attorney|power of attorney|living will|\brevocable trust|last will|"
+# minor that S.C. Code 62-5-405 allows, which the November 2, 2026 wrongful death post describes. The power of attorney
+# pattern catches an offer to draft, prepare or update one, or a "power of attorney lawyer" or service, without flagging
+# the November 9, 2026 Goose Creek post, which explains who can act on an injured adult's claim under a power of attorney
+# the person already signed.
+POA_OFFER = (r"(draft|drafting|prepare|preparing|write|writing|set up|setting up|update|updating|create|creating)\s+(a |an |your |the )?(new )?"
+             r"(durable |financial |general |springing |health care |healthcare |medical )?powers? of attorney|"
+             r"powers? of attorney (lawyers?|attorneys?|law firm|services|drafting|documents? for you|package|planning)")
+CANNIBAL_RE = re.compile(r"estate plan|probate (attorney|lawyer|law firm|practice|services)|criminal defen[cs]e|expungement|guardianship attorney|" + POA_OFFER + r"|living will|\brevocable trust|last will|"
                          r"DUI (lawyer|attorney|defense)|defend(ing)? (a |the )?DUI|drug charge (lawyer|attorney|defense)|we (can )?(defend|fight) (your|the) (ticket|charge)", re.I)
 
 
