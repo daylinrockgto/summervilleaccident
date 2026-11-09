@@ -216,10 +216,14 @@ reviews of, complaints, cheap, cheapest, cost of a lawyer, how much does a lawye
 | 4 | GTM container `GTM-W8WTJ5RF` | Tag: Google Ads Conversion Tracking with the ID and Label from step 1. Trigger: Custom Event, event name `lead_form_submit`. Add the Conversion Linker tag on All Pages. Publish |
 | 5 | GTM | Second Google Ads conversion tag on custom event `call_click` (create the conversion action "Click to call (website)" in Ads first, category Contact, count One). Set it to **Secondary** in Ads: observation only, never for bidding |
 | 5b | GTM, enhanced conversions | The `lead_form_submit` event carries `user_data.phone_number` in E.164 (`+1XXXXXXXXXX`). Create a User-Provided Data variable (type Data Layer, variable name `user_data`), set it on the Google tag under "Include user-provided data from your website", and leave the Lead form action on "Enhanced conversions: managed through Google tag" |
+| 5c | GTM, user-provided data trigger | The container's `__ccd_add_1p_data` rule (the user-provided data tag Google created) fires on `form_submit`, but the lander pushes `lead_form_submit`. Change its trigger to the `lead_form_submit` custom event, or add that event to it, so enhanced conversions see the phone. Also open the consent-mode settings and make sure `ad_storage` does not default to denied for US visitors, or the conversion tag will stay silent |
+| 5d | Formspree `xdekonez` | Confirm the destination email is one intake monitors 24/7 and that the plan's monthly submission limit covers the campaign. Add a second destination (a Formspree webhook to intake, or CallRail External Forms) so form leads land beside the calls |
 | 6 | Test | Tell the firm first so nobody calls the number back. Open `/lp/summerville-car-accident/?gclid=test` in GTM Preview, complete the form with the name "TEST - ignore", confirm the Ads conversion tag (`__awct`, label `-spWCLTLnZ0dELn-i_xE`) fires on `lead_form_submit` and that Formspree emails the lead. The page fires the event only after Formspree returns success, and never for a honeypot submission |
 
 The `dataLayer` on every lander also carries `page_variant`, `h1_swap`, `lead_form_step` (the step-1 answer) and
-`lead_form_error`. Each lead's Formspree email includes `gclid`, `kw`, `variant` and the step-1 answer.
+`lead_form_error`. Each lead's Formspree email includes `gclid`, `kw`, `variant` and the step-1 answer. On a failed send the form shows "Call (843) 242-0821 now" as a tel link beside the error (2026-11-09).
+
+As of November 9 the "Lead form (PPC lander)" action shows Inactive with no recorded conversions and tag diagnostics say "No recent data received". That matches a tag that has never been sent a real submission, not a broken tag: on November 4 the live container fired `__awct` with the right label on a test submission. Step 6 is what moves it out of Inactive, usually within three hours.
 
 ## 7. Budget and the first thirty days
 

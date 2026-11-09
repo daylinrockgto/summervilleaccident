@@ -71,7 +71,7 @@
       function sendFail(status, detail){ if (settled) return; settled = true; btn.disabled = false; btn.textContent = text;
         try { console.error("Lead form send failed:", status, detail); } catch (e2) {}
         track("lead_form_error", {error_status: String(status)});
-        fail("We couldn't send your form. Please call " + PHONE + " instead, free, 24/7."); }
+        fail("We couldn't send your form."); err.insertAdjacentHTML("beforeend", ' <a class="errcall" href="tel:+18432420821">Call (843) 242-0821 now</a>, free, 24/7.'); }
       setTimeout(function(){ sendFail("timeout", "no response after 12s"); }, 12000);
       try {
         fetch(ENDPOINT, {method: "POST", headers: {"Content-Type": "application/json", "Accept": "application/json"}, body: JSON.stringify(data)})
