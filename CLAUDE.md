@@ -117,7 +117,7 @@ The firm's estate planning, probate and criminal defense work lives on a separat
 - **2026-10-08. Long-form edits without the kit zip.** `sync_pages.py` runs from git alone, and `frost_check.py` runs every check except the sidecar check. An edit that only removes or rewords words, with no new fact, can go through without the kit zip. A new fact still needs the zip for its sidecar entry.
 - **2026-10-12. Review fixes.** Daylin approved these from a co-worker's post-launch review. `site/BUILD-NOTES.md` has the details.
   - The footer adds the `FEE_COSTS` sentence, which the client confirmed word for word the same day, and the responsible attorney line. `FEE_BASIS` stays empty.
-  - Spanish is spoken at the firm. The top bar says "Se habla español" and links the Spanish page, and the firm markup lists English and Spanish.
+  - Spanish is spoken at the firm, and the 24/7 intake line answers in Spanish (Jon, 2026-11-13). The top bar says "Se habla español" and links the Spanish page, and the firm markup lists English and Spanish.
   - The home page, the practice parents and children, and the county parents, county children and city pages carry a short inline form after the intro. It posts to the same Formspree form as the contact page.
   - The footer column labels are plain text, not headings.
   - The logo, the photo cards and the blog card covers carry alt text, with `aria-hidden` on the logo and card photos so each link still reads as its visible label.

@@ -323,12 +323,13 @@ Jon's third handoff reported $4,249 on 106 clicks between October 14 and Novembe
 - **The organic CallRail company (897987596, the SEO site's tag) still swaps the old number.** Its tracker swaps 419-6653 for 983-2304 on organic search visits. The site has shown 242-0821 since October 15, so the organic swap has not fired since then, and every call from the SEO site also lands on the 242-0821 tracker in the paid-search company.
 - **What CallRail needs (LLG, not this repo):** a Website (pool) tracker in company 571761726, source Google Ads, swap target (843) 242-0821, enough numbers for the traffic, website www.summervilleaccidentattorney.com; and the organic tracker's swap target changed from 419-6653 to 242-0821, or the two companies consolidated. Once the pool is live, a visit with `?gclid=test` should show a pool number in every `tel:` link within a second or two, and `swap_session.json` should return an assignment.
 - **"Zero calls" should be read in company 571761726**, where 242-0821 lives. If that tracker shows no calls at all since October 14, calls to 242-0821 are not arriving, which is a different problem.
+- **Fixed the same afternoon.** After LLG added the pool, the live lander with `?gclid=test` swapped every `tel:` link and visible number to a pool number, (843) 396-5249 on one visit and (843) 417-0581 on a `utm_medium=cpc` visit, and `swap_session.json` returned the assignment for swap target 8432420821. The organic company's tracker still targets 419-6653, so the SEO site still does not swap on organic visits.
 
 Small fixes shipped the same day:
 
 - **Sticky bar.** On a phone the bottom call bar could sit over the form's submit button once the keyboard scrolled the phone field into view. The bar now hides while step 2 of a form is open (`body.typing`), and anchors keep a 90px gap from the bottom.
 - **`truck-wreck-lawyer`** joined `LANDER_KW` for the "sc slang wreck and truck" ad group: H1 "Summerville Truck Wreck Lawyer", subhead "Hurt in a truck wreck?". A dedicated truck lander would be a separate build.
-- **Spanish path.** The main landers' "Se habla español" line now links the Spanish car accident page, `/es/abogado-de-accidentes-de-carro-en-summerville/`. A Spanish lander is still open, and so is whether the 24/7 intake line has Spanish speakers.
+- **Spanish path.** The main landers' "Se habla español" line now links the Spanish car accident page, `/es/abogado-de-accidentes-de-carro-en-summerville/`. Jon confirmed on November 13 that the intake line answers in Spanish 24/7, so "Se habla español" stays in the ads and on the landers. A Spanish lander is still open.
 
 ## PPC lander claims and Quality Score fixes (November 9)
 
