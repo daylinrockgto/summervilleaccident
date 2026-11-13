@@ -15,7 +15,7 @@
   /* The keyword variant is rendered at build time (/lp/<lander>/<kw>/) and served for ?kw= by Vercel middleware, so the
      HTML already carries the ad group's words and data-kw is set. If a base page is served with ?kw= anyway (another host,
      middleware off), swap the H1 and title on the client as a fallback. The allow-list is filled in by the build. */
-  var KW_MAP = {"summerville-car-accident":{"car-accident-lawyer":"Summerville Car Accident Lawyer","car-accident-attorney":"Summerville Car Accident Attorney","auto-accident-lawyer":"Summerville Auto Accident Lawyer","accident-lawyer":"Summerville Accident Lawyer","car-wreck-lawyer":"Summerville Car Wreck Lawyer","car-crash-lawyer":"Summerville Car Crash Lawyer","truck-accident-lawyer":"Summerville Truck Accident Lawyer","motorcycle-accident-lawyer":"Summerville Motorcycle Accident Lawyer","injury-lawyer":"Summerville Injury Lawyer","personal-injury-lawyer":"Summerville Personal Injury Lawyer"},"summerville-personal-injury":{"personal-injury-lawyer":"Summerville Personal Injury Lawyer","personal-injury-attorney":"Summerville Personal Injury Attorney","injury-lawyer":"Summerville Injury Lawyer","injury-attorney":"Summerville Injury Attorney","accident-lawyer":"Summerville Accident Lawyer"}}, KW_SLUG = B.kw || (q.get("kw") || "").toLowerCase().replace(/[^a-z0-9-]/g, "");
+  var KW_MAP = {"summerville-car-accident":{"car-accident-lawyer":"Summerville Car Accident Lawyer","car-accident-attorney":"Summerville Car Accident Attorney","auto-accident-lawyer":"Summerville Auto Accident Lawyer","accident-lawyer":"Summerville Accident Lawyer","car-wreck-lawyer":"Summerville Car Wreck Lawyer","car-crash-lawyer":"Summerville Car Crash Lawyer","truck-accident-lawyer":"Summerville Truck Accident Lawyer","truck-wreck-lawyer":"Summerville Truck Wreck Lawyer","motorcycle-accident-lawyer":"Summerville Motorcycle Accident Lawyer","injury-lawyer":"Summerville Injury Lawyer","personal-injury-lawyer":"Summerville Personal Injury Lawyer"},"summerville-personal-injury":{"personal-injury-lawyer":"Summerville Personal Injury Lawyer","personal-injury-attorney":"Summerville Personal Injury Attorney","injury-lawyer":"Summerville Injury Lawyer","injury-attorney":"Summerville Injury Attorney","accident-lawyer":"Summerville Accident Lawyer"}}, KW_SLUG = B.kw || (q.get("kw") || "").toLowerCase().replace(/[^a-z0-9-]/g, "");
   if (!B.kw && KW_SLUG && KW_MAP) {
     var lander = (location.pathname.match(/^\/lp\/([a-z0-9-]+)\//) || [])[1], h1 = document.getElementById("h1"), text = KW_MAP[lander] && KW_MAP[lander][KW_SLUG];
     if (h1 && text) { h1.textContent = text; document.title = document.title.replace(/^[^|]*\|/, text + " |"); track("h1_swap", {kw: KW_SLUG}); }
@@ -31,6 +31,9 @@
     var err = form.querySelector(".ferr"), btn = form.querySelector('button[type="submit"]'), answer = "";
     function show(n){
       steps.forEach(function(s){ s.hidden = s.getAttribute("data-step") !== String(n); });
+      /* On phones the sticky bar sits over the bottom of the viewport. Hide it while step 2 is open so it never covers
+         the submit button when the keyboard scrolls the field into view (2026-11-13). */
+      document.body.classList.toggle("typing", n === 2);
       if (label) label.textContent = n === 3 ? "Done" : "Step " + n + " of 2";
       dots.forEach(function(d, i){ d.className = i < n ? "on" : ""; });
       if (n === 2) { var first = form.querySelector('[name="name"]'); if (first) setTimeout(function(){ first.focus(); }, 50); }

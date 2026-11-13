@@ -46,6 +46,7 @@ LANDER_KW = {
         "car-wreck-lawyer": ("Summerville Car Wreck Lawyer", "car wreck"),
         "car-crash-lawyer": ("Summerville Car Crash Lawyer", "car crash"),
         "truck-accident-lawyer": ("Summerville Truck Accident Lawyer", "truck accident"),
+        "truck-wreck-lawyer": ("Summerville Truck Wreck Lawyer", "truck wreck"),
         "motorcycle-accident-lawyer": ("Summerville Motorcycle Accident Lawyer", "motorcycle accident"),
         "injury-lawyer": ("Summerville Injury Lawyer", "accident"),  # kept until the injury lawyer ad group moves to the personal injury lander
         "personal-injury-lawyer": ("Summerville Personal Injury Lawyer", "accident"),

@@ -931,6 +931,17 @@
         {
           "type": "query",
           "key": "kw",
+          "value": "truck-wreck-lawyer"
+        }
+      ],
+      "destination": "/lp/summerville-car-accident/truck-wreck-lawyer/index.html"
+    },
+    {
+      "source": "/lp/summerville-car-accident/",
+      "has": [
+        {
+          "type": "query",
+          "key": "kw",
           "value": "motorcycle-accident-lawyer"
         }
       ],
