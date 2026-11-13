@@ -328,7 +328,7 @@ Small fixes shipped the same day:
 
 - **Sticky bar.** On a phone the bottom call bar could sit over the form's submit button once the keyboard scrolled the phone field into view. The bar now hides while step 2 of a form is open (`body.typing`), and anchors keep a 90px gap from the bottom.
 - **`truck-wreck-lawyer`** joined `LANDER_KW` for the "sc slang wreck and truck" ad group: H1 "Summerville Truck Wreck Lawyer", subhead "Hurt in a truck wreck?". A dedicated truck lander would be a separate build.
-- **Spanish path.** The main landers' "Se habla español" line now links the Spanish car accident page, `/es/abogado-de-accidentes-de-carro-en-summerville/`. A Spanish lander is still open, and so is whether the 24/7 intake line has Spanish speakers.
+- **Spanish path.** The main landers' "Se habla español" line now links the Spanish car accident page, `/es/abogado-de-accidentes-de-carro-en-summerville/`. Jon confirmed on November 13 that the intake line answers in Spanish 24/7, so "Se habla español" stays in the ads and on the landers. A Spanish lander is still open.
 
 ## PPC lander claims and Quality Score fixes (November 9)
 
