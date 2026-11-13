@@ -106,6 +106,8 @@ RewriteCond %{QUERY_STRING} (^|&)kw=car-crash-lawyer(&|$)
 RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/car-crash-lawyer/index.html [L]
 RewriteCond %{QUERY_STRING} (^|&)kw=truck-accident-lawyer(&|$)
 RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/truck-accident-lawyer/index.html [L]
+RewriteCond %{QUERY_STRING} (^|&)kw=truck-wreck-lawyer(&|$)
+RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/truck-wreck-lawyer/index.html [L]
 RewriteCond %{QUERY_STRING} (^|&)kw=motorcycle-accident-lawyer(&|$)
 RewriteRule ^lp/summerville-car-accident/?$ /lp/summerville-car-accident/motorcycle-accident-lawyer/index.html [L]
 RewriteCond %{QUERY_STRING} (^|&)kw=injury-lawyer(&|$)

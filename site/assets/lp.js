@@ -31,6 +31,9 @@
     var err = form.querySelector(".ferr"), btn = form.querySelector('button[type="submit"]'), answer = "";
     function show(n){
       steps.forEach(function(s){ s.hidden = s.getAttribute("data-step") !== String(n); });
+      /* On phones the sticky bar sits over the bottom of the viewport. Hide it while step 2 is open so it never covers
+         the submit button when the keyboard scrolls the field into view (2026-11-13). */
+      document.body.classList.toggle("typing", n === 2);
       if (label) label.textContent = n === 3 ? "Done" : "Step " + n + " of 2";
       dots.forEach(function(d, i){ d.className = i < n ? "on" : ""; });
       if (n === 2) { var first = form.querySelector('[name="name"]'); if (first) setTimeout(function(){ first.focus(); }, 50); }

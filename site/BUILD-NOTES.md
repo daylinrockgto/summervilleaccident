@@ -314,6 +314,22 @@ Still open:
 
 - **Lander testimonials (for Daylin, not the client).** Before this change, the lander form and reviews band already quoted "My family settled our claim with this company following a car accident last year." A testimonial about a result falls under Rule 7.1(d)(4), and the lander footer is the only statement on those pages. That is worth raising with Daylin alongside the results decision.
 
+## Call tracking finding and small lander fixes (November 13)
+
+Jon's third handoff reported $4,249 on 106 clicks between October 14 and November 13 with no website calls or forms recorded, and that loading the lander with a click ID never swapped the number. Checked from this repo on November 13 by loading the live pages in a headless browser and reading CallRail's own scripts:
+
+- **The page is not the problem.** `swap.js` loads and `swap_session.json` answers 200 on every test, but CallRail returns no number to swap (`"a":{}`, `number_assignment:false`) for a Google click ID, for `utm_medium=cpc`, and for a Google organic referrer.
+- **The paid-search CallRail company (571761726, the landers' tag) has one tracker and no pool.** Its tracking number is (843) 242-0821 and its swap target is 983-2304. So 242-0821 is a CallRail number, every call to it is already recorded in that company under that "all sources" tracker, and there is nothing on the page for CallRail to replace. No Google Ads website pool is active in that company, so no visitor ever gets a pool number and nothing reaches Google Ads as a call conversion.
+- **The organic CallRail company (897987596, the SEO site's tag) still swaps the old number.** Its tracker swaps 419-6653 for 983-2304 on organic search visits. The site has shown 242-0821 since October 15, so the organic swap has not fired since then, and every call from the SEO site also lands on the 242-0821 tracker in the paid-search company.
+- **What CallRail needs (LLG, not this repo):** a Website (pool) tracker in company 571761726, source Google Ads, swap target (843) 242-0821, enough numbers for the traffic, website www.summervilleaccidentattorney.com; and the organic tracker's swap target changed from 419-6653 to 242-0821, or the two companies consolidated. Once the pool is live, a visit with `?gclid=test` should show a pool number in every `tel:` link within a second or two, and `swap_session.json` should return an assignment.
+- **"Zero calls" should be read in company 571761726**, where 242-0821 lives. If that tracker shows no calls at all since October 14, calls to 242-0821 are not arriving, which is a different problem.
+
+Small fixes shipped the same day:
+
+- **Sticky bar.** On a phone the bottom call bar could sit over the form's submit button once the keyboard scrolled the phone field into view. The bar now hides while step 2 of a form is open (`body.typing`), and anchors keep a 90px gap from the bottom.
+- **`truck-wreck-lawyer`** joined `LANDER_KW` for the "sc slang wreck and truck" ad group: H1 "Summerville Truck Wreck Lawyer", subhead "Hurt in a truck wreck?". A dedicated truck lander would be a separate build.
+- **Spanish path.** The main landers' "Se habla español" line now links the Spanish car accident page, `/es/abogado-de-accidentes-de-carro-en-summerville/`. A Spanish lander is still open, and so is whether the 24/7 intake line has Spanish speakers.
+
 ## PPC lander claims and Quality Score fixes (November 9)
 
 Jon Kennedy's second handoff, prepared November 9, after Google Ads showed "Below average" landing page experience on every keyword and after learning that every CallRail number forwards to an outsourced 24/7 intake team ("Frost - LLG Intake Simulcall"). Jon reported on November 9 that the firm confirmed sections 1 to 4. The ads were rewritten the same day, so the pages had to stop promising that an attorney answers.
