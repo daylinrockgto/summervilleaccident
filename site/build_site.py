@@ -1054,6 +1054,10 @@ def render_prod(p):
     return keep_together(expand_tokens(doc))
 
 
+# Search Console URL-prefix verification files, one per verified Google account. The first is the LLG SEO login, added 2026-11-16.
+SEARCH_CONSOLE_FILES = ["googled93fef602de87241.html"]
+
+
 def write_prod():
     global CSS_HREF
     if os.path.exists(OUT):
@@ -1102,6 +1106,9 @@ def write_prod():
         urls.append(f"<url><loc>{abs_url(p['slug'])}</loc><lastmod>{p['modified'] or BUILD_DATE}</lastmod><changefreq>{p['changefreq']}</changefreq><priority>{p['priority']:.1f}</priority></url>")
     open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + "".join(urls) + "</urlset>")
     open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /assets/fonts/\n\nSitemap: {ORIGIN}/sitemap.xml\n")
+    # Google Search Console ownership files. Google re-reads each one, so deleting a file un-verifies its owner's property.
+    for name in SEARCH_CONSOLE_FILES:
+        open(os.path.join(OUT, name), "w", encoding="utf-8").write(f"google-site-verification: {name}")
     open(os.path.join(OUT, ".htaccess"), "w", encoding="utf-8").write(htaccess())
     open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8").write(llms_txt())
     write_vercel_json()
