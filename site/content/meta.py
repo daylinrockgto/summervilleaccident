@@ -65,4 +65,8 @@ META = {
     # keyphrase | CTA form.
     "who-can-hire-a-goose-creek-catastrophic-injury-lawyer-when-the-injured-person-cannot": ("Who Signs? Ask a Goose Creek Catastrophic Injury Lawyer",
         "When a crash leaves a loved one unable to decide, a Goose Creek catastrophic injury lawyer explains who can sign and which deadlines still run. Call today."),
+    # November 16, 2026 post. The title and description are the draft's own metadata, and the title is in the
+    # keyphrase | CTA form.
+    "can-a-ladson-rideshare-accident-lawyer-sue-uber-or-lyft-in-court": ("Ladson Rideshare Accident Lawyer | See If You Can Sue",
+        "Uber and Lyft terms push injury claims into arbitration. A Ladson rideshare accident lawyer explains who you can still sue in court. Call for a free review."),
 }
