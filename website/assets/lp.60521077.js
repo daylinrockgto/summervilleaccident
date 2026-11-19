@@ -67,7 +67,7 @@
       if (form.querySelector('[name="_gotcha"]').value !== "") { finish(); return; }  /* bots see success; nothing is sent and no conversion fires */
       data.case_type = CT; data.geo = GEO; data.variant = VARIANT; data.form = cfg.where;
       data.page = location.href; data.submitted = new Date().toISOString();
-      ["gclid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "kw"].forEach(function(k){ if (q.get(k)) data[k] = q.get(k); });
+      ["gclid", "gbraid", "wbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "kw"].forEach(function(k){ if (q.get(k)) data[k] = q.get(k); });
       if (KW_SLUG) data.kw = KW_SLUG;
       data._subject = "PPC lead (" + CT + ", " + VARIANT + "): " + data.name;
       var text = btn.textContent, settled = false; btn.disabled = true; btn.textContent = "Sending…";
