@@ -317,6 +317,18 @@ Still open:
 
 - **Lander testimonials (for Daylin, not the client).** Before this change, the lander form and reviews band already quoted "My family settled our claim with this company following a car accident last year." A testimonial about a result falls under Rule 7.1(d)(4), and the lander footer is the only statement on those pages. That is worth raising with Daylin alongside the results decision.
 
+## SC statewide Search landers (November 19)
+
+Jon's "Frost Law | SC | Statewide | Search" handoff: 27 noindex PPC pages, one per single-keyword ad group, copying the structure of the Tennessee campaign. Built the same day.
+
+- **Generated, not hand-written.** `site/content/sc_landers.py` holds the page table (slug, geo, H1, type, keyword), the five geo blocks and the FAQs; `site/landers/_sc/` holds the template and the car and truck bodies; `write_landers()` renders them into `website/lp/sc/<geo>/<slug>/index.html` before the normal lander pass, so every page gets the shared parts, the firm tokens and every lander check. `PPC-SC-STATEWIDE.md` lists the 27 URLs and the facts used.
+- **Routes.** `/lp/sc/<geo>/<slug>/` rather than the proposed `/sc/`, because `/lp/` is where the noindex header, the CallRail paid-search tag and the lander checks already apply.
+- **Copy.** The Summerville car lander's sections, with the local Summerville details replaced by the geo's local block, a "How We Work With Clients Outside Summerville" section and a "South Carolina Law That Shapes Your Claim" section. Truck pages use the truck accident parent's carrier-records copy. Metro pages never say "local" or "near you" in body copy and every page says the one office is in Summerville (SC Rule 7.2).
+- **Facts.** Every number is from the SCDPS 2024 Fact Book, read from the PDF on November 19 (the file moved; the SEO pages' old link now 404s). The eyebrow reads "Summerville, South Carolina" instead of "Local family firm".
+- **Shared changes.** The lander script now carries `gbraid` and `wbraid` into the lead, and the reviews part on every lander now ends with "Testimonials reflect individual experiences. Prior results do not guarantee a similar outcome."
+- **Checked.** Build exits 0 with 27 pages; no banned word, no unfilled placeholder; self canonical and noindex on every page; at 390px the H1, call band and the form's first button sit above the fold with no overflow.
+- **Open.** Whether the firm takes Columbia, Greenville and Myrtle Beach cases (the SEO site's service area does not list those counties); `FEE_BASIS`; the firm's read of the remote-consultation section.
+
 ## Call tracking finding and small lander fixes (November 13)
 
 Jon's third handoff reported $4,249 on 106 clicks between October 14 and November 13 with no website calls or forms recorded, and that loading the lander with a click ID never swapped the number. Checked from this repo on November 13 by loading the live pages in a headless browser and reading CallRail's own scripts:

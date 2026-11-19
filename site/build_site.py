@@ -1130,6 +1130,16 @@ def write_landers():
         return
     dst = os.path.join(OUT, "lp")
     shutil.copytree(LANDERS, dst, ignore=shutil.ignore_patterns("_*"))  # _parts/ holds the shared chrome, never served
+    # The South Carolina statewide Search landers (2026-11-19): 27 pages rendered from _sc/ and sc_landers.py into
+    # /lp/sc/<geo>/<slug>/, then checked and token-filled below exactly like the hand-written landers.
+    sc_dir = os.path.join(LANDERS, "_sc")
+    if os.path.isdir(sc_dir):
+        from content import sc_landers
+        sc_tpl, sc_car, sc_truck = (open(os.path.join(sc_dir, n), encoding="utf-8").read() for n in ("template.html", "body-car.html", "body-truck.html"))
+        for page in sc_landers.PAGES:
+            d = os.path.join(dst, "sc", page[1], page[0])
+            os.makedirs(d, exist_ok=True)
+            open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(sc_landers.render(page, sc_tpl, sc_car, sc_truck))
     # the landers share one stylesheet and one script, served from /assets/ under a content hash like site.css
     shared = {}
     for name in ("lp.css", "lp.js"):
