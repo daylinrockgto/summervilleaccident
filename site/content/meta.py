@@ -69,4 +69,8 @@ META = {
     # keyphrase | CTA form.
     "can-a-ladson-rideshare-accident-lawyer-sue-uber-or-lyft-in-court": ("Ladson Rideshare Accident Lawyer | See If You Can Sue",
         "Uber and Lyft terms push injury claims into arbitration. A Ladson rideshare accident lawyer explains who you can still sue in court. Call for a free review."),
+    # November 23, 2026 post. The title and description are the draft's own metadata, and the title is in the
+    # keyphrase | CTA form.
+    "can-a-moncks-corner-motorcycle-accident-lawyer-sue-when-a-defective-part-causes-your-crash": ("Moncks Corner Motorcycle Accident Lawyer | Ask Who Pays",
+        "Did a brake or tire fail? A Moncks Corner motorcycle accident lawyer explains when the maker, dealer or shop pays and why to keep the bike. Call today."),
 }
