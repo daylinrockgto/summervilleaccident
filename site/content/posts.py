@@ -1451,3 +1451,150 @@ p14 = post(hero_image='talk-with-a-ladson-rideshare-accident-lawyer-before-uber-
               ("S.C. Judicial Branch, Charleston County courthouse", SCCOURTS_CHARLESTON, False)],
      related=[RIDEP, RIDEP + "/uber-accident-lawyers-in-summerville", RIDEP + "/lyft-accident-lawyers-in-summerville", BERK + "/ladson-car-accident-lawyers"])
 faq_ld(p14, 'Questions Ladson Riders Ask About Suing Uber and Lyft')
+
+# ----------------------------------------------------------------------------- 15. Moncks Corner motorcycle crashes, suing over a defective part
+# November 23, 2026 draft from Legal Leads Group, published November 23. Same conversion as the earlier posts: the office
+# number in the site's tel format replaced the draft's two phone links, its full URLs became internal links, and its
+# metadata block stays out of the page copy. The title and description are the draft's own. The photos under H2s 2 and 4
+# are listed in images.json under this post's slug.
+# The products statute and its comments section, Branham, Watson, the UCC warranty, notice, exclusion and limitations
+# sections, 49 U.S.C. 30120, 56-19-480, Cole Vision, 56-5-1260, the 2024 Fact Book figures, the Troop Six and Moncks
+# Corner Police Department pages, SCDMV's FR-50, 15-7-30, the Berkeley County courthouse listing, 28 U.S.C. 121, 1332
+# and 1441, Nelson, 15-38-15 as rewritten by 2025 Act No. 42, the deadline, lemon law and punitive damages sections
+# were checked against the sources below on November 23. 102 claims were checked, and two passages were corrected to
+# match them, each re-verified independently. The three defect types now come from Watson, with 15-73-30 stated
+# separately, because the 402A comments do not set out that list. The removal paragraph now adds the complete diversity
+# rule, so a South Carolina rider who also sues a South Carolina shop or dealer reads that the case can stay in state
+# court. nhtsa.gov refuses automated requests, so the lookup page itself was not read. NHTSA's recall records show both
+# makers' recalls are VIN-searchable, the labels Harley-Davidson and Yamaha Motorcycles come from search-engine copies of
+# the page, and the 15-year limit comes from NHTSA's 2026 recalls handout.
+BRANHAM = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/26860.htm"
+WATSON = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/26786.htm"
+COLE_VISION = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/26988.htm"
+CODE_36_2 = "https://www.scstatehouse.gov/code/t36c002.php"
+CODE_56_19 = "https://www.scstatehouse.gov/code/t56c019.php"
+CODE_56_28 = "https://www.scstatehouse.gov/code/t56c028.php"
+USC_30120 = "https://www.law.cornell.edu/uscode/text/49/30120"
+USC_121 = "https://www.law.cornell.edu/uscode/text/28/121"
+FACTBOOK_2024 = "https://scdps.sc.gov/sites/scdps/files/Documents/ohsjp/2024%20Fact%20Book.pdf"
+SCHP_TROOP6 = "https://scdps.sc.gov/about/contact-information/highway-patrol-troop-offices/troop-six"
+MONCKS_PD = "https://monckscornersc.gov/government/police-department"
+CODE_15_73 = "https://www.scstatehouse.gov/code/t15c073"
+NHTSA_RECALLS = "https://www.nhtsa.gov/recalls"
+p15 = post(hero_image='talk-with-a-moncks-corner-motorcycle-accident-lawyer-before-the-bike-is-gone.jpg',
+     hero_caption="A close view of a motorcycle's front wheel shows a drilled steel brake disc and a gold brake caliper.",
+     category='Motorcycle accidents', date='2026-11-23', modified='2026-11-23',
+     title='Moncks Corner Motorcycle Accident Lawyer | Ask Who Pays',
+     description="Did a brake or tire fail? A Moncks Corner motorcycle accident lawyer explains when the maker, dealer or shop pays and why to keep the bike. Call today.",
+     h1="Can a Moncks Corner Motorcycle Accident Lawyer Sue When a Defective Part Causes Your Crash?",
+     summary="When brakes, a tire or another part fails, South Carolina's product statute reaches the maker and every business that sold it. Who can be sued, how a recall helps, why the bike must be kept and where a Moncks Corner case is filed.",
+     body=(
+         "<p>Yes. A Moncks Corner motorcycle accident lawyer can sue the manufacturer, and any business that sold the defective bike or part, under South Carolina Code Section 15-73-10. You do not have to prove anyone was careless. A shop that botched a repair can face a negligence claim. Keep the motorcycle, because it is the main evidence.</p>"
+         "<p>Frost Law Group is a husband-and-wife injury firm at 128 Linwood Lane, Summerville, SC 29483. Attorneys Tara L. Frost and Jack C. Frost represent riders hurt in Moncks Corner and across Berkeley County, and you work directly with an attorney. Jack spent 14 years in law enforcement with the Summerville Police Department and the Charleston County Sheriff's Office.</p>"
+         "<p>If brakes, a tire or another part failed before your crash near Moncks Corner, call Frost Law Group at " + TEL + " for a free consultation. The phone is answered 24/7, so you can call tonight.</p>"
+         "<h2>When Can You Sue Over a Defective Motorcycle Part in South Carolina?</h2>"
+         f"<p>You can sue when the bike or part was sold in a defective condition that made it unreasonably dangerous, and that defect hurt you. South Carolina Code Section 15-73-10 sets that rule. For a rider talking with <a href=\"[[{MOTO}]]\">Frost Law Group's motorcycle accident attorneys</a>, the useful part is what the statute leaves out. It never asks whether the maker was careful. Subsection (2)(a) applies the rule even when the seller “has exercised all possible care.”</p>"
+         f"<p>Read <a href=\"{CODE_15_73}\" rel=\"noopener\" target=\"_blank\">South Carolina's chapter on sellers of defective products</a>, and you will find four things a rider has to show.</p>"
+         "<ul><li>The product was sold in a defective condition unreasonably dangerous to the user or the user's property.</li><li>The seller was engaged in the business of selling that kind of product.</li><li>The product was expected to reach you, and did, without substantial change in the condition it was sold in.</li><li>The defect caused physical harm to you or your property.</li></ul>"
+         "<p>Subsection (2)(b) adds that you need no contract with the seller. So a rider who bought the bike used can still claim against the company that built it. Whether a failure meets all four elements depends on facts a lawyer reviews with an engineer.</p>"
+         "<h3>Three Ways a Motorcycle Part Can Be Defective</h3>"
+         "<p>Defect claims usually take one of three forms, and each is proven differently. A manufacturing claim compares your part to the maker's own design. A design claim says the design itself was the problem. A warning claim says the danger was real and nobody told you. The Supreme Court of South Carolina listed these three defect types in Watson v. Ford Motor Co. in 2010. Section 15-73-30 separately adopts the comments to Section 402A of the Restatement (Second) of Torts as the chapter's legislative intent.</p>"
+         "<h4>A Manufacturing Flaw in One Bike or One Batch</h4>"
+         "<p>A manufacturing defect means this part came off the line different from the design. Think of a fork weld that never fused, or a brake hose crimped short at the factory. Proof usually starts with the failed part, compared against an intact one from the same model. A lost or discarded part can sink the claim before it begins.</p>"
+         "<h4>A Design Flaw Under the Risk-Utility Test From Branham v. Ford</h4>"
+         "<p>A design claim argues that every bike of that model carries the same danger. In Branham v. Ford Motor Co., decided August 16, 2010, the Supreme Court of South Carolina held that “the exclusive test in a products liability design case is the risk-utility test with its requirement of showing a feasible alternative design.” The case involved a 1987 Ford Bronco II, and the court judged its design as of the 1986 manufacture date, not with hindsight.</p>"
+         "<h4>Warnings and Instructions That Left Out the Danger</h4>"
+         "<p>A warning claim fits when the part worked as designed but carried a risk the rider needed to know about. If the maker knew of a danger and the manual said nothing, that silence can be the defect. Whether a warning was adequate turns on what the maker knew and when.</p>"
+         "<h3>Warranty Claims That Ride Alongside the Product Statute</h3>"
+         "<p>Under Section 36-2-314, a merchant seller impliedly warrants that goods are “fit for the ordinary purposes for which such goods are used.” Section 36-2-318 extends that warranty to any natural person expected to use or be affected by the goods, and a seller may not limit that reach. Section 36-2-607(3)(a) requires no notice of a personal injury from consumer goods. One caution applies to used bikes. Under Section 36-2-316(3)(a), specific language that makes plain there is no implied warranty can exclude one.</p>"
+         "<h2>Who Else Can Answer for a Motorcycle That Failed on the Road?</h2>"
+         "<p>Any business that sold the defective bike or part can answer under Section 15-73-10, not only the company whose name is on the tank. The statute reaches a seller “engaged in the business of selling such a product.” A shop can also answer for careless work. A private owner who sold you one used motorcycle usually falls outside the statute, because selling bikes is not that person's business.</p>"
+         "<p>A failed-part claim near Moncks Corner may name several businesses.</p>"
+         "<ul><li>The manufacturer can answer for defects built into the motorcycle.</li><li>A component maker can answer when its caliper, wheel or tire failed.</li><li>The dealer can answer if the defect existed when it sold you the bike.</li><li>A helmet maker can answer for a shell or strap that failed, since a helmet is a product too.</li></ul>"
+         f"<p>Each target has its own insurer and defenses. Frost Law Group's page on <a href=\"[[{MOTO}/motorcycle-helmet-law-injury-lawyers-in-summerville]]\">motorcycle helmet law injury claims</a> explains what a damaged helmet can show.</p>"
+         "<h3>The Shop That Last Worked on Your Brakes or Tires</h3>"
+         "<p>Picture a rider who picks up the bike from a shop with new front brake pads, then heads out SC 6 toward Lake Moultrie. A few miles later, the front brake drags and locks in a curve. If the pads were defective, the shop that sold them may answer under Section 15-73-10. If the pads were sound and the caliper went back on wrong, the claim against the shop is ordinary negligence.</p>"
+         "<h3>Aftermarket Parts and the Substantial Change Defense</h3>"
+         "<p>Expect the manufacturer to ask what changed after the bike left the factory. Section 15-73-10(1)(b) covers a product that reaches the rider “without substantial change in the condition in which it is sold.” A new exhaust or lowered suspension gives the maker room to blame the change. If the aftermarket part is what broke, its own maker and seller become the targets. Section 15-73-20 bars a rider who discovered the defect, knew the danger and still rode unreasonably.</p>"
+         "<h2>How a Recall Shapes a Moncks Corner Motorcycle Accident Lawyer's Case</h2>"
+         "<p>A recall means the manufacturer decided, or federal regulators ordered, that a safety defect must be fixed. Under 49 U.S.C. 30120(a), the manufacturer must remedy it “without charge” when the vehicle is presented. A recall helps a claim, but it does not prove that the recalled defect caused your crash. That link still has to come from the failed part and the scene.</p>"
+         f"<p>Run the VIN first. <a href=\"{NHTSA_RECALLS}\" rel=\"noopener\" target=\"_blank\">NHTSA's recall lookup</a> takes the 17-character VIN and shows unrepaired recalls from the manufacturers on its list, including Harley-Davidson and Yamaha Motorcycles. It does not show safety recalls more than 15 years old, unless the manufacturer offers more coverage.</p>"
+         "<p>The free fix has limits. Section 30120(g) drops it when the first purchaser bought the vehicle more than 15 calendar years before the recall notice, or a tire more than 5 calendar years before. Section 30120(i) bars a dealer from selling a new bike under recall notice until the defect is remedied. The dealer rule covers new vehicles, not used ones, so a used bike can change hands with a recall still open.</p>"
+         "<h2>Keep the Motorcycle Before Anyone Repairs, Scraps or Sells It</h2>"
+         "<p>The motorcycle is the evidence, and it can leave your control quickly. When an insurer acquires a totaled vehicle in settling a claim, Section 56-19-480(B) has it send the title to SCDMV. The company later reports whom it transferred the vehicle to.</p>"
+         "<p>If you accept a total loss offer but keep the title, the insurer may apply for a salvage title after 30 days and two written attempts to get it from you. For title purposes, subsection (G) treats a vehicle as a total loss when repairs equal or exceed 75% of its fair market value.</p>"
+         "<h3>Lost Evidence and Cole Vision Corp. v. Hobbs</h3>"
+         "<p>In Cole Vision Corp. v. Hobbs, decided June 20, 2011, the Supreme Court of South Carolina held that the state “does not recognize an independent tort for the negligent spoliation of evidence, third-party or otherwise.” A court can still sanction a party to the case or give the jury an adverse instruction. But if a salvage buyer loses your bike, you may have no separate claim against it.</p>"
+         "<h3>Who Holds the Motorcycle After a Crash Near Moncks Corner?</h3>"
+         "<p>It may be a storage lot, an insurer or a shop, and the bike can change hands more than once. The Highway Patrol's Regulatory Compliance Unit oversees rotation wrecker regulation, and a rotation wrecker may haul the bike from a state highway crash. If the bike went back to a shop, that shop has it. Each holder should hear from you in writing before the bike moves again.</p>"
+         "<h4>A Written Hold Request to the Insurer, Storage Lot and Shop</h4>"
+         "<p>A short letter asking each holder to keep the motorcycle unrepaired and unsold puts them on notice. Send it to the other driver's insurer, your own carrier, the storage lot and any shop. Ask the insurer to hold the bike even after it pays a total loss. A lawyer can follow with a formal demand naming the parts an engineer needs.</p>"
+         "<h4>Parts, Photos and Records Worth Saving</h4>"
+         "<p>Some proof sits in your garage or on your phone, not on the bike. A manufacturer will ask for it later, so gather it now. Start with these items.</p>"
+         "<ul><li>Broken pieces from the scene go in a labeled bag.</li><li>Photos of the bike and the road keep their time stamps.</li><li>The VIN, purchase papers and any recall letter go in one folder.</li></ul>"
+         "<h5>Service Records and Work Orders</h5>"
+         "<p>Maintenance history answers the first defense a maker raises, which is owner neglect. Gather oil change receipts, tire purchase records and every shop work order. Dates show when a part went on and how many miles it ran. A complete file closes off an easy argument.</p>"
+         "<h5>The Helmet, Riding Gear and Any Video</h5>"
+         "<p>Keep the helmet, jacket, gloves and boots as they came off you. Scrapes and impact marks can show how the bike went down. A helmet camera or a following rider's footage can show the moment a part failed. Copy any video to a second device the same day.</p>"
+         "<h2>What the Crash Report Can Say About a Vehicle Defect</h2>"
+         "<p>Section 56-5-1260 tells drivers to report an injury crash inside a town to the local police, and otherwise to the sheriff or the nearest Highway Patrol office. In 2024, the Moncks Corner Police Department at 118 Carolina Avenue investigated 622 Berkeley County collisions, per the South Carolina Traffic Collision Fact Book. The Highway Patrol worked 3,468, and its Troop Six covers Berkeley County.</p>"
+         "<p>Form TR-310, the state's collision report, has a primary contributing factor field plus room for four more. Its vehicle defect codes include these.</p>"
+         "<ul><li>Code 70 marks brakes.</li><li>Code 71 marks steering.</li><li>Code 73 marks tires and wheels.</li><li>Code 80 marks the fuel system.</li></ul>"
+         f"<p>Statewide in 2024, officers listed a vehicle defect as the primary factor in 1,739 of 143,801 collisions. Tires and wheels led with 682, and brakes followed with 295. The Fact Book says it relies on the officer's judgment for that field. So a report coded Ran Off Road does not settle whether a part failed. Frost Law Group's page on <a href=\"[[{CARP}/how-to-get-a-south-carolina-accident-report]]\">how to get a South Carolina accident report</a> covers the SCDMV Form FR-50 request.</p>"
+         "<h2>Where a Moncks Corner Motorcycle Defect Lawsuit Gets Filed</h2>"
+         "<p>A serious injury suit in South Carolina goes to the Court of Common Pleas, the civil side of circuit court, in a county the venue statute allows. Section 15-7-30 sets those rules. Against a South Carolina company, subsection (E) allows its principal place of business or the county where the most substantial part of the act or omission occurred.</p>"
+         f"<p>Subsection (B) lets a case with several defendants proceed in any county proper for one of them. So a Berkeley County shop or dealer named in the suit can make Berkeley a proper county for the whole case. Frost Law Group's page for <a href=\"[[{BERK}/moncks-corner-car-accident-lawyers]]\">Moncks Corner car accident lawyers</a> lists the court buildings in town. The right county depends on every defendant's home and business, which a lawyer checks first.</p>"
+         "<h3>Filing at the Berkeley County Courthouse in Moncks Corner</h3>"
+         f"<p>The Berkeley County Courthouse sits at 300-B California Avenue in Moncks Corner, in the Ninth Judicial Circuit, according to the South Carolina Judicial Branch. Berkeley County recorded 114 motorcyclist victims in 2024, including 4 killed and 14 with suspected serious injuries, per the Fact Book. Frost Law Group's page on <a href=\"[[{BERK}/motorcycle-accident-lawyers-in-berkeley-county]]\">motorcycle accident lawyers in Berkeley County</a> covers filing in Moncks Corner.</p>"
+         "<h3>When a Manufacturer Moves the Case to Federal Court in Charleston</h3>"
+         "<p>An out-of-state manufacturer may try to move the case to federal court. Under 28 U.S.C. 1332(a), federal courts hear cases between citizens of different states when more than $75,000 is in controversy. Section 1441(b)(2) closes that route if a properly joined and served defendant is a South Carolina citizen. Removal on that basis also needs every named defendant to be from a different state than every plaintiff, served or not. So a South Carolina rider who also sues a South Carolina shop or dealer can keep the case in state court. A removed case goes to the division that includes the place where it was pending, per Section 1441(a). For Berkeley County, 28 U.S.C. 121 names the Charleston Division, which sits in Charleston.</p>"
+         "<h2>When a Defect and a Careless Driver Both Played a Part</h2>"
+         "<p>Plenty of crashes have two causes. Say a pickup pulls out on US 52, the rider brakes hard, and a defective front brake fails to stop the bike. The driver and the manufacturer can both be defendants. US 52 logged 653 collisions and 10 fatal crashes in Berkeley County in 2024, the most fatal crashes on the county's top five road list in the Fact Book.</p>"
+         f"<p>Your own share of fault matters too. In Nelson v. Concrete Supply Co. (1991), the Supreme Court of South Carolina held that a plaintiff in a negligence action may recover if his or her negligence is not greater than the defendant's. The award shrinks by that share. Frost Law Group's page on <a href=\"[[{CARP}/how-comparative-negligence-works-in-south-carolina]]\">how comparative negligence works in South Carolina</a> explains the math. How a jury divides fault turns on the evidence, and no lawyer can predict the split.</p>"
+         "<h3>Fault Shared Among Defendants After January 1, 2026</h3>"
+         "<p>Section 15-38-15, rewritten by 2025 Act No. 42, applies to claims arising or accruing after January 1, 2026. A defendant less than 50% at fault pays only its percentage. Under subsection (F), a defendant whose conduct was willful, wanton, reckless or intentional stays liable for all the damages. Subsection (G) lets a defendant ask the jury to assign fault to someone never sued. That person must be disclosed within 180 days after the suit begins, unless good cause allows more time.</p>"
+         "<h3>Why Strict Liability Claims Keep Unsued Parties Off the Verdict Form</h3>"
+         "<p>Under Section 15-38-15(H)(4), a nondefendant tortfeasor shall not be added to the verdict form when “the causes of action involve strict liability.” A product claim under Section 15-73-10 is a strict liability claim. So a manufacturer sued on that theory may not be able to put an unsued driver or shop on the verdict form. The rule is new, so expect disputes over cases that mix strict liability and negligence counts.</p>"
+         "<h2>How Long Do You Have to File a Defective Motorcycle Claim in South Carolina?</h2>"
+         "<p>Three years for most injury claims, and up to six years for a warranty claim on the sale. Section 15-3-535 starts the injury clock when you knew or should have known you had a claim. Section 36-2-725 runs the warranty clock from when the breach is or should have been discovered. The uniform sales code uses four years from delivery, so South Carolina gives riders more time.</p>"
+         "<ul><li>The injury claim runs three years under Sections 15-3-530(5) and 15-3-535.</li><li>A warranty claim runs six years under Section 36-2-725.</li><li>A rider under 18 gets added time under Section 15-3-40, and that added time ends no later than one year after the rider turns 18.</li><li>A wrongful death claim runs three years from the date of death under Section 15-3-530(6).</li></ul>"
+         "<p>Which clock controls depends on the claim and the dates, which a lawyer checks with you before any of them runs out.</p>"
+         "<h2>Questions Moncks Corner Riders Ask About Defective Motorcycle Parts</h2>"
+         "<p>Riders around Moncks Corner, from the US 52 corridor to the SC 6 run toward Lake Moultrie, ask these questions after a part fails. Each answer names its source so you can check it. Your own case still turns on the bike, the paperwork and the crash.</p>"
+         "<h3>Does South Carolina's Lemon Law Cover Motorcycles?</h3>"
+         "<p>Yes. Section 56-28-10, as amended by 2016 Act No. 157 effective April 21, 2016, includes a motorcycle sold and registered in South Carolina. Section 56-28-30 covers a new vehicle that fails to conform to its warranty within the first 12 months or 12,000 miles, whichever comes first, and is reported during the warranty term. The lemon law offers repair, replacement or refund, and an injury is a separate claim.</p>"
+         "<h3>Can I Still Sue if I Bought the Motorcycle Used?</h3>"
+         "<p>Often, yes, against the manufacturer. Section 15-73-10(2)(b) applies the product rule even if you never bought from that seller. Specific sale language that makes plain there is no implied warranty may exclude one under Section 36-2-316(3)(a). The strict liability claim then rests on proving the defect existed when the bike left the maker.</p>"
+         "<h3>Can a Motorcycle Maker Owe Punitive Damages in South Carolina?</h3>"
+         "<p>Only on clear and convincing proof of willful, wanton or reckless conduct, under Section 15-32-520(D). Section 15-32-530 generally caps the award at the greater of three times compensatory damages or $500,000, adjusted each year with the Consumer Price Index. The cap rises to four times or $2 million when the conduct was motivated primarily by unreasonable financial gain and a managing agent, officer or policymaker knew of or approved the danger.</p>"
+         "<h3>Should I Let a Shop Fix My Motorcycle Before a Lawyer Sees It?</h3>"
+         "<p>Not if you suspect a part failed. A repair can replace or discard the exact part an engineer needs, and under Cole Vision Corp. v. Hobbs a lost part usually leaves no separate claim. Have the bike photographed and inspected first, then decide on repairs.</p>"
+         "<h2>Talk With a Moncks Corner Motorcycle Accident Lawyer Before the Bike Is Gone</h2>"
+         "<p>A failed brake or tire can turn a careful ride into a claim against a company you have never met. A Moncks Corner motorcycle accident lawyer at Frost Law Group can trace the part to its maker and sellers, then file in the right court on time.</p>"
+         "<p>Tara L. Frost, a former Dorchester County Magistrate Judge, and Jack C. Frost meet clients at 128 Linwood Lane, Summerville, SC 29483. Call Frost First at " + TEL + ", day or night, for a free consultation.</p>"
+         "<p>Would you rather write first? Describe what failed through the firm's <a href=\"[[contact]]\">contact page</a>. No lawyer can promise how a court or a jury will rule.</p>"
+     ),
+     sources=[("S.C. Code §§ 15-73-10 to 15-73-30 (sellers of defective products)", CODE_15_73, False),
+              ("Branham v. Ford Motor Co., S.C. Sup. Ct. Op. No. 26860 (2010)", BRANHAM, False),
+              ("Watson v. Ford Motor Co., S.C. Sup. Ct. Op. No. 26786 (2010)", WATSON, False),
+              ("S.C. Code §§ 36-2-314, 36-2-316, 36-2-318, 36-2-607 and 36-2-725 (sales warranties)", CODE_36_2, False),
+              ("49 U.S.C. § 30120 (remedies for defects and noncompliance)", USC_30120, False),
+              ("NHTSA, recall lookup by VIN", NHTSA_RECALLS, False),
+              ("S.C. Code § 56-19-480 (total loss and salvage titles)", CODE_56_19, False),
+              ("Cole Vision Corp. v. Hobbs, S.C. Sup. Ct. Op. No. 26988 (2011)", COLE_VISION, False),
+              ("S.C. Code § 56-5-1260 (crash reports)", CODE_56_5, False),
+              ("SCDPS, 2024 South Carolina Traffic Collision Fact Book", FACTBOOK_2024, False),
+              ("South Carolina Highway Patrol, Troop Six", SCHP_TROOP6, False),
+              ("Town of Moncks Corner, Police Department", MONCKS_PD, False),
+              ("SCDMV, collision reports", DMV_REPORTS, False),
+              ("S.C. Code § 15-7-30 (venue)", CODE_15_7, False),
+              ("S.C. Judicial Branch, Berkeley County courthouse", SCCOURTS_BERKELEY, False),
+              ("28 U.S.C. § 1332 (diversity jurisdiction)", USC_1332, False),
+              ("28 U.S.C. § 1441 (removal)", USC_1441, False),
+              ("28 U.S.C. § 121 (District of South Carolina divisions)", USC_121, False),
+              ("S.C. Code § 15-38-15 (fault allocation, as amended by 2025 Act No. 42)", CODE_15_38, False),
+              ("S.C. Code §§ 15-3-40, 15-3-530 and 15-3-535 (filing deadlines)", CODE_15_3, False),
+              ("S.C. Code §§ 56-28-10 and 56-28-30 (lemon law)", CODE_56_28, False),
+              ("S.C. Code §§ 15-32-520 and 15-32-530 (punitive damages)", CODE_15_32, False)],
+     related=[MOTO, BERK + "/motorcycle-accident-lawyers-in-berkeley-county", MOTO + "/motorcycle-helmet-law-injury-lawyers-in-summerville", BERK + "/moncks-corner-car-accident-lawyers"])
+faq_ld(p15, 'Questions Moncks Corner Riders Ask About Defective Motorcycle Parts')

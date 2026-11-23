@@ -231,7 +231,7 @@ Daylin asked for a final visual, SEO and launch-readiness pass before launch. Ev
 
 ## Blog cover images
 
-All fourteen blog covers are licensed Canva stock photos, placed in copies of Canva template DAHS3fxddsA and exported as 1920x1080 JPGs with no text, logos, plates or AI provenance data. The caption, which is also the alt text, describes what the photo shows. A post's hero image is also its social card and BlogPosting image. The post hero crops the cover to 4:3 on desktop and 16:10 on phones, and the cards show it at 16:9, so each subject sits near the center. Do not reuse these stock photos on another post or page.
+All fifteen blog covers are licensed Canva stock photos, placed in copies of Canva template DAHS3fxddsA and exported as 1920x1080 JPGs with no text, logos, plates or AI provenance data. The caption, which is also the alt text, describes what the photo shows. A post's hero image is also its social card and BlogPosting image. The post hero crops the cover to 4:3 on desktop and 16:10 on phones, and the cards show it at 16:9, so each subject sits near the center. Do not reuse these stock photos on another post or page.
 
 The October posts' files are named for each post's final CTA heading. The four September posts have no CTA heading, so their files are named for the post's slug and then the subject. The September covers replaced generated illustrations on October 8, 2026. The Goose Creek motorcycle cover, a wrecked scooter (MADAaSpIXVg), became a parked sport motorcycle on a palm-lined plaza (MAHBjhWn0Ug) the same day, the photo Daylin picked. Its file name stayed the same, so anyone who viewed it on the Vercel production URL may need a hard refresh to see the new one, since `/assets/` files are cached for a year.
 
@@ -251,10 +251,11 @@ The October posts' files are named for each post's final CTA heading. The four S
 | Summerville wrongful death, a child's share | `talk-with-a-summerville-wrongful-death-lawyer-before-the-check-is-divided.jpg` | MAG2H7v514A | DAHZyzBOCxw |
 | Goose Creek catastrophic injury, who can act for an injured adult | `talk-with-a-goose-creek-catastrophic-injury-lawyer-about-who-can-act.jpg` | MAFZ4FZ9VQA | DAHad5n0Xpg |
 | Ladson rideshare crashes, suing Uber or Lyft in court | `talk-with-a-ladson-rideshare-accident-lawyer-before-uber-moves-to-arbitrate.jpg` | MAGYTwrtUDk | DAHbHjrT204 |
+| Moncks Corner motorcycle crashes, suing over a defective part | `talk-with-a-moncks-corner-motorcycle-accident-lawyer-before-the-bike-is-gone.jpg` | MAHK7lYco3A | DAHbwyfbocg |
 
 ### Photos inside a post
 
-A post can carry a photo under any H2. `images.json` lists them under the post's slug, the same way it lists a long-form page's photos under its LLG id, and `page_images()` in `design.py` looks a post up by its slug. The cover stays in `hero_image`. The in-article photos are licensed Canva stock photos made the same way as the long-form page photos, placed in a copy of template DAHS3fxddsA and exported at 1200x675 with no AI provenance data. Each file name starts with the post's keyphrase and then describes the photo, and the alt text describes what the photo shows.
+A post can carry a photo under any H2. `images.json` lists them under the post's slug, the same way it lists a long-form page's photos under its LLG id, and `page_images()` in `design.py` looks a post up by its slug. The cover stays in `hero_image`. The in-article photos are licensed Canva stock photos made the same way as the long-form page photos, placed in a copy of template DAHS3fxddsA and exported at 1200x675 with no AI provenance data. Each file name starts with the post's keyphrase and then describes the photo, and the alt text describes what the photo shows. Canva's stock library also holds photos that look generated but carry no provenance data. MAHNmfE_KWA, a gloved mechanic at a red brake disc, was turned down on November 23, 2026 for a malformed hand and a tool floating in midair, so view each export at full size before it goes in.
 
 | Post | Place | File | Canva stock ID | Canva design |
 | --- | --- | --- | --- | --- |
@@ -270,6 +271,8 @@ A post can carry a photo under any H2. `images.json` lists them under the post's
 | Goose Creek catastrophic injury, who can act for an injured adult | Under H2 3 | `goose-creek-catastrophic-injury-lawyer-hourglass-beside-desk-calendar.jpg` | MAGxsJn62bo | DAHad3PJvkc |
 | Ladson rideshare crashes, suing Uber or Lyft in court | Under H2 5 | `ladson-rideshare-accident-lawyer-stone-courthouse-columns-above-marble-steps.jpg` | MAEJGvJRhRY | DAHbHvLLoeU |
 | Ladson rideshare crashes, suing Uber or Lyft in court | Under H2 6 | `ladson-rideshare-accident-lawyer-man-photographing-scraped-bumper-with-phone.jpg` | MAHXAORZLrg | DAHbHoljvDU |
+| Moncks Corner motorcycle crashes, suing over a defective part | Under H2 2 | `moncks-corner-motorcycle-accident-lawyer-hands-fitting-brake-caliper-on-front-wheel.jpg` | MAHHIPVIBwg | DAHbw5acbJ8 |
+| Moncks Corner motorcycle crashes, suing over a defective part | Under H2 4 | `moncks-corner-motorcycle-accident-lawyer-stripped-motorcycle-beside-stacked-tires.jpg` | MAHZ4KEKHq0 | DAHbwzGOBTI |
 
 ## PPC landing pages (October 14)
 
