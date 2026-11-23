@@ -1457,7 +1457,28 @@ faq_ld(p14, 'Questions Ladson Riders Ask About Suing Uber and Lyft')
 # number in the site's tel format replaced the draft's two phone links, its full URLs became internal links, and its
 # metadata block stays out of the page copy. The title and description are the draft's own. The photos under H2s 2 and 4
 # are listed in images.json under this post's slug.
-#SOURCECHECK
+# The products statute and its comments section, Branham, Watson, the UCC warranty, notice, exclusion and limitations
+# sections, 49 U.S.C. 30120, 56-19-480, Cole Vision, 56-5-1260, the 2024 Fact Book figures, the Troop Six and Moncks
+# Corner Police Department pages, SCDMV's FR-50, 15-7-30, the Berkeley County courthouse listing, 28 U.S.C. 121, 1332
+# and 1441, Nelson, 15-38-15 as rewritten by 2025 Act No. 42, the deadline, lemon law and punitive damages sections
+# were checked against the sources below on November 23. 102 claims were checked, and two passages were corrected to
+# match them, each re-verified independently. The three defect types now come from Watson, with 15-73-30 stated
+# separately, because the 402A comments do not set out that list. The removal paragraph now adds the complete diversity
+# rule, so a South Carolina rider who also sues a South Carolina shop or dealer reads that the case can stay in state
+# court. nhtsa.gov refuses automated requests, so the lookup page itself was not read. NHTSA's recall records show both
+# makers' recalls are VIN-searchable, the labels Harley-Davidson and Yamaha Motorcycles come from search-engine copies of
+# the page, and the 15-year limit comes from NHTSA's 2026 recalls handout.
+BRANHAM = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/26860.htm"
+WATSON = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/26786.htm"
+COLE_VISION = "https://www.sccourts.org/media/opinions/HTMLFiles/SC/26988.htm"
+CODE_36_2 = "https://www.scstatehouse.gov/code/t36c002.php"
+CODE_56_19 = "https://www.scstatehouse.gov/code/t56c019.php"
+CODE_56_28 = "https://www.scstatehouse.gov/code/t56c028.php"
+USC_30120 = "https://www.law.cornell.edu/uscode/text/49/30120"
+USC_121 = "https://www.law.cornell.edu/uscode/text/28/121"
+FACTBOOK_2024 = "https://scdps.sc.gov/sites/scdps/files/Documents/ohsjp/2024%20Fact%20Book.pdf"
+SCHP_TROOP6 = "https://scdps.sc.gov/about/contact-information/highway-patrol-troop-offices/troop-six"
+MONCKS_PD = "https://monckscornersc.gov/government/police-department"
 CODE_15_73 = "https://www.scstatehouse.gov/code/t15c073"
 NHTSA_RECALLS = "https://www.nhtsa.gov/recalls"
 p15 = post(hero_image='talk-with-a-moncks-corner-motorcycle-accident-lawyer-before-the-bike-is-gone.jpg',
@@ -1477,7 +1498,7 @@ p15 = post(hero_image='talk-with-a-moncks-corner-motorcycle-accident-lawyer-befo
          "<ul><li>The product was sold in a defective condition unreasonably dangerous to the user or the user's property.</li><li>The seller was engaged in the business of selling that kind of product.</li><li>The product was expected to reach you, and did, without substantial change in the condition it was sold in.</li><li>The defect caused physical harm to you or your property.</li></ul>"
          "<p>Subsection (2)(b) adds that you need no contract with the seller. So a rider who bought the bike used can still claim against the company that built it. Whether a failure meets all four elements depends on facts a lawyer reviews with an engineer.</p>"
          "<h3>Three Ways a Motorcycle Part Can Be Defective</h3>"
-         "<p>Defect claims usually take one of three forms, and each is proven differently. A manufacturing claim compares your part to the maker's own design. A design claim says the design itself was the problem. A warning claim says the danger was real and nobody told you. Section 15-73-30 adopts the comments to Section 402A of the Restatement (Second) of Torts as the chapter's legislative intent.</p>"
+         "<p>Defect claims usually take one of three forms, and each is proven differently. A manufacturing claim compares your part to the maker's own design. A design claim says the design itself was the problem. A warning claim says the danger was real and nobody told you. The Supreme Court of South Carolina listed these three defect types in Watson v. Ford Motor Co. in 2010. Section 15-73-30 separately adopts the comments to Section 402A of the Restatement (Second) of Torts as the chapter's legislative intent.</p>"
          "<h4>A Manufacturing Flaw in One Bike or One Batch</h4>"
          "<p>A manufacturing defect means this part came off the line different from the design. Think of a fork weld that never fused, or a brake hose crimped short at the factory. Proof usually starts with the failed part, compared against an intact one from the same model. A lost or discarded part can sink the claim before it begins.</p>"
          "<h4>A Design Flaw Under the Risk-Utility Test From Branham v. Ford</h4>"
@@ -1526,7 +1547,7 @@ p15 = post(hero_image='talk-with-a-moncks-corner-motorcycle-accident-lawyer-befo
          "<h3>Filing at the Berkeley County Courthouse in Moncks Corner</h3>"
          f"<p>The Berkeley County Courthouse sits at 300-B California Avenue in Moncks Corner, in the Ninth Judicial Circuit, according to the South Carolina Judicial Branch. Berkeley County recorded 114 motorcyclist victims in 2024, including 4 killed and 14 with suspected serious injuries, per the Fact Book. Frost Law Group's page on <a href=\"[[{BERK}/motorcycle-accident-lawyers-in-berkeley-county]]\">motorcycle accident lawyers in Berkeley County</a> covers filing in Moncks Corner.</p>"
          "<h3>When a Manufacturer Moves the Case to Federal Court in Charleston</h3>"
-         "<p>An out-of-state manufacturer may try to move the case to federal court. Under 28 U.S.C. 1332(a), federal courts hear cases between citizens of different states when more than $75,000 is in controversy. Section 1441(b)(2) closes that route if a properly joined and served defendant is a South Carolina citizen. A removed case goes to the division that includes the place where it was pending, per Section 1441(a). For Berkeley County, 28 U.S.C. 121 names the Charleston Division, which sits in Charleston.</p>"
+         "<p>An out-of-state manufacturer may try to move the case to federal court. Under 28 U.S.C. 1332(a), federal courts hear cases between citizens of different states when more than $75,000 is in controversy. Section 1441(b)(2) closes that route if a properly joined and served defendant is a South Carolina citizen. Removal on that basis also needs every named defendant to be from a different state than every plaintiff, served or not. So a South Carolina rider who also sues a South Carolina shop or dealer can keep the case in state court. A removed case goes to the division that includes the place where it was pending, per Section 1441(a). For Berkeley County, 28 U.S.C. 121 names the Charleston Division, which sits in Charleston.</p>"
          "<h2>When a Defect and a Careless Driver Both Played a Part</h2>"
          "<p>Plenty of crashes have two causes. Say a pickup pulls out on US 52, the rider brakes hard, and a defective front brake fails to stop the bike. The driver and the manufacturer can both be defendants. US 52 logged 653 collisions and 10 fatal crashes in Berkeley County in 2024, the most fatal crashes on the county's top five road list in the Fact Book.</p>"
          f"<p>Your own share of fault matters too. In Nelson v. Concrete Supply Co. (1991), the Supreme Court of South Carolina held that a plaintiff in a negligence action may recover if his or her negligence is not greater than the defendant's. The award shrinks by that share. Frost Law Group's page on <a href=\"[[{CARP}/how-comparative-negligence-works-in-south-carolina]]\">how comparative negligence works in South Carolina</a> explains the math. How a jury divides fault turns on the evidence, and no lawyer can predict the split.</p>"
@@ -1553,6 +1574,27 @@ p15 = post(hero_image='talk-with-a-moncks-corner-motorcycle-accident-lawyer-befo
          "<p>Tara L. Frost, a former Dorchester County Magistrate Judge, and Jack C. Frost meet clients at 128 Linwood Lane, Summerville, SC 29483. Call Frost First at " + TEL + ", day or night, for a free consultation.</p>"
          "<p>Would you rather write first? Describe what failed through the firm's <a href=\"[[contact]]\">contact page</a>. No lawyer can promise how a court or a jury will rule.</p>"
      ),
-     sources=[],
+     sources=[("S.C. Code §§ 15-73-10 to 15-73-30 (sellers of defective products)", CODE_15_73, False),
+              ("Branham v. Ford Motor Co., S.C. Sup. Ct. Op. No. 26860 (2010)", BRANHAM, False),
+              ("Watson v. Ford Motor Co., S.C. Sup. Ct. Op. No. 26786 (2010)", WATSON, False),
+              ("S.C. Code §§ 36-2-314, 36-2-316, 36-2-318, 36-2-607 and 36-2-725 (sales warranties)", CODE_36_2, False),
+              ("49 U.S.C. § 30120 (remedies for defects and noncompliance)", USC_30120, False),
+              ("NHTSA, recall lookup by VIN", NHTSA_RECALLS, False),
+              ("S.C. Code § 56-19-480 (total loss and salvage titles)", CODE_56_19, False),
+              ("Cole Vision Corp. v. Hobbs, S.C. Sup. Ct. Op. No. 26988 (2011)", COLE_VISION, False),
+              ("S.C. Code § 56-5-1260 (crash reports)", CODE_56_5, False),
+              ("SCDPS, 2024 South Carolina Traffic Collision Fact Book", FACTBOOK_2024, False),
+              ("South Carolina Highway Patrol, Troop Six", SCHP_TROOP6, False),
+              ("Town of Moncks Corner, Police Department", MONCKS_PD, False),
+              ("SCDMV, collision reports", DMV_REPORTS, False),
+              ("S.C. Code § 15-7-30 (venue)", CODE_15_7, False),
+              ("S.C. Judicial Branch, Berkeley County courthouse", SCCOURTS_BERKELEY, False),
+              ("28 U.S.C. § 1332 (diversity jurisdiction)", USC_1332, False),
+              ("28 U.S.C. § 1441 (removal)", USC_1441, False),
+              ("28 U.S.C. § 121 (District of South Carolina divisions)", USC_121, False),
+              ("S.C. Code § 15-38-15 (fault allocation, as amended by 2025 Act No. 42)", CODE_15_38, False),
+              ("S.C. Code §§ 15-3-40, 15-3-530 and 15-3-535 (filing deadlines)", CODE_15_3, False),
+              ("S.C. Code §§ 56-28-10 and 56-28-30 (lemon law)", CODE_56_28, False),
+              ("S.C. Code §§ 15-32-520 and 15-32-530 (punitive damages)", CODE_15_32, False)],
      related=[MOTO, BERK + "/motorcycle-accident-lawyers-in-berkeley-county", MOTO + "/motorcycle-helmet-law-injury-lawyers-in-summerville", BERK + "/moncks-corner-car-accident-lawyers"])
 faq_ld(p15, 'Questions Moncks Corner Riders Ask About Defective Motorcycle Parts')
